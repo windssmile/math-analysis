@@ -1,4 +1,5 @@
 .superpowers/
+.worktrees/
 .quarto/
 _site/
 __pycache__/
