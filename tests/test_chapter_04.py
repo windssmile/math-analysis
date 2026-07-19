@@ -284,6 +284,9 @@ class Chapter04FailureOfInfiniteApproximationTests(unittest.TestCase):
 
     def test_failure_unit_distinguishes_required_failure_modes_without_future_tools(self) -> None:
         content = FAILURE_OF_INFINITE_APPROXIMATION.read_text(encoding="utf-8")
+        self.assertIn("三个互补的检查角度", content)
+        self.assertIn("不构成互斥分类", content)
+        self.assertNotIn("三种不同的失败信号", content)
         self.assertIn(r"x_n=(-1)^n", content)
         self.assertIn("周期", content)
         self.assertIn("振荡", content)
