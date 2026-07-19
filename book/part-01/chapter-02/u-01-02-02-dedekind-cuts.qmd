@@ -46,7 +46,7 @@ $$
 
 ## 概念与理论
 
-### Dedekind 分割
+### Dedekind 分割 {#def-u-01-02-02-dedekind-cut}
 
 一个 **Dedekind 分割** 是一个集合 $A\subset\mathbb Q$，满足下列四个条件：
 
@@ -81,7 +81,7 @@ $$
 
 ## 例题与迁移
 
-### 例：$A_{\sqrt2}$ 是一个 Dedekind 分割
+### 例：$A_{\sqrt2}$ 是一个 Dedekind 分割 {#ex-u-01-02-02-sqrt2-cut}
 
 证明集合
 

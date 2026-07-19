@@ -42,6 +42,26 @@ class SiteValidationTest(unittest.TestCase):
                 ),
             )
 
+    def test_required_rendered_anchor_must_exist_on_its_page(self) -> None:
+        with TemporaryDirectory() as directory:
+            site = Path(directory)
+            (site / "index.html").write_text("book", encoding="utf-8")
+            page = site / "book" / "cut.html"
+            page.parent.mkdir()
+            page.write_text('<section id="wrong-anchor">cut</section>', encoding="utf-8")
+            self.assertEqual(
+                [
+                    "rendered site page book/cut.html is missing required anchor: "
+                    "def-u-01-02-02-dedekind-cut"
+                ],
+                validate_site(
+                    site,
+                    expected_anchors={
+                        "book/cut.html": ["def-u-01-02-02-dedekind-cut"]
+                    },
+                ),
+            )
+
 
 if __name__ == "__main__":
     unittest.main()

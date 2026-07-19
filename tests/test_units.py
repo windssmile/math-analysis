@@ -119,6 +119,15 @@ class UnitValidationTests(unittest.TestCase):
             self.validate(data),
         )
 
+    def test_rejects_component_hours_just_above_two(self) -> None:
+        data = copy.deepcopy(self.load_registry())
+        data["units"][0]["theory_hours"] = 2.01
+        data["units"][0]["applied_hours"] = 0
+        self.assertIn(
+            f"{UNIT_ID} theory_hours and applied_hours must each be <= 2",
+            self.validate(data),
+        )
+
     def test_rejects_non_finite_hours(self) -> None:
         for field in ("theory_hours", "applied_hours"):
             for value in (float("nan"), float("inf"), float("-inf")):

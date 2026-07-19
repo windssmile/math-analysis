@@ -9,6 +9,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 UNITS = ROOT / "curriculum" / "units.toml"
+DEDEKIND_CUTS = ROOT / "book" / "part-01" / "chapter-02" / "u-01-02-02-dedekind-cuts.qmd"
 
 
 class Chapter02RegistryTests(unittest.TestCase):
@@ -42,6 +43,17 @@ class Chapter02RegistryTests(unittest.TestCase):
         self.assertEqual(
             unit["capabilities"],
             ["concepts", "proof", "mathematical_expression"],
+        )
+
+    def test_dedekind_cuts_keep_stable_definition_and_example_anchors(self) -> None:
+        content = DEDEKIND_CUTS.read_text(encoding="utf-8")
+        self.assertIn(
+            "### Dedekind 分割 {#def-u-01-02-02-dedekind-cut}", content
+        )
+        self.assertIn(
+            "### 例：$A_{\\sqrt2}$ 是一个 Dedekind 分割 "
+            "{#ex-u-01-02-02-sqrt2-cut}",
+            content,
         )
 
 
