@@ -28,6 +28,22 @@ class Chapter02RegistryTests(unittest.TestCase):
             ["concepts", "proof", "mathematical_expression"],
         )
 
+    def test_dedekind_cuts_unit_has_its_curriculum_contract(self) -> None:
+        with UNITS.open("rb") as handle:
+            registry = tomllib.load(handle)
+        by_id = {unit["id"]: unit for unit in registry["units"]}
+
+        unit = by_id["u-01-02-02"]
+        self.assertEqual(unit["chapter_id"], "chapter-02")
+        self.assertEqual(
+            unit["path"], "book/part-01/chapter-02/u-01-02-02-dedekind-cuts.qmd"
+        )
+        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (2.00, 0.25))
+        self.assertEqual(
+            unit["capabilities"],
+            ["concepts", "proof", "mathematical_expression"],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

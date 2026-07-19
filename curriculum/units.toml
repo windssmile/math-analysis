@@ -121,3 +121,23 @@ learning_goals = [
   "解释有理数轴上为何会出现无法由有理数填补的边界",
   "区分无有理数解、近似计算与扩张数系三种不同结论",
 ]
+
+[[units]]
+id = "u-01-02-02"
+chapter_id = "chapter-02"
+title = "怎样用切割构造一个实数？"
+path = "book/part-01/chapter-02/u-01-02-02-dedekind-cuts.qmd"
+theory_hours = 2.00
+applied_hours = 0.25
+difficulty = 3
+book_prerequisites = []
+higher_algebra_prerequisites = ["有理数的序与稠密性"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "准确陈述 Dedekind 分割的四个条件",
+  "用 A_r={q:q<r} 将有理数嵌入切割模型",
+  "构造并验证表示 sqrt(2) 的 Dedekind 分割",
+]

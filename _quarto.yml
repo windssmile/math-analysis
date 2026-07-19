@@ -15,6 +15,7 @@ book:
         - book/part-01/chapter-01/u-01-01-03-proofs.qmd
         - book/part-01/chapter-01/u-01-01-04-functions.qmd
         - book/part-01/chapter-02/u-01-02-01-rational-gaps.qmd
+        - book/part-01/chapter-02/u-01-02-02-dedekind-cuts.qmd
     - part: "第三部：函数极限、连续性与方程"
       chapters:
         - book/part-03/chapter-12/u-03-12-01-ivt-bisection.qmd

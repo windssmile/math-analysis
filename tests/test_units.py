@@ -110,11 +110,12 @@ class UnitValidationTests(unittest.TestCase):
             self.validate(data),
         )
 
-    def test_rejects_more_than_two_combined_hours(self) -> None:
+    def test_rejects_more_than_two_and_a_half_combined_hours(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["applied_hours"] = 1
+        data["units"][0]["theory_hours"] = 2
+        data["units"][0]["applied_hours"] = 0.75
         self.assertIn(
-            f"{UNIT_ID} theory_hours + applied_hours must be > 0 and <= 2, got 2.25",
+            f"{UNIT_ID} theory_hours + applied_hours must be > 0 and <= 2.5, got 2.75",
             self.validate(data),
         )
 
@@ -129,10 +130,10 @@ class UnitValidationTests(unittest.TestCase):
                         self.validate(data),
                     )
 
-    def test_accepts_combined_hours_of_two(self) -> None:
+    def test_accepts_combined_hours_of_two_and_a_quarter(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["theory_hours"] = 1.25
-        data["units"][0]["applied_hours"] = 0.75
+        data["units"][0]["theory_hours"] = 2
+        data["units"][0]["applied_hours"] = 0.25
         self.assertEqual(self.validate_with_content(data), [])
 
     def test_rejects_negative_hour_component_even_when_total_is_valid(self) -> None:
@@ -151,7 +152,7 @@ class UnitValidationTests(unittest.TestCase):
         self.assertTrue(
             any(
                 error.startswith(
-                    f"{UNIT_ID} theory_hours + applied_hours must be > 0 and <= 2"
+                    f"{UNIT_ID} theory_hours and applied_hours must each be <= 2"
                 )
                 for error in errors
             )
