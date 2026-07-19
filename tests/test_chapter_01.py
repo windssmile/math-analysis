@@ -12,6 +12,32 @@ UNITS = ROOT / "curriculum" / "units.toml"
 
 
 class Chapter01RegistryTests(unittest.TestCase):
+    def test_functions_unit_has_its_curriculum_contract(self) -> None:
+        with UNITS.open("rb") as handle:
+            registry = tomllib.load(handle)
+        by_id = {unit["id"]: unit for unit in registry["units"]}
+
+        unit = by_id["u-01-01-04"]
+        self.assertEqual(unit["chapter_id"], "chapter-01")
+        self.assertEqual(
+            unit["path"], "book/part-01/chapter-01/u-01-01-04-functions.qmd"
+        )
+        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.00, 0.00))
+        self.assertEqual(
+            unit["capabilities"],
+            ["concepts", "proof", "mathematical_expression"],
+        )
+
+    def test_functions_unit_keeps_its_definition_and_exercise_baseline(self) -> None:
+        content = (
+            ROOT / "book/part-01/chapter-01/u-01-01-04-functions.qmd"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("若 $f:A\\to B$ 与 $g:B\\to C$ 都是单射", content)
+        self.assertIn("图像 $y=x^2$ 本身没有告诉我们", content)
+        for number in range(1, 5):
+            self.assertIn(f"### ex-u-01-01-04-{number:02d}", content)
+
     def test_proofs_unit_has_its_curriculum_contract(self) -> None:
         with UNITS.open("rb") as handle:
             registry = tomllib.load(handle)
