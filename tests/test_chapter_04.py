@@ -53,6 +53,14 @@ class Chapter04RecurrenceTests(unittest.TestCase):
         self.assertIn("x_{n+1}\\le x_n", content)
         self.assertNotIn("收敛到", content)
 
+    def test_recurrence_uses_the_current_reciprocal_and_derives_boundedness(self) -> None:
+        content = RECURRENCE.read_text(encoding="utf-8")
+        self.assertNotIn("a/x_1$ 平均", content)
+        self.assertIn("a/x_n$ 平均", content)
+        self.assertIn("x_n\\ge\\sqrt a", content)
+        self.assertIn("x_n\\le x_1", content)
+        self.assertIn("有界", content)
+
     def test_recurrence_unit_has_answered_exercises(self) -> None:
         content = RECURRENCE.read_text(encoding="utf-8")
         for index in range(1, 5):
