@@ -51,9 +51,33 @@ class UnitValidationTests(unittest.TestCase):
     ) -> list[str]:
         with tempfile.TemporaryDirectory() as temporary_directory:
             root = Path(temporary_directory)
-            content_path = root / CONTENT_PATH
-            content_path.parent.mkdir(parents=True)
-            content_path.write_text(content, encoding="utf-8")
+            if isinstance(data, dict) and isinstance(data.get("units"), list):
+                for unit in data["units"]:
+                    if not isinstance(unit, dict) or not isinstance(unit.get("path"), str):
+                        continue
+                    unit_path = unit["path"]
+                    content_path = root / unit_path
+                    content_path.parent.mkdir(parents=True, exist_ok=True)
+                    unit_id = unit.get("id", "placeholder")
+                    if unit_path == CONTENT_PATH:
+                        unit_content = content
+                    else:
+                        unit_content = "\n".join(
+                            [
+                                f"# 占位单元 {{#{unit_id}}}",
+                                "",
+                                "## 先备知识",
+                                "## 学习目标",
+                                "## 牵引问题",
+                                "## 探索与猜想",
+                                "## 概念与理论",
+                                "## 例题与迁移",
+                                "## 即时检验与回望",
+                                "## 习题与答案",
+                                "",
+                            ]
+                        )
+                    content_path.write_text(unit_content, encoding="utf-8")
             bridge_path = root / BRIDGE_PATH
             bridge_path.parent.mkdir(parents=True)
             bridge_path.write_text("# Python 知识桥\n", encoding="utf-8")

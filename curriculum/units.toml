@@ -20,3 +20,23 @@ learning_goals = [
   "从介值定理推导二分法及其误差上界",
   "解释二分法的停止准则并使用 Python 求近似根",
 ]
+
+[[units]]
+id = "u-01-01-01"
+chapter_id = "chapter-01"
+title = "集合怎样组织数学对象？"
+path = "book/part-01/chapter-01/u-01-01-01-sets.qmd"
+theory_hours = 1.25
+applied_hours = 0.25
+difficulty = 1
+book_prerequisites = []
+higher_algebra_prerequisites = []
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "使用集合、元素、子集与集合运算陈述数学对象",
+  "区分属于、包含、相等与空集",
+  "证明集合恒等式，并用反例否定错误的集合陈述",
+]
