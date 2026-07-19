@@ -10,6 +10,9 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 UNITS = ROOT / "curriculum" / "units.toml"
 BOUNDS = ROOT / "book" / "part-01" / "chapter-03" / "u-01-03-01-bounds.qmd"
+SUPREMUM_PRINCIPLE = (
+    ROOT / "book" / "part-01" / "chapter-03" / "u-01-03-02-supremum-principle.qmd"
+)
 
 
 class Chapter03BoundsTests(unittest.TestCase):
@@ -46,6 +49,62 @@ class Chapter03BoundsTests(unittest.TestCase):
         )
         self.assertIn("有理数缺口", content)
         self.assertIn("Dedekind 分割", content)
+
+
+class Chapter03SupremumPrincipleTests(unittest.TestCase):
+    def test_supremum_principle_unit_has_its_curriculum_contract(self) -> None:
+        with UNITS.open("rb") as handle:
+            registry = tomllib.load(handle)
+        by_id = {unit["id"]: unit for unit in registry["units"]}
+
+        unit = by_id["u-01-03-02"]
+        self.assertEqual(unit["chapter_id"], "chapter-03")
+        self.assertEqual(
+            unit["title"], "最小上界怎样保证存在？"
+        )
+        self.assertEqual(
+            unit["path"],
+            "book/part-01/chapter-03/u-01-03-02-supremum-principle.qmd",
+        )
+        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (2.00, 0.00))
+        self.assertEqual(
+            unit["capabilities"], ["concepts", "proof", "mathematical_expression"]
+        )
+        self.assertEqual(unit["book_prerequisites"], ["chapter-02"])
+        self.assertEqual(
+            unit["higher_algebra_prerequisites"],
+            ["不等式的基本性质", "平方差分解"],
+        )
+        self.assertEqual(unit["analytic_geometry_prerequisites"], [])
+        self.assertEqual(unit["python_prerequisites"], [])
+
+    def test_supremum_principle_keeps_stable_theorem_and_example_anchors(self) -> None:
+        content = SUPREMUM_PRINCIPLE.read_text(encoding="utf-8")
+        self.assertIn(
+            "### 确界原理 {#thm-u-01-03-02-supremum-principle}", content
+        )
+        self.assertIn(
+            "### 例：正数的平方根存在 {#ex-u-01-03-02-square-root-existence}",
+            content,
+        )
+        self.assertIn("切割族的并集", content)
+
+    def test_square_root_proof_uses_explicit_perturbations_without_continuity(self) -> None:
+        content = SUPREMUM_PRINCIPLE.read_text(encoding="utf-8")
+        self.assertIn("S=\\{x\\in\\mathbb R:x\\ge0,\\ x^2<a\\}", content)
+        self.assertIn("$s=\\sup S$", content)
+        self.assertIn("$s^2<a$", content)
+        self.assertIn("$(s+\\varepsilon)^2<a$", content)
+        self.assertIn("$s^2>a$", content)
+        self.assertIn("$(s-\\varepsilon)^2>a$", content)
+        self.assertIn("$s-\\varepsilon$ 是 $S$ 的上界", content)
+        self.assertNotIn("连续性", content)
+
+    def test_supremum_principle_unit_has_six_answered_exercises(self) -> None:
+        content = SUPREMUM_PRINCIPLE.read_text(encoding="utf-8")
+        for index in range(1, 7):
+            self.assertIn(f"### ex-u-01-03-02-0{index}", content)
+        self.assertIn("**完整解答。**", content)
 
 
 if __name__ == "__main__":
