@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 import math
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import sys
 import tomllib
 
@@ -60,6 +60,59 @@ def _is_number(value: object) -> bool:
     return type(value) in (int, float)
 
 
+def _is_finite_number(value: int | float) -> bool:
+    return type(value) is int or math.isfinite(value)
+
+
+def _repository_path(
+    value: str, label: str, root: Path, errors: list[str]
+) -> Path | None:
+    relative_path = PurePosixPath(value)
+    is_normalized = (
+        value == relative_path.as_posix()
+        and not relative_path.is_absolute()
+        and ".." not in relative_path.parts
+        and "\\" not in value
+    )
+    if not is_normalized:
+        errors.append(f"{label} must be a normalized repository-relative path")
+        return None
+
+    resolved_root = root.resolve()
+    resolved_path = (resolved_root / Path(*relative_path.parts)).resolve()
+    if not resolved_path.is_relative_to(resolved_root):
+        errors.append(f"{label} must remain under the repository root")
+        return None
+    return resolved_path
+
+
+def _non_fenced_lines(text: str) -> list[str]:
+    lines: list[str] = []
+    fence_character: str | None = None
+    fence_length = 0
+    for line in text.splitlines():
+        stripped = line.lstrip()
+        marker_character = stripped[:1]
+        marker_length = 0
+        if marker_character in ("`", "~"):
+            marker_length = len(stripped) - len(stripped.lstrip(marker_character))
+
+        if fence_character is None:
+            if marker_length >= 3:
+                fence_character = marker_character
+                fence_length = marker_length
+            else:
+                lines.append(line)
+        elif (
+            marker_character == fence_character
+            and marker_length >= fence_length
+            and not stripped[marker_length:].strip()
+        ):
+            fence_character = None
+            fence_length = 0
+    return lines
+
+
 def _chapter_ids(outline: object, errors: list[str]) -> set[str]:
     if not isinstance(outline, Mapping):
         errors.append("outline must be a mapping")
@@ -111,9 +164,8 @@ def _validate_string_list(
 
 
 def _validate_content_file(
-    unit_id: str, relative_path: str, root: Path, errors: list[str]
+    unit_id: str, relative_path: str, content_path: Path, errors: list[str]
 ) -> None:
-    content_path = root / relative_path
     if not content_path.is_file():
         errors.append(f"{unit_id} content file does not exist: {relative_path}")
         return
@@ -124,11 +176,19 @@ def _validate_content_file(
         errors.append(f"{unit_id} content file cannot be read: {relative_path}: {exc}")
         return
 
+    non_fenced_lines = _non_fenced_lines(text)
     anchor = f"{{#{unit_id}}}"
-    if anchor not in text:
-        errors.append(f"{unit_id} content file must contain stable anchor {anchor}")
+    first_heading = next(
+        (line for line in non_fenced_lines if line.startswith("# ")),
+        None,
+    )
+    if first_heading is None or anchor not in first_heading:
+        errors.append(
+            f"{unit_id} content file first level-one heading must contain "
+            f"stable anchor {anchor}"
+        )
 
-    lines = set(text.splitlines())
+    lines = set(non_fenced_lines)
     for heading in REQUIRED_QMD_HEADINGS:
         if heading not in lines:
             errors.append(f"{unit_id} content file is missing heading: {heading}")
@@ -181,17 +241,26 @@ def validate_units(
             value = unit.get(field)
             if not _is_number(value):
                 errors.append(f"{label}.{field} must be a number")
-            elif not math.isfinite(value):
+            elif not _is_finite_number(value):
                 errors.append(f"{label}.{field} must be a finite number")
+            elif value < 0:
+                errors.append(f"{label}.{field} must be >= 0")
             else:
                 valid_hours[field] = value
         if len(valid_hours) == 2:
-            total = valid_hours["theory_hours"] + valid_hours["applied_hours"]
-            if total <= 0 or total > 2:
+            theory_hours = valid_hours["theory_hours"]
+            applied_hours = valid_hours["applied_hours"]
+            if theory_hours > 2 or applied_hours > 2:
                 errors.append(
-                    f"{label} theory_hours + applied_hours must be > 0 and <= 2, "
-                    f"got {total:g}"
+                    f"{label} theory_hours + applied_hours must be > 0 and <= 2"
                 )
+            else:
+                total = theory_hours + applied_hours
+                if total <= 0 or total > 2:
+                    errors.append(
+                        f"{label} theory_hours + applied_hours must be > 0 and <= 2, "
+                        f"got {total:g}"
+                    )
 
         difficulty = unit.get("difficulty")
         if type(difficulty) is not int or difficulty <= 0:
@@ -206,6 +275,19 @@ def validate_units(
                 valid_lists[field] = value
                 _validate_string_list(value, field, label, errors)
 
+        for prerequisite_index, prerequisite in enumerate(
+            valid_lists.get("book_prerequisites", [])
+        ):
+            if (
+                isinstance(prerequisite, str)
+                and prerequisite.strip()
+                and prerequisite not in chapter_ids
+            ):
+                errors.append(
+                    f"{label}.book_prerequisites[{prerequisite_index}] "
+                    f"references unknown chapter {prerequisite}"
+                )
+
         capabilities = valid_lists.get("capabilities", [])
         for capability in capabilities:
             if isinstance(capability, str) and capability not in ALLOWED_CAPABILITIES:
@@ -217,12 +299,25 @@ def validate_units(
         if learning_goals is not None and not learning_goals:
             errors.append(f"{label}.learning_goals must not be empty")
 
-        for bridge in valid_lists.get("knowledge_bridges", []):
-            if isinstance(bridge, str) and bridge.strip() and not (root / bridge).is_file():
-                errors.append(f"{label} knowledge bridge does not exist: {bridge}")
+        for bridge_index, bridge in enumerate(
+            valid_lists.get("knowledge_bridges", [])
+        ):
+            if isinstance(bridge, str) and bridge.strip():
+                bridge_path = _repository_path(
+                    bridge,
+                    f"{label}.knowledge_bridges[{bridge_index}]",
+                    root,
+                    errors,
+                )
+                if bridge_path is not None and not bridge_path.is_file():
+                    errors.append(f"{label} knowledge bridge does not exist: {bridge}")
 
         if unit_id is not None and relative_path is not None:
-            _validate_content_file(unit_id, relative_path, root, errors)
+            content_path = _repository_path(
+                relative_path, f"{label}.path", root, errors
+            )
+            if content_path is not None:
+                _validate_content_file(unit_id, relative_path, content_path, errors)
 
     return errors
 
