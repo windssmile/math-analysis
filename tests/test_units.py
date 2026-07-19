@@ -59,20 +59,8 @@ class UnitValidationTests(unittest.TestCase):
             bridge_path.write_text("# Python 知识桥\n", encoding="utf-8")
             return validate_units(data, self.load_outline(), root=root)
 
-    def test_real_registry_only_permits_the_task_6_content_file_to_be_missing(
-        self,
-    ) -> None:
-        errors = self.validate(self.load_registry())
-        missing_content = [
-            error for error in errors if "content file does not exist" in error
-        ]
-        self.assertEqual(errors, missing_content)
-        self.assertLessEqual(len(missing_content), 1)
-        if missing_content:
-            self.assertEqual(
-                missing_content,
-                [f"{UNIT_ID} content file does not exist: {CONTENT_PATH}"],
-            )
+    def test_real_registry_is_valid(self) -> None:
+        self.assertEqual(self.validate(self.load_registry()), [])
 
     def test_rejects_unknown_chapter(self) -> None:
         data = copy.deepcopy(self.load_registry())
