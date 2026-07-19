@@ -5,7 +5,7 @@
 - **全书先备：** [第 10 章“连续函数与连续运算”](../../curriculum-map.qmd#chapter-10)、[第 11 章“闭区间上的整体性质”](../../curriculum-map.qmd#chapter-11)
 - **高等代数先备：** 无
 - **解析几何先备：** 无
-- **Python 知识桥：** [函数、循环与异常](../../bridges/python/functions-loops.qmd#bridge-python-functions-loops)（@bridge-python-functions-loops）
+- **Python 知识桥：** [函数、循环与异常](../../bridges/python/functions-loops.qmd#bridge-python-functions-loops)
 :::
 
 ## 先备知识
@@ -20,7 +20,7 @@ $$
 
 且 $b_n-a_n\to0$，那么这些区间恰有一个公共点。
 
-算法部分只用到 Python 的函数定义、`while` 循环和异常的基本含义。若这些语法尚不熟悉，可先阅读 @bridge-python-functions-loops；本页中的代码都是静态示例，不需要 Jupyter 环境。
+算法部分只用到 Python 的函数定义、`while` 循环和异常的基本含义。若这些语法尚不熟悉，可先阅读 [Python 知识桥“函数、循环与异常”](../../bridges/python/functions-loops.qmd#bridge-python-functions-loops)；本页中的代码都是静态示例，不需要 Jupyter 环境。
 
 ## 学习目标
 
