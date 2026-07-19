@@ -1,7 +1,7 @@
 .PHONY: test check generate render verify preview
 
 test:
-	python3 -m unittest tests.test_project_structure -v
+	python3 -m unittest discover -s tests -v
 
 check:
 	python3 scripts/check_outline.py
