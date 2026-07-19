@@ -69,10 +69,12 @@ $$
 则 $|m_n-r|\le\varepsilon$。特别地，取
 
 $$
-N=\max\left\{0,\left\lceil\log_2\frac{b-a}{\varepsilon}\right\rceil-1\right\},
+N=\max\left\{1,\left\lceil\log_2\frac{b-a}{\varepsilon}\right\rceil-1\right\},
 $$
 
 便对每个 $n\ge N$ 有 $|m_n-r|\le\varepsilon$。
+
+本书约定 $\mathbb N=\{1,2,\ldots\}$，所以即使容许误差不小于初始长度，也取 $N=1$ 而不取 $0$；这当然仍是有效（只是未必最小）的门槛。
 
 当所要求的精度使右侧已非负时，这句话常简写为
 
@@ -206,7 +208,7 @@ $$
 **完整解答。** 设 $r$ 在二分产生的每个闭区间 $[a_n,b_n]$ 中，且 $b_n-a_n=(b-a)/2^n$。完成 $n$ 次更新后输出 $m_n=(a_n+b_n)/2$。证明：对任意 $\varepsilon>0$，令
 
 $$
-N=\max\left\{0,\left\lceil\log_2\frac{b-a}{\varepsilon}\right\rceil-1\right\},
+N=\max\left\{1,\left\lceil\log_2\frac{b-a}{\varepsilon}\right\rceil-1\right\},
 $$
 
 则每个 $n\ge N$ 都满足 $|m_n-r|\le\varepsilon$。解释为何如果改为输出端点，$N$ 的公式会变化。
@@ -226,7 +228,7 @@ $$
 2^{n+1}\ge2^L=\frac{b-a}{\varepsilon}.
 $$
 
-于是 $(b-a)/2^{n+1}\le\varepsilon$，结合前一误差界便得结论。$\max\{0,\cdots\}$ 只是在所需精度已经较粗时，保证更新次数仍为非负整数。
+于是 $(b-a)/2^{n+1}\le\varepsilon$，结合前一误差界便得结论。$\max\{1,\cdots\}$ 保证门槛属于本书的自然数；在所需精度已经较粗时，取 $N=1$ 仍有效。
 
 若输出端点，目标可以靠近区间另一端，只能保证误差至多为整个长度 $(b-a)/2^n$；因此需要 $n\ge\lceil\log_2((b-a)/\varepsilon)\rceil$，少了中点提供的那一个二分因子。
 :::

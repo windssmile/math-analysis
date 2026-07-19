@@ -188,6 +188,15 @@ class Chapter04ApproximationErrorTests(unittest.TestCase):
         self.assertIn("输出端点", content)
         self.assertIn(r"n\ge\left\lceil\log_2\frac{b-a}{\varepsilon}\right\rceil", content)
         self.assertIn("第 3 章的整数部分（取整）结论", content)
+        self.assertIn(
+            r"N=\max\left\{1,\left\lceil\log_2\frac{b-a}{\varepsilon}\right\rceil-1\right\}",
+            content,
+        )
+        self.assertNotIn(
+            r"N=\max\left\{0,\left\lceil\log_2\frac{b-a}{\varepsilon}\right\rceil-1\right\}",
+            content,
+        )
+        self.assertIn("即使容许误差不小于初始长度", content)
 
     def test_approximation_error_teaches_quantifier_order_without_defining_convergence(self) -> None:
         content = APPROXIMATION_ERROR.read_text(encoding="utf-8")
