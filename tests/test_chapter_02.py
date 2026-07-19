@@ -92,6 +92,12 @@ class Chapter02RegistryTests(unittest.TestCase):
         self.assertIn("### 切割的次序 {#def-u-01-02-03-cut-order}", content)
         self.assertIn("### 并集给出上确界 {#thm-u-01-02-03-union-supremum}", content)
 
+    def test_cut_order_operations_name_the_deferred_cut_operations_proof(self) -> None:
+        content = CUT_ORDER_OPERATIONS.read_text(encoding="utf-8")
+        self.assertIn("### ex-u-01-02-03-06", content)
+        self.assertIn("证明 $A+B$ 与 $-A$ 仍是 Dedekind 分割", content)
+        self.assertIn("四个切割条件", content)
+
 
 if __name__ == "__main__":
     unittest.main()

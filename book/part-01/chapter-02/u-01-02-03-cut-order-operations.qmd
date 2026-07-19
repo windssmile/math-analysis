@@ -201,4 +201,16 @@ $$
 若 $q\in-A_r$，存在 $t\notin A_r$ 使 $q<-t$。$t\notin A_r$ 等价于 $t\ge r$，故 $q<-t\le-r$，所以 $q\in A_{-r}$。反过来，若 $q<-r$，取 $t=r$；显然 $t\notin A_r$，且 $q<-t$，故 $q\in-A_r$。因此两集合相等。
 :::
 
+### ex-u-01-02-03-06
+
+证明 $A+B$ 与 $-A$ 仍是 Dedekind 分割。你不必在本题验证结合律、交换律或 $A+(-A)=A_0$，但必须逐项处理四个切割条件。
+
+::: {.callout-note collapse="true"}
+## 答案
+
+**证明纲要。** 对 $A+B$：取 $a\in A,b\in B$，则 $a+b-1\in A+B$，故它非空。取 $\alpha\notin A,\beta\notin B$。若 $\alpha+\beta<a+b$，其中 $a\in A,b\in B$，则 $a\le\alpha$（否则由向下封闭推出 $\alpha\in A$），同理 $b\le\beta$，从而 $a+b\le\alpha+\beta$，矛盾；故 $\alpha+\beta\notin A+B$，它是真子集。若 $q<a+b$ 且 $p<q$，则 $p<a+b$，给出向下封闭；若 $q<a+b$，取 $q'=(q+a+b)/2$，则 $q<q'<a+b$，所以无最大元。
+
+对 $-A$：由于 $A\ne\mathbb Q$，取 $r\notin A$，则 $-r-1\in-A$，故非空。取 $a\in A$；$-a\notin-A$，因为若 $-a<-r$ 且 $r\notin A$，便有 $r<a$，由向下封闭推出 $r\in A$，矛盾，故 $-A$ 是真子集。向下封闭直接保留同一个右侧见证 $r\notin A$。最后，若 $q<-r$，取 $q'=(q-r)/2$；则 $q<q'<-r$，所以 $q'\in-A$ 且 $q'>q$。四个切割条件均已验证。
+:::
+
 下一单元将从这里得到的“有界切割族有上确界”抽象为确界原理，并研究它怎样产生新的存在性结论。
