@@ -264,3 +264,24 @@ learning_goals = [
   "由区间长度推出中点近似的显式误差证书",
   "区分平方根二的专门二分过程与一般连续函数求根",
 ]
+
+[[units]]
+id = "u-01-04-03"
+chapter_id = "chapter-04"
+title = "“越来越近”怎样说得严格？"
+path = "book/part-01/chapter-04/u-01-04-03-approximation-error.qmd"
+theory_hours = 1.50
+applied_hours = 0.25
+difficulty = 2
+book_prerequisites = ["chapter-03"]
+higher_algebra_prerequisites = ["不等式的基本性质", "以 2 为底的对数与上取整"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "用量词表述给定误差下的有限步骤保证",
+  "由二分区间长度推出中点近似的误差阈值",
+  "正确使用对数与上取整选择所需二分次数",
+  "区分有限误差保证与下一部的数列收敛定义",
+]

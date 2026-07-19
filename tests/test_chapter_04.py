@@ -13,6 +13,9 @@ RECURRENCE = ROOT / "book" / "part-01" / "chapter-04" / "u-01-04-01-recurrence.q
 INTERVAL_BISECTION = (
     ROOT / "book" / "part-01" / "chapter-04" / "u-01-04-02-interval-bisection.qmd"
 )
+APPROXIMATION_ERROR = (
+    ROOT / "book" / "part-01" / "chapter-04" / "u-01-04-03-approximation-error.qmd"
+)
 
 
 class Chapter04RecurrenceTests(unittest.TestCase):
@@ -138,6 +141,62 @@ class Chapter04IntervalBisectionTests(unittest.TestCase):
         content = INTERVAL_BISECTION.read_text(encoding="utf-8")
         for index in range(1, 5):
             self.assertIn(f"### ex-u-01-04-02-0{index}", content)
+        self.assertIn("**完整解答。**", content)
+
+
+class Chapter04ApproximationErrorTests(unittest.TestCase):
+    def test_approximation_error_has_its_curriculum_contract(self) -> None:
+        with UNITS.open("rb") as handle:
+            registry = tomllib.load(handle)
+        by_id = {unit["id"]: unit for unit in registry["units"]}
+
+        unit = by_id["u-01-04-03"]
+        self.assertEqual(unit["chapter_id"], "chapter-04")
+        self.assertEqual(unit["title"], "“越来越近”怎样说得严格？")
+        self.assertEqual(
+            unit["path"],
+            "book/part-01/chapter-04/u-01-04-03-approximation-error.qmd",
+        )
+        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.50, 0.25))
+        self.assertEqual(unit["book_prerequisites"], ["chapter-03"])
+        self.assertEqual(
+            unit["capabilities"], ["concepts", "proof", "mathematical_expression"]
+        )
+
+    def test_approximation_error_has_stable_anchors_and_no_executable_code(self) -> None:
+        content = APPROXIMATION_ERROR.read_text(encoding="utf-8")
+        self.assertIn("# “越来越近”怎样说得严格？ {#u-01-04-03}", content)
+        self.assertIn(
+            "### 给定误差的有限步骤保证 {#def-u-01-04-03-error-guarantee}",
+            content,
+        )
+        self.assertIn(
+            "### 例：先算清二分次数 {#ex-u-01-04-03-bisection-step-count}",
+            content,
+        )
+        self.assertNotIn("```{python", content)
+
+    def test_approximation_error_derives_the_correct_midpoint_bisection_count(self) -> None:
+        content = APPROXIMATION_ERROR.read_text(encoding="utf-8")
+        self.assertIn(r"|m_n-r|\le\frac{b-a}{2^{n+1}}", content)
+        self.assertIn(r"\frac{b-a}{2^{n+1}}\le\varepsilon", content)
+        self.assertIn(r"n\ge\left\lceil\log_2\frac{b-a}{\varepsilon}\right\rceil-1", content)
+        self.assertIn("输出端点", content)
+        self.assertIn(r"n\ge\left\lceil\log_2\frac{b-a}{\varepsilon}\right\rceil", content)
+        self.assertIn("第 3 章的整数部分（取整）结论", content)
+
+    def test_approximation_error_teaches_quantifier_order_without_defining_convergence(self) -> None:
+        content = APPROXIMATION_ERROR.read_text(encoding="utf-8")
+        self.assertIn(r"\forall\varepsilon>0\;\exists N", content)
+        self.assertIn(r"\forall n\ge N", content)
+        self.assertIn("先给出容许误差", content)
+        self.assertIn("不是本单元的数列收敛定义", content)
+        self.assertNotIn("数列收敛当且仅当", content)
+
+    def test_approximation_error_has_answered_exercises(self) -> None:
+        content = APPROXIMATION_ERROR.read_text(encoding="utf-8")
+        for index in range(1, 5):
+            self.assertIn(f"### ex-u-01-04-03-0{index}", content)
         self.assertIn("**完整解答。**", content)
 
 
