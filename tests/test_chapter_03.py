@@ -25,6 +25,7 @@ class Chapter03BoundsTests(unittest.TestCase):
         )
         self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.50, 0.00))
         self.assertEqual(unit["capabilities"], ["concepts", "proof", "mathematical_expression"])
+        self.assertEqual(unit["book_prerequisites"], ["chapter-02"])
 
     def test_bounds_unit_keeps_stable_definition_and_example_anchors(self) -> None:
         content = BOUNDS.read_text(encoding="utf-8")
@@ -36,6 +37,15 @@ class Chapter03BoundsTests(unittest.TestCase):
         self.assertIn("由于 $0\\in D$，有 $u\\ge0$", content)
         self.assertIn("若 $u\\in D$", content)
         self.assertIn("所以 $u\\notin D$ 且 $u\\ge0$，从而 $u>0$ 且 $u^2>2$", content)
+
+    def test_bounds_unit_makes_chapter_two_its_explicit_prerequisite(self) -> None:
+        content = BOUNDS.read_text(encoding="utf-8")
+        self.assertIn(
+            "[第 2 章：实数系与完备性公理](../../curriculum-map.qmd#chapter-02)",
+            content,
+        )
+        self.assertIn("有理数缺口", content)
+        self.assertIn("Dedekind 分割", content)
 
 
 if __name__ == "__main__":
