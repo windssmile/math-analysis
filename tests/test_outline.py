@@ -107,6 +107,61 @@ class OutlineValidationTests(unittest.TestCase):
             validate_outline(data),
         )
 
+    def test_rejects_boolean_schema_version(self) -> None:
+        data = copy.deepcopy(self.load_outline())
+        data["schema_version"] = True
+        self.assertIn(
+            "schema_version must be the integer 1",
+            validate_outline(data),
+        )
+
+    def test_rejects_float_part_hours(self) -> None:
+        data = copy.deepcopy(self.load_outline())
+        data["parts"][0]["theory_hours"] = 20.0
+        self.assertIn(
+            "part-01.theory_hours must be an integer",
+            validate_outline(data),
+        )
+
+    def test_rejects_string_book_without_crashing(self) -> None:
+        data = copy.deepcopy(self.load_outline())
+        data["book"] = "not a table"
+        self.assertIn("book must be a mapping", validate_outline(data))
+
+    def test_rejects_scalar_part_without_crashing(self) -> None:
+        data = copy.deepcopy(self.load_outline())
+        data["parts"][0] = "not a part"
+        self.assertIn("parts[0] must be a mapping", validate_outline(data))
+
+    def test_rejects_scalar_chapter_without_crashing(self) -> None:
+        data = copy.deepcopy(self.load_outline())
+        data["parts"][0]["chapters"][0] = "not a chapter"
+        self.assertIn(
+            "part-01.chapters[0] must be a mapping",
+            validate_outline(data),
+        )
+
+    def test_rejects_missing_parts_list(self) -> None:
+        data = copy.deepcopy(self.load_outline())
+        del data["parts"]
+        self.assertIn("parts must be a list", validate_outline(data))
+
+    def test_rejects_scalar_chapters_list(self) -> None:
+        data = copy.deepcopy(self.load_outline())
+        data["parts"][0]["chapters"] = 1
+        self.assertIn(
+            "part-01.chapters must be a list",
+            validate_outline(data),
+        )
+
+    def test_rejects_boolean_book_total(self) -> None:
+        data = copy.deepcopy(self.load_outline())
+        data["book"]["total_hours"] = True
+        self.assertIn(
+            "book.total_hours must be an integer",
+            validate_outline(data),
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

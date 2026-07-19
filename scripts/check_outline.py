@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 import sys
 from pathlib import Path
 import tomllib
@@ -137,11 +138,37 @@ def load_outline(path: Path = OUTLINE) -> dict:
         return tomllib.load(handle)
 
 
-def _hour_total(parts: list[dict], key: str) -> int:
-    return sum(part.get(key, 0) for part in parts)
+def _is_strict_int(value: object) -> bool:
+    """Return whether value is an int but not a bool."""
+    return type(value) is int
 
 
-def _normalise_part(part: dict) -> tuple[tuple[object, ...], tuple[tuple[object, ...], ...]]:
+def _hour_total(parts: list[Mapping[str, object]], key: str) -> int:
+    return sum(
+        value
+        for part in parts
+        if _is_strict_int(value := part.get(key))
+    )
+
+
+def _validate_string_field(
+    item: Mapping[str, object], field: str, path: str, errors: list[str]
+) -> None:
+    value = item.get(field)
+    if not isinstance(value, str) or not value.strip():
+        errors.append(f"{path}.{field} must be a nonblank string")
+
+
+def _validate_int_field(
+    item: Mapping[str, object], field: str, path: str, errors: list[str]
+) -> None:
+    if not _is_strict_int(item.get(field)):
+        errors.append(f"{path}.{field} must be an integer")
+
+
+def _normalise_part(
+    part: Mapping[str, object],
+) -> tuple[tuple[object, ...], tuple[tuple[object, ...], ...]]:
     """Return the fields protected by the confirmed curriculum contract."""
     chapters = part.get("chapters", [])
     normalised_chapters = ()
@@ -171,8 +198,11 @@ def _expected_part_for_chapter(chapter_id: object) -> str | None:
     return None
 
 
-def _validate_expected_contract(data: dict, parts: list[dict], errors: list[str]) -> None:
-    book = data.get("book", {})
+def _validate_expected_contract(
+    book: Mapping[str, object],
+    parts: list[Mapping[str, object]],
+    errors: list[str],
+) -> None:
     if book.get("title") != EXPECTED_BOOK_TITLE:
         errors.append(
             "book.title must be exactly "
@@ -237,21 +267,80 @@ def _validate_expected_contract(data: dict, parts: list[dict], errors: list[str]
                 )
 
 
-def validate_outline(data: dict) -> list[str]:
+def validate_outline(data: object) -> list[str]:
     """Return all contract violations found in an outline data structure."""
     errors: list[str] = []
-    if data.get("schema_version") != 1:
-        errors.append("schema_version must be 1")
+    if not isinstance(data, Mapping):
+        return ["outline root must be a mapping"]
 
-    parts = data.get("parts", [])
-    if not isinstance(parts, list) or len(parts) != 12:
+    schema_version = data.get("schema_version")
+    if not _is_strict_int(schema_version) or schema_version != 1:
+        errors.append("schema_version must be the integer 1")
+
+    raw_book = data.get("book")
+    if not isinstance(raw_book, Mapping):
+        errors.append("book must be a mapping")
+        book: Mapping[str, object] = {}
+    else:
+        book = raw_book
+        _validate_string_field(book, "title", "book", errors)
+        for field in ("theory_hours", "applied_hours", "total_hours"):
+            _validate_int_field(book, field, "book", errors)
+
+    raw_parts = data.get("parts")
+    if not isinstance(raw_parts, list):
+        errors.append("parts must be a list")
+        raw_parts = []
+    if len(raw_parts) != 12:
         errors.append("outline must contain exactly 12 parts")
-        parts = [] if not isinstance(parts, list) else parts
+
+    parts: list[Mapping[str, object]] = []
+    for part_index, raw_part in enumerate(raw_parts):
+        if not isinstance(raw_part, Mapping):
+            errors.append(f"parts[{part_index}] must be a mapping")
+            parts.append({"chapters": []})
+            continue
+
+        part_id = raw_part.get("id")
+        part_path = (
+            part_id
+            if isinstance(part_id, str) and part_id.strip()
+            else f"parts[{part_index}]"
+        )
+        _validate_string_field(raw_part, "id", part_path, errors)
+        _validate_string_field(raw_part, "title", part_path, errors)
+        _validate_int_field(raw_part, "number", part_path, errors)
+        _validate_int_field(raw_part, "theory_hours", part_path, errors)
+        _validate_int_field(raw_part, "applied_hours", part_path, errors)
+        question = raw_part.get("question")
+        if not isinstance(question, str) or not question.strip():
+            errors.append(f"{part_path} must have a guiding question")
+
+        raw_chapters = raw_part.get("chapters")
+        if not isinstance(raw_chapters, list):
+            errors.append(f"{part_path}.chapters must be a list")
+            raw_chapters = []
+
+        chapters: list[Mapping[str, object]] = []
+        for chapter_index, raw_chapter in enumerate(raw_chapters):
+            chapter_path = f"{part_path}.chapters[{chapter_index}]"
+            if not isinstance(raw_chapter, Mapping):
+                errors.append(f"{chapter_path} must be a mapping")
+                chapters.append({})
+                continue
+            _validate_string_field(raw_chapter, "id", chapter_path, errors)
+            _validate_string_field(raw_chapter, "title", chapter_path, errors)
+            _validate_int_field(raw_chapter, "number", chapter_path, errors)
+            chapters.append(raw_chapter)
+
+        safe_part = dict(raw_part)
+        safe_part["chapters"] = chapters
+        parts.append(safe_part)
 
     if [part.get("number") for part in parts] != list(range(1, 13)):
         errors.append("part numbers must be exactly 1..12")
 
-    _validate_expected_contract(data, parts, errors)
+    _validate_expected_contract(book, parts, errors)
 
     theory_hours = _hour_total(parts, "theory_hours")
     applied_hours = _hour_total(parts, "applied_hours")
@@ -260,25 +349,25 @@ def validate_outline(data: dict) -> list[str]:
     if applied_hours != 90:
         errors.append(f"applied hours must total 90, got {applied_hours}")
 
-    chapters: list[dict] = []
+    chapters: list[Mapping[str, object]] = []
     for part in parts:
-        part_id = part.get("id", "part-?")
-        if not isinstance(part.get("question"), str) or not part["question"].strip():
-            errors.append(f"{part_id} must have a guiding question")
         part_chapters = part.get("chapters", [])
         if isinstance(part_chapters, list):
             chapters.extend(part_chapters)
 
     if [chapter.get("number") for chapter in chapters] != list(range(1, 55)):
         errors.append("chapter numbers must be exactly 1..54")
-    chapter_ids = [chapter.get("id") for chapter in chapters]
+    chapter_ids = [
+        chapter_id
+        for chapter in chapters
+        if isinstance(chapter_id := chapter.get("id"), str)
+    ]
     if len(chapter_ids) != len(set(chapter_ids)):
         errors.append("chapter IDs must be unique")
     for chapter in chapters:
         if not isinstance(chapter.get("title"), str) or not chapter["title"].strip():
             errors.append(f"{chapter.get('id', 'chapter-?')} must have a nonblank title")
 
-    book = data.get("book", {})
     if book.get("theory_hours") != theory_hours:
         errors.append(
             "book.theory_hours must match summed theory hours "
