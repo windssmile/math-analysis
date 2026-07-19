@@ -1,6 +1,6 @@
 """Behavioral tests for the certified bisection example."""
 
-from math import sqrt
+from math import inf, isfinite, nan, sqrt
 from pathlib import Path
 import sys
 import unittest
@@ -33,9 +33,58 @@ class BisectionTest(unittest.TestCase):
         ):
             bisect(lambda x: x * x + 1, -1.0, 1.0)
 
+    def test_rejects_tiny_same_sign_endpoint_values(self) -> None:
+        with self.assertRaisesRegex(
+            ValueError, "^endpoint values must have opposite signs$"
+        ):
+            bisect(lambda x: 1e-300, -1.0, 1.0)
+
     def test_rejects_nonpositive_tolerance(self) -> None:
         with self.assertRaisesRegex(ValueError, "^tolerance must be positive$"):
             bisect(lambda x: x, -1.0, 1.0, tolerance=0)
+
+    def test_large_finite_bracket_converges_without_overflow(self) -> None:
+        expected_root = 1.4e308
+
+        result = bisect(
+            lambda x: x - expected_root,
+            1e308,
+            1.7e308,
+            tolerance=1e300,
+        )
+
+        self.assertTrue(isfinite(result.root))
+        self.assertTrue(isfinite(result.error_bound))
+        self.assertLessEqual(abs(result.root - expected_root), result.error_bound)
+        self.assertLessEqual(result.error_bound, 1e300)
+
+    def test_rejects_nan_returning_function(self) -> None:
+        with self.assertRaisesRegex(
+            ValueError, "^function value at left endpoint must be finite$"
+        ):
+            bisect(lambda x: nan, -1.0, 1.0)
+
+    def test_rejects_nonfinite_inputs(self) -> None:
+        for left, right in ((nan, 1.0), (-1.0, inf), (-inf, 1.0)):
+            with self.subTest(left=left, right=right):
+                with self.assertRaisesRegex(ValueError, "^endpoints must be finite$"):
+                    bisect(lambda x: x, left, right)
+
+        for tolerance in (nan, inf, -inf):
+            with self.subTest(tolerance=tolerance):
+                with self.assertRaisesRegex(ValueError, "^tolerance must be finite$"):
+                    bisect(lambda x: x - 0.25, -1.0, 1.0, tolerance=tolerance)
+
+    def test_rejects_nonfinite_function_values(self) -> None:
+        with self.assertRaisesRegex(
+            ValueError, "^function value at right endpoint must be finite$"
+        ):
+            bisect(lambda x: inf if x == 1.0 else 0.0, -1.0, 1.0)
+
+        with self.assertRaisesRegex(
+            ValueError, "^function value at midpoint must be finite$"
+        ):
+            bisect(lambda x: nan if x == 0.0 else x, -1.0, 1.0)
 
     def test_rejects_too_small_iteration_budget(self) -> None:
         with self.assertRaisesRegex(
