@@ -40,6 +40,7 @@ def render_map(data: Mapping[str, object]) -> str:
                 "",
                 f"## 第{CHINESE_NUMBERS[part_number - 1]}部：{part['title']}",
                 f"**问题弧：** {part['question']}",
+                "",
                 (
                     "**学时：** "
                     f"理论 {part['theory_hours']} + 应用 {part['applied_hours']} "
@@ -62,7 +63,7 @@ def main() -> None:
     with SOURCE.open("rb") as handle:
         data = tomllib.load(handle)
     TARGET.parent.mkdir(parents=True, exist_ok=True)
-    TARGET.write_text(render_map(data), encoding="utf-8")
+    TARGET.write_text(render_map(data), encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

@@ -11,6 +11,7 @@ from scripts.render_curriculum_map import render_map
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTLINE = ROOT / "curriculum" / "outline.toml"
+MAP = ROOT / "book" / "curriculum-map.qmd"
 
 
 class CurriculumMapTests(unittest.TestCase):
@@ -22,6 +23,8 @@ class CurriculumMapTests(unittest.TestCase):
         self.assertIn("1. 函数、集合与数学陈述", rendered)
         self.assertIn("54. 周期模型、逼近误差与 Gibbs 现象", rendered)
         self.assertIn("**学时：** 理论 270 + 应用 90 = 360", rendered)
+
+        self.assertEqual(MAP.read_text(encoding="utf-8"), rendered)
 
 
 if __name__ == "__main__":
