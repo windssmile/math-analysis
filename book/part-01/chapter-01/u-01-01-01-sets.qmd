@@ -91,7 +91,7 @@ A\times B=\{(a,b):a\in A,\ b\in B\},\qquad
 \mathcal P(A)=\{S:S\subseteq A\}.
 $$
 
-有序对的顺序不能随意交换；通常 $A\times B\ne B\times A$。而幂集的元素本身是集合，例如 $\{\varnothing,\{1\}\}\in\mathcal P(\{1,\{1\}\})$。
+有序对的顺序不能随意交换；通常 $A\times B\ne B\times A$。而幂集的元素本身是集合，例如 $\{1,\{1\}\}\in\mathcal P(\{1,\{1\}\})$：左边的两个元素 $1$ 和 $\{1\}$ 都属于右边幂集的底集。
 
 ### 逐元素法
 

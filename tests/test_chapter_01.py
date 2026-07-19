@@ -28,6 +28,20 @@ class Chapter01RegistryTests(unittest.TestCase):
             ["concepts", "proof", "mathematical_expression"],
         )
 
+    def test_powerset_example_uses_a_real_subset_of_its_base_set(self) -> None:
+        content = (
+            ROOT / "book/part-01/chapter-01/u-01-01-01-sets.qmd"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn(
+            r"$\{1,\{1\}\}\in\mathcal P(\{1,\{1\}\})$",
+            content,
+        )
+        self.assertNotIn(
+            r"$\{\varnothing,\{1\}\}\in\mathcal P(\{1,\{1\}\})$",
+            content,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
