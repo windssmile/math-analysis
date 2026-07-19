@@ -9,6 +9,25 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "_site"
 UNITS = ROOT / "curriculum" / "units.toml"
 
+REQUIRED_RENDERED_ANCHORS = {
+    "book/part-01/chapter-02/u-01-02-02-dedekind-cuts.html": [
+        "def-u-01-02-02-dedekind-cut",
+        "ex-u-01-02-02-sqrt2-cut",
+    ],
+    "book/part-01/chapter-02/u-01-02-03-cut-order-operations.html": [
+        "def-u-01-02-03-cut-order",
+        "thm-u-01-02-03-union-supremum",
+    ],
+    "book/part-01/chapter-04/u-01-04-01-recurrence.html": [
+        "def-u-01-04-01-babylonian-recurrence",
+        "ex-u-01-04-01-sqrt2-table",
+    ],
+    "book/part-01/chapter-04/u-01-04-02-interval-bisection.html": [
+        "def-u-01-04-02-interval-bisection",
+        "ex-u-01-04-02-sqrt2-certificate",
+    ],
+}
+
 
 class LinkParser(HTMLParser):
     def __init__(self) -> None:
@@ -78,20 +97,7 @@ def main() -> int:
     errors = validate_site(
         SITE,
         expected_pages=registered_unit_pages(),
-        expected_anchors={
-            "book/part-01/chapter-02/u-01-02-02-dedekind-cuts.html": [
-                "def-u-01-02-02-dedekind-cut",
-                "ex-u-01-02-02-sqrt2-cut",
-            ],
-            "book/part-01/chapter-02/u-01-02-03-cut-order-operations.html": [
-                "def-u-01-02-03-cut-order",
-                "thm-u-01-02-03-union-supremum",
-            ],
-            "book/part-01/chapter-04/u-01-04-01-recurrence.html": [
-                "def-u-01-04-01-babylonian-recurrence",
-                "ex-u-01-04-01-sqrt2-table",
-            ],
-        },
+        expected_anchors=REQUIRED_RENDERED_ANCHORS,
     )
     pilot_pages = list(SITE.rglob("*u-03-12-01-ivt-bisection*.html"))
     if not pilot_pages:

@@ -108,6 +108,9 @@ class Chapter04IntervalBisectionTests(unittest.TestCase):
 
     def test_interval_bisection_proves_invariant_length_and_error_bound(self) -> None:
         content = INTERVAL_BISECTION.read_text(encoding="utf-8")
+        self.assertIn("0<a_n<\\sqrt2<b_n", content)
+        self.assertIn("0<a_0=1<\\sqrt2<2=b_0", content)
+        self.assertIn("a_n<m_n<b_n", content)
         self.assertIn("a_n^2<2<b_n^2", content)
         self.assertIn("m_n=\\frac{a_n+b_n}{2}", content)
         self.assertIn("m_n^2<2", content)
@@ -116,6 +119,11 @@ class Chapter04IntervalBisectionTests(unittest.TestCase):
         self.assertIn("|m_n-\\sqrt2|\\le\\frac{b_n-a_n}{2}", content)
         self.assertIn("区间套", content)
         self.assertIn("唯一", content)
+
+    def test_interval_bisection_exercise_preserves_positive_order_invariant(self) -> None:
+        content = INTERVAL_BISECTION.read_text(encoding="utf-8")
+        self.assertIn("设 $0<a_0<\\sqrt2<b_0$", content)
+        self.assertIn("0<a_n<\\sqrt2<b_n", content)
 
     def test_interval_bisection_states_its_pre_continuity_boundary(self) -> None:
         content = INTERVAL_BISECTION.read_text(encoding="utf-8")

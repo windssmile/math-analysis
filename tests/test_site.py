@@ -7,7 +7,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from scripts.check_site import validate_site
+from scripts.check_site import REQUIRED_RENDERED_ANCHORS, validate_site
 
 
 class SiteValidationTest(unittest.TestCase):
@@ -61,6 +61,16 @@ class SiteValidationTest(unittest.TestCase):
                     },
                 ),
             )
+
+    def test_interval_bisection_rendered_anchors_are_required(self) -> None:
+        page = "book/part-01/chapter-04/u-01-04-02-interval-bisection.html"
+        self.assertEqual(
+            [
+                "def-u-01-04-02-interval-bisection",
+                "ex-u-01-04-02-sqrt2-certificate",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
 
 
 if __name__ == "__main__":
