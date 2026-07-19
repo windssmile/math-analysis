@@ -58,6 +58,14 @@ class Chapter01RegistryTests(unittest.TestCase):
             content,
         )
 
+    def test_quantifier_migration_distinguishes_divisibility_from_factors(self) -> None:
+        content = (
+            ROOT / "book/part-01/chapter-01/u-01-01-02-quantifiers.qmd"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("每个质数都整除 $0$", content)
+        self.assertIn("质因子通常用于非零整数", content)
+
 
 if __name__ == "__main__":
     unittest.main()
