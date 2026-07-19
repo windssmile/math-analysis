@@ -40,3 +40,23 @@ learning_goals = [
   "区分属于、包含、相等与空集",
   "证明集合恒等式，并用反例否定错误的集合陈述",
 ]
+
+[[units]]
+id = "u-01-01-02"
+chapter_id = "chapter-01"
+title = "量词怎样改变一句话？"
+path = "book/part-01/chapter-01/u-01-01-02-quantifiers.qmd"
+theory_hours = 1.25
+applied_hours = 0.25
+difficulty = 1
+book_prerequisites = []
+higher_algebra_prerequisites = []
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "识别命题与谓词，并说明变量的取值范围",
+  "正确处理全称量词与存在量词的作用域",
+  "否定含嵌套量词的数学陈述",
+]
