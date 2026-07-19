@@ -161,3 +161,23 @@ learning_goals = [
   "证明有理数嵌入保持次序",
   "解释用切割并集构造上确界的关键条件",
 ]
+
+[[units]]
+id = "u-01-03-01"
+chapter_id = "chapter-03"
+title = "有上界为什么还不够？"
+path = "book/part-01/chapter-03/u-01-03-01-bounds.qmd"
+theory_hours = 1.50
+applied_hours = 0.00
+difficulty = 2
+book_prerequisites = []
+higher_algebra_prerequisites = ["不等式的基本性质"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "区分上界、下界、最大元、最小元、上确界与下确界",
+  "用定义验证一个数是集合的上界或最大元",
+  "说明有理数中的有界集合也可能没有最小上界",
+]

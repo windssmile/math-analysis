@@ -1,0 +1,36 @@
+"""Regression tests for Chapter 3 learning units."""
+
+from __future__ import annotations
+
+from pathlib import Path
+import tomllib
+import unittest
+
+
+ROOT = Path(__file__).resolve().parents[1]
+UNITS = ROOT / "curriculum" / "units.toml"
+BOUNDS = ROOT / "book" / "part-01" / "chapter-03" / "u-01-03-01-bounds.qmd"
+
+
+class Chapter03BoundsTests(unittest.TestCase):
+    def test_bounds_unit_has_its_curriculum_contract(self) -> None:
+        with UNITS.open("rb") as handle:
+            registry = tomllib.load(handle)
+        by_id = {unit["id"]: unit for unit in registry["units"]}
+
+        unit = by_id["u-01-03-01"]
+        self.assertEqual(unit["chapter_id"], "chapter-03")
+        self.assertEqual(
+            unit["path"], "book/part-01/chapter-03/u-01-03-01-bounds.qmd"
+        )
+        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.50, 0.00))
+        self.assertEqual(unit["capabilities"], ["concepts", "proof", "mathematical_expression"])
+
+    def test_bounds_unit_keeps_stable_definition_and_example_anchors(self) -> None:
+        content = BOUNDS.read_text(encoding="utf-8")
+        self.assertIn("### 上界、下界与确界 {#def-u-01-03-01-bounds}", content)
+        self.assertIn("### 例：有理数中的缺失上确界 {#ex-u-01-03-01-rational-supremum}", content)
+
+
+if __name__ == "__main__":
+    unittest.main()
