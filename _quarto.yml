@@ -1,0 +1,26 @@
+project:
+  type: book
+  output-dir: _site
+
+book:
+  title: "数学分析：理论、算法与模型"
+  chapters:
+    - index.qmd
+    - book/preface.qmd
+    - book/curriculum-map.qmd
+    - part: "第三部：函数极限、连续性与方程"
+      chapters:
+        - book/part-03/chapter-12/u-03-12-01-ivt-bisection.qmd
+  appendices:
+    - book/bridges/python/functions-loops.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc-depth: 3
+    number-sections: true
+    code-copy: true
+    code-overflow: wrap
+
+lang: zh
