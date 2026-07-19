@@ -59,6 +59,26 @@ class UnitValidationTests(unittest.TestCase):
             self.validate(data),
         )
 
+    def test_rejects_non_finite_hours(self) -> None:
+        for field in ("theory_hours", "applied_hours"):
+            for value in (float("nan"), float("inf"), float("-inf")):
+                with self.subTest(field=field, value=value):
+                    data = copy.deepcopy(self.load_registry())
+                    data["units"][0][field] = value
+                    self.assertIn(
+                        f"{UNIT_ID}.{field} must be a finite number",
+                        self.validate(data),
+                    )
+
+    def test_accepts_combined_hours_of_two(self) -> None:
+        data = copy.deepcopy(self.load_registry())
+        data["units"][0]["theory_hours"] = 1.25
+        data["units"][0]["applied_hours"] = 0.75
+        self.assertEqual(
+            self.validate(data),
+            [f"{UNIT_ID} content file does not exist: {CONTENT_PATH}"],
+        )
+
     def test_rejects_non_mapping_registry_without_crashing(self) -> None:
         self.assertEqual(self.validate("not a registry"), ["registry must be a mapping"])
 

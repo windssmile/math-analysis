@@ -2,7 +2,7 @@
 
 在用二分法寻找方程的近似根之前，我们只需要三项 Python 基础：把计算封装成函数、用 `while` 循环重复步骤，以及用异常拒绝无效输入。
 
-```{python}
+```python
 def sign_change(function, left, right):
     """判断函数在区间两个端点的值是否异号或有一个为零。"""
     if left >= right:

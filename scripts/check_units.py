@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
+import math
 from pathlib import Path
 import sys
 import tomllib
@@ -180,6 +181,8 @@ def validate_units(
             value = unit.get(field)
             if not _is_number(value):
                 errors.append(f"{label}.{field} must be a number")
+            elif not math.isfinite(value):
+                errors.append(f"{label}.{field} must be a finite number")
             else:
                 valid_hours[field] = value
         if len(valid_hours) == 2:
