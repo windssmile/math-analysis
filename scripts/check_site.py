@@ -87,6 +87,10 @@ def main() -> int:
                 "def-u-01-02-03-cut-order",
                 "thm-u-01-02-03-union-supremum",
             ],
+            "book/part-01/chapter-04/u-01-04-01-recurrence.html": [
+                "def-u-01-04-01-babylonian-recurrence",
+                "ex-u-01-04-01-sqrt2-table",
+            ],
         },
     )
     pilot_pages = list(SITE.rglob("*u-03-12-01-ivt-bisection*.html"))

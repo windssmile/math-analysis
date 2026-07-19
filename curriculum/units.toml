@@ -222,3 +222,24 @@ learning_goals = [
   "用阿基米德性质证明有理数在实数中的稠密性",
   "说明正数平方根存在是确界原理的一个直接后果",
 ]
+
+[[units]]
+id = "u-01-04-01"
+chapter_id = "chapter-04"
+title = "递推会不会真的“靠近”目标？"
+path = "book/part-01/chapter-04/u-01-04-01-recurrence.qmd"
+theory_hours = 1.25
+applied_hours = 0.50
+difficulty = 2
+book_prerequisites = ["chapter-03"]
+higher_algebra_prerequisites = ["不等式的基本性质", "平方差分解"]
+analytic_geometry_prerequisites = []
+python_prerequisites = ["变量赋值", "for 循环", "函数定义"]
+knowledge_bridges = ["book/bridges/python/functions-loops.qmd"]
+capabilities = ["concepts", "proof", "numerical_algorithm", "mathematical_expression"]
+learning_goals = [
+  "把 Babylonian 递推写成清楚的递推关系与初始条件",
+  "证明迭代项保持为正并位于正平方根上方",
+  "利用平方差证明迭代项单调下降",
+  "用 Python 输出有限步迭代的数值表，并区分观察与证明",
+]
