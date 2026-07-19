@@ -202,3 +202,23 @@ learning_goals = [
   "使用确界原理证明正数平方根的存在性",
   "在证明中用显式扰动构造排除错误的候选确界",
 ]
+
+[[units]]
+id = "u-01-03-03"
+chapter_id = "chapter-03"
+title = "确界原理能推出什么？"
+path = "book/part-01/chapter-03/u-01-03-03-completeness-consequences.qmd"
+theory_hours = 1.50
+applied_hours = 0.00
+difficulty = 3
+book_prerequisites = ["chapter-02"]
+higher_algebra_prerequisites = ["整数与有理数的基本性质"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "从确界原理推出阿基米德性质",
+  "用阿基米德性质证明有理数在实数中的稠密性",
+  "说明正数平方根存在是确界原理的一个直接后果",
+]

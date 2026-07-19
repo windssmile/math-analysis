@@ -13,6 +13,13 @@ BOUNDS = ROOT / "book" / "part-01" / "chapter-03" / "u-01-03-01-bounds.qmd"
 SUPREMUM_PRINCIPLE = (
     ROOT / "book" / "part-01" / "chapter-03" / "u-01-03-02-supremum-principle.qmd"
 )
+COMPLETENESS_CONSEQUENCES = (
+    ROOT
+    / "book"
+    / "part-01"
+    / "chapter-03"
+    / "u-01-03-03-completeness-consequences.qmd"
+)
 
 
 class Chapter03BoundsTests(unittest.TestCase):
@@ -113,6 +120,56 @@ class Chapter03SupremumPrincipleTests(unittest.TestCase):
         self.assertIn("$x=(\\max\\{M,0\\}+1)/2$", content)
         self.assertIn("$x\\in(0,1)$", content)
         self.assertIn("$x>M$", content)
+
+
+class Chapter03CompletenessConsequencesTests(unittest.TestCase):
+    def test_completeness_consequences_unit_has_its_curriculum_contract(self) -> None:
+        with UNITS.open("rb") as handle:
+            registry = tomllib.load(handle)
+        by_id = {unit["id"]: unit for unit in registry["units"]}
+
+        unit = by_id["u-01-03-03"]
+        self.assertEqual(unit["chapter_id"], "chapter-03")
+        self.assertEqual(unit["title"], "确界原理能推出什么？")
+        self.assertEqual(
+            unit["path"],
+            "book/part-01/chapter-03/u-01-03-03-completeness-consequences.qmd",
+        )
+        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.50, 0.00))
+        self.assertEqual(
+            unit["capabilities"], ["concepts", "proof", "mathematical_expression"]
+        )
+        self.assertEqual(unit["book_prerequisites"], ["chapter-02"])
+        self.assertEqual(
+            unit["higher_algebra_prerequisites"], ["整数与有理数的基本性质"]
+        )
+
+    def test_unit_has_stable_anchors_and_full_archimedean_proof(self) -> None:
+        content = COMPLETENESS_CONSEQUENCES.read_text(encoding="utf-8")
+        self.assertIn(
+            "### 阿基米德性质 {#thm-u-01-03-03-archimedean}", content
+        )
+        self.assertIn(
+            "### 例：在两个实数之间找到有理数 {#ex-u-01-03-03-rational-density}",
+            content,
+        )
+        self.assertIn("若 $\\mathbb N$ 有上界", content)
+        self.assertIn("令 $s=\\sup\\mathbb N$", content)
+        self.assertIn("$s-1$ 不是 $\\mathbb N$ 的上界", content)
+        self.assertIn("$n>s-1$", content)
+        self.assertIn("$n+1>s$", content)
+        self.assertIn("与 $s$ 是 $\\mathbb N$ 的上界矛盾", content)
+
+    def test_unit_proves_density_or_square_root_and_has_answered_exercises(self) -> None:
+        content = COMPLETENESS_CONSEQUENCES.read_text(encoding="utf-8")
+        self.assertIn("$x<q<y$", content)
+        self.assertIn("$q=m/n$", content)
+        self.assertIn("$n(y-x)>1$", content)
+        self.assertIn("$m-1\\le nx<m$", content)
+        self.assertIn("正数平方根存在", content)
+        for index in range(1, 5):
+            self.assertIn(f"### ex-u-01-03-03-0{index}", content)
+        self.assertIn("**完整解答。**", content)
 
 
 if __name__ == "__main__":
