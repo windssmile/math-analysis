@@ -38,6 +38,20 @@ class Chapter01RegistryTests(unittest.TestCase):
         for number in range(1, 5):
             self.assertIn(f"### ex-u-01-01-04-{number:02d}", content)
 
+    def test_functions_unit_composes_typed_mappings(self) -> None:
+        content = (
+            ROOT / "book/part-01/chapter-01/u-01-01-04-functions.qmd"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn(
+            r"$f:(1,\infty)\to(0,\infty)$，$f(x)=x-1$，$g:(0,\infty)\to\mathbb R$",
+            content,
+        )
+        self.assertNotIn(
+            r"若 $f$ 的值域不完全包含于 $g$ 的定义域",
+            content,
+        )
+
     def test_proofs_unit_has_its_curriculum_contract(self) -> None:
         with UNITS.open("rb") as handle:
             registry = tomllib.load(handle)
