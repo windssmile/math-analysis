@@ -28,6 +28,16 @@ class Chapter01RegistryTests(unittest.TestCase):
             ["proof", "mathematical_expression"],
         )
 
+    def test_proofs_unit_uses_only_introduced_parity_for_contrapositive_exercise(
+        self,
+    ) -> None:
+        content = (
+            ROOT / "book/part-01/chapter-01/u-01-01-03-proofs.qmd"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("若整数 $n^2$ 是奇数，则 $n$ 是奇数", content)
+        self.assertNotIn("若整数 $n^2$ 是 $3$ 的倍数", content)
+
     def test_quantifiers_unit_has_its_curriculum_contract(self) -> None:
         with UNITS.open("rb") as handle:
             registry = tomllib.load(handle)
