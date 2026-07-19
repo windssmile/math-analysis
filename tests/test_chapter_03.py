@@ -163,6 +163,7 @@ class Chapter03CompletenessConsequencesTests(unittest.TestCase):
 
     def test_unit_derives_integer_part_lemma_before_using_it_for_density(self) -> None:
         content = COMPLETENESS_CONSEQUENCES.read_text(encoding="utf-8")
+        self.assertIn("$\\mathbb N=\\{1,2,\\ldots\\}$", content)
         lemma = "### 整数部分引理 {#lem-u-01-03-03-integer-part}"
         self.assertIn(lemma, content)
         self.assertIn("$N>|r|$", content)
