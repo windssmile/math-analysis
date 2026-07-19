@@ -12,6 +12,7 @@ book:
       chapters:
         - book/part-01/chapter-01/u-01-01-01-sets.qmd
         - book/part-01/chapter-01/u-01-01-02-quantifiers.qmd
+        - book/part-01/chapter-01/u-01-01-03-proofs.qmd
     - part: "第三部：函数极限、连续性与方程"
       chapters:
         - book/part-03/chapter-12/u-03-12-01-ivt-bisection.qmd

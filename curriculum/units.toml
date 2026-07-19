@@ -60,3 +60,24 @@ learning_goals = [
   "正确处理全称量词与存在量词的作用域",
   "否定含嵌套量词的数学陈述",
 ]
+
+[[units]]
+id = "u-01-01-03"
+chapter_id = "chapter-01"
+title = "什么算作一个有效证明？"
+path = "book/part-01/chapter-01/u-01-01-03-proofs.qmd"
+theory_hours = 1.50
+applied_hours = 0.50
+difficulty = 2
+book_prerequisites = []
+higher_algebra_prerequisites = []
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["proof", "mathematical_expression"]
+learning_goals = [
+  "从定义出发组织直接证明",
+  "将蕴含命题改写为逆否命题",
+  "识别反证法中得到的矛盾",
+  "用一个反例否定全称命题",
+]

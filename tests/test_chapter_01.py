@@ -12,6 +12,22 @@ UNITS = ROOT / "curriculum" / "units.toml"
 
 
 class Chapter01RegistryTests(unittest.TestCase):
+    def test_proofs_unit_has_its_curriculum_contract(self) -> None:
+        with UNITS.open("rb") as handle:
+            registry = tomllib.load(handle)
+        by_id = {unit["id"]: unit for unit in registry["units"]}
+
+        unit = by_id["u-01-01-03"]
+        self.assertEqual(unit["chapter_id"], "chapter-01")
+        self.assertEqual(
+            unit["path"], "book/part-01/chapter-01/u-01-01-03-proofs.qmd"
+        )
+        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.50, 0.50))
+        self.assertEqual(
+            unit["capabilities"],
+            ["proof", "mathematical_expression"],
+        )
+
     def test_quantifiers_unit_has_its_curriculum_contract(self) -> None:
         with UNITS.open("rb") as handle:
             registry = tomllib.load(handle)
