@@ -28,7 +28,7 @@ def bisect(
     if tolerance <= 0:
         raise ValueError("tolerance must be positive")
     if left >= right:
-        raise ValueError("left must be less than right")
+        raise ValueError("left endpoint must be smaller than right endpoint")
 
     left_value = function(left)
     if left_value == 0:
@@ -38,7 +38,7 @@ def bisect(
     if right_value == 0:
         return BisectionResult(root=right, error_bound=0, iterations=0)
     if left_value * right_value > 0:
-        raise ValueError("function values at interval endpoints must have opposite signs")
+        raise ValueError("endpoint values must have opposite signs")
 
     for iteration in range(1, max_iterations + 1):
         midpoint = (left + right) / 2
@@ -62,4 +62,4 @@ def bisect(
                 iterations=iteration,
             )
 
-    raise RuntimeError("maximum iterations exceeded")
+    raise RuntimeError("maximum iterations reached before tolerance")
