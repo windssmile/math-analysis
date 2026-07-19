@@ -141,3 +141,23 @@ learning_goals = [
   "用 A_r={q:q<r} 将有理数嵌入切割模型",
   "构造并验证表示 sqrt(2) 的 Dedekind 分割",
 ]
+
+[[units]]
+id = "u-01-02-03"
+chapter_id = "chapter-02"
+title = "构造后怎样计算与比较？"
+path = "book/part-01/chapter-02/u-01-02-03-cut-order-operations.qmd"
+theory_hours = 1.50
+applied_hours = 0.25
+difficulty = 3
+book_prerequisites = []
+higher_algebra_prerequisites = ["有理数的序与四则运算"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "用包含关系比较两个 Dedekind 分割",
+  "证明有理数嵌入保持次序",
+  "解释用切割并集构造上确界的关键条件",
+]

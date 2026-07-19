@@ -1,0 +1,204 @@
+# 构造后怎样计算与比较？ {#u-01-02-03}
+
+::: {.unit-meta}
+- **总学时：** 1.75 小时（理论 1.50 小时，应用 0.25 小时）
+- **全书先备：** 无
+- **高等代数先备：** 有理数的序与四则运算
+- **解析几何先备：** 无
+- **Python 知识桥：** 无；本单元不要求编程。
+:::
+
+## 先备知识
+
+上一单元把一个实数定义为一个 Dedekind 分割：即非空、非全体、向下封闭且无最大元的有理数集合。这里使用的只是有理数的序和四则运算；不要求解析几何或 Python。特别地，
+
+$$
+A_r=\{q\in\mathbb Q:q<r\}
+$$
+
+表示有理数 $r$ 对应的切割。
+
+## 学习目标
+
+完成本单元后，你应能：
+
+1. 用包含关系比较两个 Dedekind 分割；
+2. 验证有理数嵌入 $r\mapsto A_r$ 保持严格次序；
+3. 说明在一族切割有上界时，其并集为何给出最小上界；
+4. 读懂切割加法和相反数的定义，知道它们不是借用尚未构造的实数运算。
+
+## 牵引问题
+
+上一单元只回答了“怎样制造新数”。但若两个切割都记录了一条边界左侧的有理数，我们怎样判断谁在左、谁在右？又怎样说明由切割构成的数系不会再出现“有界却缺边界”的漏洞？
+
+答案都来自同一件简单的事：左侧集合越大，边界越靠右。由此，集合的包含关系成为数的次序；一族左侧集合的并集则自然收集了它们共同逼近的边界。
+
+## 探索与猜想
+
+对有理数 $r<s$，上一单元已证明 $A_r\subsetneq A_s$。这提示定义
+
+$$
+A<B\quad\Longleftrightarrow\quad A\subsetneq B.
+$$
+
+这个定义是否真的能比较任意两个切割？设 $A$ 与 $B$ 互不包含，便可取 $a\in A\setminus B$、$b\in B\setminus A$。若 $a<b$，由于 $b\in B$ 且 $B$ 向下封闭，应有 $a\in B$，矛盾；若 $b<a$，同理矛盾；而 $a=b$ 也不可能。故任意两个切割必可比较。
+
+这说明切割的次序不是额外添加的结构，而是其“左侧集合”本性已经强制给出的结构。
+
+## 概念与理论
+
+### 切割的次序 {#def-u-01-02-03-cut-order}
+
+对 Dedekind 分割 $A,B$，定义
+
+$$
+A\le B\quad\Longleftrightarrow\quad A\subseteq B,
+\qquad
+A<B\quad\Longleftrightarrow\quad A\subsetneq B.
+$$
+
+上面的探索表明，任意两个切割 $A,B$ 都有 $A\subseteq B$ 或 $B\subseteq A$。所以这是一个全序。重要的是方向：切割是“边界左边”的集合，集合越大，所表示的数越大。
+
+### 有理数嵌入保持次序
+
+映射 $\iota:\mathbb Q\to\{\text{Dedekind 分割}\}$，$\iota(r)=A_r$，不仅把有理数放进新数系，还保持原有次序。
+
+若 $r<s$，则任意 $q<r$ 都满足 $q<s$，故 $A_r\subseteq A_s$。并且中点 $(r+s)/2$ 属于 $A_s$，却不属于 $A_r$，所以 $A_r\subsetneq A_s$。反过来，若 $A_r\subsetneq A_s$ 而 $s\le r$，则 $q<s$ 蕴含 $q<r$，给出 $A_s\subseteq A_r$，与严格包含矛盾。因此
+
+$$
+r<s\quad\Longleftrightarrow\quad A_r<A_s.
+$$
+
+原来的有理数次序没有被改变；我们只是增加了诸如 $A_{\sqrt2}$ 这样的新边界。
+
+### 切割的加法与相反数
+
+若 $A,B$ 是切割，定义它们的和为
+
+$$
+A+B=\{q\in\mathbb Q:\text{存在 }a\in A,\ b\in B\text{ 使 }q<a+b\}.
+$$
+
+这一定义只说：凡是严格小于某个“左侧数加左侧数”的有理数，都在和的左侧。严格不等号确保结果没有最大元。相反数定义为
+
+$$
+-A=\{q\in\mathbb Q:\text{存在 }r\in\mathbb Q\setminus A\text{ 使 }q<-r\}.
+$$
+
+这里 $r\notin A$ 是边界右侧（或边界处）的有理数；取其负数并向左闭包，得到相反数的左侧。两个定义的量词都只遍历有理数，并没有把待构造的实数偷渡进公式。验证 $A+B$ 与 $-A$ 仍是切割，以及验证全部有序域公理，需要较长的有理数估计；本书把它作为构造的技术延伸，不在这里逐项展开。作为一致性检查，可直接验证
+
+$$
+A_r+A_s=A_{r+s},\qquad -A_r=A_{-r}.
+$$
+
+### 并集给出上确界 {#thm-u-01-02-03-union-supremum}
+
+设 $\mathcal F$ 是一个**非空**的切割族，并且存在一个切割 $B$，对每个 $A\in\mathcal F$ 都有 $A\subseteq B$。令
+
+$$
+U=\bigcup_{A\in\mathcal F}A.
+$$
+
+则 $U$ 是切割，并且是 $\mathcal F$ 的最小上界。
+
+**证明。** 因 $\mathcal F$ 非空，可取 $A_0\in\mathcal F$。由于 $A_0$ 非空且 $A_0\subseteq U$，$U$ 非空。又每个 $A\in\mathcal F$ 都包含于 $B$，故 $U\subseteq B$；而 $B\ne\mathbb Q$，所以 $U\ne\mathbb Q$。
+
+若 $q\in U$ 且 $p<q$，则对某个 $A\in\mathcal F$ 有 $q\in A$。切割 $A$ 向下封闭，故 $p\in A\subseteq U$；所以 $U$ 向下封闭。若 $q\in U$，同样可取 $A\in\mathcal F$ 使 $q\in A$。因为 $A$ 无最大元，存在 $q'\in A$ 使 $q<q'$，从而 $q'\in U$。故 $U$ 无最大元，$U$ 是切割。
+
+对每个 $A\in\mathcal F$，显然 $A\subseteq U$，故 $U$ 是上界。若 $V$ 是任一上界，即每个 $A\in\mathcal F$ 都满足 $A\subseteq V$，则并集也满足 $U\subseteq V$。这正是 $U$ 小于或等于每个上界的意思，故 $U=\sup\mathcal F$。$\square$
+
+该定理把“完备性”落实成一个可检查的集合构造。第 3 章将抽取它为确界原理，并练习怎样用它证明存在性。
+
+## 例题与迁移
+
+### 例：两个嵌入有理数的和 {#ex-u-01-02-03-rational-cut-sum}
+
+证明 $A_r+A_s=A_{r+s}$。
+
+**证明。** 若 $q\in A_r+A_s$，则存在 $a<r$、$b<s$ 使 $q<a+b$。于是 $q<a+b<r+s$，故 $q\in A_{r+s}$。
+
+反过来，设 $q<r+s$。令 $\delta=(r+s-q)/2>0$，并取 $a=r-\delta/2$、$b=s-\delta/2$。则 $a<r$、$b<s$，且 $a+b=r+s-\delta>q$。所以 $q\in A_r+A_s$。两边相等。$\square$
+
+这个例子表明，新定义与旧有理数运算相容。它并不证明所有运算律，却说明定义的方向正确。
+
+## 即时检验与回望
+
+1. 为什么包含更多有理数的切割表示更大的数？
+
+::: {.callout-note collapse="true"}
+## 答案
+
+切割记录的是边界左边的有理数。若 $A\subsetneq B$，$B$ 的左侧包含了 $A$ 的左侧以及更多有理数，说明其边界更靠右；这正是定义 $A<B$ 的理由。
+:::
+
+2. 证明 $U=\bigcup\mathcal F$ 向下封闭时，为什么必须先从 $q\in U$ 找到一个具体的 $A\in\mathcal F$？
+
+::: {.callout-note collapse="true"}
+## 答案
+
+并集成员资格的含义是“至少属于其中一个集合”。只有找到含有 $q$ 的具体切割 $A$，才能调用该切割的向下封闭性，把 $p<q$ 推回 $A$，再推出 $p\in U$。
+:::
+
+3. 若没有共同上界 $B$，上面证明 $U\ne\mathbb Q$ 的哪一步失效？
+
+::: {.callout-note collapse="true"}
+## 答案
+
+无法得到 $U\subseteq B\ne\mathbb Q$。事实上，所有切割的并集就是 $\mathbb Q$，它不再是一个切割。因此“有上界”是构造上确界所必需的条件。
+:::
+
+回看牵引问题：包含关系同时给出了比较与“最小上界”的语言。实数完备性不是模糊的连续直觉，而是有界切割族并集仍能代表一个数的事实。
+
+## 习题与答案
+
+### ex-u-01-02-03-01
+
+证明任意两个 Dedekind 分割 $A,B$ 可比较：$A\subseteq B$ 或 $B\subseteq A$。
+
+::: {.callout-note collapse="true"}
+## 答案
+
+**完整解答。** 反设两种包含都不成立。取 $a\in A\setminus B$、$b\in B\setminus A$。有理数全序，故 $a<b$、$b<a$ 或 $a=b$。若 $a<b$，因 $b\in B$ 且 $B$ 向下封闭，$a\in B$，矛盾；若 $b<a$，同理 $b\in A$，矛盾；若 $a=b$，它同时属于和不属于 $A$，矛盾。因此至少一种包含成立。
+:::
+
+### ex-u-01-02-03-02
+
+证明 $r<s$ 当且仅当 $A_r\subsetneq A_s$。
+
+::: {.callout-note collapse="true"}
+## 答案
+
+若 $r<s$，则 $q<r$ 推出 $q<s$，故 $A_r\subseteq A_s$；中点 $(r+s)/2$ 属于 $A_s\setminus A_r$，包含严格。反之，若 $A_r\subsetneq A_s$ 而 $s\le r$，则每个 $q<s$ 也满足 $q<r$，即 $A_s\subseteq A_r$，矛盾。因此 $r<s$。
+:::
+
+### ex-u-01-02-03-03
+
+设 $\mathcal F$ 是非空切割族，且每个成员都包含于某个切割 $B$。逐条验证 $U=\bigcup\mathcal F$ 满足 Dedekind 分割的四个条件。
+
+::: {.callout-note collapse="true"}
+## 答案
+
+取 $A_0\in\mathcal F$，由 $A_0\ne\varnothing$ 与 $A_0\subseteq U$ 知 $U$ 非空。每个成员包含于 $B$，故 $U\subseteq B\ne\mathbb Q$，所以 $U\ne\mathbb Q$。若 $q\in U$、$p<q$，取 $A\in\mathcal F$ 使 $q\in A$；由 $A$ 向下封闭知 $p\in A\subseteq U$。若 $q\in U$，同样取这样的 $A$；它无最大元，故存在 $q'\in A\subseteq U$ 且 $q<q'$。四条条件均成立。
+:::
+
+### ex-u-01-02-03-04
+
+证明上题的 $U$ 是 $\mathcal F$ 的最小上界。
+
+::: {.callout-note collapse="true"}
+## 答案
+
+每个 $A\in\mathcal F$ 都是并集 $U$ 的子集，所以 $U$ 是上界。若 $V$ 是任一上界，则对每个 $A\in\mathcal F$ 有 $A\subseteq V$。任取 $q\in U$，它属于某个 $A\in\mathcal F$，于是 $q\in V$；故 $U\subseteq V$。按切割的次序定义，这说明 $U\le V$，所以 $U$ 是最小上界。
+:::
+
+### ex-u-01-02-03-05
+
+用定义证明 $-A_r=A_{-r}$。
+
+::: {.callout-note collapse="true"}
+## 答案
+
+若 $q\in-A_r$，存在 $t\notin A_r$ 使 $q<-t$。$t\notin A_r$ 等价于 $t\ge r$，故 $q<-t\le-r$，所以 $q\in A_{-r}$。反过来，若 $q<-r$，取 $t=r$；显然 $t\notin A_r$，且 $q<-t$，故 $q\in-A_r$。因此两集合相等。
+:::
+
+下一单元将从这里得到的“有界切割族有上确界”抽象为确界原理，并研究它怎样产生新的存在性结论。

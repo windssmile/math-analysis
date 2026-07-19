@@ -82,7 +82,11 @@ def main() -> int:
             "book/part-01/chapter-02/u-01-02-02-dedekind-cuts.html": [
                 "def-u-01-02-02-dedekind-cut",
                 "ex-u-01-02-02-sqrt2-cut",
-            ]
+            ],
+            "book/part-01/chapter-02/u-01-02-03-cut-order-operations.html": [
+                "def-u-01-02-03-cut-order",
+                "thm-u-01-02-03-union-supremum",
+            ],
         },
     )
     pilot_pages = list(SITE.rglob("*u-03-12-01-ivt-bisection*.html"))
