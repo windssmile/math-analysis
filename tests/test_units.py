@@ -35,6 +35,10 @@ VALID_CONTENT = "\n".join(
 
 
 class UnitValidationTests(unittest.TestCase):
+    def pilot_unit(self, data: dict) -> dict:
+        """Return the stable pilot unit regardless of registry insertion order."""
+        return next(unit for unit in data["units"] if unit["id"] == UNIT_ID)
+
     def load_registry(self) -> dict:
         with UNITS.open("rb") as handle:
             return tomllib.load(handle)
@@ -88,7 +92,7 @@ class UnitValidationTests(unittest.TestCase):
 
     def test_rejects_unknown_chapter(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["chapter_id"] = "chapter-99"
+        self.pilot_unit(data)["chapter_id"] = "chapter-99"
         self.assertIn(
             f"{UNIT_ID} references unknown chapter chapter-99",
             self.validate(data),
@@ -96,7 +100,7 @@ class UnitValidationTests(unittest.TestCase):
 
     def test_rejects_unknown_book_prerequisite_chapter(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["book_prerequisites"] = ["chapter-99"]
+        self.pilot_unit(data)["book_prerequisites"] = ["chapter-99"]
         self.assertIn(
             f"{UNIT_ID}.book_prerequisites[0] references unknown chapter chapter-99",
             self.validate_with_content(data),
@@ -104,7 +108,7 @@ class UnitValidationTests(unittest.TestCase):
 
     def test_rejects_missing_required_list(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        del data["units"][0]["analytic_geometry_prerequisites"]
+        del self.pilot_unit(data)["analytic_geometry_prerequisites"]
         self.assertIn(
             f"{UNIT_ID}.analytic_geometry_prerequisites must be a list",
             self.validate(data),
@@ -112,8 +116,8 @@ class UnitValidationTests(unittest.TestCase):
 
     def test_rejects_more_than_two_and_a_quarter_combined_hours(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["theory_hours"] = 2
-        data["units"][0]["applied_hours"] = 0.26
+        self.pilot_unit(data)["theory_hours"] = 2
+        self.pilot_unit(data)["applied_hours"] = 0.26
         self.assertIn(
             f"{UNIT_ID} theory_hours + applied_hours must be > 0 and <= 2.25, got 2.26",
             self.validate(data),
@@ -121,8 +125,8 @@ class UnitValidationTests(unittest.TestCase):
 
     def test_rejects_component_hours_just_above_two(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["theory_hours"] = 2.01
-        data["units"][0]["applied_hours"] = 0
+        self.pilot_unit(data)["theory_hours"] = 2.01
+        self.pilot_unit(data)["applied_hours"] = 0
         self.assertIn(
             f"{UNIT_ID} theory_hours and applied_hours must each be <= 2",
             self.validate(data),
@@ -133,7 +137,7 @@ class UnitValidationTests(unittest.TestCase):
             for value in (float("nan"), float("inf"), float("-inf")):
                 with self.subTest(field=field, value=value):
                     data = copy.deepcopy(self.load_registry())
-                    data["units"][0][field] = value
+                    self.pilot_unit(data)[field] = value
                     self.assertIn(
                         f"{UNIT_ID}.{field} must be a finite number",
                         self.validate(data),
@@ -141,14 +145,14 @@ class UnitValidationTests(unittest.TestCase):
 
     def test_accepts_combined_hours_at_two_and_a_quarter_boundary(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["theory_hours"] = 2
-        data["units"][0]["applied_hours"] = 0.25
+        self.pilot_unit(data)["theory_hours"] = 2
+        self.pilot_unit(data)["applied_hours"] = 0.25
         self.assertEqual(self.validate_with_content(data), [])
 
     def test_rejects_negative_hour_component_even_when_total_is_valid(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["theory_hours"] = -1
-        data["units"][0]["applied_hours"] = 2
+        self.pilot_unit(data)["theory_hours"] = -1
+        self.pilot_unit(data)["applied_hours"] = 2
         self.assertIn(
             f"{UNIT_ID}.theory_hours must be >= 0",
             self.validate_with_content(data),
@@ -156,7 +160,7 @@ class UnitValidationTests(unittest.TestCase):
 
     def test_extremely_large_integer_hours_do_not_crash_validation(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["theory_hours"] = 10**10000
+        self.pilot_unit(data)["theory_hours"] = 10**10000
         errors = self.validate_with_content(data)
         self.assertTrue(
             any(
@@ -204,7 +208,7 @@ class UnitValidationTests(unittest.TestCase):
         for field, value in cases:
             with self.subTest(field=field):
                 data = copy.deepcopy(self.load_registry())
-                data["units"][0][field] = value
+                self.pilot_unit(data)[field] = value
                 errors = self.validate_with_content(data)
                 path_label = (
                     f"{UNIT_ID}.{field}"
@@ -229,7 +233,7 @@ class UnitValidationTests(unittest.TestCase):
 
     def test_rejects_boolean_hours_as_non_numeric(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["theory_hours"] = True
+        self.pilot_unit(data)["theory_hours"] = True
         self.assertIn(
             f"{UNIT_ID}.theory_hours must be a number",
             self.validate(data),
@@ -237,7 +241,7 @@ class UnitValidationTests(unittest.TestCase):
 
     def test_rejects_boolean_difficulty_as_non_integer(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["difficulty"] = True
+        self.pilot_unit(data)["difficulty"] = True
         self.assertIn(
             f"{UNIT_ID}.difficulty must be a positive integer",
             self.validate(data),
@@ -245,7 +249,7 @@ class UnitValidationTests(unittest.TestCase):
 
     def test_rejects_invalid_required_list_type(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["capabilities"] = "proof"
+        self.pilot_unit(data)["capabilities"] = "proof"
         self.assertIn(
             f"{UNIT_ID}.capabilities must be a list",
             self.validate(data),
@@ -253,7 +257,7 @@ class UnitValidationTests(unittest.TestCase):
 
     def test_rejects_unknown_capability(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["capabilities"] = ["proof", "symbolic_magic"]
+        self.pilot_unit(data)["capabilities"] = ["proof", "symbolic_magic"]
         self.assertIn(
             f"{UNIT_ID}.capabilities contains unsupported capability symbolic_magic",
             self.validate(data),
