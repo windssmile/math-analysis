@@ -66,6 +66,15 @@ class Chapter01RegistryTests(unittest.TestCase):
         self.assertIn("每个质数都整除 $0$", content)
         self.assertIn("质因子通常用于非零整数", content)
 
+    def test_first_quantifier_exercise_uses_only_integer_addition(self) -> None:
+        content = (
+            ROOT / "book/part-01/chapter-01/u-01-01-02-quantifiers.qmd"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("每个整数都有一个相反数", content)
+        self.assertIn(r"$(\forall n\in\mathbb Z)(\exists m\in\mathbb Z)\ n+m=0$", content)
+        self.assertNotIn("每个实数都有一个不小于它的整数", content)
+
 
 if __name__ == "__main__":
     unittest.main()

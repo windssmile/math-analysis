@@ -151,12 +151,24 @@ $$
 
 ### ex-u-01-01-02-01
 
-把“每个实数都有一个不小于它的整数”写成带量词的陈述，并判断真伪。
+把“每个整数都有一个相反数”写成带量词的陈述，再写出它的否定，并判断原陈述真伪。
 
 ::: {.callout-note collapse="true"}
 ## 答案
 
-$(\forall x\in\mathbb R)(\exists n\in\mathbb Z)\ n\ge x$。它为真；例如可取不小于 $x$ 的一个整数。
+原陈述是
+
+$$
+(\forall n\in\mathbb Z)(\exists m\in\mathbb Z)\ n+m=0.
+$$
+
+其否定是
+
+$$
+(\exists n\in\mathbb Z)(\forall m\in\mathbb Z)\ n+m\ne0.
+$$
+
+原陈述为真：给定 $n$ 后取 $m=-n$ 即可。这里 $m$ 可以依赖于 $n$。
 :::
 
 ### ex-u-01-01-02-02
