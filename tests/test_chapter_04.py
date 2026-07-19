@@ -10,6 +10,9 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 UNITS = ROOT / "curriculum" / "units.toml"
 RECURRENCE = ROOT / "book" / "part-01" / "chapter-04" / "u-01-04-01-recurrence.qmd"
+INTERVAL_BISECTION = (
+    ROOT / "book" / "part-01" / "chapter-04" / "u-01-04-02-interval-bisection.qmd"
+)
 
 
 class Chapter04RecurrenceTests(unittest.TestCase):
@@ -65,6 +68,64 @@ class Chapter04RecurrenceTests(unittest.TestCase):
         content = RECURRENCE.read_text(encoding="utf-8")
         for index in range(1, 5):
             self.assertIn(f"### ex-u-01-04-01-0{index}", content)
+        self.assertIn("**完整解答。**", content)
+
+
+class Chapter04IntervalBisectionTests(unittest.TestCase):
+    def test_interval_bisection_has_its_curriculum_contract(self) -> None:
+        with UNITS.open("rb") as handle:
+            registry = tomllib.load(handle)
+        by_id = {unit["id"]: unit for unit in registry["units"]}
+
+        unit = by_id["u-01-04-02"]
+        self.assertEqual(unit["chapter_id"], "chapter-04")
+        self.assertEqual(unit["title"], "区间怎样把目标逐步夹住？")
+        self.assertEqual(
+            unit["path"],
+            "book/part-01/chapter-04/u-01-04-02-interval-bisection.qmd",
+        )
+        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.25, 0.75))
+        self.assertEqual(unit["book_prerequisites"], ["chapter-03"])
+        self.assertEqual(
+            unit["python_prerequisites"], ["while 循环", "条件分支", "函数定义"]
+        )
+        self.assertIn("numerical_algorithm", unit["capabilities"])
+
+    def test_interval_bisection_has_stable_anchors_and_static_algorithm(self) -> None:
+        content = INTERVAL_BISECTION.read_text(encoding="utf-8")
+        self.assertIn("# 区间怎样把目标逐步夹住？ {#u-01-04-02}", content)
+        self.assertIn(
+            "### 平方根的区间二分法 {#def-u-01-04-02-interval-bisection}",
+            content,
+        )
+        self.assertIn(
+            "### 例：用区间长度控制 $\\sqrt2$ 的误差 {#ex-u-01-04-02-sqrt2-certificate}",
+            content,
+        )
+        self.assertIn("```python", content)
+        self.assertNotIn("```{python", content)
+        self.assertIn("while b - a > 2 * tolerance", content)
+
+    def test_interval_bisection_proves_invariant_length_and_error_bound(self) -> None:
+        content = INTERVAL_BISECTION.read_text(encoding="utf-8")
+        self.assertIn("a_n^2<2<b_n^2", content)
+        self.assertIn("m_n=\\frac{a_n+b_n}{2}", content)
+        self.assertIn("m_n^2<2", content)
+        self.assertIn("m_n^2>2", content)
+        self.assertIn("b_n-a_n=\\frac{b_0-a_0}{2^n}", content)
+        self.assertIn("|m_n-\\sqrt2|\\le\\frac{b_n-a_n}{2}", content)
+        self.assertIn("区间套", content)
+        self.assertIn("唯一", content)
+
+    def test_interval_bisection_states_its_pre_continuity_boundary(self) -> None:
+        content = INTERVAL_BISECTION.read_text(encoding="utf-8")
+        self.assertIn("不是一般连续函数求根", content)
+        self.assertIn("介值定理", content)
+
+    def test_interval_bisection_has_answered_exercises(self) -> None:
+        content = INTERVAL_BISECTION.read_text(encoding="utf-8")
+        for index in range(1, 5):
+            self.assertIn(f"### ex-u-01-04-02-0{index}", content)
         self.assertIn("**完整解答。**", content)
 
 

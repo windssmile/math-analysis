@@ -243,3 +243,24 @@ learning_goals = [
   "利用平方差证明迭代项单调下降",
   "用 Python 输出有限步迭代的数值表，并区分观察与证明",
 ]
+
+[[units]]
+id = "u-01-04-02"
+chapter_id = "chapter-04"
+title = "区间怎样把目标逐步夹住？"
+path = "book/part-01/chapter-04/u-01-04-02-interval-bisection.qmd"
+theory_hours = 1.25
+applied_hours = 0.75
+difficulty = 2
+book_prerequisites = ["chapter-03"]
+higher_algebra_prerequisites = ["不等式的基本性质", "平方差分解"]
+analytic_geometry_prerequisites = []
+python_prerequisites = ["while 循环", "条件分支", "函数定义"]
+knowledge_bridges = ["book/bridges/python/functions-loops.qmd"]
+capabilities = ["concepts", "proof", "numerical_algorithm", "mathematical_expression"]
+learning_goals = [
+  "用平方比较选择保留根号二的半区间",
+  "证明二分过程保持端点不变量并将区间长度减半",
+  "由区间长度推出中点近似的显式误差证书",
+  "区分平方根二的专门二分过程与一般连续函数求根",
+]

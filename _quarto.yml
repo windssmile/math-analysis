@@ -21,6 +21,7 @@ book:
         - book/part-01/chapter-03/u-01-03-02-supremum-principle.qmd
         - book/part-01/chapter-03/u-01-03-03-completeness-consequences.qmd
         - book/part-01/chapter-04/u-01-04-01-recurrence.qmd
+        - book/part-01/chapter-04/u-01-04-02-interval-bisection.qmd
     - part: "第三部：函数极限、连续性与方程"
       chapters:
         - book/part-03/chapter-12/u-03-12-01-ivt-bisection.qmd
