@@ -174,6 +174,10 @@ class Chapter04ApproximationErrorTests(unittest.TestCase):
             "### 例：先算清二分次数 {#ex-u-01-04-03-bisection-step-count}",
             content,
         )
+        self.assertIn(
+            "### 二分中点的步数定理 {#thm-u-01-04-03-bisection-step-count}",
+            content,
+        )
         self.assertNotIn("```{python", content)
 
     def test_approximation_error_derives_the_correct_midpoint_bisection_count(self) -> None:

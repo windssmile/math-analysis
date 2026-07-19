@@ -72,6 +72,17 @@ class SiteValidationTest(unittest.TestCase):
             REQUIRED_RENDERED_ANCHORS[page],
         )
 
+    def test_approximation_error_rendered_anchors_are_required(self) -> None:
+        page = "book/part-01/chapter-04/u-01-04-03-approximation-error.html"
+        self.assertEqual(
+            [
+                "def-u-01-04-03-error-guarantee",
+                "thm-u-01-04-03-bisection-step-count",
+                "ex-u-01-04-03-bisection-step-count",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -26,6 +26,11 @@ REQUIRED_RENDERED_ANCHORS = {
         "def-u-01-04-02-interval-bisection",
         "ex-u-01-04-02-sqrt2-certificate",
     ],
+    "book/part-01/chapter-04/u-01-04-03-approximation-error.html": [
+        "def-u-01-04-03-error-guarantee",
+        "thm-u-01-04-03-bisection-step-count",
+        "ex-u-01-04-03-bisection-step-count",
+    ],
 }
 
 
