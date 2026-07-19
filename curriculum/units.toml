@@ -1,6 +1,262 @@
 schema_version = 1
 
 [[units]]
+id = "u-02-05-01"
+chapter_id = "chapter-05"
+title = "数列怎样记录无限过程？"
+path = "book/part-02/chapter-05/u-02-05-01-sequences.qmd"
+theory_hours = 1.25
+applied_hours = 0.50
+difficulty = 1
+book_prerequisites = ["chapter-04"]
+higher_algebra_prerequisites = ["自然数与递推记号"]
+analytic_geometry_prerequisites = []
+python_prerequisites = ["列表与 for 循环"]
+knowledge_bridges = []
+capabilities = ["concepts", "mathematical_expression", "numerical_algorithm"]
+learning_goals = ["把数列表示为定义在正整数上的函数", "区分有限数据和无限规则", "用递推与显式公式产生数列"]
+
+[[units]]
+id = "u-02-05-02"
+chapter_id = "chapter-05"
+title = "“最终任意接近”怎样写成定义？"
+path = "book/part-02/chapter-05/u-02-05-02-epsilon-n.qmd"
+theory_hours = 1.75
+applied_hours = 0.25
+difficulty = 2
+book_prerequisites = ["chapter-04", "chapter-05"]
+higher_algebra_prerequisites = ["绝对值与不等式"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = ["准确陈述 epsilon-N 定义", "为基本数列构造 N", "辨析量词顺序"]
+
+[[units]]
+id = "u-02-05-03"
+chapter_id = "chapter-05"
+title = "不收敛与趋于无穷怎样区分？"
+path = "book/part-02/chapter-05/u-02-05-03-divergence-infinity.qmd"
+theory_hours = 1.75
+applied_hours = 0.25
+difficulty = 2
+book_prerequisites = ["chapter-05"]
+higher_algebra_prerequisites = ["绝对值与不等式"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = ["否定数列收敛定义", "定义趋于正无穷与负无穷", "区分振荡和趋于无穷"]
+
+[[units]]
+id = "u-02-05-04"
+chapter_id = "chapter-05"
+title = "迭代数据何时值得相信？"
+path = "book/part-02/chapter-05/u-02-05-04-iteration-evidence.qmd"
+theory_hours = 1.75
+applied_hours = 0.50
+difficulty = 2
+book_prerequisites = ["chapter-05"]
+higher_algebra_prerequisites = ["分式运算"]
+analytic_geometry_prerequisites = []
+python_prerequisites = ["函数定义", "for 循环", "格式化输出"]
+knowledge_bridges = ["book/bridges/python/functions-loops.qmd"]
+capabilities = ["concepts", "proof", "numerical_algorithm", "mathematical_expression"]
+learning_goals = ["从数值表提出收敛猜想", "识别数据不能替代证明", "比较振荡与慢收敛"]
+
+[[units]]
+id = "u-02-06-01"
+chapter_id = "chapter-06"
+title = "极限怎样通过代数运算传递？"
+path = "book/part-02/chapter-06/u-02-06-01-limit-laws.qmd"
+theory_hours = 2.00
+applied_hours = 0.25
+difficulty = 3
+book_prerequisites = ["chapter-05"]
+higher_algebra_prerequisites = ["多项式与分式运算", "绝对值不等式"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "analytic_calculation", "mathematical_expression"]
+learning_goals = ["证明和积商的极限法则", "识别商法则的分母条件", "用极限法则计算表达式"]
+
+[[units]]
+id = "u-02-06-02"
+chapter_id = "chapter-06"
+title = "序关系怎样给出极限估计？"
+path = "book/part-02/chapter-06/u-02-06-02-order-squeeze.qmd"
+theory_hours = 1.75
+applied_hours = 0.25
+difficulty = 2
+book_prerequisites = ["chapter-05", "chapter-06"]
+higher_algebra_prerequisites = ["不等式的基本性质"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "analytic_calculation"]
+learning_goals = ["证明极限保序性", "应用夹逼定理", "从估计构造收敛证明"]
+
+[[units]]
+id = "u-02-06-03"
+chapter_id = "chapter-06"
+title = "误差如何穿过一次迭代？"
+path = "book/part-02/chapter-06/u-02-06-03-error-propagation.qmd"
+theory_hours = 1.75
+applied_hours = 0.50
+difficulty = 2
+book_prerequisites = ["chapter-05", "chapter-06"]
+higher_algebra_prerequisites = ["分式运算", "绝对值不等式"]
+analytic_geometry_prerequisites = []
+python_prerequisites = ["函数定义", "for 循环"]
+knowledge_bridges = ["book/bridges/python/functions-loops.qmd"]
+capabilities = ["proof", "numerical_algorithm", "mathematical_expression"]
+learning_goals = ["推导一次映射的误差公式", "给出代数 Lipschitz 估计", "区分一步估计和收敛证明"]
+
+[[units]]
+id = "u-02-07-01"
+chapter_id = "chapter-07"
+title = "单调数列为什么会有极限？"
+path = "book/part-02/chapter-07/u-02-07-01-monotone-sequences.qmd"
+theory_hours = 1.50
+applied_hours = 0.50
+difficulty = 3
+book_prerequisites = ["chapter-03", "chapter-05"]
+higher_algebra_prerequisites = ["不等式的基本性质"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = ["定义单调数列", "从确界原理证明单调有界收敛", "使用上确界选择 N"]
+
+[[units]]
+id = "u-02-07-02"
+chapter_id = "chapter-07"
+title = "递推的界与单调性怎样建立？"
+path = "book/part-02/chapter-07/u-02-07-02-recursive-invariants.qmd"
+theory_hours = 2.00
+applied_hours = 0.25
+difficulty = 3
+book_prerequisites = ["chapter-05", "chapter-07"]
+higher_algebra_prerequisites = ["数学归纳法", "不等式"]
+analytic_geometry_prerequisites = []
+python_prerequisites = ["函数定义", "for 循环"]
+knowledge_bridges = ["book/bridges/python/functions-loops.qmd"]
+capabilities = ["proof", "numerical_algorithm", "mathematical_expression"]
+learning_goals = ["用归纳证明递推不变量", "建立有界与单调性", "由单调有界性推出收敛"]
+
+[[units]]
+id = "u-02-07-03"
+chapter_id = "chapter-07"
+title = "区间套怎样保证唯一目标？"
+path = "book/part-02/chapter-07/u-02-07-03-nested-intervals.qmd"
+theory_hours = 1.75
+applied_hours = 0.25
+difficulty = 3
+book_prerequisites = ["chapter-03", "chapter-05"]
+higher_algebra_prerequisites = ["不等式的基本性质"]
+analytic_geometry_prerequisites = ["区间的几何表示"]
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = ["陈述区间套定理", "证明交集非空与唯一性", "识别长度趋零的作用"]
+
+[[units]]
+id = "u-02-07-04"
+chapter_id = "chapter-07"
+title = "完备性怎样成为收敛准则？"
+path = "book/part-02/chapter-07/u-02-07-04-completeness-criteria.qmd"
+theory_hours = 1.75
+applied_hours = 0.00
+difficulty = 3
+book_prerequisites = ["chapter-07"]
+higher_algebra_prerequisites = ["不等式的基本性质"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = ["比较三种完备性证书", "选择适当的收敛证明", "说明尚未覆盖的收敛情形"]
+
+[[units]]
+id = "u-02-08-01"
+chapter_id = "chapter-08"
+title = "子列揭示了原数列的什么行为？"
+path = "book/part-02/chapter-08/u-02-08-01-subsequences.qmd"
+theory_hours = 1.00
+applied_hours = 0.25
+difficulty = 2
+book_prerequisites = ["chapter-05"]
+higher_algebra_prerequisites = ["严格递增整数列"]
+analytic_geometry_prerequisites = []
+python_prerequisites = ["切片与 for 循环"]
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = ["定义子列", "构造子列", "说明极限的继承性"]
+
+[[units]]
+id = "u-02-08-02"
+chapter_id = "chapter-08"
+title = "有界数列为何总能抽出收敛子列？"
+path = "book/part-02/chapter-08/u-02-08-02-bolzano-weierstrass.qmd"
+theory_hours = 1.50
+applied_hours = 0.25
+difficulty = 3
+book_prerequisites = ["chapter-07", "chapter-08"]
+higher_algebra_prerequisites = ["整数的良序性"]
+analytic_geometry_prerequisites = ["闭区间"]
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = ["陈述 Bolzano-Weierstrass 定理", "用区间套证明该定理", "从无限项区间抽取递增指标"]
+
+[[units]]
+id = "u-02-08-03"
+chapter_id = "chapter-08"
+title = "Cauchy 条件怎样不预知极限而判断收敛？"
+path = "book/part-02/chapter-08/u-02-08-03-cauchy-criterion.qmd"
+theory_hours = 1.75
+applied_hours = 0.50
+difficulty = 3
+book_prerequisites = ["chapter-05", "chapter-08"]
+higher_algebra_prerequisites = ["三角不等式"]
+analytic_geometry_prerequisites = []
+python_prerequisites = ["for 循环", "绝对值函数"]
+knowledge_bridges = ["book/bridges/python/functions-loops.qmd"]
+capabilities = ["concepts", "proof", "numerical_algorithm", "mathematical_expression"]
+learning_goals = ["定义 Cauchy 数列", "证明 Cauchy 收敛准则", "用尾部差距设计停止证书"]
+
+[[units]]
+id = "u-02-08-04"
+chapter_id = "chapter-08"
+title = "严格压缩怎样保证迭代找到唯一根？"
+path = "book/part-02/chapter-08/u-02-08-04-contraction-mapping.qmd"
+theory_hours = 1.25
+applied_hours = 1.00
+difficulty = 3
+book_prerequisites = ["chapter-06", "chapter-08"]
+higher_algebra_prerequisites = ["分式运算", "几何级数"]
+analytic_geometry_prerequisites = ["闭区间"]
+python_prerequisites = ["函数定义", "while 循环", "异常的基本含义"]
+knowledge_bridges = ["book/bridges/python/functions-loops.qmd"]
+capabilities = ["concepts", "proof", "numerical_algorithm", "mathematical_expression"]
+learning_goals = ["证明闭区间压缩映射定理", "给出先验与后验误差界", "解释严格收缩条件", "使用代码复现证书"]
+
+[[units]]
+id = "u-02-08-05"
+chapter_id = "chapter-08"
+title = "上/下极限怎样总结所有尾部行为？"
+path = "book/part-02/chapter-08/u-02-08-05-limsup-liminf.qmd"
+theory_hours = 1.50
+applied_hours = 0.50
+difficulty = 3
+book_prerequisites = ["chapter-03", "chapter-08"]
+higher_algebra_prerequisites = ["单调数列与确界"]
+analytic_geometry_prerequisites = []
+python_prerequisites = ["列表与 for 循环"]
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "numerical_algorithm", "mathematical_expression"]
+learning_goals = ["定义扩展实数中的上/下极限", "建立尾部确界表示", "构造趋于极值的子列", "用上/下极限判别有限收敛"]
+
+[[units]]
 id = "u-03-12-01"
 chapter_id = "chapter-12"
 title = "连续性怎样保证方程有根：介值定理与二分法"
