@@ -23,6 +23,7 @@ book:
         - book/part-01/chapter-04/u-01-04-01-recurrence.qmd
         - book/part-01/chapter-04/u-01-04-02-interval-bisection.qmd
         - book/part-01/chapter-04/u-01-04-03-approximation-error.qmd
+        - book/part-01/chapter-04/u-01-04-04-failure-of-infinite-approximation.qmd
     - part: "第三部：函数极限、连续性与方程"
       chapters:
         - book/part-03/chapter-12/u-03-12-01-ivt-bisection.qmd

@@ -83,6 +83,17 @@ class SiteValidationTest(unittest.TestCase):
             REQUIRED_RENDERED_ANCHORS[page],
         )
 
+    def test_failure_of_infinite_approximation_rendered_anchors_are_required(self) -> None:
+        page = "book/part-01/chapter-04/u-01-04-04-failure-of-infinite-approximation.html"
+        self.assertEqual(
+            [
+                "def-u-01-04-04-uncertified-approximation",
+                "ex-u-01-04-04-small-residual",
+                "ex-u-01-04-04-false-bisection",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

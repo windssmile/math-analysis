@@ -229,7 +229,7 @@ chapter_id = "chapter-04"
 title = "递推会不会真的“靠近”目标？"
 path = "book/part-01/chapter-04/u-01-04-01-recurrence.qmd"
 theory_hours = 1.25
-applied_hours = 0.50
+applied_hours = 1.00
 difficulty = 2
 book_prerequisites = ["chapter-03"]
 higher_algebra_prerequisites = ["不等式的基本性质", "平方差分解"]
@@ -250,7 +250,7 @@ chapter_id = "chapter-04"
 title = "区间怎样把目标逐步夹住？"
 path = "book/part-01/chapter-04/u-01-04-02-interval-bisection.qmd"
 theory_hours = 1.25
-applied_hours = 0.75
+applied_hours = 1.00
 difficulty = 2
 book_prerequisites = ["chapter-03"]
 higher_algebra_prerequisites = ["不等式的基本性质", "平方差分解"]
@@ -271,7 +271,7 @@ chapter_id = "chapter-04"
 title = "“越来越近”怎样说得严格？"
 path = "book/part-01/chapter-04/u-01-04-03-approximation-error.qmd"
 theory_hours = 1.50
-applied_hours = 0.25
+applied_hours = 0.50
 difficulty = 2
 book_prerequisites = ["chapter-03"]
 higher_algebra_prerequisites = ["不等式的基本性质", "以 2 为底的对数与上取整"]
@@ -284,4 +284,25 @@ learning_goals = [
   "由二分区间长度推出中点近似的误差阈值",
   "正确使用对数与上取整选择所需二分次数",
   "区分有限误差保证与下一部的数列收敛定义",
+]
+
+[[units]]
+id = "u-01-04-04"
+chapter_id = "chapter-04"
+title = "无限逼近何时会失败？"
+path = "book/part-01/chapter-04/u-01-04-04-failure-of-infinite-approximation.qmd"
+theory_hours = 1.00
+applied_hours = 0.00
+difficulty = 2
+book_prerequisites = ["chapter-03"]
+higher_algebra_prerequisites = ["不等式的基本性质"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "用显式反例识别振荡、发散与无证书近似",
+  "区分函数残差与近似位置误差",
+  "检查二分过程是否保持目标仍在区间内的不变量",
+  "说明正式的收敛判定为何需要在后续课程中建立",
 ]

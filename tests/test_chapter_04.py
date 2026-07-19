@@ -16,6 +16,13 @@ INTERVAL_BISECTION = (
 APPROXIMATION_ERROR = (
     ROOT / "book" / "part-01" / "chapter-04" / "u-01-04-03-approximation-error.qmd"
 )
+FAILURE_OF_INFINITE_APPROXIMATION = (
+    ROOT
+    / "book"
+    / "part-01"
+    / "chapter-04"
+    / "u-01-04-04-failure-of-infinite-approximation.qmd"
+)
 
 
 class Chapter04RecurrenceTests(unittest.TestCase):
@@ -30,7 +37,7 @@ class Chapter04RecurrenceTests(unittest.TestCase):
         self.assertEqual(
             unit["path"], "book/part-01/chapter-04/u-01-04-01-recurrence.qmd"
         )
-        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.25, 0.50))
+        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.25, 1.00))
         self.assertEqual(unit["book_prerequisites"], ["chapter-03"])
         self.assertEqual(unit["python_prerequisites"], ["变量赋值", "for 循环", "函数定义"])
         self.assertEqual(
@@ -87,7 +94,7 @@ class Chapter04IntervalBisectionTests(unittest.TestCase):
             unit["path"],
             "book/part-01/chapter-04/u-01-04-02-interval-bisection.qmd",
         )
-        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.25, 0.75))
+        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.25, 1.00))
         self.assertEqual(unit["book_prerequisites"], ["chapter-03"])
         self.assertEqual(
             unit["python_prerequisites"], ["while 循环", "条件分支", "函数定义"]
@@ -157,7 +164,7 @@ class Chapter04ApproximationErrorTests(unittest.TestCase):
             unit["path"],
             "book/part-01/chapter-04/u-01-04-03-approximation-error.qmd",
         )
-        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.50, 0.25))
+        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.50, 0.50))
         self.assertEqual(unit["book_prerequisites"], ["chapter-03"])
         self.assertEqual(
             unit["capabilities"], ["concepts", "proof", "mathematical_expression"]
@@ -211,6 +218,84 @@ class Chapter04ApproximationErrorTests(unittest.TestCase):
         for index in range(1, 5):
             self.assertIn(f"### ex-u-01-04-03-0{index}", content)
         self.assertIn("**完整解答。**", content)
+
+
+class Chapter04FailureOfInfiniteApproximationTests(unittest.TestCase):
+    def test_chapter_four_has_four_units_and_planned_hours(self) -> None:
+        with UNITS.open("rb") as handle:
+            registry = tomllib.load(handle)
+        chapter_units = [
+            unit for unit in registry["units"] if unit["chapter_id"] == "chapter-04"
+        ]
+
+        self.assertEqual(
+            [unit["id"] for unit in chapter_units],
+            ["u-01-04-01", "u-01-04-02", "u-01-04-03", "u-01-04-04"],
+        )
+        self.assertEqual(sum(unit["theory_hours"] for unit in chapter_units), 5.0)
+        self.assertEqual(sum(unit["applied_hours"] for unit in chapter_units), 2.5)
+
+    def test_part_one_has_closed_hour_budget(self) -> None:
+        with UNITS.open("rb") as handle:
+            registry = tomllib.load(handle)
+        part_one_units = [
+            unit
+            for unit in registry["units"]
+            if unit["path"].startswith("book/part-01/")
+        ]
+
+        self.assertEqual(len(part_one_units), 14)
+        self.assertEqual(sum(unit["theory_hours"] for unit in part_one_units), 20.0)
+        self.assertEqual(sum(unit["applied_hours"] for unit in part_one_units), 4.0)
+
+    def test_failure_unit_has_its_curriculum_contract(self) -> None:
+        with UNITS.open("rb") as handle:
+            registry = tomllib.load(handle)
+        by_id = {unit["id"]: unit for unit in registry["units"]}
+
+        unit = by_id["u-01-04-04"]
+        self.assertEqual(unit["chapter_id"], "chapter-04")
+        self.assertEqual(unit["title"], "无限逼近何时会失败？")
+        self.assertEqual(
+            unit["path"],
+            "book/part-01/chapter-04/u-01-04-04-failure-of-infinite-approximation.qmd",
+        )
+        self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (1.00, 0.00))
+        self.assertEqual(unit["book_prerequisites"], ["chapter-03"])
+        self.assertEqual(
+            unit["capabilities"], ["concepts", "proof", "mathematical_expression"]
+        )
+
+    def test_failure_unit_has_stable_anchors_and_all_answered_exercises(self) -> None:
+        content = FAILURE_OF_INFINITE_APPROXIMATION.read_text(encoding="utf-8")
+        self.assertIn("# 无限逼近何时会失败？ {#u-01-04-04}", content)
+        self.assertIn(
+            "### 无证书近似 {#def-u-01-04-04-uncertified-approximation}", content
+        )
+        self.assertIn(
+            "### 例：小残差并不锁定位置 {#ex-u-01-04-04-small-residual}", content
+        )
+        self.assertIn(
+            "### 例：伪二分法怎样丢失目标 {#ex-u-01-04-04-false-bisection}", content
+        )
+        for index in range(1, 5):
+            self.assertIn(f"### ex-u-01-04-04-0{index}", content)
+        self.assertIn("**完整解答。**", content)
+
+    def test_failure_unit_distinguishes_required_failure_modes_without_future_tools(self) -> None:
+        content = FAILURE_OF_INFINITE_APPROXIMATION.read_text(encoding="utf-8")
+        self.assertIn(r"x_n=(-1)^n", content)
+        self.assertIn("周期", content)
+        self.assertIn("振荡", content)
+        self.assertIn("发散", content)
+        self.assertIn(r"f(x)=10^{-12}(x-1)", content)
+        self.assertIn(r"x=1001", content)
+        self.assertIn("残差", content)
+        self.assertIn("位置误差", content)
+        self.assertIn("不变量", content)
+        self.assertIn("介值定理", content)
+        self.assertIn("第二部", content)
+        self.assertNotIn("柯西列", content)
 
 
 if __name__ == "__main__":

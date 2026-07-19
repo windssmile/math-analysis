@@ -31,6 +31,11 @@ REQUIRED_RENDERED_ANCHORS = {
         "thm-u-01-04-03-bisection-step-count",
         "ex-u-01-04-03-bisection-step-count",
     ],
+    "book/part-01/chapter-04/u-01-04-04-failure-of-infinite-approximation.html": [
+        "def-u-01-04-04-uncertified-approximation",
+        "ex-u-01-04-04-small-residual",
+        "ex-u-01-04-04-false-bisection",
+    ],
 }
 
 
