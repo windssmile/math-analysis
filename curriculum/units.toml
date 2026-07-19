@@ -101,3 +101,23 @@ learning_goals = [
   "确定复合函数的定义域",
   "用定义判定单射、满射与可逆性",
 ]
+
+[[units]]
+id = "u-01-02-01"
+chapter_id = "chapter-02"
+title = "有理数为什么仍然不够？"
+path = "book/part-01/chapter-02/u-01-02-01-rational-gaps.qmd"
+theory_hours = 1.50
+applied_hours = 0.00
+difficulty = 2
+book_prerequisites = []
+higher_algebra_prerequisites = ["整数与有理数的四则运算", "平方与因式分解"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "用最简分数与奇偶性证明 sqrt(2) 不是有理数",
+  "解释有理数轴上为何会出现无法由有理数填补的边界",
+  "区分无有理数解、近似计算与扩张数系三种不同结论",
+]
