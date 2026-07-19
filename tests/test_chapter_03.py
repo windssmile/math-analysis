@@ -106,6 +106,14 @@ class Chapter03SupremumPrincipleTests(unittest.TestCase):
             self.assertIn(f"### ex-u-01-03-02-0{index}", content)
         self.assertIn("**完整解答。**", content)
 
+    def test_open_interval_supremum_argument_uses_a_witness_for_every_lower_number(
+        self,
+    ) -> None:
+        content = SUPREMUM_PRINCIPLE.read_text(encoding="utf-8")
+        self.assertIn("$x=(\\max\\{M,0\\}+1)/2$", content)
+        self.assertIn("$x\\in(0,1)$", content)
+        self.assertIn("$x>M$", content)
+
 
 if __name__ == "__main__":
     unittest.main()
