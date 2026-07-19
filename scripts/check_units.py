@@ -256,9 +256,9 @@ def validate_units(
                 )
             else:
                 total = theory_hours + applied_hours
-                if total <= 0 or total > 2.5:
+                if total <= 0 or total > 2.25:
                     errors.append(
-                        f"{label} theory_hours + applied_hours must be > 0 and <= 2.5, "
+                        f"{label} theory_hours + applied_hours must be > 0 and <= 2.25, "
                         f"got {total:g}"
                     )
 
