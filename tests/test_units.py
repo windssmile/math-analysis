@@ -51,9 +51,33 @@ class UnitValidationTests(unittest.TestCase):
     ) -> list[str]:
         with tempfile.TemporaryDirectory() as temporary_directory:
             root = Path(temporary_directory)
-            content_path = root / CONTENT_PATH
-            content_path.parent.mkdir(parents=True)
-            content_path.write_text(content, encoding="utf-8")
+            if isinstance(data, dict) and isinstance(data.get("units"), list):
+                for unit in data["units"]:
+                    if not isinstance(unit, dict) or not isinstance(unit.get("path"), str):
+                        continue
+                    unit_path = unit["path"]
+                    content_path = root / unit_path
+                    content_path.parent.mkdir(parents=True, exist_ok=True)
+                    unit_id = unit.get("id", "placeholder")
+                    if unit_path == CONTENT_PATH:
+                        unit_content = content
+                    else:
+                        unit_content = "\n".join(
+                            [
+                                f"# 占位单元 {{#{unit_id}}}",
+                                "",
+                                "## 先备知识",
+                                "## 学习目标",
+                                "## 牵引问题",
+                                "## 探索与猜想",
+                                "## 概念与理论",
+                                "## 例题与迁移",
+                                "## 即时检验与回望",
+                                "## 习题与答案",
+                                "",
+                            ]
+                        )
+                    content_path.write_text(unit_content, encoding="utf-8")
             bridge_path = root / BRIDGE_PATH
             bridge_path.parent.mkdir(parents=True)
             bridge_path.write_text("# Python 知识桥\n", encoding="utf-8")
@@ -86,11 +110,21 @@ class UnitValidationTests(unittest.TestCase):
             self.validate(data),
         )
 
-    def test_rejects_more_than_two_combined_hours(self) -> None:
+    def test_rejects_more_than_two_and_a_quarter_combined_hours(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["applied_hours"] = 1
+        data["units"][0]["theory_hours"] = 2
+        data["units"][0]["applied_hours"] = 0.26
         self.assertIn(
-            f"{UNIT_ID} theory_hours + applied_hours must be > 0 and <= 2, got 2.25",
+            f"{UNIT_ID} theory_hours + applied_hours must be > 0 and <= 2.25, got 2.26",
+            self.validate(data),
+        )
+
+    def test_rejects_component_hours_just_above_two(self) -> None:
+        data = copy.deepcopy(self.load_registry())
+        data["units"][0]["theory_hours"] = 2.01
+        data["units"][0]["applied_hours"] = 0
+        self.assertIn(
+            f"{UNIT_ID} theory_hours and applied_hours must each be <= 2",
             self.validate(data),
         )
 
@@ -105,10 +139,10 @@ class UnitValidationTests(unittest.TestCase):
                         self.validate(data),
                     )
 
-    def test_accepts_combined_hours_of_two(self) -> None:
+    def test_accepts_combined_hours_at_two_and_a_quarter_boundary(self) -> None:
         data = copy.deepcopy(self.load_registry())
-        data["units"][0]["theory_hours"] = 1.25
-        data["units"][0]["applied_hours"] = 0.75
+        data["units"][0]["theory_hours"] = 2
+        data["units"][0]["applied_hours"] = 0.25
         self.assertEqual(self.validate_with_content(data), [])
 
     def test_rejects_negative_hour_component_even_when_total_is_valid(self) -> None:
@@ -127,7 +161,7 @@ class UnitValidationTests(unittest.TestCase):
         self.assertTrue(
             any(
                 error.startswith(
-                    f"{UNIT_ID} theory_hours + applied_hours must be > 0 and <= 2"
+                    f"{UNIT_ID} theory_hours and applied_hours must each be <= 2"
                 )
                 for error in errors
             )

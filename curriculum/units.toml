@@ -20,3 +20,289 @@ learning_goals = [
   "从介值定理推导二分法及其误差上界",
   "解释二分法的停止准则并使用 Python 求近似根",
 ]
+
+[[units]]
+id = "u-01-01-01"
+chapter_id = "chapter-01"
+title = "集合怎样组织数学对象？"
+path = "book/part-01/chapter-01/u-01-01-01-sets.qmd"
+theory_hours = 1.25
+applied_hours = 0.25
+difficulty = 1
+book_prerequisites = []
+higher_algebra_prerequisites = []
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "使用集合、元素、子集与集合运算陈述数学对象",
+  "区分属于、包含、相等与空集",
+  "证明集合恒等式，并用反例否定错误的集合陈述",
+]
+
+[[units]]
+id = "u-01-01-02"
+chapter_id = "chapter-01"
+title = "量词怎样改变一句话？"
+path = "book/part-01/chapter-01/u-01-01-02-quantifiers.qmd"
+theory_hours = 1.25
+applied_hours = 0.25
+difficulty = 1
+book_prerequisites = []
+higher_algebra_prerequisites = []
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "识别命题与谓词，并说明变量的取值范围",
+  "正确处理全称量词与存在量词的作用域",
+  "否定含嵌套量词的数学陈述",
+]
+
+[[units]]
+id = "u-01-01-03"
+chapter_id = "chapter-01"
+title = "什么算作一个有效证明？"
+path = "book/part-01/chapter-01/u-01-01-03-proofs.qmd"
+theory_hours = 1.50
+applied_hours = 0.50
+difficulty = 2
+book_prerequisites = []
+higher_algebra_prerequisites = []
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["proof", "mathematical_expression"]
+learning_goals = [
+  "从定义出发组织直接证明",
+  "将蕴含命题改写为逆否命题",
+  "识别反证法中得到的矛盾",
+  "用一个反例否定全称命题",
+]
+
+[[units]]
+id = "u-01-01-04"
+chapter_id = "chapter-01"
+title = "函数为何不只是“公式”？"
+path = "book/part-01/chapter-01/u-01-01-04-functions.qmd"
+theory_hours = 1.00
+applied_hours = 0.00
+difficulty = 1
+book_prerequisites = []
+higher_algebra_prerequisites = ["多项式的基本运算"]
+analytic_geometry_prerequisites = ["平面直角坐标系与图像读取"]
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "区分函数、公式、定义域、陪域与值域",
+  "确定复合函数的定义域",
+  "用定义判定单射、满射与可逆性",
+]
+
+[[units]]
+id = "u-01-02-01"
+chapter_id = "chapter-02"
+title = "有理数为什么仍然不够？"
+path = "book/part-01/chapter-02/u-01-02-01-rational-gaps.qmd"
+theory_hours = 1.50
+applied_hours = 0.00
+difficulty = 2
+book_prerequisites = []
+higher_algebra_prerequisites = ["整数与有理数的四则运算", "平方与因式分解"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "用最简分数与奇偶性证明 sqrt(2) 不是有理数",
+  "解释有理数轴上为何会出现无法由有理数填补的边界",
+  "区分无有理数解、近似计算与扩张数系三种不同结论",
+]
+
+[[units]]
+id = "u-01-02-02"
+chapter_id = "chapter-02"
+title = "怎样用切割构造一个实数？"
+path = "book/part-01/chapter-02/u-01-02-02-dedekind-cuts.qmd"
+theory_hours = 2.00
+applied_hours = 0.25
+difficulty = 3
+book_prerequisites = []
+higher_algebra_prerequisites = ["有理数的序与稠密性"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "准确陈述 Dedekind 分割的四个条件",
+  "用 A_r={q:q<r} 将有理数嵌入切割模型",
+  "构造并验证表示 sqrt(2) 的 Dedekind 分割",
+]
+
+[[units]]
+id = "u-01-02-03"
+chapter_id = "chapter-02"
+title = "构造后怎样计算与比较？"
+path = "book/part-01/chapter-02/u-01-02-03-cut-order-operations.qmd"
+theory_hours = 1.50
+applied_hours = 0.25
+difficulty = 3
+book_prerequisites = []
+higher_algebra_prerequisites = ["有理数的序与四则运算"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "用包含关系比较两个 Dedekind 分割",
+  "证明有理数嵌入保持次序",
+  "解释用切割并集构造上确界的关键条件",
+]
+
+[[units]]
+id = "u-01-03-01"
+chapter_id = "chapter-03"
+title = "有上界为什么还不够？"
+path = "book/part-01/chapter-03/u-01-03-01-bounds.qmd"
+theory_hours = 1.50
+applied_hours = 0.00
+difficulty = 2
+book_prerequisites = ["chapter-02"]
+higher_algebra_prerequisites = ["不等式的基本性质"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "区分上界、下界、最大元、最小元、上确界与下确界",
+  "用定义验证一个数是集合的上界或最大元",
+  "说明有理数中的有界集合也可能没有最小上界",
+]
+
+[[units]]
+id = "u-01-03-02"
+chapter_id = "chapter-03"
+title = "最小上界怎样保证存在？"
+path = "book/part-01/chapter-03/u-01-03-02-supremum-principle.qmd"
+theory_hours = 2.00
+applied_hours = 0.00
+difficulty = 3
+book_prerequisites = ["chapter-02"]
+higher_algebra_prerequisites = ["不等式的基本性质", "平方差分解"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "准确陈述确界原理及其下确界对偶形式",
+  "从 Dedekind 分割族的并集解释确界原理的来源",
+  "使用确界原理证明正数平方根的存在性",
+  "在证明中用显式扰动构造排除错误的候选确界",
+]
+
+[[units]]
+id = "u-01-03-03"
+chapter_id = "chapter-03"
+title = "确界原理能推出什么？"
+path = "book/part-01/chapter-03/u-01-03-03-completeness-consequences.qmd"
+theory_hours = 1.50
+applied_hours = 0.00
+difficulty = 3
+book_prerequisites = ["chapter-02"]
+higher_algebra_prerequisites = ["自然数的顺序与良序性", "整数与有理数的基本性质"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "从确界原理推出阿基米德性质",
+  "用阿基米德性质证明有理数在实数中的稠密性",
+  "说明正数平方根存在是确界原理的一个直接后果",
+]
+
+[[units]]
+id = "u-01-04-01"
+chapter_id = "chapter-04"
+title = "递推会不会真的“靠近”目标？"
+path = "book/part-01/chapter-04/u-01-04-01-recurrence.qmd"
+theory_hours = 1.25
+applied_hours = 1.00
+difficulty = 2
+book_prerequisites = ["chapter-03"]
+higher_algebra_prerequisites = ["不等式的基本性质", "平方差分解"]
+analytic_geometry_prerequisites = []
+python_prerequisites = ["变量赋值", "for 循环", "函数定义"]
+knowledge_bridges = ["book/bridges/python/functions-loops.qmd"]
+capabilities = ["concepts", "proof", "numerical_algorithm", "mathematical_expression"]
+learning_goals = [
+  "把 Babylonian 递推写成清楚的递推关系与初始条件",
+  "证明迭代项保持为正并位于正平方根上方",
+  "利用平方差证明迭代项单调下降",
+  "用 Python 输出有限步迭代的数值表，并区分观察与证明",
+]
+
+[[units]]
+id = "u-01-04-02"
+chapter_id = "chapter-04"
+title = "区间怎样把目标逐步夹住？"
+path = "book/part-01/chapter-04/u-01-04-02-interval-bisection.qmd"
+theory_hours = 1.25
+applied_hours = 1.00
+difficulty = 2
+book_prerequisites = ["chapter-03"]
+higher_algebra_prerequisites = ["不等式的基本性质", "平方差分解"]
+analytic_geometry_prerequisites = []
+python_prerequisites = ["while 循环", "条件分支", "函数定义"]
+knowledge_bridges = ["book/bridges/python/functions-loops.qmd"]
+capabilities = ["concepts", "proof", "numerical_algorithm", "mathematical_expression"]
+learning_goals = [
+  "用平方比较选择保留根号二的半区间",
+  "证明二分过程保持端点不变量并将区间长度减半",
+  "由区间长度推出中点近似的显式误差证书",
+  "区分平方根二的专门二分过程与一般连续函数求根",
+]
+
+[[units]]
+id = "u-01-04-03"
+chapter_id = "chapter-04"
+title = "“越来越近”怎样说得严格？"
+path = "book/part-01/chapter-04/u-01-04-03-approximation-error.qmd"
+theory_hours = 1.50
+applied_hours = 0.50
+difficulty = 2
+book_prerequisites = ["chapter-03"]
+higher_algebra_prerequisites = ["不等式的基本性质", "以 2 为底的对数与上取整"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "用量词表述给定误差下的有限步骤保证",
+  "由二分区间长度推出中点近似的误差阈值",
+  "正确使用对数与上取整选择所需二分次数",
+  "区分有限误差保证与下一部的数列收敛定义",
+]
+
+[[units]]
+id = "u-01-04-04"
+chapter_id = "chapter-04"
+title = "无限逼近何时会失败？"
+path = "book/part-01/chapter-04/u-01-04-04-failure-of-infinite-approximation.qmd"
+theory_hours = 1.00
+applied_hours = 0.00
+difficulty = 2
+book_prerequisites = ["chapter-03"]
+higher_algebra_prerequisites = ["不等式的基本性质"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = [
+  "用显式反例识别振荡、发散与无证书近似",
+  "区分函数残差与近似位置误差",
+  "检查二分过程是否保持目标仍在区间内的不变量",
+  "说明正式的收敛判定为何需要在后续课程中建立",
+]

@@ -1,11 +1,42 @@
 from html.parser import HTMLParser
 from pathlib import Path
+import tomllib
 from urllib.parse import unquote, urlsplit
 import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "_site"
+UNITS = ROOT / "curriculum" / "units.toml"
+
+REQUIRED_RENDERED_ANCHORS = {
+    "book/part-01/chapter-02/u-01-02-02-dedekind-cuts.html": [
+        "def-u-01-02-02-dedekind-cut",
+        "ex-u-01-02-02-sqrt2-cut",
+    ],
+    "book/part-01/chapter-02/u-01-02-03-cut-order-operations.html": [
+        "def-u-01-02-03-cut-order",
+        "thm-u-01-02-03-union-supremum",
+    ],
+    "book/part-01/chapter-04/u-01-04-01-recurrence.html": [
+        "def-u-01-04-01-babylonian-recurrence",
+        "ex-u-01-04-01-sqrt2-table",
+    ],
+    "book/part-01/chapter-04/u-01-04-02-interval-bisection.html": [
+        "def-u-01-04-02-interval-bisection",
+        "ex-u-01-04-02-sqrt2-certificate",
+    ],
+    "book/part-01/chapter-04/u-01-04-03-approximation-error.html": [
+        "def-u-01-04-03-error-guarantee",
+        "thm-u-01-04-03-bisection-step-count",
+        "ex-u-01-04-03-bisection-step-count",
+    ],
+    "book/part-01/chapter-04/u-01-04-04-failure-of-infinite-approximation.html": [
+        "def-u-01-04-04-uncertified-approximation",
+        "ex-u-01-04-04-small-residual",
+        "ex-u-01-04-04-false-bisection",
+    ],
+}
 
 
 class LinkParser(HTMLParser):
@@ -21,7 +52,11 @@ class LinkParser(HTMLParser):
             self.links.append(attributes["href"])
 
 
-def validate_site(site: Path) -> list[str]:
+def validate_site(
+    site: Path,
+    expected_pages: list[str] | None = None,
+    expected_anchors: dict[str, list[str]] | None = None,
+) -> list[str]:
     errors: list[str] = []
     if not (site / "index.html").is_file():
         return ["site is missing index.html"]
@@ -42,11 +77,38 @@ def validate_site(site: Path) -> list[str]:
                 target = target / "index.html"
             if not target.is_file():
                 errors.append(f"{html_file.relative_to(site)} links to missing {relative_target}")
+    for expected_page in expected_pages or []:
+        if not (site / expected_page).is_file():
+            errors.append(f"rendered site is missing registered unit page: {expected_page}")
+    for expected_page, anchors in (expected_anchors or {}).items():
+        page = site / expected_page
+        if not page.is_file():
+            continue
+        rendered = page.read_text(encoding="utf-8")
+        for anchor in anchors:
+            if f'id="{anchor}"' not in rendered:
+                errors.append(
+                    f"rendered site page {expected_page} is missing required anchor: "
+                    f"{anchor}"
+                )
     return errors
 
 
+def registered_unit_pages() -> list[str]:
+    with UNITS.open("rb") as handle:
+        registry = tomllib.load(handle)
+    return [
+        str(Path(unit["path"]).with_suffix(".html"))
+        for unit in registry["units"]
+    ]
+
+
 def main() -> int:
-    errors = validate_site(SITE)
+    errors = validate_site(
+        SITE,
+        expected_pages=registered_unit_pages(),
+        expected_anchors=REQUIRED_RENDERED_ANCHORS,
+    )
     pilot_pages = list(SITE.rglob("*u-03-12-01-ivt-bisection*.html"))
     if not pilot_pages:
         errors.append("rendered site is missing the pilot unit page")
