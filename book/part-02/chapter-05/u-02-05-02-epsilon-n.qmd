@@ -1,0 +1,98 @@
+# “最终任意接近”怎样写成定义？ {#u-02-05-02}
+
+::: {.unit-meta}
+- **总学时：** 2.00 小时（理论 1.75 小时，应用 0.25 小时）
+- **全书先备：** [第 5 章：数列极限与量词结构](../../curriculum-map.qmd#chapter-05)
+- **高等代数先备：** 绝对值与不等式
+- **解析几何先备：** 无
+- **Python 知识桥：** 无
+:::
+
+## 先备知识
+
+数列有无限多个项；“越来越接近”必须说明谁先给精度、谁再选择步数。
+
+## 学习目标
+
+1. 准确陈述数列极限的 $\varepsilon$-$N$ 定义；
+2. 为基本数列构造可用的 $N$；
+3. 识别把量词顺序颠倒的错误。
+
+## 牵引问题
+
+若要求误差小于 $10^{-6}$，$1/n$ 至少取到第几项？答案必须能随着要求的精度改变。
+
+## 探索与猜想
+
+对 $a_n=1/n$，误差就是 $|a_n-0|=1/n$。想使其小于 $\varepsilon$，只要 $n>1/\varepsilon$。这提示先由 $\varepsilon$ 决定 $N$。
+
+## 概念与理论
+
+### 数列极限 {#def-u-02-05-02-limit}
+
+称 $a_n$ 收敛到 $L$，记作 $a_n\to L$，若
+
+$$
+\forall\varepsilon>0\;\exists N\in\mathbb N^+\;\forall n\ge N,
+\quad |a_n-L|<\varepsilon.
+$$
+
+### 例：$1/n\to0$ {#thm-u-02-05-02-reciprocal-limit}
+
+给定 $\varepsilon>0$。由 Archimedean 性质选 $N>1/\varepsilon$。当 $n\ge N$ 时，$0<1/n\le1/N<\varepsilon$，故 $|1/n-0|<\varepsilon$。这完成证明；不能把某个固定 $N$ 当作对所有精度都有效。
+
+## 例题与迁移
+
+### 例：几何误差 {#ex-u-02-05-02-geometric}
+
+设 $a_n=2^{-n}$。给定 $\varepsilon>0$，选 $N$ 使 $2^{-N}<\varepsilon$；则 $n\ge N$ 时 $|a_n|\le2^{-N}<\varepsilon$。这里的步骤证书来自指数衰减，而不是观察小数位。
+
+## 即时检验与回望
+
+1. $N$ 可否依赖于 $\varepsilon$？
+
+::: {.callout-note collapse="true"}
+## 答案
+
+可以，而且通常必须依赖；定义禁止的是 $N$ 依赖于随后任取的 $n$。
+:::
+
+2. 若 $a_n=L$ 对所有 $n$ 成立，它是否收敛到 $L$？
+
+::: {.callout-note collapse="true"}
+## 答案
+
+是，任取 $N=1$ 即有误差为零。
+:::
+
+## 习题与答案
+
+### ex-u-02-05-02-01
+
+为 $a_n=3/n$ 证明 $a_n\to0$。
+
+::: {.callout-note collapse="true"}
+## 答案
+
+给定 $\varepsilon>0$，取 $N>3/\varepsilon$。$n\ge N$ 时 $|3/n|\le3/N<\varepsilon$。
+:::
+
+### ex-u-02-05-02-02
+
+说明“存在 $N$ 使所有 $n\ge N$ 的误差小于 $1/10$”为什么不足以证明收敛。
+
+::: {.callout-note collapse="true"}
+## 答案
+
+它只处理一个固定精度；收敛要求任意正的 $\varepsilon$ 都有相应尾部。
+:::
+
+### ex-u-02-05-02-03
+
+**完整解答。** 用定义证明常数倍：若 $a_n\to0$，则 $5a_n\to0$。
+
+::: {.callout-note collapse="true"}
+## 答案
+
+给定 $\varepsilon>0$。由 $a_n\to0$，对 $\varepsilon/5$ 存在 $N$，当 $n\ge N$ 时 $|a_n|<\varepsilon/5$。于是 $|5a_n|=5|a_n|<\varepsilon$，故结论成立。
+:::
