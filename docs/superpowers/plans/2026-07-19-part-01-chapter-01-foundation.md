@@ -15,7 +15,7 @@
 ## File structure
 
 - Modify: `curriculum/units.toml` — 依次登记四个已完成的第一章单元。
-- Modify: `_quarto.yml` — 在全部四页完成后，将它们作为“第一部”导航项加入书籍。
+- Modify: `_quarto.yml` — 每完成一个单元，就将其增量加入“第一部”导航项。
 - Create: `book/part-01/chapter-01/u-01-01-01-sets.qmd` — 集合与数学对象。
 - Create: `book/part-01/chapter-01/u-01-01-02-quantifiers.qmd` — 命题、量词与否定。
 - Create: `book/part-01/chapter-01/u-01-01-03-proofs.qmd` — 证明与反例。
@@ -328,4 +328,3 @@ git commit -m "docs: publish chapter one learning path"
 - [ ] Run `make verify`; expected: all tests and all generated-site checks pass.
 - [ ] Open the four rendered pages in order; verify every page has eight section headings, foldable answers, correct previous/next navigation, and no MathJax error.
 - [ ] Confirm `curriculum/units.toml` contains exactly five published units at this stage: the existing pilot plus the four Chapter 1 units.
-

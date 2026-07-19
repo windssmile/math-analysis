@@ -1,11 +1,13 @@
 from html.parser import HTMLParser
 from pathlib import Path
+import tomllib
 from urllib.parse import unquote, urlsplit
 import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "_site"
+UNITS = ROOT / "curriculum" / "units.toml"
 
 
 class LinkParser(HTMLParser):
@@ -21,7 +23,7 @@ class LinkParser(HTMLParser):
             self.links.append(attributes["href"])
 
 
-def validate_site(site: Path) -> list[str]:
+def validate_site(site: Path, expected_pages: list[str] | None = None) -> list[str]:
     errors: list[str] = []
     if not (site / "index.html").is_file():
         return ["site is missing index.html"]
@@ -42,11 +44,23 @@ def validate_site(site: Path) -> list[str]:
                 target = target / "index.html"
             if not target.is_file():
                 errors.append(f"{html_file.relative_to(site)} links to missing {relative_target}")
+    for expected_page in expected_pages or []:
+        if not (site / expected_page).is_file():
+            errors.append(f"rendered site is missing registered unit page: {expected_page}")
     return errors
 
 
+def registered_unit_pages() -> list[str]:
+    with UNITS.open("rb") as handle:
+        registry = tomllib.load(handle)
+    return [
+        str(Path(unit["path"]).with_suffix(".html"))
+        for unit in registry["units"]
+    ]
+
+
 def main() -> int:
-    errors = validate_site(SITE)
+    errors = validate_site(SITE, expected_pages=registered_unit_pages())
     pilot_pages = list(SITE.rglob("*u-03-12-01-ivt-bisection*.html"))
     if not pilot_pages:
         errors.append("rendered site is missing the pilot unit page")

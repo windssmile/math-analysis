@@ -25,6 +25,23 @@ class SiteValidationTest(unittest.TestCase):
             errors = validate_site(site)
             self.assertEqual(["index.html links to missing missing.html"], errors)
 
+    def test_registered_page_must_exist_in_rendered_site(self) -> None:
+        with TemporaryDirectory() as directory:
+            site = Path(directory)
+            (site / "index.html").write_text("book", encoding="utf-8")
+            self.assertEqual(
+                [
+                    "rendered site is missing registered unit page: "
+                    "book/part-01/chapter-01/u-01-01-01-sets.html"
+                ],
+                validate_site(
+                    site,
+                    expected_pages=[
+                        "book/part-01/chapter-01/u-01-01-01-sets.html"
+                    ],
+                ),
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
