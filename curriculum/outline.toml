@@ -13,6 +13,7 @@ title = "实数、函数与分析语言"
 question = "有限符号怎样描述无限与连续？"
 theory_hours = 20
 applied_hours = 4
+show_units = true
 [[parts.chapters]]
 id = "chapter-01"
 number = 1
@@ -37,6 +38,7 @@ title = "数列极限与无限过程"
 question = "怎样判断一个无限过程最终稳定？"
 theory_hours = 26
 applied_hours = 6
+show_units = true
 [[parts.chapters]]
 id = "chapter-05"
 number = 5

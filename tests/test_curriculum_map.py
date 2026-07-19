@@ -11,13 +11,16 @@ from scripts.render_curriculum_map import render_map
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTLINE = ROOT / "curriculum" / "outline.toml"
+UNITS = ROOT / "curriculum" / "units.toml"
 MAP = ROOT / "book" / "curriculum-map.qmd"
 
 
 class CurriculumMapTests(unittest.TestCase):
     def test_renders_the_confirmed_course_structure(self) -> None:
         with OUTLINE.open("rb") as handle:
-            rendered = render_map(tomllib.load(handle))
+            outline = tomllib.load(handle)
+        with UNITS.open("rb") as handle:
+            rendered = render_map(outline, tomllib.load(handle))
 
         self.assertEqual(rendered.count("## 第"), 12)
         self.assertIn("1. [函数、集合与数学陈述]{#chapter-01}", rendered)
@@ -35,6 +38,15 @@ class CurriculumMapTests(unittest.TestCase):
             "11. [闭区间上的整体性质]{#chapter-11}",
             rendered,
         )
+        self.assertIn(
+            "   - [集合怎样组织数学对象？](part-01/chapter-01/u-01-01-01-sets.qmd#u-01-01-01)",
+            rendered,
+        )
+        self.assertIn(
+            "   - [上/下极限怎样总结所有尾部行为？](part-02/chapter-08/u-02-08-05-limsup-liminf.qmd#u-02-08-05)",
+            rendered,
+        )
+        self.assertNotIn("part-03/chapter-12/u-03-12-01", rendered)
 
         self.assertEqual(MAP.read_text(encoding="utf-8"), rendered)
 

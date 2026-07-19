@@ -2,7 +2,7 @@
 
 **学时：** 理论 270 + 应用 90 = 360
 
-本页由 `curriculum/outline.toml` 自动生成。请勿直接编辑。
+本页由 `curriculum/outline.toml` 与 `curriculum/units.toml` 自动生成。请勿直接编辑。
 
 ## 第一部：实数、函数与分析语言
 **问题弧：** 有限符号怎样描述无限与连续？
@@ -10,9 +10,23 @@
 **学时：** 理论 20 + 应用 4 = 24
 
 1. [函数、集合与数学陈述]{#chapter-01}
+   - [集合怎样组织数学对象？](part-01/chapter-01/u-01-01-01-sets.qmd#u-01-01-01)
+   - [量词怎样改变一句话？](part-01/chapter-01/u-01-01-02-quantifiers.qmd#u-01-01-02)
+   - [什么算作一个有效证明？](part-01/chapter-01/u-01-01-03-proofs.qmd#u-01-01-03)
+   - [函数为何不只是“公式”？](part-01/chapter-01/u-01-01-04-functions.qmd#u-01-01-04)
 2. [实数系与完备性公理]{#chapter-02}
+   - [有理数为什么仍然不够？](part-01/chapter-02/u-01-02-01-rational-gaps.qmd#u-01-02-01)
+   - [怎样用切割构造一个实数？](part-01/chapter-02/u-01-02-02-dedekind-cuts.qmd#u-01-02-02)
+   - [构造后怎样计算与比较？](part-01/chapter-02/u-01-02-03-cut-order-operations.qmd#u-01-02-03)
 3. [上界、下界与确界原理]{#chapter-03}
+   - [有上界为什么还不够？](part-01/chapter-03/u-01-03-01-bounds.qmd#u-01-03-01)
+   - [最小上界怎样保证存在？](part-01/chapter-03/u-01-03-02-supremum-principle.qmd#u-01-03-02)
+   - [确界原理能推出什么？](part-01/chapter-03/u-01-03-03-completeness-consequences.qmd#u-01-03-03)
 4. [递推过程与无限逼近]{#chapter-04}
+   - [递推会不会真的“靠近”目标？](part-01/chapter-04/u-01-04-01-recurrence.qmd#u-01-04-01)
+   - [区间怎样把目标逐步夹住？](part-01/chapter-04/u-01-04-02-interval-bisection.qmd#u-01-04-02)
+   - [“越来越近”怎样说得严格？](part-01/chapter-04/u-01-04-03-approximation-error.qmd#u-01-04-03)
+   - [无限逼近何时会失败？](part-01/chapter-04/u-01-04-04-failure-of-infinite-approximation.qmd#u-01-04-04)
 
 ## 第二部：数列极限与无限过程
 **问题弧：** 怎样判断一个无限过程最终稳定？
@@ -20,9 +34,25 @@
 **学时：** 理论 26 + 应用 6 = 32
 
 5. [数列极限与量词结构]{#chapter-05}
+   - [数列怎样记录无限过程？](part-02/chapter-05/u-02-05-01-sequences.qmd#u-02-05-01)
+   - [“最终任意接近”怎样写成定义？](part-02/chapter-05/u-02-05-02-epsilon-n.qmd#u-02-05-02)
+   - [不收敛与趋于无穷怎样区分？](part-02/chapter-05/u-02-05-03-divergence-infinity.qmd#u-02-05-03)
+   - [迭代数据何时值得相信？](part-02/chapter-05/u-02-05-04-iteration-evidence.qmd#u-02-05-04)
 6. [极限运算与序关系]{#chapter-06}
+   - [极限怎样通过代数运算传递？](part-02/chapter-06/u-02-06-01-limit-laws.qmd#u-02-06-01)
+   - [序关系怎样给出极限估计？](part-02/chapter-06/u-02-06-02-order-squeeze.qmd#u-02-06-02)
+   - [误差如何穿过一次迭代？](part-02/chapter-06/u-02-06-03-error-propagation.qmd#u-02-06-03)
 7. [单调性、完备性与收敛准则]{#chapter-07}
+   - [单调数列为什么会有极限？](part-02/chapter-07/u-02-07-01-monotone-sequences.qmd#u-02-07-01)
+   - [递推的界与单调性怎样建立？](part-02/chapter-07/u-02-07-02-recursive-invariants.qmd#u-02-07-02)
+   - [区间套怎样保证唯一目标？](part-02/chapter-07/u-02-07-03-nested-intervals.qmd#u-02-07-03)
+   - [完备性怎样成为收敛准则？](part-02/chapter-07/u-02-07-04-completeness-criteria.qmd#u-02-07-04)
 8. [子列、Cauchy 准则与上/下极限]{#chapter-08}
+   - [子列揭示了原数列的什么行为？](part-02/chapter-08/u-02-08-01-subsequences.qmd#u-02-08-01)
+   - [有界数列为何总能抽出收敛子列？](part-02/chapter-08/u-02-08-02-bolzano-weierstrass.qmd#u-02-08-02)
+   - [Cauchy 条件怎样不预知极限而判断收敛？](part-02/chapter-08/u-02-08-03-cauchy-criterion.qmd#u-02-08-03)
+   - [严格压缩怎样保证迭代找到唯一根？](part-02/chapter-08/u-02-08-04-contraction-mapping.qmd#u-02-08-04)
+   - [上/下极限怎样总结所有尾部行为？](part-02/chapter-08/u-02-08-05-limsup-liminf.qmd#u-02-08-05)
 
 ## 第三部：函数极限、连续性与方程
 **问题弧：** 近似值能否保证真实解存在？
