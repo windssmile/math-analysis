@@ -1,0 +1,22 @@
+schema_version = 1
+
+[[units]]
+id = "u-03-12-01"
+chapter_id = "chapter-12"
+title = "连续性怎样保证方程有根：介值定理与二分法"
+path = "book/part-03/chapter-12/u-03-12-01-ivt-bisection.qmd"
+theory_hours = 1.25
+applied_hours = 0.75
+difficulty = 2
+book_prerequisites = ["chapter-10", "chapter-11"]
+higher_algebra_prerequisites = []
+analytic_geometry_prerequisites = []
+python_prerequisites = ["函数定义", "while 循环", "异常的基本含义"]
+knowledge_bridges = ["book/bridges/python/functions-loops.qmd"]
+capabilities = ["concepts", "proof", "numerical_algorithm", "mathematical_expression"]
+learning_goals = [
+  "准确陈述介值定理并识别连续性假设",
+  "使用区间套方法完整证明介值定理",
+  "从介值定理推导二分法及其误差上界",
+  "解释二分法的停止准则并使用 Python 求近似根",
+]

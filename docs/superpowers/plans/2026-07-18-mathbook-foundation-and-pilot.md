@@ -8,6 +8,8 @@
 
 **Tech Stack:** Quarto Book, Markdown/QMD, LaTeX math, Python 3.12 standard library (`unittest`, `tomllib`, `html.parser`), TOML, CSS, GitHub Actions, GitHub Pages.
 
+**Python prerequisite:** Python 3.12 is required because the standard-library validators use `tomllib`. Run direct Python commands below with `python3.12`. Make uses an overrideable interpreter; callers can select one explicitly with `make PYTHON=/absolute/path/to/python3.12 <target>`.
+
 ---
 
 ## Scope decomposition
@@ -67,6 +69,7 @@ mathbook/
 │   ├── render_curriculum_map.py
 │   └── check_site.py
 ├── tests/
+│   ├── __init__.py
 │   ├── test_project_structure.py
 │   ├── test_outline.py
 │   ├── test_units.py
@@ -82,6 +85,7 @@ mathbook/
 **Files:**
 
 - Create: `tests/test_project_structure.py`
+- Create: `tests/__init__.py`
 - Create: `_quarto.yml`
 - Create: `index.qmd`
 - Create: `book/preface.qmd`
@@ -108,6 +112,8 @@ brew install --cask quarto
 Run `quarto --version` again. Expected: a semantic version is printed and the command exits 0. Do not pin a local machine path in repository files.
 
 - [ ] **Step 2: Write the failing project-structure test**
+
+Create an empty `tests/__init__.py`. It makes `tests` a package so the direct dotted test commands in this plan (for example, `python3.12 -m unittest tests.test_project_structure -v`) resolve reliably.
 
 Create `tests/test_project_structure.py`:
 
@@ -141,7 +147,7 @@ if __name__ == "__main__":
 Run:
 
 ```bash
-python3 -m unittest tests.test_project_structure -v
+python3.12 -m unittest tests.test_project_structure -v
 ```
 
 Expected: FAIL listing `_quarto.yml`, `index.qmd`, `styles.css`, `book/preface.qmd`, and `Makefile` as missing.
@@ -241,21 +247,23 @@ Create `Makefile` with literal tab-indented command lines:
 ```make
 .PHONY: test check generate render verify preview
 
+PYTHON ?= python3.12
+
 test:
-	python3 -m unittest discover -s tests -v
+	$(PYTHON) -m unittest discover -s tests -v
 
 check:
-	python3 scripts/check_outline.py
-	python3 scripts/check_units.py
+	$(PYTHON) scripts/check_outline.py
+	$(PYTHON) scripts/check_units.py
 
 generate:
-	python3 scripts/render_curriculum_map.py
+	$(PYTHON) scripts/render_curriculum_map.py
 
 render: generate
 	quarto render
 
 verify: test check render
-	python3 scripts/check_site.py
+	$(PYTHON) scripts/check_site.py
 
 preview: generate
 	quarto preview
@@ -273,7 +281,7 @@ _site/
 Run:
 
 ```bash
-python3 -m unittest tests.test_project_structure -v
+python3.12 -m unittest tests.test_project_structure -v
 ```
 
 Expected: 1 test passes.
@@ -292,6 +300,7 @@ git commit -m "build: scaffold Quarto mathbook"
 - Create: `curriculum/outline.toml`
 - Create: `scripts/check_outline.py`
 - Create: `tests/test_outline.py`
+- Requires: `tests/__init__.py` (created in Task 1; direct dotted test imports require the `tests` package)
 
 - [ ] **Step 1: Write failing validator tests**
 
@@ -345,7 +354,7 @@ if __name__ == "__main__":
 Run:
 
 ```bash
-python3 -m unittest tests.test_outline -v
+python3.12 -m unittest tests.test_outline -v
 ```
 
 Expected: ERROR because `scripts.check_outline` and `curriculum/outline.toml` do not exist.
@@ -476,8 +485,8 @@ if __name__ == "__main__":
 Run:
 
 ```bash
-python3 -m unittest tests.test_outline -v
-python3 scripts/check_outline.py
+python3.12 -m unittest tests.test_outline -v
+python3.12 scripts/check_outline.py
 ```
 
 Expected: 4 tests pass; the script prints `outline valid: 12 parts, 54 chapters, 270+90=360 hours`.
@@ -533,7 +542,7 @@ if __name__ == "__main__":
 Run:
 
 ```bash
-python3 -m unittest tests.test_curriculum_map -v
+python3.12 -m unittest tests.test_curriculum_map -v
 ```
 
 Expected: ERROR because `scripts.render_curriculum_map` does not exist.
@@ -595,10 +604,10 @@ if __name__ == "__main__":
 Run:
 
 ```bash
-python3 scripts/render_curriculum_map.py
-python3 -m unittest tests.test_curriculum_map -v
+python3.12 scripts/render_curriculum_map.py
+python3.12 -m unittest tests.test_curriculum_map -v
 git add book/curriculum-map.qmd
-python3 scripts/render_curriculum_map.py
+python3.12 scripts/render_curriculum_map.py
 git diff --exit-code book/curriculum-map.qmd
 ```
 
@@ -706,7 +715,7 @@ if __name__ == "__main__":
 Run:
 
 ```bash
-python3 -m unittest tests.test_units -v
+python3.12 -m unittest tests.test_units -v
 ```
 
 Expected: ERROR because `scripts.check_units` does not exist.
@@ -847,7 +856,7 @@ while count < 3:
 Run:
 
 ```bash
-python3 -m unittest tests.test_units -v
+python3.12 -m unittest tests.test_units -v
 ```
 
 Expected: all 4 tests pass. The real pilot entry is allowed to report only that its QMD content file is not yet present; the test explicitly verifies there are no other metadata errors.
@@ -919,7 +928,7 @@ if __name__ == "__main__":
 Run:
 
 ```bash
-python3 -m unittest tests.test_bisection -v
+python3.12 -m unittest tests.test_bisection -v
 ```
 
 Expected: ERROR because `mathbook_examples.bisection` does not exist.
@@ -984,7 +993,7 @@ def bisect(
 Run:
 
 ```bash
-python3 -m unittest tests.test_bisection -v
+python3.12 -m unittest tests.test_bisection -v
 ```
 
 Expected: 5 tests pass.
@@ -1018,7 +1027,7 @@ Replace `test_pilot_registry_is_valid_after_content_exists` in `tests/test_units
 Run:
 
 ```bash
-python3 -m unittest tests.test_units -v
+python3.12 -m unittest tests.test_units -v
 ```
 
 Expected: FAIL because `book/part-03/chapter-12/u-03-12-01-ivt-bisection.qmd` does not exist.
@@ -1090,8 +1099,8 @@ Do not leave the instructional sentences above in the final QMD. Expand them int
 Run:
 
 ```bash
-python3 scripts/check_units.py
-python3 -m unittest discover -s tests -v
+python3.12 scripts/check_units.py
+python3.12 -m unittest discover -s tests -v
 ```
 
 Expected: `unit registry valid: 1 unit(s)` and all tests pass.
@@ -1152,7 +1161,7 @@ if __name__ == "__main__":
 Run:
 
 ```bash
-python3 -m unittest tests.test_site -v
+python3.12 -m unittest tests.test_site -v
 ```
 
 Expected: ERROR because `scripts.check_site` does not exist.
@@ -1236,7 +1245,7 @@ if __name__ == "__main__":
 Run:
 
 ```bash
-python3 -m unittest tests.test_site -v
+python3.12 -m unittest tests.test_site -v
 ```
 
 Expected: 2 tests pass.
@@ -1317,7 +1326,7 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Run manuscript and algorithm tests
-        run: python3 -m unittest discover -s tests -v
+        run: python3.12 -m unittest discover -s tests -v
 
       - name: Validate curriculum and units
         run: make check
@@ -1326,7 +1335,7 @@ jobs:
         run: make render
 
       - name: Validate rendered site
-        run: python3 scripts/check_site.py
+        run: python3.12 scripts/check_site.py
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
