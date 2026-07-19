@@ -31,6 +31,12 @@ class Chapter03BoundsTests(unittest.TestCase):
         self.assertIn("### 上界、下界与确界 {#def-u-01-03-01-bounds}", content)
         self.assertIn("### 例：有理数中的缺失上确界 {#ex-u-01-03-01-rational-supremum}", content)
 
+    def test_rational_upper_bound_argument_does_not_assume_strictness(self) -> None:
+        content = BOUNDS.read_text(encoding="utf-8")
+        self.assertIn("由于 $0\\in D$，有 $u\\ge0$", content)
+        self.assertIn("若 $u\\in D$", content)
+        self.assertIn("所以 $u\\notin D$ 且 $u\\ge0$，从而 $u>0$ 且 $u^2>2$", content)
+
 
 if __name__ == "__main__":
     unittest.main()
