@@ -53,7 +53,11 @@ def render_map(data: Mapping[str, object]) -> str:
         assert isinstance(chapters, list)
         for chapter in chapters:
             assert isinstance(chapter, Mapping)
-            lines.append(f"{chapter['number']}. {chapter['title']}")
+            chapter_id = chapter["id"]
+            assert isinstance(chapter_id, str)
+            lines.append(
+                f"{chapter['number']}. [{chapter['title']}]{{#{chapter_id}}}"
+            )
 
     return "\n".join(lines) + "\n"
 

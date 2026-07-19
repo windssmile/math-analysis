@@ -2,7 +2,7 @@
 
 ::: {.unit-meta}
 - **总学时：** 2 小时（理论 1.25 小时，应用 0.75 小时）
-- **全书先备：** [第 10 章“连续函数与连续运算”](../../curriculum-map.qmd#sec-curriculum-map)、[第 11 章“闭区间上的整体性质”](../../curriculum-map.qmd#sec-curriculum-map)
+- **全书先备：** [第 10 章“连续函数与连续运算”](../../curriculum-map.qmd#chapter-10)、[第 11 章“闭区间上的整体性质”](../../curriculum-map.qmd#chapter-11)
 - **高等代数先备：** 无
 - **解析几何先备：** 无
 - **Python 知识桥：** [函数、循环与异常](../../bridges/python/functions-loops.qmd#bridge-python-functions-loops)（@bridge-python-functions-loops）
