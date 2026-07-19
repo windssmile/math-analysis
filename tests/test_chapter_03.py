@@ -141,7 +141,8 @@ class Chapter03CompletenessConsequencesTests(unittest.TestCase):
         )
         self.assertEqual(unit["book_prerequisites"], ["chapter-02"])
         self.assertEqual(
-            unit["higher_algebra_prerequisites"], ["整数与有理数的基本性质"]
+            unit["higher_algebra_prerequisites"],
+            ["自然数的顺序与良序性", "整数与有理数的基本性质"],
         )
 
     def test_unit_has_stable_anchors_and_full_archimedean_proof(self) -> None:
@@ -159,6 +160,22 @@ class Chapter03CompletenessConsequencesTests(unittest.TestCase):
         self.assertIn("$n>s-1$", content)
         self.assertIn("$n+1>s$", content)
         self.assertIn("与 $s$ 是 $\\mathbb N$ 的上界矛盾", content)
+
+    def test_unit_derives_integer_part_lemma_before_using_it_for_density(self) -> None:
+        content = COMPLETENESS_CONSEQUENCES.read_text(encoding="utf-8")
+        lemma = "### 整数部分引理 {#lem-u-01-03-03-integer-part}"
+        self.assertIn(lemma, content)
+        self.assertIn("$N>|r|$", content)
+        self.assertIn("A=\\{n\\in\\mathbb N:n>r+N\\}", content)
+        self.assertIn("$k=\\min A$", content)
+        self.assertIn("k-1\\le r+N<k", content)
+        self.assertIn("$m=k-N\\in\\mathbb Z$", content)
+        self.assertIn("$m-1\\le r<m$", content)
+        self.assertLess(
+            content.index(lemma),
+            content.index("### 例：在两个实数之间找到有理数"),
+        )
+        self.assertIn("由整数部分引理", content)
 
     def test_unit_proves_density_or_square_root_and_has_answered_exercises(self) -> None:
         content = COMPLETENESS_CONSEQUENCES.read_text(encoding="utf-8")
