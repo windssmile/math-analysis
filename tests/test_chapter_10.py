@@ -28,6 +28,22 @@ class Chapter10Tests(unittest.TestCase):
                 self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (theory, applied))
                 self.assertEqual(unit["path"], f"book/part-03/chapter-10/{unit_id}-{suffix}.qmd")
 
+    def test_continuity_pages_keep_the_confirmed_boundary(self) -> None:
+        definition = (ROOT / "book/part-03/chapter-10/u-03-10-01-epsilon-delta-continuity.qmd").read_text(encoding="utf-8")
+        operations = (ROOT / "book/part-03/chapter-10/u-03-10-02-continuous-operations.qmd").read_text(encoding="utf-8")
+        discontinuities = (ROOT / "book/part-03/chapter-10/u-03-10-03-discontinuities-elementary-functions.qmd").read_text(encoding="utf-8")
+
+        self.assertIn("def-u-03-10-01-continuity", definition)
+        self.assertIn(r"|f(x)-f(a)|<\varepsilon", definition)
+        self.assertIn("thm-u-03-10-02-continuous-operations", operations)
+        self.assertIn("thm-u-03-10-02-composition", operations)
+        self.assertIn("ex-u-03-10-03-discontinuity-types", discontinuities)
+        for page in (definition, operations, discontinuities):
+            self.assertNotIn("中值定理", page)
+            self.assertNotIn("导数", page)
+        for marker in ("可去", "跳跃", "振荡"):
+            self.assertIn(marker, discontinuities)
+
 
 if __name__ == "__main__":
     unittest.main()
