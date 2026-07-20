@@ -15,11 +15,11 @@ ROOT = Path(__file__).resolve().parents[1]
 UNITS = ROOT / "curriculum" / "units.toml"
 OUTLINE = ROOT / "curriculum" / "outline.toml"
 UNIT_ID = "u-03-12-01"
-CONTENT_PATH = "book/part-03/chapter-12/u-03-12-01-ivt-bisection.qmd"
+CONTENT_PATH = "book/part-03/chapter-12/u-03-12-01-intermediate-value-theorem.qmd"
 BRIDGE_PATH = "book/bridges/python/functions-loops.qmd"
 VALID_CONTENT = "\n".join(
     [
-        f"# 介值定理与二分法 {{#{UNIT_ID}}}",
+        f"# 连续函数怎样保证取遍中间值？ {{#{UNIT_ID}}}",
         "",
         "## 先备知识",
         "## 学习目标",
@@ -173,7 +173,7 @@ class UnitValidationTests(unittest.TestCase):
 
     def test_rejects_anchor_that_only_appears_in_prose_or_code(self) -> None:
         content = VALID_CONTENT.replace(
-            f"# 介值定理与二分法 {{#{UNIT_ID}}}",
+            f"# 连续函数怎样保证取遍中间值？ {{#{UNIT_ID}}}",
             "\n".join(
                 [
                     "# 介值定理与二分法",

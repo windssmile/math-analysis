@@ -94,6 +94,20 @@ class SiteValidationTest(unittest.TestCase):
             REQUIRED_RENDERED_ANCHORS[page],
         )
 
+    def test_part_three_rendered_anchors_are_required(self) -> None:
+        self.assertEqual(
+            ["def-u-03-09-02-function-limit"],
+            REQUIRED_RENDERED_ANCHORS[
+                "book/part-03/chapter-09/u-03-09-02-epsilon-delta-limit.html"
+            ],
+        )
+        self.assertEqual(
+            ["thm-u-03-09-04-sequential-criterion"],
+            REQUIRED_RENDERED_ANCHORS[
+                "book/part-03/chapter-09/u-03-09-04-sequential-function-limits.html"
+            ],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
