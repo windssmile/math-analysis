@@ -99,6 +99,16 @@ class Chapter05Tests(unittest.TestCase):
         ).read_text(encoding="utf-8")
         self.assertIn(r"\overline{\mathbb R}", chapter_08_content)
 
+    def test_reviewed_tex_and_prose_regressions_stay_fixed(self) -> None:
+        chapter_content = "\n".join(
+            path.read_text(encoding="utf-8")
+            for path in sorted((ROOT / "book/part-02/chapter-05").glob("*.qmd"))
+        )
+        self.assertNotIn(",quad", chapter_content)
+        self.assertNotIn(",qquad", chapter_content)
+        self.assertNotIn("somewhere", chapter_content)
+        self.assertIn("常数数列 $c_n\\equiv0$ 由定义立即收敛于 $0$", chapter_content)
+
 
 if __name__ == "__main__":
     unittest.main()
