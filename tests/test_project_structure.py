@@ -17,18 +17,26 @@ class ProjectStructureTests(unittest.TestCase):
         missing = [path for path in required_files if not (ROOT / path).is_file()]
         self.assertEqual(missing, [])
 
-    def test_parts_two_three_dependency_map_is_frozen(self):
+    def test_parts_two_three_dependency_map_is_frozen(self) -> None:
         dependency_map = (
             ROOT / "curriculum/parts-02-03-dependencies.md"
         ).read_text(encoding="utf-8")
-        required_markers = [
+        required_markers = (
             "supremum -> monotone",
             "monotone -> nested intervals",
             "nested intervals -> Bolzano-Weierstrass",
             "Bolzano-Weierstrass -> Cauchy",
             "Part II owns contraction convergence",
             "Part III owns continuous existence",
-        ]
+            "finite function limits -> continuity",
+            "Bolzano-Weierstrass + closed interval -> sequential compactness",
+            "continuity + sequential compactness -> boundedness/extreme value/uniform continuity",
+            "continuity + nested intervals -> IVT",
+            "IVT -> continuous self-map fixed point existence",
+            "IVT/sign invariant + interval length -> bisection certificates",
+            "IVT independent of extreme value and uniform continuity",
+            "bisection error independent of compactness",
+        )
 
         for marker in required_markers:
             with self.subTest(marker=marker):
