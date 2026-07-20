@@ -28,6 +28,22 @@ class Chapter11Tests(unittest.TestCase):
                 self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (theory, applied))
                 self.assertEqual(unit["path"], f"book/part-03/chapter-11/{unit_id}-{suffix}.qmd")
 
+    def test_compactness_pages_keep_the_confirmed_scope(self) -> None:
+        compact = (ROOT / "book/part-03/chapter-11/u-03-11-01-compact-intervals.qmd").read_text(encoding="utf-8")
+        extrema = (ROOT / "book/part-03/chapter-11/u-03-11-02-extreme-value-theorem.qmd").read_text(encoding="utf-8")
+        uniform = (ROOT / "book/part-03/chapter-11/u-03-11-03-uniform-continuity.qmd").read_text(encoding="utf-8")
+
+        self.assertIn("def-u-03-11-01-open-cover", compact)
+        self.assertIn("def-u-03-11-01-compactness", compact)
+        self.assertIn("thm-u-03-11-01-heine-borel", compact)
+        self.assertIn("上确界", compact)
+        self.assertIn("有限子覆盖", compact)
+        self.assertIn("thm-u-03-11-02-extreme-value", extrema)
+        self.assertIn("thm-u-03-11-03-uniform-continuity", uniform)
+        self.assertIn(r"\min", uniform)
+        for page in (compact, extrema, uniform):
+            self.assertNotIn("一般度量空间", page)
+
 
 if __name__ == "__main__":
     unittest.main()
