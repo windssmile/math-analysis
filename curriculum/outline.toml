@@ -63,6 +63,7 @@ title = "函数极限、连续性与方程"
 question = "近似值能否保证真实解存在？"
 theory_hours = 20
 applied_hours = 6
+show_units = true
 [[parts.chapters]]
 id = "chapter-09"
 number = 9

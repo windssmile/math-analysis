@@ -46,7 +46,15 @@ class CurriculumMapTests(unittest.TestCase):
             "   - [上/下极限怎样总结所有尾部行为？](part-02/chapter-08/u-02-08-05-limsup-liminf.qmd#u-02-08-05)",
             rendered,
         )
-        self.assertNotIn("part-03/chapter-12/u-03-12-01", rendered)
+        self.assertIn(
+            "   - [函数在一点附近意味着什么？](part-03/chapter-09/u-03-09-01-local-neighborhoods.qmd#u-03-09-01)",
+            rendered,
+        )
+        self.assertIn(
+            "   - [有固定点是否意味着简单迭代会收敛？](part-03/chapter-12/u-03-12-03-fixed-points-and-iteration.qmd#u-03-12-03)",
+            rendered,
+        )
+        self.assertEqual(13, rendered.count("part-03/chapter-"))
 
         self.assertEqual(MAP.read_text(encoding="utf-8"), rendered)
 

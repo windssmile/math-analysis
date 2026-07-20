@@ -44,7 +44,19 @@ book:
         - book/part-02/chapter-08/u-02-08-05-limsup-liminf.qmd
     - part: "第三部：函数极限、连续性与方程"
       chapters:
-        - book/part-03/chapter-12/u-03-12-01-ivt-bisection.qmd
+        - book/part-03/chapter-09/u-03-09-01-local-neighborhoods.qmd
+        - book/part-03/chapter-09/u-03-09-02-epsilon-delta-limit.qmd
+        - book/part-03/chapter-09/u-03-09-03-function-limit-laws.qmd
+        - book/part-03/chapter-09/u-03-09-04-sequential-function-limits.qmd
+        - book/part-03/chapter-10/u-03-10-01-epsilon-delta-continuity.qmd
+        - book/part-03/chapter-10/u-03-10-02-continuous-operations.qmd
+        - book/part-03/chapter-10/u-03-10-03-discontinuities-elementary-functions.qmd
+        - book/part-03/chapter-11/u-03-11-01-compact-intervals.qmd
+        - book/part-03/chapter-11/u-03-11-02-extreme-value-theorem.qmd
+        - book/part-03/chapter-11/u-03-11-03-uniform-continuity.qmd
+        - book/part-03/chapter-12/u-03-12-01-intermediate-value-theorem.qmd
+        - book/part-03/chapter-12/u-03-12-02-certified-bisection.qmd
+        - book/part-03/chapter-12/u-03-12-03-fixed-points-and-iteration.qmd
   appendices:
     - book/bridges/python/functions-loops.qmd
 

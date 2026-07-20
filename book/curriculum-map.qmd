@@ -60,9 +60,22 @@
 **学时：** 理论 20 + 应用 6 = 26
 
 9. [函数极限与局部行为]{#chapter-09}
+   - [函数在一点附近意味着什么？](part-03/chapter-09/u-03-09-01-local-neighborhoods.qmd#u-03-09-01)
+   - [“任意接近”怎样定义函数极限？](part-03/chapter-09/u-03-09-02-epsilon-delta-limit.qmd#u-03-09-02)
+   - [局部估计怎样传递极限？](part-03/chapter-09/u-03-09-03-function-limit-laws.qmd#u-03-09-03)
+   - [用点列靠近能否判别函数极限？](part-03/chapter-09/u-03-09-04-sequential-function-limits.qmd#u-03-09-04)
 10. [连续函数与连续运算]{#chapter-10}
+   - [连续性怎样写成局部控制？](part-03/chapter-10/u-03-10-01-epsilon-delta-continuity.qmd#u-03-10-01)
+   - [连续性怎样经过运算和复合传递？](part-03/chapter-10/u-03-10-02-continuous-operations.qmd#u-03-10-02)
+   - [函数会以哪些方式失去连续性？](part-03/chapter-10/u-03-10-03-discontinuities-elementary-functions.qmd#u-03-10-03)
 11. [闭区间上的整体性质]{#chapter-11}
+   - [为什么闭区间能把无限局部信息压缩为有限控制？](part-03/chapter-11/u-03-11-01-compact-intervals.qmd#u-03-11-01)
+   - [连续函数为何一定有界并取得最值？](part-03/chapter-11/u-03-11-02-extreme-value-theorem.qmd#u-03-11-02)
+   - [局部连续何时升级为全局一致控制？](part-03/chapter-11/u-03-11-03-uniform-continuity.qmd#u-03-11-03)
 12. [零点、不动点与迭代求解]{#chapter-12}
+   - [连续函数怎样保证取遍中间值？](part-03/chapter-12/u-03-12-01-intermediate-value-theorem.qmd#u-03-12-01)
+   - [怎样把有根证明变成误差可证的算法？](part-03/chapter-12/u-03-12-02-certified-bisection.qmd#u-03-12-02)
+   - [有固定点是否意味着简单迭代会收敛？](part-03/chapter-12/u-03-12-03-fixed-points-and-iteration.qmd#u-03-12-03)
 
 ## 第四部：微分与局部线性化
 **问题弧：** 局部变化能告诉我们多少整体信息？
