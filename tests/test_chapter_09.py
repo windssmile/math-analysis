@@ -29,6 +29,20 @@ class Chapter09Tests(unittest.TestCase):
                 self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (theory, applied))
                 self.assertEqual(unit["path"], f"book/part-03/chapter-09/{unit_id}-{suffix}.qmd")
 
+    def test_function_limit_pages_keep_epsilon_delta_as_the_main_language(self) -> None:
+        local = (ROOT / "book/part-03/chapter-09/u-03-09-01-local-neighborhoods.qmd").read_text(encoding="utf-8")
+        epsilon_delta = (ROOT / "book/part-03/chapter-09/u-03-09-02-epsilon-delta-limit.qmd").read_text(encoding="utf-8")
+        laws = (ROOT / "book/part-03/chapter-09/u-03-09-03-function-limit-laws.qmd").read_text(encoding="utf-8")
+        sequential = (ROOT / "book/part-03/chapter-09/u-03-09-04-sequential-function-limits.qmd").read_text(encoding="utf-8")
+
+        self.assertIn("def-u-03-09-01-neighborhood", local)
+        self.assertIn("def-u-03-09-02-function-limit", epsilon_delta)
+        self.assertIn(r"0<|x-a|<\delta", epsilon_delta)
+        self.assertIn("thm-u-03-09-03-squeeze", laws)
+        self.assertIn("thm-u-03-09-04-sequential-criterion", sequential)
+        self.assertIn("反设", sequential)
+        self.assertNotIn("连续函数", epsilon_delta)
+
 
 if __name__ == "__main__":
     unittest.main()
