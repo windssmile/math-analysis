@@ -34,6 +34,36 @@ VALID_CONTENT = "\n".join(
 )
 
 
+def v2_content(
+    *, examples: int = 2, exercises: int = 5, answers: int = 7
+) -> str:
+    lines = [
+        f"# 连续函数怎样保证取遍中间值？ {{#{UNIT_ID}}}",
+        "",
+        "## 先备知识",
+        "## 学习目标",
+        "## 牵引问题",
+        "## 探索与猜想",
+        "## 概念与理论",
+        "## 例题与迁移",
+    ]
+    lines.extend(f"### 例题 {index + 1} {{#ex-{index + 1}}}" for index in range(examples))
+    lines.extend(
+        [
+            "## 即时检验与回望",
+            "## 习题与答案",
+        ]
+    )
+    lines.extend(
+        f"### 习题 {index + 1} {{#pr-{index + 1}}}" for index in range(exercises)
+    )
+    lines.extend(
+        "::: {.callout-note collapse=\"true\"}" for _ in range(answers)
+    )
+    lines.extend(["## 常见误区与后续", ""])
+    return "\n".join(lines)
+
+
 class UnitValidationTests(unittest.TestCase):
     def pilot_unit(self, data: dict) -> dict:
         """Return the stable pilot unit regardless of registry insertion order."""
@@ -199,6 +229,89 @@ class UnitValidationTests(unittest.TestCase):
             f"{UNIT_ID} content file is missing heading: ## 探索与猜想",
             self.validate_with_content(self.load_registry(), content),
         )
+
+    def test_accepts_version_one_content_standard_when_explicit_or_missing(self) -> None:
+        for content_standard in (1, "missing"):
+            with self.subTest(content_standard=content_standard):
+                data = copy.deepcopy(self.load_registry())
+                unit = self.pilot_unit(data)
+                if content_standard == "missing":
+                    unit.pop("content_standard", None)
+                else:
+                    unit["content_standard"] = content_standard
+                self.assertEqual(self.validate_with_content(data), [])
+
+    def test_accepts_version_two_content_at_all_count_boundaries(self) -> None:
+        data = copy.deepcopy(self.load_registry())
+        self.pilot_unit(data)["content_standard"] = 2
+        self.assertEqual(self.validate_with_content(data, v2_content()), [])
+
+    def test_rejects_version_two_content_one_below_each_count_boundary(self) -> None:
+        cases = (
+            (
+                {"examples": 1},
+                f"{UNIT_ID} v2 content must contain at least 2 anchored examples",
+            ),
+            (
+                {"exercises": 4},
+                f"{UNIT_ID} v2 content must contain at least 5 anchored exercises",
+            ),
+            (
+                {"answers": 6},
+                f"{UNIT_ID} v2 content must contain at least 7 collapsed answers",
+            ),
+        )
+        for counts, expected_error in cases:
+            with self.subTest(**counts):
+                data = copy.deepcopy(self.load_registry())
+                self.pilot_unit(data)["content_standard"] = 2
+                self.assertIn(
+                    expected_error,
+                    self.validate_with_content(data, v2_content(**counts)),
+                )
+
+    def test_version_two_fenced_decoys_do_not_satisfy_requirements(self) -> None:
+        data = copy.deepcopy(self.load_registry())
+        self.pilot_unit(data)["content_standard"] = 2
+        content = VALID_CONTENT + "\n".join(
+            [
+                "```markdown",
+                "## 常见误区与后续",
+                "### 伪例题一 {#ex-fake-1}",
+                "### 伪例题二 {#ex-fake-2}",
+                *[f"### 伪习题 {index + 1} {{#pr-fake-{index + 1}}}" for index in range(5)],
+                *["::: {.callout-note collapse=\"true\"}" for _ in range(7)],
+                "```",
+                "",
+            ]
+        )
+        errors = self.validate_with_content(data, content)
+        self.assertIn(
+            f"{UNIT_ID} content file is missing heading: ## 常见误区与后续",
+            errors,
+        )
+        self.assertIn(
+            f"{UNIT_ID} v2 content must contain at least 2 anchored examples",
+            errors,
+        )
+        self.assertIn(
+            f"{UNIT_ID} v2 content must contain at least 5 anchored exercises",
+            errors,
+        )
+        self.assertIn(
+            f"{UNIT_ID} v2 content must contain at least 7 collapsed answers",
+            errors,
+        )
+
+    def test_rejects_invalid_content_standard_without_crashing(self) -> None:
+        for value in (True, False, "2", 0, 3, 1.0, None, [], {}):
+            with self.subTest(value=value):
+                data = copy.deepcopy(self.load_registry())
+                self.pilot_unit(data)["content_standard"] = value
+                self.assertIn(
+                    f"{UNIT_ID}.content_standard must be the integer 1 or 2",
+                    self.validate_with_content(data),
+                )
 
     def test_rejects_absolute_or_traversing_repository_paths(self) -> None:
         cases = (

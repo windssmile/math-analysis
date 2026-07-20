@@ -42,6 +42,8 @@ REQUIRED_QMD_HEADINGS = (
     "## 即时检验与回望",
     "## 习题与答案",
 )
+V2_REQUIRED_HEADINGS = REQUIRED_QMD_HEADINGS + ("## 常见误区与后续",)
+V2_COLLAPSED_ANSWER_OPENING = '::: {.callout-note collapse="true"}'
 
 
 def load_units(path: Path = UNITS) -> dict:
@@ -164,7 +166,11 @@ def _validate_string_list(
 
 
 def _validate_content_file(
-    unit_id: str, relative_path: str, content_path: Path, errors: list[str]
+    unit_id: str,
+    relative_path: str,
+    content_path: Path,
+    content_standard: int,
+    errors: list[str],
 ) -> None:
     if not content_path.is_file():
         errors.append(f"{unit_id} content file does not exist: {relative_path}")
@@ -189,9 +195,37 @@ def _validate_content_file(
         )
 
     lines = set(non_fenced_lines)
-    for heading in REQUIRED_QMD_HEADINGS:
+    required_headings = (
+        V2_REQUIRED_HEADINGS if content_standard == 2 else REQUIRED_QMD_HEADINGS
+    )
+    for heading in required_headings:
         if heading not in lines:
             errors.append(f"{unit_id} content file is missing heading: {heading}")
+
+    if content_standard == 2:
+        anchored_examples = sum(
+            line.startswith("### ") and "{#ex-" in line
+            for line in non_fenced_lines
+        )
+        if anchored_examples < 2:
+            errors.append(
+                f"{unit_id} v2 content must contain at least 2 anchored examples"
+            )
+
+        anchored_exercises = sum(
+            line.startswith("### ") and "{#pr-" in line
+            for line in non_fenced_lines
+        )
+        if anchored_exercises < 5:
+            errors.append(
+                f"{unit_id} v2 content must contain at least 5 anchored exercises"
+            )
+
+        collapsed_answers = non_fenced_lines.count(V2_COLLAPSED_ANSWER_OPENING)
+        if collapsed_answers < 7:
+            errors.append(
+                f"{unit_id} v2 content must contain at least 7 collapsed answers"
+            )
 
 
 def validate_units(
@@ -266,6 +300,13 @@ def validate_units(
         if type(difficulty) is not int or difficulty <= 0:
             errors.append(f"{label}.difficulty must be a positive integer")
 
+        content_standard = unit.get("content_standard", 1)
+        if type(content_standard) is not int or content_standard not in (1, 2):
+            errors.append(
+                f"{label}.content_standard must be the integer 1 or 2"
+            )
+            content_standard = 1
+
         valid_lists: dict[str, list[object]] = {}
         for field in REQUIRED_LIST_FIELDS:
             value = unit.get(field)
@@ -317,7 +358,13 @@ def validate_units(
                 relative_path, f"{label}.path", root, errors
             )
             if content_path is not None:
-                _validate_content_file(unit_id, relative_path, content_path, errors)
+                _validate_content_file(
+                    unit_id,
+                    relative_path,
+                    content_path,
+                    content_standard,
+                    errors,
+                )
 
     return errors
 
