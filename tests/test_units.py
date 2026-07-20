@@ -35,10 +35,14 @@ VALID_CONTENT = "\n".join(
 
 
 def v2_content(
-    *, examples: int = 2, exercises: int = 5, answers: int = 7
+    *,
+    unit_id: str = UNIT_ID,
+    examples: int = 2,
+    exercises: int = 5,
+    answers: int = 7,
 ) -> str:
     lines = [
-        f"# 连续函数怎样保证取遍中间值？ {{#{UNIT_ID}}}",
+        f"# 连续函数怎样保证取遍中间值？ {{#{unit_id}}}",
         "",
         "## 先备知识",
         "## 学习目标",
@@ -47,7 +51,10 @@ def v2_content(
         "## 概念与理论",
         "## 例题与迁移",
     ]
-    lines.extend(f"### 例题 {index + 1} {{#ex-{index + 1}}}" for index in range(examples))
+    lines.extend(
+        f"### 例题 {index + 1} {{#ex-{unit_id}-{index + 1}}}"
+        for index in range(examples)
+    )
     lines.extend(
         [
             "## 即时检验与回望",
@@ -55,7 +62,8 @@ def v2_content(
         ]
     )
     lines.extend(
-        f"### 习题 {index + 1} {{#pr-{index + 1}}}" for index in range(exercises)
+        f"### 习题 {index + 1} {{#pr-{unit_id}-{index + 1}}}"
+        for index in range(exercises)
     )
     lines.extend(
         "::: {.callout-note collapse=\"true\"}" for _ in range(answers)
@@ -95,22 +103,10 @@ class UnitValidationTests(unittest.TestCase):
                     unit_id = unit.get("id", "placeholder")
                     if unit_path == CONTENT_PATH:
                         unit_content = content
+                    elif unit.get("content_standard", 1) == 2:
+                        unit_content = v2_content(unit_id=unit_id)
                     else:
-                        unit_content = "\n".join(
-                            [
-                                f"# 占位单元 {{#{unit_id}}}",
-                                "",
-                                "## 先备知识",
-                                "## 学习目标",
-                                "## 牵引问题",
-                                "## 探索与猜想",
-                                "## 概念与理论",
-                                "## 例题与迁移",
-                                "## 即时检验与回望",
-                                "## 习题与答案",
-                                "",
-                            ]
-                        )
+                        unit_content = VALID_CONTENT.replace(UNIT_ID, unit_id)
                     content_path.write_text(unit_content, encoding="utf-8")
             bridge_path = root / BRIDGE_PATH
             bridge_path.parent.mkdir(parents=True)

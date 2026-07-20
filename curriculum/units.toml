@@ -5,64 +5,85 @@ id = "u-02-05-01"
 chapter_id = "chapter-05"
 title = "数列怎样记录无限过程？"
 path = "book/part-02/chapter-05/u-02-05-01-sequences.qmd"
-theory_hours = 1.25
+theory_hours = 1.50
 applied_hours = 0.50
 difficulty = 1
 book_prerequisites = ["chapter-04"]
-higher_algebra_prerequisites = ["自然数与递推记号"]
+content_standard = 2
+higher_algebra_prerequisites = ["函数记号", "自然数与递推记号"]
 analytic_geometry_prerequisites = []
 python_prerequisites = ["列表与 for 循环"]
 knowledge_bridges = []
 capabilities = ["concepts", "mathematical_expression", "numerical_algorithm"]
-learning_goals = ["把数列表示为定义在正整数上的函数", "区分有限数据和无限规则", "用递推与显式公式产生数列"]
+learning_goals = ["把实数列定义为正整数集上的实值函数", "区分有限前缀与无限生成规则", "在显式定义与递推定义之间转换", "用尾部语言陈述最终性质"]
 
 [[units]]
 id = "u-02-05-02"
 chapter_id = "chapter-05"
 title = "“最终任意接近”怎样写成定义？"
 path = "book/part-02/chapter-05/u-02-05-02-epsilon-n.qmd"
-theory_hours = 1.75
+theory_hours = 2.00
 applied_hours = 0.25
 difficulty = 2
+content_standard = 2
 book_prerequisites = ["chapter-04", "chapter-05"]
-higher_algebra_prerequisites = ["绝对值与不等式"]
+higher_algebra_prerequisites = ["绝对值与不等式", "正实数幂的单调性"]
 analytic_geometry_prerequisites = []
 python_prerequisites = []
 knowledge_bridges = []
 capabilities = ["concepts", "proof", "mathematical_expression"]
-learning_goals = ["准确陈述 epsilon-N 定义", "为基本数列构造 N", "辨析量词顺序"]
+learning_goals = ["准确陈述并否定 epsilon-N 定义", "完整证明 1/n 与 c/n^p 收敛于零", "从目标误差发现并呈现 N(epsilon)", "辨析量词顺序与固定容差"]
+
+[[units]]
+id = "u-02-05-05"
+chapter_id = "chapter-05"
+title = "极限证明怎样从目标误差反推起点？"
+path = "book/part-02/chapter-05/u-02-05-05-limit-consequences.qmd"
+theory_hours = 2.00
+applied_hours = 0.25
+difficulty = 3
+content_standard = 2
+book_prerequisites = ["chapter-05"]
+higher_algebra_prerequisites = ["绝对值与三角不等式", "严格不等式"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "mathematical_expression"]
+learning_goals = ["从目标误差反推共同门槛", "证明有限极限唯一性与收敛数列有界性", "用正间隔推出最终严格不等式", "写出收敛定义的正确否定并构造反例"]
 
 [[units]]
 id = "u-02-05-03"
 chapter_id = "chapter-05"
 title = "不收敛与趋于无穷怎样区分？"
 path = "book/part-02/chapter-05/u-02-05-03-divergence-infinity.qmd"
-theory_hours = 1.75
+theory_hours = 1.50
 applied_hours = 0.25
 difficulty = 2
+content_standard = 2
 book_prerequisites = ["chapter-05"]
 higher_algebra_prerequisites = ["绝对值与不等式"]
 analytic_geometry_prerequisites = []
 python_prerequisites = []
 knowledge_bridges = []
 capabilities = ["concepts", "proof", "mathematical_expression"]
-learning_goals = ["否定数列收敛定义", "定义趋于正无穷与负无穷", "区分振荡和趋于无穷"]
+learning_goals = ["正确否定数列收敛定义", "用量词定义趋于正无穷与负无穷", "区分有限不收敛、振荡、无界与发散到无穷", "用反例检验这些概念之间的关系"]
 
 [[units]]
 id = "u-02-05-04"
 chapter_id = "chapter-05"
 title = "迭代数据何时值得相信？"
 path = "book/part-02/chapter-05/u-02-05-04-iteration-evidence.qmd"
-theory_hours = 1.75
-applied_hours = 0.50
+theory_hours = 1.00
+applied_hours = 0.75
 difficulty = 2
+content_standard = 2
 book_prerequisites = ["chapter-05"]
-higher_algebra_prerequisites = ["分式运算"]
+higher_algebra_prerequisites = ["分式运算", "递推代入"]
 analytic_geometry_prerequisites = []
 python_prerequisites = ["函数定义", "for 循环", "格式化输出"]
 knowledge_bridges = ["book/bridges/python/functions-loops.qmd"]
 capabilities = ["concepts", "proof", "numerical_algorithm", "mathematical_expression"]
-learning_goals = ["从数值表提出收敛猜想", "识别数据不能替代证明", "比较振荡与慢收敛"]
+learning_goals = ["用有限迭代表形成可检验猜想", "比较稳定、振荡与缓慢变化的递推数据", "解释小增量、图像与有限前缀为何不是收敛证明", "把数值证据与 epsilon-N 证明任务分开"]
 
 [[units]]
 id = "u-02-06-01"

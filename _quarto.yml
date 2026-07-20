@@ -28,6 +28,7 @@ book:
       chapters:
         - book/part-02/chapter-05/u-02-05-01-sequences.qmd
         - book/part-02/chapter-05/u-02-05-02-epsilon-n.qmd
+        - book/part-02/chapter-05/u-02-05-05-limit-consequences.qmd
         - book/part-02/chapter-05/u-02-05-03-divergence-infinity.qmd
         - book/part-02/chapter-05/u-02-05-04-iteration-evidence.qmd
         - book/part-02/chapter-06/u-02-06-01-limit-laws.qmd
