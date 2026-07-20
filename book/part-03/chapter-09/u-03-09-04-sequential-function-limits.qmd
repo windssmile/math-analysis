@@ -25,7 +25,7 @@
 
 ## 概念与理论
 
-**定理（序列判别）** {#thm-u-03-09-04-sequential-criterion}
+### 定理（序列判别） {#thm-u-03-09-04-sequential-criterion}
 
 设 \(a\) 是 \(D\) 的聚点，则 \(\lim_{x\to a}f(x)=L\)，当且仅当对任意 \(x_n\in D\setminus\{a\}\) 且 \(x_n\to a\)，都有 \(f(x_n)\to L\)。
 

@@ -25,7 +25,7 @@
 
 ## 概念与理论
 
-**定义（函数极限）** {#def-u-03-09-02-function-limit}
+### 定义（函数极限） {#def-u-03-09-02-function-limit}
 
 设 \(a\) 是定义域 \(D\) 的聚点。称 \(f:D\to\mathbb R\) 在 \(x\to a\) 时以 \(L\) 为极限，记作 \(\lim_{x\to a}f(x)=L\)，若对每个 \(\varepsilon>0\)，存在 \(\delta>0\)，使所有 \(x\in D\) 满足
 

@@ -25,7 +25,7 @@
 
 称 \(f:D\to\mathbb R\) 一致连续，若对任意 \(\varepsilon>0\)，存在 \(\delta>0\)，使任意 \(x,y\in D\) 满足 \(|x-y|<\delta\) 时都有 \(|f(x)-f(y)|<\varepsilon\)。
 
-**定理（Heine--Cantor）** {#thm-u-03-11-03-uniform-continuity}
+### 定理（Heine--Cantor） {#thm-u-03-11-03-uniform-continuity}
 
 连续函数 \(f:[a,b]\to\mathbb R\) 一致连续。
 

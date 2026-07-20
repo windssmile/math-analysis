@@ -23,15 +23,15 @@
 
 ## 概念与理论
 
-**定义（开覆盖）** {#def-u-03-11-01-open-cover}
+### 定义（开覆盖） {#def-u-03-11-01-open-cover}
 
 集合族 \(\mathcal U\) 是 \(K\subset\mathbb R\) 的开覆盖，若每个 \(U\in\mathcal U\) 是开集且 \(K\subset\bigcup_{U\in\mathcal U}U\)。从中选出有限多个仍覆盖 \(K\)，称为有限子覆盖。
 
-**定义（紧致）** {#def-u-03-11-01-compactness}
+### 定义（紧致） {#def-u-03-11-01-compactness}
 
 若 \(K\) 的每个开覆盖都有有限子覆盖，则 \(K\) 紧致。
 
-**定理（闭区间紧致）** {#thm-u-03-11-01-heine-borel}
+### 定理（闭区间紧致） {#thm-u-03-11-01-heine-borel}
 
 每个闭区间 \([a,b]\) 紧致。
 
