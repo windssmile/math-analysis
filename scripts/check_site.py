@@ -36,6 +36,23 @@ REQUIRED_RENDERED_ANCHORS = {
         "ex-u-01-04-04-small-residual",
         "ex-u-01-04-04-false-bisection",
     ],
+    "book/part-03/chapter-09/u-03-09-02-epsilon-delta-limit.html": [
+        "def-u-03-09-02-function-limit",
+    ],
+    "book/part-03/chapter-09/u-03-09-04-sequential-function-limits.html": [
+        "thm-u-03-09-04-sequential-criterion",
+    ],
+    "book/part-03/chapter-11/u-03-11-01-compact-intervals.html": [
+        "def-u-03-11-01-compactness",
+        "thm-u-03-11-01-heine-borel",
+    ],
+    "book/part-03/chapter-11/u-03-11-03-uniform-continuity.html": [
+        "thm-u-03-11-03-uniform-continuity",
+    ],
+    "book/part-03/chapter-12/u-03-12-02-certified-bisection.html": [
+        "alg-u-03-12-02-bisection",
+        "thm-u-03-12-02-bisection-error",
+    ],
 }
 
 
@@ -109,19 +126,24 @@ def main() -> int:
         expected_pages=registered_unit_pages(),
         expected_anchors=REQUIRED_RENDERED_ANCHORS,
     )
-    pilot_pages = list(SITE.rglob("*u-03-12-01-ivt-bisection*.html"))
-    if not pilot_pages:
-        errors.append("rendered site is missing the pilot unit page")
-    else:
-        pilot = pilot_pages[0].read_text(encoding="utf-8")
-        for required in ["u-03-12-01", "介值定理", "二分法", "习题与答案"]:
-            if required not in pilot:
-                errors.append(f"pilot unit page is missing {required}")
+    for marker_page, markers in {
+        "book/part-03/chapter-09/u-03-09-02-epsilon-delta-limit.html": ["u-03-09-02", "函数极限"],
+        "book/part-03/chapter-11/u-03-11-01-compact-intervals.html": ["u-03-11-01", "紧致"],
+        "book/part-03/chapter-12/u-03-12-02-certified-bisection.html": ["u-03-12-02", "二分法"],
+    }.items():
+        page = SITE / marker_page
+        if not page.is_file():
+            errors.append(f"rendered site is missing Part III marker page: {marker_page}")
+            continue
+        rendered = page.read_text(encoding="utf-8")
+        for marker in markers:
+            if marker not in rendered:
+                errors.append(f"Part III marker page {marker_page} is missing {marker}")
     if errors:
         for error in errors:
             print(f"ERROR: {error}")
         return 1
-    print("site valid: internal links and pilot markers present")
+    print("site valid: internal links and Part III markers present")
     return 0
 
 
