@@ -28,6 +28,26 @@ class Chapter12Tests(unittest.TestCase):
                 self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (theory, applied))
                 self.assertEqual(unit["path"], f"book/part-03/chapter-12/{unit_id}-{suffix}.qmd")
 
+    def test_existence_and_algorithm_pages_keep_the_confirmed_scope(self) -> None:
+        ivt = (ROOT / "book/part-03/chapter-12/u-03-12-01-intermediate-value-theorem.qmd").read_text(encoding="utf-8")
+        bisection = (ROOT / "book/part-03/chapter-12/u-03-12-02-certified-bisection.qmd").read_text(encoding="utf-8")
+        fixed_point = (ROOT / "book/part-03/chapter-12/u-03-12-03-fixed-points-and-iteration.qmd").read_text(encoding="utf-8")
+
+        for marker in ("thm-u-03-12-01-intermediate-value", "thm-u-03-12-01-zero"):
+            self.assertIn(marker, ivt)
+        for marker in ("alg-u-03-12-02-bisection", "thm-u-03-12-02-bisection-error"):
+            self.assertIn(marker, bisection)
+        self.assertIn("先验误差上界", bisection)
+        self.assertIn("mathbook_examples.bisection", bisection)
+        self.assertIn("残差", bisection)
+        self.assertIn("thm-u-03-12-03-fixed-point", fixed_point)
+        self.assertIn(r"x_{n+1}=1-x_n", fixed_point)
+        self.assertIn("唯一不动点", fixed_point)
+        self.assertIn("压缩映射定理", fixed_point)
+        for page in (ivt, bisection, fixed_point):
+            self.assertNotIn("Newton", page)
+            self.assertNotIn("中值定理", page)
+
 
 if __name__ == "__main__":
     unittest.main()
