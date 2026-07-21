@@ -175,7 +175,11 @@ $a_{n+1}-a_n=2>0$，故它严格递增。给定 $M\in\mathbb R$，取自然数 $
 ::: {.callout-note collapse="true"}
 ## 答案
 
-$a_{n+1}\le a_n$ 等价于 $-a_{n+1}\ge-a_n$，故 $(-a_n)$ 递增。若 $m$ 是 $(a_n)$ 的下界，则 $a_n\ge m$ 给出 $-a_n\le-m$，所以 $(-a_n)$ 有上界。递增定理给出 $-a_n\to s$；由常数倍极限法则，$a_n\to-s$。事实上 $s=\sup\{-a_n}=-\inf\{a_n}$。
+$a_{n+1}\le a_n$ 等价于 $-a_{n+1}\ge-a_n$，故 $(-a_n)$ 递增。若 $m$ 是 $(a_n)$ 的下界，则 $a_n\ge m$ 给出 $-a_n\le-m$，所以 $(-a_n)$ 有上界。递增定理给出 $-a_n\to s$；由常数倍极限法则，$a_n\to-s$。事实上
+
+$$
+s=\sup\{-a_n:n\in\mathbb N\}=-\inf\{a_n:n\in\mathbb N\}.
+$$
 :::
 
 ## 常见误区与后续

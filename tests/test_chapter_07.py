@@ -15,17 +15,22 @@ CHAPTER = ROOT / "book" / "part-02" / "chapter-07"
 class Chapter07Tests(unittest.TestCase):
     def test_registry_closes_chapter_hours_and_paths(self) -> None:
         with UNITS.open("rb") as handle:
-            by_id = {unit["id"]: unit for unit in tomllib.load(handle)["units"]}
-        expected = {
-            "u-02-07-01": ("单调数列为什么会有极限？", 2.00, 0.25, "monotone-sequences"),
-            "u-02-07-02": ("递推的界与单调性怎样建立？", 1.75, 0.50, "recursive-invariants"),
-            "u-02-07-03": ("区间套怎样保证唯一目标？", 1.75, 0.25, "nested-intervals"),
-            "u-02-07-04": ("完备性怎样成为收敛准则？", 1.50, 0.00, "completeness-criteria"),
-        }
-        chapter_units = [unit for unit in by_id.values() if unit["chapter_id"] == "chapter-07"]
-        for unit_id, (title, theory, applied, suffix) in expected.items():
+            units = tomllib.load(handle)["units"]
+        chapter_units = [unit for unit in units if unit["chapter_id"] == "chapter-07"]
+        expected = [
+            ("u-02-07-01", "单调数列为什么会有极限？", 2.00, 0.25, "monotone-sequences"),
+            ("u-02-07-02", "递推的界与单调性怎样建立？", 1.75, 0.50, "recursive-invariants"),
+            ("u-02-07-03", "区间套怎样保证唯一目标？", 1.75, 0.25, "nested-intervals"),
+            ("u-02-07-04", "完备性怎样成为收敛准则？", 1.50, 0.00, "completeness-criteria"),
+        ]
+        self.assertEqual(
+            [unit["id"] for unit in chapter_units],
+            [row[0] for row in expected],
+        )
+        for unit, (unit_id, title, theory, applied, suffix) in zip(
+            chapter_units, expected, strict=True
+        ):
             with self.subTest(unit_id=unit_id):
-                unit = by_id[unit_id]
                 self.assertEqual(unit["chapter_id"], "chapter-07")
                 self.assertEqual(unit["title"], title)
                 self.assertEqual((unit["theory_hours"], unit["applied_hours"]), (theory, applied))
@@ -46,6 +51,13 @@ class Chapter07Tests(unittest.TestCase):
             with self.subTest(marker=marker):
                 self.assertIn(marker, content)
 
+    def test_monotone_unit_keeps_complete_dual_item_sets(self) -> None:
+        content = (CHAPTER / "u-02-07-01-monotone-sequences.qmd").read_text(encoding="utf-8")
+        self.assertIn(
+            r"s=\sup\{-a_n:n\in\mathbb N\}=-\inf\{a_n:n\in\mathbb N\}",
+            content,
+        )
+
     def test_recursive_unit_separates_certificate_from_fixed_point_candidate(self) -> None:
         content = (CHAPTER / "u-02-07-02-recursive-invariants.qmd").read_text(encoding="utf-8")
         self.assertIn("{#prop-u-02-07-02-invariant}", content)
@@ -53,6 +65,12 @@ class Chapter07Tests(unittest.TestCase):
         self.assertIn("{#ex-u-02-07-02-oscillation}", content)
         self.assertIn(r"x_{n+1}=1-x_n", content)
         self.assertIn("先证明收敛", content)
+
+    def test_recursive_unit_justifies_shifted_limits_and_adjacent_differences(self) -> None:
+        content = (CHAPTER / "u-02-07-02-recursive-invariants.qmd").read_text(encoding="utf-8")
+        self.assertIn("{#lem-u-02-07-02-shift}", content)
+        self.assertIn(r"|x_{n+1}-L|<\varepsilon", content)
+        self.assertIn(r"x_{n+1}-x_n\to L-L=0", content)
 
     def test_nested_intervals_separate_existence_uniqueness_and_hypotheses(self) -> None:
         content = (CHAPTER / "u-02-07-03-nested-intervals.qmd").read_text(encoding="utf-8")
