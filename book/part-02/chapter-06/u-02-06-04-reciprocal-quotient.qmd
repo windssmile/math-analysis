@@ -27,7 +27,7 @@
 
 $$
 \left|\frac1{b_n}-\frac1b\right|
-=\frac{|b_n-b|}{|b_n|,|b|}.
+=\frac{|b_n-b|}{|b_n|\,|b|}.
 $$
 
 分子已经趋于零，但除非先给 $|b_n|$ 一个正下界，右端仍无法由固定倍数控制。
@@ -81,7 +81,7 @@ $$
 
 $$
 \left|\frac1{b_n}-\frac1b\right|
-=\frac{|b_n-b|}{|b_n|,|b|}
+=\frac{|b_n-b|}{|b_n|\,|b|}
 <\frac{2}{|b|^2}|b_n-b|<\varepsilon.
 $$
 
@@ -98,7 +98,7 @@ $$
 **证明。** 倒数法则给出 $1/b_n\to1/b$。由乘积法则，
 
 $$
-\frac{a_n}{b_n}=a_n\frac1{b_n}	o a\frac1b=\frac ab.
+\frac{a_n}{b_n}=a_n\frac1{b_n}\to a\frac1b=\frac ab.
 $$
 
 $\square$
@@ -112,7 +112,7 @@ $\square$
 $$
 \frac{1/n}{1/n}=1,\qquad
 \frac{1/n^2}{1/n}=\frac1n\to0,\qquad
-\frac{1}{1/n}=n\to+infty.
+\frac{1}{1/n}=n\to+\infty.
 $$
 
 相同的分母零极限可产生不同结果。必须对具体表达式重新化简、估计或使用后续理论，不能约去“极限符号里的零”。

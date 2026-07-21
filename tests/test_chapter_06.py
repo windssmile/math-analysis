@@ -69,6 +69,19 @@ class Chapter06Tests(unittest.TestCase):
         self.assertNotIn("g'(x)", content)
         self.assertNotIn("中值定理", content)
 
+    def test_chapter_tex_has_no_reviewed_corruption_patterns(self) -> None:
+        chapter = ROOT / "book/part-02/chapter-06"
+        contents = "\n".join(path.read_text(encoding="utf-8") for path in sorted(chapter.glob("*.qmd")))
+        corrupt_fragments = {
+            "|,|": "ordinary comma used between absolute-value factors",
+            "\to": "tab plus o left by a damaged \\to command",
+            "+infty": "infinity command missing its backslash",
+            "=lim ": "second limit command missing its backslash",
+        }
+        for fragment, description in corrupt_fragments.items():
+            with self.subTest(fragment=repr(fragment)):
+                self.assertNotIn(fragment, contents, description)
+
 
 if __name__ == "__main__":
     unittest.main()

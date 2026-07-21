@@ -91,7 +91,7 @@ $$
 对数乘，若 $c=0$，目标列恒为 $0$。若 $c\ne0$，给定 $\varepsilon>0$，由 $a_n\to a$ 取 $N$，使 $n\ge N$ 时 $|a_n-a|<\varepsilon/|c|$；于是
 
 $$
-|ca_n-ca|=|c|,|a_n-a|<\varepsilon.
+|ca_n-ca|=|c|\,|a_n-a|<\varepsilon.
 $$
 
 四条结论均得证。$\square$
@@ -120,7 +120,7 @@ $$
 \begin{aligned}
 |a_nb_n-ab|
 &=|a_n(b_n-b)+b(a_n-a)|\\
-&\le |a_n|,|b_n-b|+|b|,|a_n-a|\\
+&\le |a_n|\,|b_n-b|+|b|\,|a_n-a|\\
 &<M\frac{\varepsilon}{2M}
 +|b|\frac{\varepsilon}{2(|b|+1)}
 <\varepsilon.
@@ -222,7 +222,7 @@ $$
 在各自尾部成立。对不小于三个门槛最大值的 $n$，
 
 $$
-|a_nb_n-ab|\le |b_n|,|a_n-a|+|a|,|b_n-b|<\varepsilon.
+|a_nb_n-ab|\le |b_n|\,|a_n-a|+|a|\,|b_n-b|<\varepsilon.
 $$
 :::
 
@@ -244,7 +244,7 @@ $$
 
 ### 习题 5：审查错误的乘积证明 {#pr-u-02-06-01-05}
 
-有人写：$|a_nb_n-ab|\le |a_n|,|b_n-b|+|b|,|a_n-a|$，两项都趋于 $0$，所以结论成立。指出缺口并补齐。
+有人写：$|a_nb_n-ab|\le |a_n|\,|b_n-b|+|b|\,|a_n-a|$，两项都趋于 $0$，所以结论成立。指出缺口并补齐。
 
 ::: {.callout-note collapse="true"}
 ## 答案
