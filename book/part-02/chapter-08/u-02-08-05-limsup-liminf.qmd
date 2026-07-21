@@ -41,9 +41,9 @@ $$
 对 $A_n=\{a_k:k\ge n\}$，定义
 
 $$
-S_n=\sup A_n=\sup_{k\ge n}a_k,
+S_n=\sup A_n=\sup\{a_k:k\ge n\}=\sup_{k\ge n}a_k,
 \qquad
-I_n=\inf A_n=\inf_{k\ge n}a_k.
+I_n=\inf A_n=\inf\{a_k:k\ge n\}=\inf_{k\ge n}a_k.
 $$
 
 因 $A_{n+1}\subseteq A_n$，任何 $A_n$ 的上界也是 $A_{n+1}$ 的上界，故 $S_{n+1}\le S_n$；类似地 $I_{n+1}\ge I_n$。因此 $(S_n)$ 单调不增，$(I_n)$ 单调不减，且逐项 $I_n\le S_n$。

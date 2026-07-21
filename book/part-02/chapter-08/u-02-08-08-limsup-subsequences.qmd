@@ -28,7 +28,7 @@
 
 ### 实现有限上下极限 {#thm-u-02-08-08-finite-realization}
 
-设 $U=\limsup a_n\in\mathbb R$。递归构造如下：已选 $n_{j-1}$ 后，因 $S_N\downarrow U$，可取 $N_j>n_{j-1}$ 使
+设 $U=\limsup a_n\in\mathbb R$，并设 $n_0=0$。递归构造如下：已选 $n_{j-1}$ 后，因 $S_N\downarrow U$，可取 $N_j>n_{j-1}$ 使
 
 $$
 U\le S_{N_j}<U+\frac1j.
@@ -48,13 +48,13 @@ $$
 
 因为 $n_j\ge N_j>n_{j-1}$，指标严格递增，且 $a_{n_j}\to U$。
 
-若 $V=\liminf a_n\in\mathbb R$，同理先取 $N_j>n_{j-1}$ 使 $V-1/j<I_{N_j}\le V$，再由下确界性质选 $n_j\ge N_j$ 使 $a_{n_j}<I_{N_j}+1/j$，得到 $|a_{n_j}-V|<1/j$。
+若 $V=\liminf a_n\in\mathbb R$，令 $m_0=0$。同理先取 $M_j>m_{j-1}$ 使 $V-1/j<I_{M_j}\le V$，再由下确界性质选 $m_j\ge M_j$ 使 $a_{m_j}<I_{M_j}+1/j$。于是 $m_j>m_{j-1}$，并且 $|a_{m_j}-V|<1/j$，故 $a_{m_j}\to V$。
 
 ### 实现无穷上下极限 {#thm-u-02-08-08-infinite-realization}
 
 - 若 $\limsup a_n=+\infty$，则每个尾部向上无界。令 $n_0=0$，递归选 $n_j>n_{j-1}$ 使 $a_{n_j}>j$，便有子列趋于 $+\infty$。
 - 若 $\limsup a_n=-\infty$，则 $S_n\to-\infty$ 且 $a_n\le S_n$，所以整列已趋于 $-\infty$，取 $n_j=j$。
-- 若 $\liminf a_n=-\infty$，每个尾部向下无界，递归选 $a_{n_j}<-j$。
+- 若 $\liminf a_n=-\infty$，每个尾部向下无界。令 $m_0=0$，递归选 $m_j>m_{j-1}$ 使 $a_{m_j}<-j$，便有子列趋于 $-\infty$。
 - 若 $\liminf a_n=+\infty$，由 $a_n\ge I_n\to+\infty$，整列趋于 $+\infty$。
 
 整个论证只用序关系，不使用未定义的扩展实数代数。
@@ -146,7 +146,13 @@ $a_n=(-1)^n$ 的上下极限为 $1,-1$，分别由偶、奇子列实现；其聚
 ::: {.callout-note collapse="true"}
 ## 答案
 
-令 $a_{3k}=0,a_{3k+1}=1,a_{3k+2}=2$。三个余数类子列分别为常数；任意子列若收敛，其项仍只取这三值，取半径小于相邻距离一半即可知极限只能是其中之一。
+对 $k\ge0$，令
+
+$$
+a_{3k+1}=0,\qquad a_{3k+2}=1,\qquad a_{3k+3}=2.
+$$
+
+这一定义从 $a_1$ 开始覆盖所有正整数指标。三个余数类子列分别为常数；任意子列若收敛，其项仍只取这三值，取半径小于相邻距离一半即可知极限只能是其中之一。
 :::
 
 ### 习题 5：夹住整条尾部 {#pr-u-02-08-08-05}

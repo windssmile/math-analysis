@@ -25,10 +25,24 @@ class FixedPointTest(unittest.TestCase):
                     iterate_trace(lambda x: x / 2, 1.0, steps=steps)  # type: ignore[arg-type]
 
     def test_iteration_trace_rejects_nonfinite_values(self) -> None:
-        with self.assertRaisesRegex(ValueError, "^initial value must be finite$"):
-            iterate_trace(lambda x: x / 2, inf, steps=2)
-        with self.assertRaisesRegex(ValueError, "^function value at iteration 2 must be finite$"):
-            iterate_trace(lambda x: nan if x == 0.5 else x / 2, 1.0, steps=3)
+        for initial in (nan, inf, -inf):
+            with self.subTest(initial=initial):
+                with self.assertRaisesRegex(ValueError, "^initial value must be finite$"):
+                    iterate_trace(lambda x: x / 2, initial, steps=2)
+        for output in (nan, inf, -inf):
+            with self.subTest(output=output):
+                with self.assertRaisesRegex(
+                    ValueError, "^function value at iteration 2 must be finite$"
+                ):
+                    iterate_trace(
+                        lambda x, value=output: value if x == 0.5 else x / 2,
+                        1.0,
+                        steps=3,
+                    )
+
+    def test_iteration_trace_describes_missing_certificate_accurately(self) -> None:
+        self.assertIn("uncertified", iterate_trace.__doc__ or "")
+        self.assertNotIn("unchecked", iterate_trace.__doc__ or "")
 
     def test_contraction_iteration_returns_a_posteriori_certificate(self) -> None:
         result = iterate_contraction(

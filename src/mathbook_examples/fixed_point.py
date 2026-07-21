@@ -22,7 +22,7 @@ def _require_finite(value: float, label: str) -> None:
 def iterate_trace(
     function: Callable[[float], float], initial: float, *, steps: int
 ) -> tuple[float, ...]:
-    """Return an unchecked iteration trace for comparison experiments."""
+    """Return an uncertified iteration trace for comparison experiments."""
     _require_finite(initial, "initial value")
     if type(steps) is not int or steps <= 0:
         raise ValueError("steps must be a positive integer")
