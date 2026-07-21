@@ -92,14 +92,32 @@ title = "极限怎样通过代数运算传递？"
 path = "book/part-02/chapter-06/u-02-06-01-limit-laws.qmd"
 theory_hours = 2.00
 applied_hours = 0.25
+content_standard = 2
 difficulty = 3
 book_prerequisites = ["chapter-05"]
-higher_algebra_prerequisites = ["多项式与分式运算", "绝对值不等式"]
+higher_algebra_prerequisites = ["绝对值与三角不等式", "代数恒等变形"]
 analytic_geometry_prerequisites = []
 python_prerequisites = []
 knowledge_bridges = []
 capabilities = ["concepts", "proof", "analytic_calculation", "mathematical_expression"]
-learning_goals = ["证明和积商的极限法则", "识别商法则的分母条件", "用极限法则计算表达式"]
+learning_goals = ["从定义证明常数、和差与数乘法则", "分离有界尾部引理并证明乘积法则", "按表达式结构选择证明路线"]
+
+[[units]]
+id = "u-02-06-04"
+chapter_id = "chapter-06"
+title = "倒数与商法则为何必须远离零？"
+path = "book/part-02/chapter-06/u-02-06-04-reciprocal-quotient.qmd"
+theory_hours = 1.75
+applied_hours = 0.25
+content_standard = 2
+difficulty = 3
+book_prerequisites = ["chapter-05", "chapter-06"]
+higher_algebra_prerequisites = ["分式运算", "反三角不等式"]
+analytic_geometry_prerequisites = []
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "analytic_calculation", "mathematical_expression"]
+learning_goals = ["证明数列尾部远离零", "证明倒数与商法则", "用反例解释分母零极限与未定式边界"]
 
 [[units]]
 id = "u-02-06-02"
@@ -108,6 +126,7 @@ title = "序关系怎样给出极限估计？"
 path = "book/part-02/chapter-06/u-02-06-02-order-squeeze.qmd"
 theory_hours = 1.75
 applied_hours = 0.25
+content_standard = 2
 difficulty = 2
 book_prerequisites = ["chapter-05", "chapter-06"]
 higher_algebra_prerequisites = ["不等式的基本性质"]
@@ -115,15 +134,16 @@ analytic_geometry_prerequisites = []
 python_prerequisites = []
 knowledge_bridges = []
 capabilities = ["concepts", "proof", "analytic_calculation"]
-learning_goals = ["证明极限保序性", "应用夹逼定理", "从估计构造收敛证明"]
+learning_goals = ["证明非严格极限保序性", "区分严格与非严格次序的传递边界", "证明并应用夹逼定理"]
 
 [[units]]
 id = "u-02-06-03"
 chapter_id = "chapter-06"
 title = "误差如何穿过一次迭代？"
 path = "book/part-02/chapter-06/u-02-06-03-error-propagation.qmd"
-theory_hours = 1.75
-applied_hours = 0.50
+theory_hours = 1.00
+applied_hours = 0.75
+content_standard = 2
 difficulty = 2
 book_prerequisites = ["chapter-05", "chapter-06"]
 higher_algebra_prerequisites = ["分式运算", "绝对值不等式"]
@@ -131,7 +151,7 @@ analytic_geometry_prerequisites = []
 python_prerequisites = ["函数定义", "for 循环"]
 knowledge_bridges = ["book/bridges/python/functions-loops.qmd"]
 capabilities = ["proof", "numerical_algorithm", "mathematical_expression"]
-learning_goals = ["推导一次映射的误差公式", "给出代数 Lipschitz 估计", "区分一步估计和收敛证明"]
+learning_goals = ["构造代数误差分解", "给出区间上的代数 Lipschitz 估计", "区分一步估计、不动点存在与迭代收敛"]
 
 [[units]]
 id = "u-02-07-01"

@@ -32,6 +32,7 @@ book:
         - book/part-02/chapter-05/u-02-05-03-divergence-infinity.qmd
         - book/part-02/chapter-05/u-02-05-04-iteration-evidence.qmd
         - book/part-02/chapter-06/u-02-06-01-limit-laws.qmd
+        - book/part-02/chapter-06/u-02-06-04-reciprocal-quotient.qmd
         - book/part-02/chapter-06/u-02-06-02-order-squeeze.qmd
         - book/part-02/chapter-06/u-02-06-03-error-propagation.qmd
         - book/part-02/chapter-07/u-02-07-01-monotone-sequences.qmd
