@@ -43,7 +43,10 @@ book:
         - book/part-02/chapter-08/u-02-08-02-bolzano-weierstrass.qmd
         - book/part-02/chapter-08/u-02-08-03-cauchy-criterion.qmd
         - book/part-02/chapter-08/u-02-08-04-contraction-mapping.qmd
+        - book/part-02/chapter-08/u-02-08-06-fixed-point-certificates.qmd
+        - book/part-02/chapter-08/u-02-08-07-iteration-lab.qmd
         - book/part-02/chapter-08/u-02-08-05-limsup-liminf.qmd
+        - book/part-02/chapter-08/u-02-08-08-limsup-subsequences.qmd
     - part: "第三部：函数极限、连续性与方程"
       chapters:
         - book/part-03/chapter-09/u-03-09-01-local-neighborhoods.qmd
