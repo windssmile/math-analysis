@@ -20,6 +20,25 @@ class OutlineValidationTests(unittest.TestCase):
     def test_real_outline_is_valid(self) -> None:
         self.assertEqual(validate_outline(self.load_outline()), [])
 
+    def test_part_two_has_closed_forty_two_hour_contract(self) -> None:
+        data = self.load_outline()
+        part_two = data["parts"][1]
+        self.assertEqual(
+            (part_two["theory_hours"], part_two["applied_hours"]),
+            (34, 8),
+        )
+
+    def test_book_hours_include_closed_part_two_contract(self) -> None:
+        data = self.load_outline()
+        self.assertEqual(
+            (
+                data["book"]["theory_hours"],
+                data["book"]["applied_hours"],
+                data["book"]["total_hours"],
+            ),
+            (278, 92, 370),
+        )
+
     def test_rejects_non_sequential_chapter_numbers(self) -> None:
         data = copy.deepcopy(self.load_outline())
         data["parts"][1]["chapters"][0]["number"] = 1
@@ -32,7 +51,7 @@ class OutlineValidationTests(unittest.TestCase):
         data = copy.deepcopy(self.load_outline())
         data["parts"][0]["theory_hours"] = 21
         self.assertIn(
-            "theory hours must total 270, got 271",
+            "theory hours must total 278, got 279",
             validate_outline(data),
         )
 
@@ -78,7 +97,7 @@ class OutlineValidationTests(unittest.TestCase):
             errors,
         )
         self.assertIn(
-            "part-02 theory_hours must be exactly 26, got 27",
+            "part-02 theory_hours must be exactly 34, got 35",
             errors,
         )
 

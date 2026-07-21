@@ -2,9 +2,9 @@ schema_version = 1
 
 [book]
 title = "数学分析：理论、算法与模型"
-theory_hours = 270
-applied_hours = 90
-total_hours = 360
+theory_hours = 278
+applied_hours = 92
+total_hours = 370
 
 [[parts]]
 id = "part-01"
@@ -36,8 +36,8 @@ id = "part-02"
 number = 2
 title = "数列极限与无限过程"
 question = "怎样判断一个无限过程最终稳定？"
-theory_hours = 26
-applied_hours = 6
+theory_hours = 34
+applied_hours = 8
 show_units = true
 [[parts.chapters]]
 id = "chapter-05"

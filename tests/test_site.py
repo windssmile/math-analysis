@@ -108,6 +108,25 @@ class SiteValidationTest(unittest.TestCase):
             ],
         )
 
+    def test_part_two_rendered_anchors_are_required(self) -> None:
+        expected = {
+            "book/part-02/chapter-08/u-02-08-03-cauchy-criterion.html": [
+                "thm-u-02-08-03-criterion"
+            ],
+            "book/part-02/chapter-08/u-02-08-04-contraction-mapping.html": [
+                "thm-u-02-08-04-contraction"
+            ],
+            "book/part-02/chapter-08/u-02-08-05-limsup-liminf.html": [
+                "def-u-02-08-05-tail-bounds"
+            ],
+            "book/part-02/chapter-08/u-02-08-08-limsup-subsequences.html": [
+                "thm-u-02-08-08-convergence"
+            ],
+        }
+        for page, anchors in expected.items():
+            with self.subTest(page=page):
+                self.assertEqual(anchors, REQUIRED_RENDERED_ANCHORS[page])
+
 
 if __name__ == "__main__":
     unittest.main()

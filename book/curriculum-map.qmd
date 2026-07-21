@@ -1,6 +1,6 @@
 # 全书课程地图 {#sec-curriculum-map}
 
-**学时：** 理论 270 + 应用 90 = 360
+**学时：** 理论 278 + 应用 92 = 370
 
 本页由 `curriculum/outline.toml` 与 `curriculum/units.toml` 自动生成。请勿直接编辑。
 
@@ -31,15 +31,17 @@
 ## 第二部：数列极限与无限过程
 **问题弧：** 怎样判断一个无限过程最终稳定？
 
-**学时：** 理论 26 + 应用 6 = 32
+**学时：** 理论 34 + 应用 8 = 42
 
 5. [数列极限与量词结构]{#chapter-05}
    - [数列怎样记录无限过程？](part-02/chapter-05/u-02-05-01-sequences.qmd#u-02-05-01)
    - [“最终任意接近”怎样写成定义？](part-02/chapter-05/u-02-05-02-epsilon-n.qmd#u-02-05-02)
+   - [极限证明怎样从目标误差反推起点？](part-02/chapter-05/u-02-05-05-limit-consequences.qmd#u-02-05-05)
    - [不收敛与趋于无穷怎样区分？](part-02/chapter-05/u-02-05-03-divergence-infinity.qmd#u-02-05-03)
    - [迭代数据何时值得相信？](part-02/chapter-05/u-02-05-04-iteration-evidence.qmd#u-02-05-04)
 6. [极限运算与序关系]{#chapter-06}
    - [极限怎样通过代数运算传递？](part-02/chapter-06/u-02-06-01-limit-laws.qmd#u-02-06-01)
+   - [倒数与商法则为何必须远离零？](part-02/chapter-06/u-02-06-04-reciprocal-quotient.qmd#u-02-06-04)
    - [序关系怎样给出极限估计？](part-02/chapter-06/u-02-06-02-order-squeeze.qmd#u-02-06-02)
    - [误差如何穿过一次迭代？](part-02/chapter-06/u-02-06-03-error-propagation.qmd#u-02-06-03)
 7. [单调性、完备性与收敛准则]{#chapter-07}
@@ -52,7 +54,10 @@
    - [有界数列为何总能抽出收敛子列？](part-02/chapter-08/u-02-08-02-bolzano-weierstrass.qmd#u-02-08-02)
    - [Cauchy 条件怎样不预知极限而判断收敛？](part-02/chapter-08/u-02-08-03-cauchy-criterion.qmd#u-02-08-03)
    - [严格压缩怎样保证迭代找到唯一根？](part-02/chapter-08/u-02-08-04-contraction-mapping.qmd#u-02-08-04)
+   - [不动点计算需要哪些可核验证书？](part-02/chapter-08/u-02-08-06-fixed-point-certificates.qmd#u-02-08-06)
+   - [有限迭代轨迹能说明什么、不能说明什么？](part-02/chapter-08/u-02-08-07-iteration-lab.qmd#u-02-08-07)
    - [上/下极限怎样总结所有尾部行为？](part-02/chapter-08/u-02-08-05-limsup-liminf.qmd#u-02-08-05)
+   - [上/下极限怎样由子列真正实现？](part-02/chapter-08/u-02-08-08-limsup-subsequences.qmd#u-02-08-08)
 
 ## 第三部：函数极限、连续性与方程
 **问题弧：** 近似值能否保证真实解存在？

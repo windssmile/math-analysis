@@ -36,6 +36,18 @@ REQUIRED_RENDERED_ANCHORS = {
         "ex-u-01-04-04-small-residual",
         "ex-u-01-04-04-false-bisection",
     ],
+    "book/part-02/chapter-08/u-02-08-03-cauchy-criterion.html": [
+        "thm-u-02-08-03-criterion",
+    ],
+    "book/part-02/chapter-08/u-02-08-04-contraction-mapping.html": [
+        "thm-u-02-08-04-contraction",
+    ],
+    "book/part-02/chapter-08/u-02-08-05-limsup-liminf.html": [
+        "def-u-02-08-05-tail-bounds",
+    ],
+    "book/part-02/chapter-08/u-02-08-08-limsup-subsequences.html": [
+        "thm-u-02-08-08-convergence",
+    ],
     "book/part-03/chapter-09/u-03-09-02-epsilon-delta-limit.html": [
         "def-u-03-09-02-function-limit",
     ],

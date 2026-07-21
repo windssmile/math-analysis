@@ -28,7 +28,7 @@ class CurriculumMapTests(unittest.TestCase):
             "54. [周期模型、逼近误差与 Gibbs 现象]{#chapter-54}",
             rendered,
         )
-        self.assertIn("**学时：** 理论 270 + 应用 90 = 360", rendered)
+        self.assertIn("**学时：** 理论 278 + 应用 92 = 370", rendered)
         self.assertEqual(rendered.count("]{#chapter-"), 54)
         self.assertIn(
             "10. [连续函数与连续运算]{#chapter-10}",
@@ -46,6 +46,7 @@ class CurriculumMapTests(unittest.TestCase):
             "   - [上/下极限怎样总结所有尾部行为？](part-02/chapter-08/u-02-08-05-limsup-liminf.qmd#u-02-08-05)",
             rendered,
         )
+        self.assertEqual(21, rendered.count("part-02/chapter-"))
         self.assertIn(
             "   - [函数在一点附近意味着什么？](part-03/chapter-09/u-03-09-01-local-neighborhoods.qmd#u-03-09-01)",
             rendered,

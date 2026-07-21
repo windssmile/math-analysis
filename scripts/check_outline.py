@@ -25,7 +25,7 @@ EXPECTED_PARTS = (
         ),
     ),
     (
-        ("part-02", 2, "数列极限与无限过程", "怎样判断一个无限过程最终稳定？", 26, 6),
+        ("part-02", 2, "数列极限与无限过程", "怎样判断一个无限过程最终稳定？", 34, 8),
         (
             ("chapter-05", 5, "数列极限与量词结构"),
             ("chapter-06", 6, "极限运算与序关系"),
@@ -344,10 +344,10 @@ def validate_outline(data: object) -> list[str]:
 
     theory_hours = _hour_total(parts, "theory_hours")
     applied_hours = _hour_total(parts, "applied_hours")
-    if theory_hours != 270:
-        errors.append(f"theory hours must total 270, got {theory_hours}")
-    if applied_hours != 90:
-        errors.append(f"applied hours must total 90, got {applied_hours}")
+    if theory_hours != 278:
+        errors.append(f"theory hours must total 278, got {theory_hours}")
+    if applied_hours != 92:
+        errors.append(f"applied hours must total 92, got {applied_hours}")
 
     chapters: list[Mapping[str, object]] = []
     for part in parts:
@@ -393,7 +393,7 @@ def main() -> int:
         for error in errors:
             print(f"ERROR: {error}")
         return 1
-    print("outline valid: 12 parts, 54 chapters, 270+90=360 hours")
+    print("outline valid: 12 parts, 54 chapters, 278+92=370 hours")
     return 0
 
 
