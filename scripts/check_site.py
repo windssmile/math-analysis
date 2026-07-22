@@ -67,6 +67,32 @@ REQUIRED_RENDERED_ANCHORS = {
     ],
 }
 
+REQUIRED_NAVIGATION_MARKERS = {
+    "book/part-01/chapter-01/u-01-01-01-sets.html": [
+        "第一部：实数、函数与分析语言",
+        "第 1 章：函数、集合与数学陈述",
+        "1.1 集合怎样组织数学对象？",
+        "sidebar-section depth2",
+    ],
+    "book/part-02/chapter-05/u-02-05-01-sequences.html": [
+        "第二部：数列极限与无限过程",
+        "第 5 章：数列极限与量词结构",
+        "5.1 数列怎样记录无限过程？",
+        "5.5 迭代数据何时值得相信？",
+        "sidebar-section depth2",
+    ],
+    "book/part-03/chapter-12/u-03-12-03-fixed-points-and-iteration.html": [
+        "第三部：函数极限、连续性与方程",
+        "第 12 章：零点、不动点与迭代求解",
+        "12.3 有固定点是否意味着简单迭代会收敛？",
+        "sidebar-section depth2",
+    ],
+    "book/bridges/python/functions-loops.html": [
+        "附录",
+        "Python 知识桥：函数、循环与异常",
+    ],
+}
+
 
 class LinkParser(HTMLParser):
     def __init__(self) -> None:
@@ -85,6 +111,7 @@ def validate_site(
     site: Path,
     expected_pages: list[str] | None = None,
     expected_anchors: dict[str, list[str]] | None = None,
+    expected_navigation: dict[str, list[str]] | None = None,
 ) -> list[str]:
     errors: list[str] = []
     if not (site / "index.html").is_file():
@@ -131,6 +158,17 @@ def validate_site(
                     f"rendered site page {expected_page} is missing required anchor: "
                     f"{anchor}"
                 )
+    for expected_page, markers in (expected_navigation or {}).items():
+        page = site / expected_page
+        if not page.is_file():
+            continue
+        rendered = page.read_text(encoding="utf-8")
+        for marker in markers:
+            if marker not in rendered:
+                errors.append(
+                    f"rendered site page {expected_page} is missing navigation marker: "
+                    f"{marker}"
+                )
     return errors
 
 
@@ -148,6 +186,7 @@ def main() -> int:
         SITE,
         expected_pages=registered_unit_pages(),
         expected_anchors=REQUIRED_RENDERED_ANCHORS,
+        expected_navigation=REQUIRED_NAVIGATION_MARKERS,
     )
     for marker_page, markers in {
         "book/part-03/chapter-09/u-03-09-02-epsilon-delta-limit.html": ["u-03-09-02", "函数极限"],

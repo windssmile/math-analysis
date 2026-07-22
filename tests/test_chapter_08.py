@@ -102,9 +102,9 @@ class Chapter08Tests(unittest.TestCase):
 
     def test_quarto_registers_exact_chapter_order(self) -> None:
         chapter_paths = [
-            line.strip().removeprefix("- ")
+            line.strip().removeprefix("href: ")
             for line in (ROOT / "_quarto.yml").read_text(encoding="utf-8").splitlines()
-            if line.strip().startswith("- book/part-02/chapter-08/")
+            if line.strip().startswith("href: book/part-02/chapter-08/")
         ]
         self.assertEqual(
             chapter_paths,

@@ -17,18 +17,11 @@ def load_toml(path: Path) -> dict:
 
 def quarto_sections() -> tuple[str, str]:
     config = QUARTO.read_text(encoding="utf-8")
-    chapters, remainder = config.split("  appendices:", 1)
-    sidebar = remainder.split("  sidebar:", 1)[1].split("\nformat:", 1)[0]
-    return chapters, sidebar
-
-
-def chapter_unit_paths(chapters: str) -> list[str]:
-    return [
-        line.strip().removeprefix("- ")
-        for line in chapters.splitlines()
-        if line.strip().startswith("- book/part-")
-        and line.strip().endswith(".qmd")
-    ]
+    if "website:" not in config:
+        raise AssertionError("_quarto.yml must define website navigation")
+    website = config.split("website:", 1)[1].split("\nformat:", 1)[0]
+    sidebar = website.split("  sidebar:", 1)[1]
+    return config, sidebar
 
 
 def sidebar_unit_items(sidebar: str) -> list[tuple[str, str]]:
@@ -37,6 +30,15 @@ def sidebar_unit_items(sidebar: str) -> list[tuple[str, str]]:
         sidebar,
         flags=re.MULTILINE,
     )
+
+
+def project_render_paths(config: str) -> list[str]:
+    project = config.split("project:", 1)[1].split("\nwebsite:", 1)[0]
+    return [
+        line.strip().removeprefix("- ")
+        for line in project.splitlines()
+        if line.strip().startswith("- ")
+    ]
 
 
 class SidebarNumberingTests(unittest.TestCase):
@@ -70,6 +72,28 @@ class SidebarNumberingTests(unittest.TestCase):
             expected.append((label, path))
         return expected
 
+    def test_project_uses_website_navigation(self) -> None:
+        config, _ = quarto_sections()
+        self.assertIn("  type: website", config)
+        self.assertIn("website:\n", config)
+        self.assertNotIn("book:\n", config)
+
+    def test_website_keeps_page_navigation(self) -> None:
+        _, sidebar = quarto_sections()
+        config = QUARTO.read_text(encoding="utf-8")
+        website = config.split("website:", 1)[1].split("  sidebar:", 1)[0]
+        self.assertIn("  page-navigation: true", website)
+        self.assertIn("    collapse-level: 2", sidebar)
+
+    def test_project_render_matches_sidebar_pages(self) -> None:
+        config, sidebar = quarto_sections()
+        sidebar_paths = re.findall(
+            r"^\s+href: (.+\.qmd)$",
+            sidebar,
+            flags=re.MULTILINE,
+        )
+        self.assertEqual(sidebar_paths, project_render_paths(config))
+
     def test_html_disables_automatic_section_numbering(self) -> None:
         config = QUARTO.read_text(encoding="utf-8")
         self.assertIn("    number-sections: false", config)
@@ -82,12 +106,13 @@ class SidebarNumberingTests(unittest.TestCase):
         expected.append("附录")
         self.assertEqual(expected, actual)
 
-    def test_sidebar_units_follow_book_reading_order(self) -> None:
-        chapters, sidebar = quarto_sections()
-        paths = chapter_unit_paths(chapters)
+    def test_sidebar_units_follow_website_reading_order(self) -> None:
+        _, sidebar = quarto_sections()
+        actual = sidebar_unit_items(sidebar)
+        paths = [path for _, path in actual]
         self.assertEqual(
             self.expected_unit_items(paths),
-            sidebar_unit_items(sidebar),
+            actual,
         )
 
     def test_sidebar_contains_every_registered_unit_once(self) -> None:

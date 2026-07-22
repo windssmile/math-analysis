@@ -90,6 +90,25 @@ class SiteValidationTest(unittest.TestCase):
                 ),
             )
 
+    def test_required_navigation_marker_must_exist_on_its_page(self) -> None:
+        with TemporaryDirectory() as directory:
+            site = Path(directory)
+            (site / "index.html").write_text("site", encoding="utf-8")
+            page = site / "unit.html"
+            page.write_text("第二部", encoding="utf-8")
+            self.assertEqual(
+                [
+                    "rendered site page unit.html is missing navigation marker: 第 5 章",
+                    "rendered site page unit.html is missing navigation marker: 5.1 数列",
+                ],
+                validate_site(
+                    site,
+                    expected_navigation={
+                        "unit.html": ["第二部", "第 5 章", "5.1 数列"]
+                    },
+                ),
+            )
+
     def test_interval_bisection_rendered_anchors_are_required(self) -> None:
         page = "book/part-01/chapter-04/u-01-04-02-interval-bisection.html"
         self.assertEqual(

@@ -4,11 +4,27 @@
 
 **Goal:** Replace Quarto's continuous page-as-chapter numbering with a semantic part → chapter → independently linked unit sidebar, while leaving unit-page H1/H2 headings unnumbered.
 
-**Architecture:** Keep the existing `book.chapters` list as the single reading/render order and add an explicit nested `book.sidebar.contents` tree for navigation labels. Disable HTML section numbering, then enforce source-level consistency against `curriculum/outline.toml` and `curriculum/units.toml` plus rendered-HTML absence of Quarto's automatic numbering classes.
+**Architecture:** Use a Quarto Website with an explicit recursive `website.sidebar.contents` tree and an explicit 52-page `project.render` list. Disable HTML section numbering, then enforce source-level consistency against `curriculum/outline.toml` and `curriculum/units.toml` plus rendered-HTML presence of the three-level navigation and absence of Quarto's automatic numbering classes.
 
-**Tech Stack:** Quarto Book 1.9, YAML configuration, Python 3.12 standard library (`unittest`, `tomllib`, `re`, `html.parser`), Playwright CLI for browser QA.
+**Tech Stack:** Quarto Website 1.9, YAML configuration, Python 3.12 standard library (`unittest`, `tomllib`, `re`, `html.parser`), Playwright CLI for browser QA.
 
 ---
+
+## Implementation revision (authoritative)
+
+During full rendered-HTML verification, Quarto 1.9 was shown to discard `book.sidebar.contents` and regenerate Book navigation from `book.chapters`. A minimal isolated project also proved that the Book schema rejects nested parts, so Book cannot natively express part → chapter → independently linked unit.
+
+The user approved conversion to Website. This revision supersedes the Book-specific configuration steps later in this original plan:
+
+1. Set `project.type: website` and add an explicit `project.render` list containing the same 52 QMD paths as the sidebar.
+2. Move title, `page-navigation: true`, and the recursive sidebar under `website`.
+3. Keep `number-sections: false`; do not modify unit H1/H2 content.
+4. Update `tests/test_sidebar.py` to require Website mode, exact render/sidebar parity, 12 chapter sections, 48 unique units, and reading-order-derived labels.
+5. Update the Chapter 8 order test to parse Website `href:` entries without weakening its exact-order assertion.
+6. Extend `scripts/check_site.py` and `tests/test_site.py` so representative rendered pages must contain part, chapter, unit, and `sidebar-section depth2` markers as well as no automatic numbering classes.
+7. Run 169 Python tests, render all 52 pages, validate links and anchors, then inspect representative desktop and narrow-screen pages in a real browser.
+
+The remaining original task text is retained as the execution history that led to this revision; where it mentions `book.chapters` or `book.sidebar`, this revision controls.
 
 ## File map
 
@@ -16,6 +32,7 @@
 - Create `tests/test_sidebar.py`: verify sidebar structure, labels, paths, and reading-order-derived unit numbers without adding PyYAML.
 - Modify `scripts/check_site.py`: reject automatic chapter and heading number markup on rendered unit pages.
 - Modify `tests/test_site.py`: unit-test the rendered-numbering validation.
+- Modify `tests/test_chapter_08.py`: preserve its exact order assertion while reading Website `href:` entries.
 
 No unit QMD file, curriculum hour allocation, chapter dependency, anchor, Python example, or stylesheet changes.
 

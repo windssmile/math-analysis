@@ -1,69 +1,63 @@
 project:
-  type: book
+  type: website
   output-dir: _site
-
-book:
-  title: "数学分析：理论、算法与模型"
-  chapters:
+  render:
     - index.qmd
     - book/preface.qmd
     - book/curriculum-map.qmd
-    - part: "第一部：实数、函数与分析语言"
-      chapters:
-        - book/part-01/chapter-01/u-01-01-01-sets.qmd
-        - book/part-01/chapter-01/u-01-01-02-quantifiers.qmd
-        - book/part-01/chapter-01/u-01-01-03-proofs.qmd
-        - book/part-01/chapter-01/u-01-01-04-functions.qmd
-        - book/part-01/chapter-02/u-01-02-01-rational-gaps.qmd
-        - book/part-01/chapter-02/u-01-02-02-dedekind-cuts.qmd
-        - book/part-01/chapter-02/u-01-02-03-cut-order-operations.qmd
-        - book/part-01/chapter-03/u-01-03-01-bounds.qmd
-        - book/part-01/chapter-03/u-01-03-02-supremum-principle.qmd
-        - book/part-01/chapter-03/u-01-03-03-completeness-consequences.qmd
-        - book/part-01/chapter-04/u-01-04-01-recurrence.qmd
-        - book/part-01/chapter-04/u-01-04-02-interval-bisection.qmd
-        - book/part-01/chapter-04/u-01-04-03-approximation-error.qmd
-        - book/part-01/chapter-04/u-01-04-04-failure-of-infinite-approximation.qmd
-    - part: "第二部：数列极限与无限过程"
-      chapters:
-        - book/part-02/chapter-05/u-02-05-01-sequences.qmd
-        - book/part-02/chapter-05/u-02-05-02-epsilon-n.qmd
-        - book/part-02/chapter-05/u-02-05-05-limit-consequences.qmd
-        - book/part-02/chapter-05/u-02-05-03-divergence-infinity.qmd
-        - book/part-02/chapter-05/u-02-05-04-iteration-evidence.qmd
-        - book/part-02/chapter-06/u-02-06-01-limit-laws.qmd
-        - book/part-02/chapter-06/u-02-06-04-reciprocal-quotient.qmd
-        - book/part-02/chapter-06/u-02-06-02-order-squeeze.qmd
-        - book/part-02/chapter-06/u-02-06-03-error-propagation.qmd
-        - book/part-02/chapter-07/u-02-07-01-monotone-sequences.qmd
-        - book/part-02/chapter-07/u-02-07-02-recursive-invariants.qmd
-        - book/part-02/chapter-07/u-02-07-03-nested-intervals.qmd
-        - book/part-02/chapter-07/u-02-07-04-completeness-criteria.qmd
-        - book/part-02/chapter-08/u-02-08-01-subsequences.qmd
-        - book/part-02/chapter-08/u-02-08-02-bolzano-weierstrass.qmd
-        - book/part-02/chapter-08/u-02-08-03-cauchy-criterion.qmd
-        - book/part-02/chapter-08/u-02-08-04-contraction-mapping.qmd
-        - book/part-02/chapter-08/u-02-08-06-fixed-point-certificates.qmd
-        - book/part-02/chapter-08/u-02-08-07-iteration-lab.qmd
-        - book/part-02/chapter-08/u-02-08-05-limsup-liminf.qmd
-        - book/part-02/chapter-08/u-02-08-08-limsup-subsequences.qmd
-    - part: "第三部：函数极限、连续性与方程"
-      chapters:
-        - book/part-03/chapter-09/u-03-09-01-local-neighborhoods.qmd
-        - book/part-03/chapter-09/u-03-09-02-epsilon-delta-limit.qmd
-        - book/part-03/chapter-09/u-03-09-03-function-limit-laws.qmd
-        - book/part-03/chapter-09/u-03-09-04-sequential-function-limits.qmd
-        - book/part-03/chapter-10/u-03-10-01-epsilon-delta-continuity.qmd
-        - book/part-03/chapter-10/u-03-10-02-continuous-operations.qmd
-        - book/part-03/chapter-10/u-03-10-03-discontinuities-elementary-functions.qmd
-        - book/part-03/chapter-11/u-03-11-01-compact-intervals.qmd
-        - book/part-03/chapter-11/u-03-11-02-extreme-value-theorem.qmd
-        - book/part-03/chapter-11/u-03-11-03-uniform-continuity.qmd
-        - book/part-03/chapter-12/u-03-12-01-intermediate-value-theorem.qmd
-        - book/part-03/chapter-12/u-03-12-02-certified-bisection.qmd
-        - book/part-03/chapter-12/u-03-12-03-fixed-points-and-iteration.qmd
-  appendices:
+    - book/part-01/chapter-01/u-01-01-01-sets.qmd
+    - book/part-01/chapter-01/u-01-01-02-quantifiers.qmd
+    - book/part-01/chapter-01/u-01-01-03-proofs.qmd
+    - book/part-01/chapter-01/u-01-01-04-functions.qmd
+    - book/part-01/chapter-02/u-01-02-01-rational-gaps.qmd
+    - book/part-01/chapter-02/u-01-02-02-dedekind-cuts.qmd
+    - book/part-01/chapter-02/u-01-02-03-cut-order-operations.qmd
+    - book/part-01/chapter-03/u-01-03-01-bounds.qmd
+    - book/part-01/chapter-03/u-01-03-02-supremum-principle.qmd
+    - book/part-01/chapter-03/u-01-03-03-completeness-consequences.qmd
+    - book/part-01/chapter-04/u-01-04-01-recurrence.qmd
+    - book/part-01/chapter-04/u-01-04-02-interval-bisection.qmd
+    - book/part-01/chapter-04/u-01-04-03-approximation-error.qmd
+    - book/part-01/chapter-04/u-01-04-04-failure-of-infinite-approximation.qmd
+    - book/part-02/chapter-05/u-02-05-01-sequences.qmd
+    - book/part-02/chapter-05/u-02-05-02-epsilon-n.qmd
+    - book/part-02/chapter-05/u-02-05-05-limit-consequences.qmd
+    - book/part-02/chapter-05/u-02-05-03-divergence-infinity.qmd
+    - book/part-02/chapter-05/u-02-05-04-iteration-evidence.qmd
+    - book/part-02/chapter-06/u-02-06-01-limit-laws.qmd
+    - book/part-02/chapter-06/u-02-06-04-reciprocal-quotient.qmd
+    - book/part-02/chapter-06/u-02-06-02-order-squeeze.qmd
+    - book/part-02/chapter-06/u-02-06-03-error-propagation.qmd
+    - book/part-02/chapter-07/u-02-07-01-monotone-sequences.qmd
+    - book/part-02/chapter-07/u-02-07-02-recursive-invariants.qmd
+    - book/part-02/chapter-07/u-02-07-03-nested-intervals.qmd
+    - book/part-02/chapter-07/u-02-07-04-completeness-criteria.qmd
+    - book/part-02/chapter-08/u-02-08-01-subsequences.qmd
+    - book/part-02/chapter-08/u-02-08-02-bolzano-weierstrass.qmd
+    - book/part-02/chapter-08/u-02-08-03-cauchy-criterion.qmd
+    - book/part-02/chapter-08/u-02-08-04-contraction-mapping.qmd
+    - book/part-02/chapter-08/u-02-08-06-fixed-point-certificates.qmd
+    - book/part-02/chapter-08/u-02-08-07-iteration-lab.qmd
+    - book/part-02/chapter-08/u-02-08-05-limsup-liminf.qmd
+    - book/part-02/chapter-08/u-02-08-08-limsup-subsequences.qmd
+    - book/part-03/chapter-09/u-03-09-01-local-neighborhoods.qmd
+    - book/part-03/chapter-09/u-03-09-02-epsilon-delta-limit.qmd
+    - book/part-03/chapter-09/u-03-09-03-function-limit-laws.qmd
+    - book/part-03/chapter-09/u-03-09-04-sequential-function-limits.qmd
+    - book/part-03/chapter-10/u-03-10-01-epsilon-delta-continuity.qmd
+    - book/part-03/chapter-10/u-03-10-02-continuous-operations.qmd
+    - book/part-03/chapter-10/u-03-10-03-discontinuities-elementary-functions.qmd
+    - book/part-03/chapter-11/u-03-11-01-compact-intervals.qmd
+    - book/part-03/chapter-11/u-03-11-02-extreme-value-theorem.qmd
+    - book/part-03/chapter-11/u-03-11-03-uniform-continuity.qmd
+    - book/part-03/chapter-12/u-03-12-01-intermediate-value-theorem.qmd
+    - book/part-03/chapter-12/u-03-12-02-certified-bisection.qmd
+    - book/part-03/chapter-12/u-03-12-03-fixed-points-and-iteration.qmd
     - book/bridges/python/functions-loops.qmd
+
+website:
+  title: "数学分析：理论、算法与模型"
+  page-navigation: true
   sidebar:
     collapse-level: 2
     contents:
