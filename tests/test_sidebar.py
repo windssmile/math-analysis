@@ -34,9 +34,12 @@ def sidebar_unit_items(sidebar: str) -> list[tuple[str, str]]:
 
 def project_render_paths(config: str) -> list[str]:
     project = config.split("project:", 1)[1].split("\nwebsite:", 1)[0]
+    match = re.search(r"^  render:\n((?:    - .+\n?)+)", project, re.MULTILINE)
+    if match is None:
+        raise AssertionError("_quarto.yml must define project.render")
     return [
         line.strip().removeprefix("- ")
-        for line in project.splitlines()
+        for line in match.group(1).splitlines()
         if line.strip().startswith("- ")
     ]
 

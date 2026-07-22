@@ -22,7 +22,8 @@ The user approved conversion to Website. This revision supersedes the Book-speci
 4. Update `tests/test_sidebar.py` to require Website mode, exact render/sidebar parity, 12 chapter sections, 48 unique units, and reading-order-derived labels.
 5. Update the Chapter 8 order test to parse Website `href:` entries without weakening its exact-order assertion.
 6. Extend `scripts/check_site.py` and `tests/test_site.py` so representative rendered pages must contain part, chapter, unit, and `sidebar-section depth2` markers as well as no automatic numbering classes.
-7. Run 169 Python tests, render all 52 pages, validate links and anchors, then inspect representative desktop and narrow-screen pages in a real browser.
+7. Preserve human-readable browser titles with a post-render helper that maps all 52 configured QMD pages to their YAML title or first H1, and validate every rendered `<title>`.
+8. Run 172 Python tests, render all 52 pages, validate links, anchors, navigation, numbering, and page titles, then inspect representative desktop and narrow-screen pages in a real browser.
 
 The remaining original task text is retained as the execution history that led to this revision; where it mentions `book.chapters` or `book.sidebar`, this revision controls.
 
@@ -31,7 +32,9 @@ The remaining original task text is retained as the execution history that led t
 - Modify `_quarto.yml`: disable automatic HTML numbering and declare the three-level sidebar.
 - Create `tests/test_sidebar.py`: verify sidebar structure, labels, paths, and reading-order-derived unit numbers without adding PyYAML.
 - Modify `scripts/check_site.py`: reject automatic chapter and heading number markup on rendered unit pages.
+- Create `scripts/fix_page_titles.py`: preserve QMD titles in Website HTML `<title>` without changing body content.
 - Modify `tests/test_site.py`: unit-test the rendered-numbering validation.
+- Create `tests/test_page_titles.py`: unit-test title extraction and HTML title replacement.
 - Modify `tests/test_chapter_08.py`: preserve its exact order assertion while reading Website `href:` entries.
 
 No unit QMD file, curriculum hour allocation, chapter dependency, anchor, Python example, or stylesheet changes.

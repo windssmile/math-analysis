@@ -109,6 +109,26 @@ class SiteValidationTest(unittest.TestCase):
                 ),
             )
 
+    def test_registered_page_must_use_its_chinese_title(self) -> None:
+        with TemporaryDirectory() as directory:
+            site = Path(directory)
+            (site / "index.html").write_text("site", encoding="utf-8")
+            page = site / "unit.html"
+            page.write_text(
+                "<html><head><title>unit – 数学分析</title></head></html>",
+                encoding="utf-8",
+            )
+            self.assertEqual(
+                [
+                    "rendered site page unit.html has the wrong page title: "
+                    "expected 数列怎样记录无限过程？"
+                ],
+                validate_site(
+                    site,
+                    expected_titles={"unit.html": "数列怎样记录无限过程？"},
+                ),
+            )
+
     def test_interval_bisection_rendered_anchors_are_required(self) -> None:
         page = "book/part-01/chapter-04/u-01-04-02-interval-bisection.html"
         self.assertEqual(

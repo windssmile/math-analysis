@@ -1,6 +1,8 @@
 project:
   type: website
   output-dir: _site
+  post-render:
+    - python3.12 scripts/fix_page_titles.py
   render:
     - index.qmd
     - book/preface.qmd

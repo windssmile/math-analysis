@@ -4,6 +4,11 @@ import tomllib
 from urllib.parse import unquote, urlsplit
 import sys
 
+if __package__:
+    from .fix_page_titles import configured_page_titles
+else:
+    from fix_page_titles import configured_page_titles
+
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "_site"
@@ -98,13 +103,29 @@ class LinkParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
         self.links: list[str] = []
+        self.title_parts: list[str] = []
+        self._inside_title = False
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag == "title":
+            self._inside_title = True
         if tag != "a":
             return
         attributes = dict(attrs)
         if attributes.get("href"):
             self.links.append(attributes["href"])
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "title":
+            self._inside_title = False
+
+    def handle_data(self, data: str) -> None:
+        if self._inside_title:
+            self.title_parts.append(data)
+
+    @property
+    def title(self) -> str:
+        return "".join(self.title_parts).strip()
 
 
 def validate_site(
@@ -112,6 +133,7 @@ def validate_site(
     expected_pages: list[str] | None = None,
     expected_anchors: dict[str, list[str]] | None = None,
     expected_navigation: dict[str, list[str]] | None = None,
+    expected_titles: dict[str, str] | None = None,
 ) -> list[str]:
     errors: list[str] = []
     if not (site / "index.html").is_file():
@@ -169,6 +191,19 @@ def validate_site(
                     f"rendered site page {expected_page} is missing navigation marker: "
                     f"{marker}"
                 )
+    for expected_page, expected_title in (expected_titles or {}).items():
+        page = site / expected_page
+        if not page.is_file():
+            continue
+        parser = LinkParser()
+        parser.feed(page.read_text(encoding="utf-8"))
+        title_is_exact = parser.title == expected_title
+        title_has_site_suffix = parser.title.startswith(f"{expected_title} – ")
+        if not (title_is_exact or title_has_site_suffix):
+            errors.append(
+                f"rendered site page {expected_page} has the wrong page title: "
+                f"expected {expected_title}"
+            )
     return errors
 
 
@@ -187,6 +222,7 @@ def main() -> int:
         expected_pages=registered_unit_pages(),
         expected_anchors=REQUIRED_RENDERED_ANCHORS,
         expected_navigation=REQUIRED_NAVIGATION_MARKERS,
+        expected_titles=configured_page_titles(),
     )
     for marker_page, markers in {
         "book/part-03/chapter-09/u-03-09-02-epsilon-delta-limit.html": ["u-03-09-02", "函数极限"],
