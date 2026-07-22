@@ -107,8 +107,19 @@ def validate_site(
             if not target.is_file():
                 errors.append(f"{html_file.relative_to(site)} links to missing {relative_target}")
     for expected_page in expected_pages or []:
-        if not (site / expected_page).is_file():
+        page = site / expected_page
+        if not page.is_file():
             errors.append(f"rendered site is missing registered unit page: {expected_page}")
+            continue
+        rendered = page.read_text(encoding="utf-8")
+        if 'class="chapter-number"' in rendered:
+            errors.append(
+                f"rendered unit page {expected_page} contains automatic chapter numbering"
+            )
+        if 'class="header-section-number"' in rendered:
+            errors.append(
+                f"rendered unit page {expected_page} contains automatic heading numbering"
+            )
     for expected_page, anchors in (expected_anchors or {}).items():
         page = site / expected_page
         if not page.is_file():

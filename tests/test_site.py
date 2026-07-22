@@ -42,6 +42,34 @@ class SiteValidationTest(unittest.TestCase):
                 ),
             )
 
+    def test_automatic_chapter_number_is_reported(self) -> None:
+        with TemporaryDirectory() as directory:
+            site = Path(directory)
+            (site / "index.html").write_text("book", encoding="utf-8")
+            page = site / "unit.html"
+            page.write_text(
+                '<h1><span class="chapter-number">17</span> Unit</h1>',
+                encoding="utf-8",
+            )
+            self.assertEqual(
+                ["rendered unit page unit.html contains automatic chapter numbering"],
+                validate_site(site, expected_pages=["unit.html"]),
+            )
+
+    def test_automatic_heading_number_is_reported(self) -> None:
+        with TemporaryDirectory() as directory:
+            site = Path(directory)
+            (site / "index.html").write_text("book", encoding="utf-8")
+            page = site / "unit.html"
+            page.write_text(
+                '<h2><span class="header-section-number">17.1</span> Goal</h2>',
+                encoding="utf-8",
+            )
+            self.assertEqual(
+                ["rendered unit page unit.html contains automatic heading numbering"],
+                validate_site(site, expected_pages=["unit.html"]),
+            )
+
     def test_required_rendered_anchor_must_exist_on_its_page(self) -> None:
         with TemporaryDirectory() as directory:
             site = Path(directory)
