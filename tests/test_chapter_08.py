@@ -101,11 +101,11 @@ class Chapter08Tests(unittest.TestCase):
                 )
 
     def test_quarto_registers_exact_chapter_order(self) -> None:
-        import yaml
-
-        config = yaml.safe_load((ROOT / "_quarto.yml").read_text(encoding="utf-8"))
-        part = next(item for item in config["book"]["chapters"] if isinstance(item, dict) and item.get("part", "").startswith("第二部"))
-        chapter_paths = [path for path in part["chapters"] if "/chapter-08/" in path]
+        chapter_paths = [
+            line.strip().removeprefix("- ")
+            for line in (ROOT / "_quarto.yml").read_text(encoding="utf-8").splitlines()
+            if line.strip().startswith("- book/part-02/chapter-08/")
+        ]
         self.assertEqual(
             chapter_paths,
             [
