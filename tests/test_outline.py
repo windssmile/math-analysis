@@ -28,7 +28,15 @@ class OutlineValidationTests(unittest.TestCase):
             (34, 8),
         )
 
-    def test_book_hours_include_closed_part_two_contract(self) -> None:
+    def test_part_three_has_closed_forty_hour_contract(self) -> None:
+        data = self.load_outline()
+        part_three = data["parts"][2]
+        self.assertEqual(
+            (part_three["theory_hours"], part_three["applied_hours"]),
+            (32, 8),
+        )
+
+    def test_book_hours_include_closed_part_three_contract(self) -> None:
         data = self.load_outline()
         self.assertEqual(
             (
@@ -36,7 +44,7 @@ class OutlineValidationTests(unittest.TestCase):
                 data["book"]["applied_hours"],
                 data["book"]["total_hours"],
             ),
-            (278, 92, 370),
+            (290, 94, 384),
         )
 
     def test_rejects_non_sequential_chapter_numbers(self) -> None:
@@ -51,7 +59,7 @@ class OutlineValidationTests(unittest.TestCase):
         data = copy.deepcopy(self.load_outline())
         data["parts"][0]["theory_hours"] = 21
         self.assertIn(
-            "theory hours must total 278, got 279",
+            "theory hours must total 290, got 291",
             validate_outline(data),
         )
 

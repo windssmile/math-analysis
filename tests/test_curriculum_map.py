@@ -28,7 +28,7 @@ class CurriculumMapTests(unittest.TestCase):
             "54. [周期模型、逼近误差与 Gibbs 现象]{#chapter-54}",
             rendered,
         )
-        self.assertIn("**学时：** 理论 278 + 应用 92 = 370", rendered)
+        self.assertIn("**学时：** 理论 290 + 应用 94 = 384", rendered)
         self.assertEqual(rendered.count("]{#chapter-"), 54)
         self.assertIn(
             "10. [连续函数与连续运算]{#chapter-10}",

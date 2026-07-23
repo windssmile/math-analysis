@@ -2,9 +2,9 @@ schema_version = 1
 
 [book]
 title = "数学分析：理论、算法与模型"
-theory_hours = 278
-applied_hours = 92
-total_hours = 370
+theory_hours = 290
+applied_hours = 94
+total_hours = 384
 
 [[parts]]
 id = "part-01"
@@ -61,8 +61,8 @@ id = "part-03"
 number = 3
 title = "函数极限、连续性与方程"
 question = "近似值能否保证真实解存在？"
-theory_hours = 20
-applied_hours = 6
+theory_hours = 32
+applied_hours = 8
 show_units = true
 [[parts.chapters]]
 id = "chapter-09"
