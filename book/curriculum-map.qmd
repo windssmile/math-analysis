@@ -67,6 +67,10 @@
 9. [函数极限与局部行为]{#chapter-09}
    - [函数在一点附近意味着什么？](part-03/chapter-09/u-03-09-01-local-neighborhoods.qmd#u-03-09-01)
    - [“任意接近”怎样定义函数极限？](part-03/chapter-09/u-03-09-02-epsilon-delta-limit.qmd#u-03-09-02)
+   - [极限证明怎样从目标误差反推局部范围？](part-03/chapter-09/u-03-09-05-epsilon-delta-workshop.qmd#u-03-09-05)
+   - [左右极限怎样共同决定双侧极限？](part-03/chapter-09/u-03-09-06-one-sided-limits.qmd#u-03-09-06)
+   - [函数怎样在有限点附近趋于无穷？](part-03/chapter-09/u-03-09-07-infinite-limits-at-point.qmd#u-03-09-07)
+   - [自变量趋于无穷时怎样定义函数极限？](part-03/chapter-09/u-03-09-08-limits-at-infinity.qmd#u-03-09-08)
    - [局部估计怎样传递极限？](part-03/chapter-09/u-03-09-03-function-limit-laws.qmd#u-03-09-03)
    - [用点列靠近能否判别函数极限？](part-03/chapter-09/u-03-09-04-sequential-function-limits.qmd#u-03-09-04)
 10. [连续函数与连续运算]{#chapter-10}

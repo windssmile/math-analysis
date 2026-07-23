@@ -52,10 +52,14 @@ class CurriculumMapTests(unittest.TestCase):
             rendered,
         )
         self.assertIn(
+            "   - [极限证明怎样从目标误差反推局部范围？](part-03/chapter-09/u-03-09-05-epsilon-delta-workshop.qmd#u-03-09-05)",
+            rendered,
+        )
+        self.assertIn(
             "   - [有固定点是否意味着简单迭代会收敛？](part-03/chapter-12/u-03-12-03-fixed-points-and-iteration.qmd#u-03-12-03)",
             rendered,
         )
-        self.assertEqual(13, rendered.count("part-03/chapter-"))
+        self.assertEqual(17, rendered.count("part-03/chapter-"))
 
         self.assertEqual(MAP.read_text(encoding="utf-8"), rendered)
 

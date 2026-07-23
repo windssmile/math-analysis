@@ -378,24 +378,26 @@ id = "u-03-09-01"
 chapter_id = "chapter-09"
 title = "函数在一点附近意味着什么？"
 path = "book/part-03/chapter-09/u-03-09-01-local-neighborhoods.qmd"
-theory_hours = 1.60
-applied_hours = 0.40
+theory_hours = 1.50
+applied_hours = 0.50
+content_standard = 2
 difficulty = 2
-book_prerequisites = ["chapter-01", "chapter-08"]
+book_prerequisites = ["chapter-01", "chapter-03"]
 higher_algebra_prerequisites = ["绝对值与不等式"]
 analytic_geometry_prerequisites = ["实轴上的区间"]
 python_prerequisites = []
 knowledge_bridges = []
 capabilities = ["concepts", "proof", "mathematical_expression"]
-learning_goals = ["定义邻域、去心邻域与单侧邻域", "区分函数值与局部行为", "用邻域语言陈述定义域限制"]
+learning_goals = ["定义定义域聚点与邻域系统", "区分函数值与去心局部行为", "处理端点和受限定义域", "识别有限采样的证明边界"]
 
 [[units]]
 id = "u-03-09-02"
 chapter_id = "chapter-09"
 title = "“任意接近”怎样定义函数极限？"
 path = "book/part-03/chapter-09/u-03-09-02-epsilon-delta-limit.qmd"
-theory_hours = 1.60
-applied_hours = 0.40
+theory_hours = 1.75
+applied_hours = 0.25
+content_standard = 2
 difficulty = 3
 book_prerequisites = ["chapter-05", "chapter-09"]
 higher_algebra_prerequisites = ["绝对值不等式"]
@@ -403,39 +405,109 @@ analytic_geometry_prerequisites = ["实轴距离"]
 python_prerequisites = []
 knowledge_bridges = []
 capabilities = ["concepts", "proof", "analytic_calculation", "mathematical_expression"]
-learning_goals = ["写出函数极限的 epsilon-delta 定义", "证明基本函数极限", "识别定义域与去心条件"]
+learning_goals = ["按量词顺序陈述有限点有限极限", "证明线性与可去点极限", "区分函数值和去心极限", "完整证明函数极限唯一性"]
+
+[[units]]
+id = "u-03-09-05"
+chapter_id = "chapter-09"
+title = "极限证明怎样从目标误差反推局部范围？"
+path = "book/part-03/chapter-09/u-03-09-05-epsilon-delta-workshop.qmd"
+theory_hours = 1.50
+applied_hours = 0.50
+content_standard = 2
+difficulty = 3
+book_prerequisites = ["chapter-09"]
+higher_algebra_prerequisites = ["因式分解", "根式与分式恒等变形", "绝对值不等式"]
+analytic_geometry_prerequisites = ["实轴距离"]
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "analytic_calculation", "mathematical_expression"]
+learning_goals = ["从目标误差反推充分的局部条件", "把反向设计改写为正向证明", "使用辅助邻域建立局部界", "完成线性、二次、根式和有理式极限证明"]
+
+[[units]]
+id = "u-03-09-06"
+chapter_id = "chapter-09"
+title = "左右极限怎样共同决定双侧极限？"
+path = "book/part-03/chapter-09/u-03-09-06-one-sided-limits.qmd"
+theory_hours = 1.50
+applied_hours = 0.50
+content_standard = 2
+difficulty = 3
+book_prerequisites = ["chapter-09"]
+higher_algebra_prerequisites = ["分段函数与不等式"]
+analytic_geometry_prerequisites = ["实轴上的半区间"]
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "analytic_calculation", "mathematical_expression"]
+learning_goals = ["定义有限左极限与右极限", "证明双侧极限的左右判别", "分析分段函数的拼接点", "按定义域处理端点极限"]
+
+[[units]]
+id = "u-03-09-07"
+chapter_id = "chapter-09"
+title = "函数怎样在有限点附近趋于无穷？"
+path = "book/part-03/chapter-09/u-03-09-07-infinite-limits-at-point.qmd"
+theory_hours = 1.75
+applied_hours = 0.25
+content_standard = 2
+difficulty = 3
+book_prerequisites = ["chapter-05", "chapter-09"]
+higher_algebra_prerequisites = ["绝对值不等式", "倒数不等式"]
+analytic_geometry_prerequisites = ["实轴距离"]
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "analytic_calculation", "mathematical_expression"]
+learning_goals = ["用 M-量词定义有限点处的正负无穷极限", "写出相应的单侧无穷极限", "区分单侧符号行为与双侧结论", "限定竖直渐近线表述的适用条件"]
+
+[[units]]
+id = "u-03-09-08"
+chapter_id = "chapter-09"
+title = "自变量趋于无穷时怎样定义函数极限？"
+path = "book/part-03/chapter-09/u-03-09-08-limits-at-infinity.qmd"
+theory_hours = 1.50
+applied_hours = 0.50
+content_standard = 2
+difficulty = 3
+book_prerequisites = ["chapter-05", "chapter-09"]
+higher_algebra_prerequisites = ["多项式与有理式", "绝对值不等式"]
+analytic_geometry_prerequisites = ["实轴上的射线"]
+python_prerequisites = []
+knowledge_bridges = []
+capabilities = ["concepts", "proof", "analytic_calculation", "mathematical_expression"]
+learning_goals = ["定义自变量趋于正负无穷时的有限极限", "定义自变量和函数值同时趋于无穷", "证明基本有理函数的无穷远极限", "用初等不等式比较多项式增长"]
 
 [[units]]
 id = "u-03-09-03"
 chapter_id = "chapter-09"
 title = "局部估计怎样传递极限？"
 path = "book/part-03/chapter-09/u-03-09-03-function-limit-laws.qmd"
-theory_hours = 1.50
-applied_hours = 0.50
-difficulty = 3
+theory_hours = 1.75
+applied_hours = 0.25
+content_standard = 2
+difficulty = 4
 book_prerequisites = ["chapter-06", "chapter-09"]
 higher_algebra_prerequisites = ["分式运算", "绝对值不等式"]
-analytic_geometry_prerequisites = []
+analytic_geometry_prerequisites = ["实轴距离"]
 python_prerequisites = []
 knowledge_bridges = []
 capabilities = ["concepts", "proof", "analytic_calculation", "mathematical_expression"]
-learning_goals = ["证明函数极限的四则运算法则", "使用保序与夹逼定理", "给出局部估计的误差界"]
+learning_goals = ["从有限极限推出局部有界与最终保号", "证明保序与夹逼定理", "证明和积商极限法则", "在定义域条件下证明复合极限传递"]
 
 [[units]]
 id = "u-03-09-04"
 chapter_id = "chapter-09"
 title = "用点列靠近能否判别函数极限？"
 path = "book/part-03/chapter-09/u-03-09-04-sequential-function-limits.qmd"
-theory_hours = 1.50
-applied_hours = 0.50
-difficulty = 3
+theory_hours = 1.75
+applied_hours = 0.25
+content_standard = 2
+difficulty = 4
 book_prerequisites = ["chapter-08", "chapter-09"]
-higher_algebra_prerequisites = []
+higher_algebra_prerequisites = ["量词否定"]
 analytic_geometry_prerequisites = ["实轴距离"]
 python_prerequisites = []
 knowledge_bridges = []
 capabilities = ["concepts", "proof", "analytic_calculation", "mathematical_expression"]
-learning_goals = ["证明函数极限的序列判别定理", "构造违反极限的点列", "区分定义与等价判别"]
+learning_goals = ["完整证明 Heine 序列判别的两个方向", "从极限定义的否定构造坏点列", "用不同路径否定函数极限", "把函数极限结论转移到任意逼近点列"]
 
 [[units]]
 id = "u-03-10-01"

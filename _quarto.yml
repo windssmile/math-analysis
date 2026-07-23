@@ -44,6 +44,10 @@ project:
     - book/part-02/chapter-08/u-02-08-08-limsup-subsequences.qmd
     - book/part-03/chapter-09/u-03-09-01-local-neighborhoods.qmd
     - book/part-03/chapter-09/u-03-09-02-epsilon-delta-limit.qmd
+    - book/part-03/chapter-09/u-03-09-05-epsilon-delta-workshop.qmd
+    - book/part-03/chapter-09/u-03-09-06-one-sided-limits.qmd
+    - book/part-03/chapter-09/u-03-09-07-infinite-limits-at-point.qmd
+    - book/part-03/chapter-09/u-03-09-08-limits-at-infinity.qmd
     - book/part-03/chapter-09/u-03-09-03-function-limit-laws.qmd
     - book/part-03/chapter-09/u-03-09-04-sequential-function-limits.qmd
     - book/part-03/chapter-10/u-03-10-01-epsilon-delta-continuity.qmd
@@ -167,9 +171,17 @@ website:
                 href: book/part-03/chapter-09/u-03-09-01-local-neighborhoods.qmd
               - text: "9.2 “任意接近”怎样定义函数极限？"
                 href: book/part-03/chapter-09/u-03-09-02-epsilon-delta-limit.qmd
-              - text: "9.3 局部估计怎样传递极限？"
+              - text: "9.3 极限证明怎样从目标误差反推局部范围？"
+                href: book/part-03/chapter-09/u-03-09-05-epsilon-delta-workshop.qmd
+              - text: "9.4 左右极限怎样共同决定双侧极限？"
+                href: book/part-03/chapter-09/u-03-09-06-one-sided-limits.qmd
+              - text: "9.5 函数怎样在有限点附近趋于无穷？"
+                href: book/part-03/chapter-09/u-03-09-07-infinite-limits-at-point.qmd
+              - text: "9.6 自变量趋于无穷时怎样定义函数极限？"
+                href: book/part-03/chapter-09/u-03-09-08-limits-at-infinity.qmd
+              - text: "9.7 局部估计怎样传递极限？"
                 href: book/part-03/chapter-09/u-03-09-03-function-limit-laws.qmd
-              - text: "9.4 用点列靠近能否判别函数极限？"
+              - text: "9.8 用点列靠近能否判别函数极限？"
                 href: book/part-03/chapter-09/u-03-09-04-sequential-function-limits.qmd
           - section: "第 10 章：连续函数与连续运算"
             contents:
