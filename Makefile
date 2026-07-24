@@ -1,4 +1,4 @@
-.PHONY: test check generate render verify preview
+.PHONY: test check build verify preview
 
 PYTHON ?= python3.12
 
@@ -6,17 +6,11 @@ test:
 	$(PYTHON) -m unittest discover -s tests -v
 
 check:
-	$(PYTHON) scripts/check_outline.py
-	$(PYTHON) scripts/check_units.py
+	$(PYTHON) scripts/check_content.py
 
-generate:
-	$(PYTHON) scripts/render_curriculum_map.py
+build: check
+	mkdocs build --strict
 
-render: generate
-	quarto render
+verify: test build
 
-verify: test check render
-	$(PYTHON) scripts/check_site.py
-
-preview: generate
-	quarto preview
+	mkdocs serve

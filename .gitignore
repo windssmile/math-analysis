@@ -2,6 +2,7 @@
 .worktrees/
 .quarto/
 _site/
+site/
 *.pyc
 __pycache__/
 .DS_Store
