@@ -6,10 +6,10 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 
 
-class MkDocsBuildTests(unittest.TestCase):
-    def test_theme_override_builds_in_strict_mode(self) -> None:
+class ZensicalBuildTests(unittest.TestCase):
+    def test_modern_theme_builds_in_strict_mode(self) -> None:
         completed = subprocess.run(
-            ["mkdocs", "build", "--strict"],
+            ["zensical", "build", "--strict"],
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -18,7 +18,7 @@ class MkDocsBuildTests(unittest.TestCase):
         self.assertEqual(
             completed.returncode,
             0,
-            msg=f"mkdocs build failed:\n{completed.stdout}\n{completed.stderr}",
+            msg=f"zensical build failed:\n{completed.stdout}\n{completed.stderr}",
         )
 
 

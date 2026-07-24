@@ -6,7 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class ThemeContractTests(unittest.TestCase):
-    def test_material_reading_theme_has_its_required_contract(self) -> None:
+    def test_modern_reading_theme_has_its_required_contract(self) -> None:
         required = (
             "content/stylesheets/extra.css",
             "overrides/main.html",
@@ -23,7 +23,7 @@ class ThemeContractTests(unittest.TestCase):
             encoding="utf-8"
         )
 
-        for marker in ("custom_dir: overrides", "extra_css:"):
+        for marker in ("variant: modern", "custom_dir: overrides", "extra_css:"):
             with self.subTest(config_marker=marker):
                 self.assertIn(marker, config)
         for marker in ("--md-primary-fg-color", ".unit-meta", "@media"):
