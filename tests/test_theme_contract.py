@@ -26,9 +26,18 @@ class ThemeContractTests(unittest.TestCase):
         for marker in ("variant: modern", "custom_dir: overrides", "extra_css:"):
             with self.subTest(config_marker=marker):
                 self.assertIn(marker, config)
+        for marker in (
+            'media: "(prefers-color-scheme)"',
+            "scheme: default",
+            "scheme: slate",
+            "icon: lucide/sun-moon",
+        ):
+            with self.subTest(palette_marker=marker):
+                self.assertIn(marker, config)
         for marker in ("--md-primary-fg-color", ".unit-meta", "@media"):
             with self.subTest(css_marker=marker):
                 self.assertIn(marker, css)
+        self.assertIn('[data-md-color-scheme="slate"]', css)
         for marker in ("page.meta.unit_id", "page.meta.hours", "page.meta.learning_goals"):
             with self.subTest(partial_marker=marker):
                 self.assertIn(marker, partial)

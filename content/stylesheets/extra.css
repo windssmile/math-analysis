@@ -17,6 +17,21 @@
   --md-code-bg-color: #f7f7fb;
 }
 
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #91a4ff;
+  --md-primary-fg-color--light: #b7c2ff;
+  --md-primary-fg-color--dark: #7187ed;
+  --md-accent-fg-color: #aab8ff;
+  --mathbook-ink: #f0f1f7;
+  --mathbook-muted: #bcc0cf;
+  --mathbook-surface: #22242d;
+  --mathbook-outline: #3b3f4d;
+  --md-default-bg-color: #17181d;
+  --md-default-fg-color: var(--mathbook-ink);
+  --md-default-fg-color--light: var(--mathbook-muted);
+  --md-code-bg-color: #1d1f26;
+}
+
 .md-content__inner {
   max-width: var(--mathbook-reading-width);
 }

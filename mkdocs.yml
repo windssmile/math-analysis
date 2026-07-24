@@ -10,6 +10,21 @@ theme:
   variant: modern
   custom_dir: overrides
   language: zh
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: lucide/sun-moon
+        name: 切换至浅色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: lucide/sun
+        name: 切换至深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: lucide/moon
+        name: 跟随系统外观
 
 nav:
   - 首页: index.md
