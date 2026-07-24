@@ -312,7 +312,7 @@ git commit -m "test: validate MkDocs part one site"
 ### Task 6: 迁移第 2、3 部、课程路线与 Python 知识桥链接
 
 **Files:**
-- Create: `content/chapters/05-sequences/` 到 `content/chapters/12-equations-iteration/` 下的 34 个单元页和 8 个章节导学页
+- Create: `content/chapters/chapter-05/` 到 `content/chapters/chapter-12/` 下的 38 个单元页和 8 个章节导学页
 - Modify: `content/course-map.md`
 - Modify: `content/bridges/python-functions-loops.md`
 - Modify: `mkdocs.yml`
@@ -320,7 +320,7 @@ git commit -m "test: validate MkDocs part one site"
 
 - [ ] **Step 1: 写出第 2、3 部迁移的失败测试**
 
-`tests/test_parts_02_03_migration.py` 应列出全部 34 个目标 Markdown 页面，断言每个旧 `u-02-*`、`u-03-*` ID 仍为新页 H1 ID；断言压缩映射、Cauchy、limsup/liminf、函数极限、紧致、介值定理和二分法的代表定义/定理锚点仍存在；断言 Python 链接仍指向知识桥。
+`tests/test_parts_02_03_migration.py` 应列出当前源中的全部 38 个目标 Markdown 页面，断言每个旧 `u-02-*`、`u-03-*` ID 仍为新页 H1 ID；断言压缩映射、Cauchy、limsup/liminf、函数极限、紧致、介值定理和二分法的代表定义/定理锚点仍存在；断言 Python 知识桥回链仍可用。
 
 - [ ] **Step 2: 运行迁移测试确认失败**
 
@@ -361,7 +361,7 @@ git commit -m "feat: migrate parts two and three to MkDocs"
 - Delete: `scripts/check_outline.py`
 - Delete: `scripts/check_units.py`
 - Delete: `scripts/fix_page_titles.py`
-- Delete: Quarto 专用测试 `tests/test_outline.py`、`tests/test_units.py`、`tests/test_curriculum_map.py`、`tests/test_page_titles.py`、`tests/test_sidebar.py`
+- Delete: Quarto 专用测试 `tests/test_outline.py`、`tests/test_units.py`、`tests/test_curriculum_map.py`、`tests/test_page_titles.py`、`tests/test_sidebar.py` 以及全部 `tests/test_chapter_*.py`（它们直接读取已删除的 QMD/TOML 运行时）
 - Modify: `tests/test_project_structure.py`
 
 - [ ] **Step 1: 写出部署工作流的失败测试**

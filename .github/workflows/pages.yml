@@ -26,20 +26,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Install MkDocs dependencies
+        run: python3.12 -m pip install --requirement requirements.txt
 
-      - name: Run manuscript and algorithm tests
-        run: python3.12 -m unittest discover -s tests -v
-
-      - name: Validate curriculum and units
-        run: make check
-
-      - name: Render book
-        run: make render
-
-      - name: Validate rendered site
-        run: python3.12 scripts/check_site.py
+      - name: Validate and build textbook site
+        run: make verify
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -47,7 +38,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: _site
+          path: site
 
   deploy:
     environment:
