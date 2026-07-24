@@ -13,10 +13,15 @@ import yaml
 
 
 HEADING_ATTRIBUTES = re.compile(r"^(#{1,6}\s+.+?)\s+\{([^}]*)\}\s*$")
+INLINE_BOLD_ANCHOR = re.compile(r"^\*\*(.+?)\*\*\s+\{#([A-Za-z0-9_-]+)\}\s*$")
 QMD_LINK = re.compile(r"(\]\([^\s)#]+)\.qmd(?=[)#])")
 
 
 def _convert_heading(line: str) -> str:
+    inline_anchor = INLINE_BOLD_ANCHOR.match(line)
+    if inline_anchor:
+        title, anchor = inline_anchor.groups()
+        return f"### {title} {{#{anchor}}}"
     match = HEADING_ATTRIBUTES.match(line)
     if not match:
         return line

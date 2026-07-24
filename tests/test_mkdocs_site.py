@@ -2,7 +2,12 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
 
-from scripts.check_site import published_page_paths, validate_site
+from scripts.check_site import (
+    REQUIRED_NAVIGATION_MARKERS,
+    REQUIRED_RENDERED_ANCHORS,
+    published_page_paths,
+    validate_site,
+)
 
 
 class MkDocsSiteValidationTests(unittest.TestCase):
@@ -52,6 +57,32 @@ class MkDocsSiteValidationTests(unittest.TestCase):
                 "rendered site page unit/index.html is missing navigation marker: md-sidebar",
                 errors,
             )
+
+    def test_checks_representative_anchors_and_navigation_for_all_three_parts(self) -> None:
+        self.assertEqual(
+            ["thm-u-02-08-04-contraction"],
+            REQUIRED_RENDERED_ANCHORS[
+                "chapters/chapter-08/u-02-08-04-contraction-mapping/index.html"
+            ],
+        )
+        self.assertEqual(
+            ["alg-u-03-12-02-bisection", "thm-u-03-12-02-bisection-error"],
+            REQUIRED_RENDERED_ANCHORS[
+                "chapters/chapter-12/u-03-12-02-certified-bisection/index.html"
+            ],
+        )
+        self.assertIn(
+            "第二部：数列极限与无限过程",
+            REQUIRED_NAVIGATION_MARKERS[
+                "chapters/chapter-08/u-02-08-04-contraction-mapping/index.html"
+            ],
+        )
+        self.assertIn(
+            "第三部：函数极限、连续性与方程",
+            REQUIRED_NAVIGATION_MARKERS[
+                "chapters/chapter-12/u-03-12-02-certified-bisection/index.html"
+            ],
+        )
 
 
 if __name__ == "__main__":

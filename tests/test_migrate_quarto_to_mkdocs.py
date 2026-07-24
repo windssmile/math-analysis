@@ -55,6 +55,13 @@ class QuartoMigrationTests(unittest.TestCase):
         self.assertNotIn(".unnumbered", converted)
         self.assertNotIn("## 答案", converted)
 
+    def test_promotes_inline_bold_stable_anchor_to_a_heading(self) -> None:
+        converted = convert_markdown("**定理（连续运算）** {#thm-u-03-10-02-continuous-operations}\n")
+        self.assertEqual(
+            "### 定理（连续运算） {#thm-u-03-10-02-continuous-operations}\n",
+            converted,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

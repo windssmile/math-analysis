@@ -48,6 +48,62 @@ nav:
           - 4.2 区间怎样把目标逐步夹住？: chapters/chapter-04/u-01-04-02-interval-bisection.md
           - 4.3 “越来越近”怎样说得严格？: chapters/chapter-04/u-01-04-03-approximation-error.md
           - 4.4 无限逼近何时会失败？: chapters/chapter-04/u-01-04-04-failure-of-infinite-approximation.md
+  - 第二部：数列极限与无限过程:
+      - 第 5 章：数列极限与量词结构:
+          - 本章导学: chapters/chapter-05/index.md
+          - 5.1 数列怎样记录无限过程？: chapters/chapter-05/u-02-05-01-sequences.md
+          - 5.2 “最终任意接近”怎样写成定义？: chapters/chapter-05/u-02-05-02-epsilon-n.md
+          - 5.3 不收敛与趋于无穷怎样区分？: chapters/chapter-05/u-02-05-03-divergence-infinity.md
+          - 5.4 迭代数据何时值得相信？: chapters/chapter-05/u-02-05-04-iteration-evidence.md
+          - 5.5 极限证明怎样从目标误差反推起点？: chapters/chapter-05/u-02-05-05-limit-consequences.md
+      - 第 6 章：极限运算与序关系:
+          - 本章导学: chapters/chapter-06/index.md
+          - 6.1 极限怎样通过代数运算传递？: chapters/chapter-06/u-02-06-01-limit-laws.md
+          - 6.2 序关系怎样给出极限估计？: chapters/chapter-06/u-02-06-02-order-squeeze.md
+          - 6.3 误差如何穿过一次迭代？: chapters/chapter-06/u-02-06-03-error-propagation.md
+          - 6.4 倒数与商法则为何必须远离零？: chapters/chapter-06/u-02-06-04-reciprocal-quotient.md
+      - 第 7 章：单调性、完备性与收敛准则:
+          - 本章导学: chapters/chapter-07/index.md
+          - 7.1 单调数列为什么会有极限？: chapters/chapter-07/u-02-07-01-monotone-sequences.md
+          - 7.2 递推的界与单调性怎样建立？: chapters/chapter-07/u-02-07-02-recursive-invariants.md
+          - 7.3 区间套怎样保证唯一目标？: chapters/chapter-07/u-02-07-03-nested-intervals.md
+          - 7.4 完备性怎样成为收敛准则？: chapters/chapter-07/u-02-07-04-completeness-criteria.md
+      - 第 8 章：子列、Cauchy 准则与上/下极限:
+          - 本章导学: chapters/chapter-08/index.md
+          - 8.1 子列揭示了原数列的什么行为？: chapters/chapter-08/u-02-08-01-subsequences.md
+          - 8.2 有界数列为何总能抽出收敛子列？: chapters/chapter-08/u-02-08-02-bolzano-weierstrass.md
+          - 8.3 Cauchy 条件怎样不预知极限而判断收敛？: chapters/chapter-08/u-02-08-03-cauchy-criterion.md
+          - 8.4 严格压缩怎样保证迭代找到唯一根？: chapters/chapter-08/u-02-08-04-contraction-mapping.md
+          - 8.5 上/下极限怎样总结所有尾部行为？: chapters/chapter-08/u-02-08-05-limsup-liminf.md
+          - 8.6 不动点计算需要哪些可核验证书？: chapters/chapter-08/u-02-08-06-fixed-point-certificates.md
+          - 8.7 有限迭代轨迹能说明什么、不能说明什么？: chapters/chapter-08/u-02-08-07-iteration-lab.md
+          - 8.8 上/下极限怎样由子列真正实现？: chapters/chapter-08/u-02-08-08-limsup-subsequences.md
+  - 第三部：函数极限、连续性与方程:
+      - 第 9 章：函数极限与局部行为:
+          - 本章导学: chapters/chapter-09/index.md
+          - 9.1 函数在一点附近意味着什么？: chapters/chapter-09/u-03-09-01-local-neighborhoods.md
+          - 9.2 “任意接近”怎样定义函数极限？: chapters/chapter-09/u-03-09-02-epsilon-delta-limit.md
+          - 9.3 局部估计怎样传递极限？: chapters/chapter-09/u-03-09-03-function-limit-laws.md
+          - 9.4 用点列靠近能否判别函数极限？: chapters/chapter-09/u-03-09-04-sequential-function-limits.md
+          - 9.5 极限证明怎样从目标误差反推局部范围？: chapters/chapter-09/u-03-09-05-epsilon-delta-workshop.md
+          - 9.6 左右极限怎样共同决定双侧极限？: chapters/chapter-09/u-03-09-06-one-sided-limits.md
+          - 9.7 函数怎样在有限点附近趋于无穷？: chapters/chapter-09/u-03-09-07-infinite-limits-at-point.md
+          - 9.8 自变量趋于无穷时怎样定义函数极限？: chapters/chapter-09/u-03-09-08-limits-at-infinity.md
+      - 第 10 章：连续函数与连续运算:
+          - 本章导学: chapters/chapter-10/index.md
+          - 10.1 连续性怎样写成局部控制？: chapters/chapter-10/u-03-10-01-epsilon-delta-continuity.md
+          - 10.2 连续性怎样经过运算和复合传递？: chapters/chapter-10/u-03-10-02-continuous-operations.md
+          - 10.3 函数会以哪些方式失去连续性？: chapters/chapter-10/u-03-10-03-discontinuities-elementary-functions.md
+      - 第 11 章：闭区间上的整体性质:
+          - 本章导学: chapters/chapter-11/index.md
+          - 11.1 为什么闭区间能把无限局部信息压缩为有限控制？: chapters/chapter-11/u-03-11-01-compact-intervals.md
+          - 11.2 连续函数为何一定有界并取得最值？: chapters/chapter-11/u-03-11-02-extreme-value-theorem.md
+          - 11.3 局部连续何时升级为全局一致控制？: chapters/chapter-11/u-03-11-03-uniform-continuity.md
+      - 第 12 章：零点、不动点与迭代求解:
+          - 本章导学: chapters/chapter-12/index.md
+          - 12.1 连续函数怎样保证取遍中间值？: chapters/chapter-12/u-03-12-01-intermediate-value-theorem.md
+          - 12.2 怎样把有根证明变成误差可证的算法？: chapters/chapter-12/u-03-12-02-certified-bisection.md
+          - 12.3 有固定点是否意味着简单迭代会收敛？: chapters/chapter-12/u-03-12-03-fixed-points-and-iteration.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

@@ -1,0 +1,180 @@
+---
+title: Cauchy 条件怎样不预知极限而判断收敛？
+unit_id: u-02-08-03
+hours:
+  theory: 1.75
+  applied: 0.25
+difficulty: 3
+prerequisites:
+  book:
+  - chapter-05
+  - chapter-08
+  higher_algebra:
+  - 三角不等式
+  analytic_geometry: []
+  python:
+  - for 循环
+  - 绝对值函数
+capabilities:
+- concepts
+- proof
+- numerical_algorithm
+- mathematical_expression
+learning_goals:
+- 定义 Cauchy 数列
+- 证明 Cauchy 收敛准则
+- 用尾部差距设计停止证书
+content_standard: 2
+---
+
+# Cauchy 条件怎样不预知极限而判断收敛？ {#u-02-08-03}
+
+
+## 先备知识
+
+收敛定义要先猜到 $L$。Cauchy 条件只比较同一尾部中的两项；实数完备性将使这种内部靠拢成为收敛的充分条件。
+
+## 学习目标
+
+1. 定义 Cauchy 数列；2. 完证收敛推出 Cauchy；3. 证明 Cauchy 数列有界；4. 用 BW 子列证明反向命题。
+
+## 牵引问题
+
+没有候选极限时，怎样仅由项与项之间的距离判定极限存在？
+
+## 探索与猜想
+
+若尾部每两项相距很小，则先固定其中一项可以控制整个尾部；这给有界性。若再找到一个收敛子列，尾部内部靠拢会把其极限传播到所有项。
+
+## 概念与理论
+
+### Cauchy 定义 {#def-u-02-08-03-cauchy}
+
+$(a_n)$ 称为 Cauchy 数列，若任给 $\varepsilon>0$，存在 $N$，使
+
+$$
+m,n\ge N\quad\Longrightarrow\quad |a_m-a_n|<\varepsilon.
+$$
+
+### 实数中的 Cauchy 收敛准则 {#thm-u-02-08-03-criterion}
+
+**定理。** 实数数列收敛，当且仅当它是 Cauchy 数列。
+
+**证明（收敛 $\Rightarrow$ Cauchy）。** 设 $a_n\to L$。给定 $\varepsilon>0$，取 $N$ 使 $n\ge N$ 时 $|a_n-L|<\varepsilon/2$。若 $m,n\ge N$，则
+
+$$
+|a_m-a_n|\le |a_m-L|+|a_n-L|<\varepsilon.
+$$
+
+**证明（Cauchy $\Rightarrow$ 收敛）。** 先证有界。对 $\varepsilon=1$，存在 $N_0$，使 $m,n\ge N_0$ 时 $|a_m-a_n|<1$。固定 $n=N_0$，则 $m\ge N_0$ 时
+
+$$
+|a_m|\le |a_{N_0}|+1.
+$$
+
+先令
+
+$$
+B=\max\{|a_1|,\ldots,|a_{N_0}|\},
+\qquad M=B+1.
+$$
+
+这个最大值始终从至少一个数中取得，即使 $N_0=1$ 也没有空前缀。若 $n\le N_0$，则 $|a_n|\le B<M$；若 $n\ge N_0$，则 $|a_n|\le|a_{N_0}|+1\le M$。故全列有界。由 Bolzano--Weierstrass 定理，存在子列 $a_{n_k}\to L$。
+
+任给 $\varepsilon>0$。Cauchy 性给出 $N_1$，使 $m,n\ge N_1$ 时 $|a_m-a_n|<\varepsilon/2$；子列收敛给出 $K_1$，使 $k\ge K_1$ 时 $|a_{n_k}-L|<\varepsilon/2$。因 $n_k\ge k$，可取
+
+$$
+k\ge\max\{K_1,N_1\},
+$$
+
+从而 $n_k\ge N_1$。对任意 $n\ge N_1$，固定这样一个 $k$，有
+
+$$
+|a_n-L|\le |a_n-a_{n_k}|+|a_{n_k}-L|<\varepsilon.
+$$
+
+故整列 $a_n\to L$。$\square$
+
+## 例题与迁移
+
+### 例题 1：几何尾部 {#ex-u-02-08-03-01}
+
+令 $a_n=\sum_{j=0}^{n}2^{-j}$。若 $m>n$，则
+
+$$
+|a_m-a_n|=\sum_{j=n+1}^{m}2^{-j}<2^{-n}.
+$$
+
+给定 $\varepsilon$，取 $N$ 使 $2^{-N}<\varepsilon$，便证明 Cauchy，因而在实数中收敛。
+
+### 例题 2：调和部分和不是 Cauchy {#ex-u-02-08-03-02}
+
+令 $h_n=\sum_{j=1}^{n}1/j$。取 $m=2n$，则
+
+$$
+h_{2n}-h_n=\sum_{j=n+1}^{2n}\frac1j\ge n\cdot\frac1{2n}=\frac12.
+$$
+
+任意尾部都可找到相距至少 $1/2$ 的两项，所以不是 Cauchy，也不收敛。
+
+## 即时检验与回望
+
+1. 有界性证明为什么要把前 $N_0$ 项纳入最大值？
+
+??? note "答案"
+
+    Cauchy 条件只控制尾部。前 $N_0$ 项只有有限个，取其绝对值的最大值 $B$ 始终有定义；再用 $M=B+1$ 同时控制有限前段与尾部。
+
+2. 反向证明为何只需一个收敛子列？
+
+??? note "答案"
+
+    Cauchy 性保证任意足够靠后的项都接近该子列的一项；子列又接近 $L$，三角不等式便把同一 $L$ 传播到整列。
+
+## 习题与答案
+
+### 习题 1：常数拆分 {#pr-u-02-08-03-01}
+
+收敛推出 Cauchy 的证明中为何使用 $\varepsilon/2$？
+
+??? note "答案"
+
+    三角不等式产生两项误差；各自小于 $\varepsilon/2$ 后总和才严格小于 $\varepsilon$。
+
+### 习题 2：$1/n$ 的 Cauchy 性 {#pr-u-02-08-03-02}
+
+直接证明 $a_n=1/n$ 是 Cauchy 数列。
+
+??? note "答案"
+
+    若 $m,n\ge N$，则 $|1/m-1/n|\le1/m+1/n\le2/N$。取 $N>2/\varepsilon$ 即可。
+
+### 习题 3：相邻差陷阱 {#pr-u-02-08-03-03}
+
+说明 $|a_{n+1}-a_n|\to0$ 不足以推出 Cauchy。
+
+??? note "答案"
+
+    调和部分和满足 $a_{n+1}-a_n=1/(n+1)\to0$，但例题已证 $a_{2n}-a_n\ge1/2$，所以不是 Cauchy。
+
+### 习题 4：Cauchy 子列 {#pr-u-02-08-03-04}
+
+证明 Cauchy 数列的任意子列也是 Cauchy。
+
+??? note "答案"
+
+    给定 $\varepsilon$，原数列存在阈值 $N$。若子列位置 $r,s\ge N$，则指标 $n_r,n_s\ge N$，故 $|a_{n_r}-a_{n_s}|<\varepsilon$。
+
+### 习题 5：两个 Cauchy 数列之和 {#pr-u-02-08-03-05}
+
+证明 $(a_n)$、$(b_n)$ 都 Cauchy 时 $(a_n+b_n)$ Cauchy。
+
+??? note "答案"
+
+    分别以 $\varepsilon/2$ 取得阈值 $N_a,N_b$。当 $m,n\ge\max\{N_a,N_b\}$ 时，两差绝对值之和小于 $\varepsilon$，而和数列之差不超过该和。
+
+## 常见误区与后续
+
+- Cauchy 条件控制任意两项，不只是相邻项。
+- Cauchy 推有界时必须把有限前缀纳入统一界。
+- 反向命题依赖实数完备性，具体经由 BW 定理完成；下一单元将把几何增量变成 Cauchy 证书。

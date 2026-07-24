@@ -30,3 +30,9 @@ while count < 3:
 ```
 
 函数接收输入并返回数据，调用者可以继续使用返回值；`while` 会在条件为真时重复执行代码块。遇到左右端点次序错误等无效输入时，应抛出 `ValueError`，而不是返回一个看似合理但实际错误的结果。
+
+## 在本书中的使用
+
+- [5.4 迭代数据何时值得相信？](../chapters/chapter-05/u-02-05-04-iteration-evidence.md)：区分有限实验与极限证书。
+- [6.3 误差如何穿过一次迭代？](../chapters/chapter-06/u-02-06-03-error-propagation.md)：用函数与循环复核已证明的误差分解。
+- [7.2 递推的界与单调性怎样建立？](../chapters/chapter-07/u-02-07-02-recursive-invariants.md)：让程序追踪一个已写出的递推不变量。

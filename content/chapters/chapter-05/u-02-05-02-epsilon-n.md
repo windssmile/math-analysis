@@ -1,0 +1,270 @@
+---
+title: “最终任意接近”怎样写成定义？
+unit_id: u-02-05-02
+hours:
+  theory: 2.0
+  applied: 0.25
+difficulty: 2
+prerequisites:
+  book:
+  - chapter-04
+  - chapter-05
+  higher_algebra:
+  - 绝对值与不等式
+  - 正实数幂的单调性
+  analytic_geometry: []
+  python: []
+capabilities:
+- concepts
+- proof
+- mathematical_expression
+learning_goals:
+- 准确陈述并否定 epsilon-N 定义
+- 完整证明 1/n 与 c/n^p 收敛于零
+- 从目标误差发现并呈现 N(epsilon)
+- 辨析量词顺序与固定容差
+content_standard: 2
+---
+
+# “最终任意接近”怎样写成定义？ {#u-02-05-02}
+
+
+## 先备知识
+
+本书约定 $\mathbb N=\{1,2,3,\ldots\}$。本单元使用第 3 章阿基米德性质的下列直接推论：
+
+> 对每个实数 $A$，存在 $N\in\mathbb N$ 使 $N>A$。
+
+还明确使用一个代数先备事实：对任意实数 $p>0$，函数 $t\mapsto t^p$ 在 $(0,\infty)$ 上严格递增，并且每个正数 $y$ 有唯一正 $p$ 次方根 $y^{1/p}$。这使非整数实指数的证明不必借助对数或后面的极限法则。
+
+## 学习目标
+
+完成本单元后，你应能：
+
+1. 按正确量词顺序陈述数列有限极限；
+2. 从 $|a_n-L|<\varepsilon$ 反推并呈现 $N(\varepsilon)$；
+3. 仅用阿基米德性质和正幂单调性，完整证明 $1/n\to0$ 与 $c/n^p\to0$；
+4. 用固定容差反例识别量词顺序错误。
+
+## 牵引问题
+
+“$1/n$ 越来越接近 $0$”仍缺一项承诺：使用者可以先指定任意小的正误差，证明者必须据此给出一个有限门槛，并保证门槛以后**每一项**都达标。这个承诺如何用量词精确写出？
+
+## 探索与猜想
+
+若要求 $1/n$ 到 $0$ 的距离小于 $0.01$，取 $n>100$ 即可；若误差改为 $10^{-6}$，门槛也必须改变。观察不等式
+
+$$
+\left|\frac1n-0\right|<\varepsilon
+\quad\Longleftrightarrow\quad n>\frac1\varepsilon
+$$
+
+揭示了证明的发现方向：先从目标误差反推 $n$ 的条件，再调用阿基米德性质选择整数门槛。
+
+## 概念与理论
+
+### 数列的有限极限 {#def-u-02-05-02-limit}
+
+设 $(a_n)$ 是实数列，$L\in\mathbb R$。若
+
+$$
+\forall\varepsilon>0\;\exists N\in\mathbb N\;\forall n\in\mathbb N,
+\qquad n\ge N\Longrightarrow |a_n-L|<\varepsilon,
+$$
+
+就称 $(a_n)$ **收敛于** $L$，记作 $a_n\to L$ 或 $\lim_{n\to\infty}a_n=L$。
+
+量词顺序是定义的一部分：先由挑战者给出 $\varepsilon$，再允许证明者选择依赖于 $\varepsilon$ 的 $N=N(\varepsilon)$，随后这个 $N$ 必须控制所有 $n\ge N$。$N$ 不必最小；选得更大仍然有效。
+
+### 发现门槛与呈现证明 {#prop-u-02-05-02-discovery}
+
+草稿中通常**逆向发现**：从 $|a_n-L|<\varepsilon$ 出发，逐步找出足够的 $n$ 条件。正式证明则**正向呈现**：
+
+1. 任取 $\varepsilon>0$；
+2. 明确选取 $N=N(\varepsilon)$；
+3. 任取 $n\ge N$；
+4. 从已知条件正向推出 $|a_n-L|<\varepsilon$。
+
+逆向推导帮助找到门槛，但若其中只有充分条件而非等价变形，正式证明必须正向核验，不能把箭头机械倒转。
+
+### 定理：倒数数列趋于零 {#thm-u-02-05-02-reciprocal-limit}
+
+**定理。** $1/n\to0$。
+
+**障碍。** 要同时控制无限多个尾项，逐项验算永远做不完。
+
+**路线。** 把目标 $1/n<\varepsilon$ 反推成 $n>1/\varepsilon$，再用阿基米德性质取得一个整数门槛。
+
+**逐步证明。** 任取 $\varepsilon>0$。由阿基米德性质，存在 $N\in\mathbb N$ 使
+
+$$
+N>\frac1\varepsilon.
+$$
+
+任取 $n\ge N$，则 $n\ge N>1/\varepsilon>0$，取倒数后
+
+$$
+\left|\frac1n-0\right|=\frac1n\le\frac1N<\varepsilon.
+$$
+
+所以定义中的三个量词依次满足，故 $1/n\to0$。$\square$
+
+**假设使用。** $\varepsilon>0$ 保证 $1/\varepsilon$ 有意义；$n,N>0$ 保证取倒数时不等号方向正确；阿基米德性质提供整数 $N$。
+
+**常见错误。** 只写“令 $N=1/\varepsilon$”不能保证 $N\in\mathbb N$，而且若恰有 $n=N$ 只能得到 $1/n=\varepsilon$。选取整数 $N>1/\varepsilon$ 同时解决两点。
+
+**方法迁移。** 当误差能被一个随 $n$ 增大而减小的正表达式控制时，先令这个上界小于 $\varepsilon$，常能发现门槛。
+
+### 定理：实幂倒数的常数倍趋于零 {#thm-u-02-05-02-power-limit}
+
+**定理。** 对任意 $c\in\mathbb R$ 和 $p>0$，有
+
+$$
+\frac{c}{n^p}\longrightarrow0.
+$$
+
+**障碍。** $c$ 可为负数，$p$ 可为非整数，不能暗中只按正整数幂处理。
+
+**路线。** 先用绝对值去掉 $c$ 的符号，再借助正实数幂严格单调，把误差要求化为 $n>(|c|/\varepsilon)^{1/p}$。
+
+**逐步证明。** 任取 $\varepsilon>0$。若 $c=0$，取 $N=1$，则所有项误差均为 $0<\varepsilon$。以下设 $c\ne0$。由阿基米德性质，取 $N\in\mathbb N$ 使
+
+$$
+N>\left(\frac{|c|}{\varepsilon}\right)^{1/p}.
+$$
+
+任取 $n\ge N$。因 $p>0$ 且正幂函数严格递增，
+
+$$
+n^p\ge N^p>\frac{|c|}{\varepsilon}.
+$$
+
+各量均为正，整理得到
+
+$$
+\left|\frac{c}{n^p}-0\right|=\frac{|c|}{n^p}<\varepsilon.
+$$
+
+故 $c/n^p\to0$。$\square$
+
+**假设使用。** $c\ne0$ 时 $|c|/\varepsilon>0$；$p>0$ 是正幂单调性及正 $p$ 次方根的必要前提。
+
+**常见错误。** 对任意实数 $p>0$ 直接写“显然 $n^p$ 增大”是在偷用先备结论。本证明已明确列出所需的正幂单调性；没有使用对数，也没有使用第 6 章的代数极限法则。
+
+**方法迁移。** 若可直接得到 $|a_n-L|\le C/n^p$，同样的反推会给出一个充分门槛；但本章此处不从已知极限推出新的代数运算结论。
+
+## 例题与迁移
+
+### 例：不追求最小门槛 {#ex-u-02-05-02-threshold}
+
+证明 $3/n^2\to0$。给定 $\varepsilon>0$，由上面的路线只需 $n>\sqrt{3/\varepsilon}$。取任何正整数
+
+$$
+N>\sqrt{\frac3\varepsilon}
+$$
+
+即可。若 $n\ge N$，则 $3/n^2\le3/N^2<\varepsilon$。证明只需一个有效门槛，不需要解出最小门槛。
+
+### 例：固定容差不能证明收敛 {#ex-u-02-05-02-fixed-tolerance}
+
+数列 $a_n=0.001$ 的所有项都满足 $|a_n|<0.01$，却不收敛于 $0$。取更小的固定误差 $\varepsilon_0=0.0005$，无论怎样选 $N$，每个 $n\ge N$ 都有
+
+$$
+|a_n-0|=0.001\ge\varepsilon_0.
+$$
+
+因此检查一个预先固定的容差，只说明进入一个固定误差带，不能替代“对每个 $\varepsilon>0$”。
+
+### 例：颠倒量词会变成空话 {#ex-u-02-05-02-quantifier-order}
+
+错误陈述
+
+$$
+\exists N\;\forall\varepsilon>0\;\forall n\ge N,
+\quad |a_n-L|<\varepsilon
+$$
+
+要求同一尾部的每项到 $L$ 的距离小于所有正数，因而实际上要求 $a_n=L$ 对所有 $n\ge N$。这比收敛强得多；例如 $1/n\to0$，但它没有任何一项等于 $0$。
+
+## 即时检验与回望
+
+1. 在极限定义中，$N$ 可以依赖于什么，又不能依赖于什么？
+
+??? note "答案"
+
+    $N$ 可以依赖于先给定的 $\varepsilon$ 以及数列本身；选定后不能再依赖随后任取的 $n$。同一个 $N$ 必须控制所有 $n\ge N$。
+
+2. 已证明从 $N=101$ 起 $|a_n-L|<0.01$。这是否足以推出 $a_n\to L$？
+
+??? note "答案"
+
+    不足。它只处理一个固定误差。要证明收敛，必须对任意给定的 $\varepsilon>0$ 都能找到相应门槛。
+
+## 习题与答案
+
+### 习题 1：补全量词 {#pr-u-02-05-02-01}
+
+补全“$a_n\to7$”的定义，并标明哪些变量可以依赖于 $\varepsilon$。
+
+??? note "答案"
+
+    $$
+    \forall\varepsilon>0\;\exists N=N(\varepsilon)\in\mathbb N\;
+    \forall n\in\mathbb N,\quad n\ge N\Longrightarrow |a_n-7|<\varepsilon.
+    $$
+
+    $N$ 可依赖 $\varepsilon$，但不能依赖后面任取的 $n$。
+
+### 习题 2：证明负常数倍 {#pr-u-02-05-02-02}
+
+从定义证明 $-5/n\to0$。
+
+??? note "答案"
+
+    任取 $\varepsilon>0$。由阿基米德性质取 $N\in\mathbb N$ 使 $N>5/\varepsilon$。若 $n\ge N$，则
+
+    $$
+    \left|-\frac5n-0\right|=\frac5n\le\frac5N<\varepsilon.
+    $$
+
+    故 $-5/n\to0$。绝对值消除了负号，不能把误差写成 $-5/n$。
+
+### 习题 3：任意正实指数 {#pr-u-02-05-02-03}
+
+对 $p=1/2$，从定义证明 $2/n^{1/2}\to0$，并指出使用的代数事实。
+
+??? note "答案"
+
+    任取 $\varepsilon>0$，取正整数 $N>(2/\varepsilon)^2$。若 $n\ge N$，平方根函数在正数上严格递增，故
+
+    $$
+    \sqrt n\ge\sqrt N>\frac2\varepsilon,
+    \qquad \frac2{\sqrt n}<\varepsilon.
+    $$
+
+    使用的事实是正数上平方根（即 $p=1/2$ 的正幂）严格递增。
+
+### 习题 4：识别错误门槛 {#pr-u-02-05-02-04}
+
+有人证明 $1/n\to0$ 时取 $N=1/\varepsilon$。指出两个问题并修正。
+
+??? note "答案"
+
+    $1/\varepsilon$ 未必是正整数；即使它是整数，在 $n=N$ 时也只有 $1/n=\varepsilon$，不满足严格小于。用阿基米德性质取任意整数 $N>1/\varepsilon$ 即可。
+
+### 习题 5：构造固定容差反例 {#pr-u-02-05-02-05}
+
+构造一个数列，它从第一项起都满足 $|a_n-2|<0.1$，但不收敛于 $2$，并用一个固定误差说明失败。
+
+??? note "答案"
+
+    可取 $a_n=2.05$。所有项到 $2$ 的距离为 $0.05<0.1$。但取固定误差 $\varepsilon_0=0.04$，对任意 $N$，令 $n=N$ 就有 $|a_n-2|=0.05\ge0.04$，所以它不收敛于 $2$。
+
+## 常见误区与后续
+
+- **把“存在一个误差”写在最前：** 收敛要求每个正误差都能被满足。
+- **让门槛追着 $n$ 改：** $N$ 选定后必须覆盖整个尾部。
+- **只做逆向演算：** 发现 $N$ 后还要正向检查每一步。
+- **偷用后续定理：** 本单元的两个证明只依赖阿基米德性质、绝对值和已声明的正幂单调性。
+
+下一单元将把“从误差反推门槛”发展为证明策略，并由定义推出有限极限的唯一性、有界性与最终保号性质。

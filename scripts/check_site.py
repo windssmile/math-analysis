@@ -27,6 +27,22 @@ REQUIRED_RENDERED_ANCHORS = {
     "chapters/chapter-04/u-01-04-03-approximation-error/index.html": [
         "thm-u-01-04-03-bisection-step-count",
     ],
+    "chapters/chapter-08/u-02-08-04-contraction-mapping/index.html": [
+        "thm-u-02-08-04-contraction",
+    ],
+    "chapters/chapter-08/u-02-08-05-limsup-liminf/index.html": [
+        "def-u-02-08-05-tail-bounds",
+    ],
+    "chapters/chapter-09/u-03-09-02-epsilon-delta-limit/index.html": [
+        "def-u-03-09-02-function-limit",
+    ],
+    "chapters/chapter-11/u-03-11-01-compact-intervals/index.html": [
+        "thm-u-03-11-01-heine-borel",
+    ],
+    "chapters/chapter-12/u-03-12-02-certified-bisection/index.html": [
+        "alg-u-03-12-02-bisection",
+        "thm-u-03-12-02-bisection-error",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -37,6 +53,16 @@ REQUIRED_NAVIGATION_MARKERS = {
     "chapters/chapter-04/u-01-04-02-interval-bisection/index.html": [
         "md-sidebar",
         "第 4 章：递推过程与无限逼近",
+    ],
+    "chapters/chapter-08/u-02-08-04-contraction-mapping/index.html": [
+        "md-sidebar",
+        "第二部：数列极限与无限过程",
+        "第 8 章：子列、Cauchy 准则与上/下极限",
+    ],
+    "chapters/chapter-12/u-03-12-02-certified-bisection/index.html": [
+        "md-sidebar",
+        "第三部：函数极限、连续性与方程",
+        "第 12 章：零点、不动点与迭代求解",
     ],
 }
 
