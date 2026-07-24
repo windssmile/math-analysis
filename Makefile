@@ -11,6 +11,10 @@ check:
 build: check
 	mkdocs build --strict
 
-verify: test build
+site-check: build
+	$(PYTHON) scripts/check_site.py
 
+verify: test check build site-check
+
+preview:
 	mkdocs serve

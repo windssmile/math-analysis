@@ -265,6 +265,7 @@ git commit -m "feat: migrate part one to MkDocs"
 - Create: `tests/test_mkdocs_site.py`
 - Modify: `scripts/check_site.py`
 - Modify: `Makefile`
+- Delete: `tests/test_site.py`（旧 Quarto `_site` 输出契约测试，由新的 MkDocs 站点测试取代）
 
 - [ ] **Step 1: 写出渲染站点检查的失败测试**
 
@@ -286,7 +287,9 @@ site-check: build
 verify: test check build site-check
 ```
 
-- [ ] **Step 4: 运行完整第 1 部验证**
+- [ ] **Step 4: 替换旧站点输出契约并运行完整第 1 部验证**
+
+删除仅依赖 Quarto `_site` 路径、自动章节编号和 TOML registry 的 `tests/test_site.py`；这些行为不属于 MkDocs 的发布契约，断链、锚点、标题和导航检查改由 `tests/test_mkdocs_site.py` 覆盖。
 
 Run: `python3.12 -m unittest discover -s tests -v && python3.12 scripts/check_content.py && mkdocs build --strict && python3.12 scripts/check_site.py`  
 Expected: PASS；无 Quarto、Deno、TOML registry 或 `_site` 依赖。
@@ -299,7 +302,8 @@ Expected: 在桌面和约 390px 宽的移动端检查首页、`01-04-interval-bi
 - [ ] **Step 6: 提交试点质量门并停止**
 
 ```bash
-git add scripts/check_site.py tests/test_mkdocs_site.py Makefile
+git add scripts/check_site.py tests/test_mkdocs_site.py Makefile docs/superpowers/plans/2026-07-24-mkdocs-material-migration.md
+git add -u -- tests/test_site.py
 git commit -m "test: validate MkDocs part one site"
 ```
 
