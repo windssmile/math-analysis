@@ -9,7 +9,7 @@ check:
 	$(PYTHON) scripts/check_content.py
 
 build: check
-	mkdocs build --strict
+	zensical build --strict
 
 site-check: build
 	$(PYTHON) scripts/check_site.py
@@ -17,4 +17,4 @@ site-check: build
 verify: test check build site-check
 
 preview:
-	mkdocs serve
+	zensical serve

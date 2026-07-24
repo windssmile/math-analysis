@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  {% if page.meta and page.meta.unit_id %}
+  {% if page and page.meta and page.meta.unit_id %}
     {% include "partials/unit-meta.html" %}
   {% endif %}
   {{ super() }}

@@ -32,6 +32,8 @@ class ThemeContractTests(unittest.TestCase):
         for marker in ("page.meta.unit_id", "page.meta.hours", "page.meta.learning_goals"):
             with self.subTest(partial_marker=marker):
                 self.assertIn(marker, partial)
+        self.assertIn("| items", partial)
+        self.assertNotIn(".items()", partial)
 
 
 if __name__ == "__main__":

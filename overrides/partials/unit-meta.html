@@ -6,7 +6,7 @@
     <div>
       <strong>先备知识：</strong>
       <ul>
-        {% for category, items in page.meta.prerequisites.items() %}
+        {% for category, items in page.meta.prerequisites | items %}
           {% if items %}<li>{{ category }}：{{ items | join("、") }}</li>{% endif %}
         {% endfor %}
       </ul>
