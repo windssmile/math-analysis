@@ -1,0 +1,21 @@
+<aside class="unit-meta" aria-label="单元信息" data-unit-id="{{ page.meta.unit_id }}">
+  <p class="unit-meta__title">学习单元信息</p>
+  <div class="unit-meta__grid">
+    <p><strong>总学时：</strong>{{ page.meta.hours.theory + page.meta.hours.applied }} 小时（理论 {{ page.meta.hours.theory }}，应用 {{ page.meta.hours.applied }}）</p>
+    <p><strong>难度：</strong>{{ page.meta.difficulty }}</p>
+    <div>
+      <strong>先备知识：</strong>
+      <ul>
+        {% for category, items in page.meta.prerequisites.items() %}
+          {% if items %}<li>{{ category }}：{{ items | join("、") }}</li>{% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <strong>学习目标：</strong>
+      <ul>
+        {% for goal in page.meta.learning_goals %}<li>{{ goal }}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</aside>

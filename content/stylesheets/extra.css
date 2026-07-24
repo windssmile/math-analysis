@@ -1,0 +1,102 @@
+:root > * {
+  --md-primary-fg-color: #4056d6;
+  --md-primary-fg-color--light: #6475e5;
+  --md-primary-fg-color--dark: #2f42ad;
+  --md-accent-fg-color: #4056d6;
+  --mathbook-ink: #20243a;
+  --mathbook-muted: #596078;
+  --mathbook-surface: #f7f7fb;
+  --mathbook-outline: #e1e3ee;
+  --mathbook-reading-width: 48rem;
+}
+
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #fffefd;
+  --md-default-fg-color: var(--mathbook-ink);
+  --md-default-fg-color--light: var(--mathbook-muted);
+  --md-code-bg-color: #f7f7fb;
+}
+
+.md-content__inner {
+  max-width: var(--mathbook-reading-width);
+}
+
+.md-typeset {
+  font-family: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.82;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  color: var(--mathbook-ink);
+  letter-spacing: -0.01em;
+}
+
+.unit-meta {
+  margin: 0 0 1.75rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--mathbook-outline);
+  border-radius: 1rem;
+  background: var(--mathbook-surface);
+  box-shadow: 0 1px 2px rgb(32 36 58 / 5%);
+}
+
+.unit-meta__title {
+  margin: 0 0 0.75rem;
+  color: var(--md-primary-fg-color);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.unit-meta__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem 1.5rem;
+}
+
+.unit-meta__grid p,
+.unit-meta__grid ul {
+  margin: 0;
+}
+
+.unit-meta__grid ul {
+  padding-left: 1.1rem;
+}
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 0.9rem;
+  box-shadow: 0 1px 2px rgb(32 36 58 / 5%);
+}
+
+.md-typeset pre > code {
+  border-radius: 0.85rem;
+}
+
+.md-typeset .highlighttable {
+  border-radius: 0.85rem;
+}
+
+@media screen and (max-width: 76.2344em) {
+  .md-content__inner {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset {
+    font-size: 0.76rem;
+  }
+
+  .unit-meta {
+    padding: 1rem;
+    border-radius: 0.85rem;
+  }
+
+  .unit-meta__grid {
+    grid-template-columns: 1fr;
+  }
+}

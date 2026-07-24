@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if page.meta and page.meta.unit_id %}
+    {% include "partials/unit-meta.html" %}
+  {% endif %}
+  {{ super() }}
+{% endblock %}
