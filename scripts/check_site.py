@@ -1,4 +1,4 @@
-"""Validate the rendered MkDocs site and its stable teaching anchors."""
+"""Validate the rendered Zensical site and its stable teaching anchors."""
 
 from __future__ import annotations
 
@@ -96,7 +96,7 @@ class PageParser(HTMLParser):
 
 
 def published_page_paths(paths: list[Path]) -> list[str]:
-    """Map MkDocs source paths to directory-style HTML output paths."""
+    """Map published Markdown paths to directory-style HTML output paths."""
     rendered: list[str] = []
     for path in paths:
         if path.name == "index.md":

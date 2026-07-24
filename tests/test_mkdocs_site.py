@@ -10,11 +10,13 @@ from scripts.check_site import (
 )
 
 
-class MkDocsSiteValidationTests(unittest.TestCase):
-    def test_verify_target_runs_the_mkdocs_site_checker(self) -> None:
+class ZensicalSiteValidationTests(unittest.TestCase):
+    def test_verify_target_runs_the_zensical_site_checker(self) -> None:
         makefile = (Path(__file__).resolve().parents[1] / "Makefile").read_text(
             encoding="utf-8"
         )
+        self.assertIn("zensical build --strict", makefile)
+        self.assertNotIn("mkdocs build", makefile)
         self.assertIn("site-check: build", makefile)
         self.assertIn("$(PYTHON) scripts/check_site.py", makefile)
 

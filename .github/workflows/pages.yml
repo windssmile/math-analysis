@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install MkDocs dependencies
+      - name: Install Zensical dependencies
         run: python3.12 -m pip install --requirement requirements.txt
 
       - name: Validate and build textbook site
