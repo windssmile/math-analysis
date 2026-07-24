@@ -23,6 +23,33 @@ theme:
 
 nav:
   - 首页: index.md
+  - 阅读说明: preface.md
+  - 全书课程地图: course-map.md
+  - 第一部：实数、函数与分析语言:
+      - 第 1 章：函数、集合与数学陈述:
+          - 本章导学: chapters/chapter-01/index.md
+          - 1.1 集合怎样组织数学对象？: chapters/chapter-01/u-01-01-01-sets.md
+          - 1.2 量词怎样改变一句话？: chapters/chapter-01/u-01-01-02-quantifiers.md
+          - 1.3 什么算作一个有效证明？: chapters/chapter-01/u-01-01-03-proofs.md
+          - 1.4 函数为何不只是“公式”？: chapters/chapter-01/u-01-01-04-functions.md
+      - 第 2 章：实数系与完备性公理:
+          - 本章导学: chapters/chapter-02/index.md
+          - 2.1 有理数为什么仍然不够？: chapters/chapter-02/u-01-02-01-rational-gaps.md
+          - 2.2 怎样用切割构造一个实数？: chapters/chapter-02/u-01-02-02-dedekind-cuts.md
+          - 2.3 构造后怎样计算与比较？: chapters/chapter-02/u-01-02-03-cut-order-operations.md
+      - 第 3 章：上界、下界与确界原理:
+          - 本章导学: chapters/chapter-03/index.md
+          - 3.1 有上界为什么还不够？: chapters/chapter-03/u-01-03-01-bounds.md
+          - 3.2 最小上界怎样保证存在？: chapters/chapter-03/u-01-03-02-supremum-principle.md
+          - 3.3 确界原理能推出什么？: chapters/chapter-03/u-01-03-03-completeness-consequences.md
+      - 第 4 章：递推过程与无限逼近:
+          - 本章导学: chapters/chapter-04/index.md
+          - 4.1 递推会不会真的“靠近”目标？: chapters/chapter-04/u-01-04-01-recurrence.md
+          - 4.2 区间怎样把目标逐步夹住？: chapters/chapter-04/u-01-04-02-interval-bisection.md
+          - 4.3 “越来越近”怎样说得严格？: chapters/chapter-04/u-01-04-03-approximation-error.md
+          - 4.4 无限逼近何时会失败？: chapters/chapter-04/u-01-04-04-failure-of-infinite-approximation.md
+  - 附录:
+      - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
 markdown_extensions:
   - admonition
