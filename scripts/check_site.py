@@ -57,6 +57,10 @@ REQUIRED_RENDERED_ANCHORS = {
         "thm-u-04-13-03-linearization-equivalence",
         "thm-u-04-13-03-differentiable-continuous",
     ],
+    "chapters/chapter-14/u-04-14-02-chain-rule/index.html": [
+        "thm-u-04-14-02-chain-rule",
+        "ex-u-04-14-02-zero-inner-increment",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -82,6 +86,11 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第四部：微分与局部线性化",
         "第 13 章：导数、微分与局部线性模型",
+    ],
+    "chapters/chapter-14/u-04-14-02-chain-rule/index.html": [
+        "md-sidebar",
+        "第四部：微分与局部线性化",
+        "第 14 章：求导法则、反函数与高阶导数",
     ],
 }
 

@@ -4,8 +4,8 @@ title: 全书课程地图
 
 # 全书课程地图 {#sec-curriculum-map}
 
-教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第三部及第四部第 13 章；
-第四部第 14 章及以后尚不作为发布页面。
+教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第三部及第四部第 13、
+14 章；第四部第 15 章及以后尚不作为发布页面。
 
 ## 第一部：实数、函数与分析语言
 
@@ -81,7 +81,16 @@ title: 全书课程地图
 3. [可导为什么等价于一阶局部线性化？](chapters/chapter-13/u-04-13-03-local-linearization.md)
 4. [局部线性模型怎样预测增量、误差与敏感性？](chapters/chapter-13/u-04-13-04-sensitivity-linear-model.md)
 
+### [第 14 章：求导法则、反函数与高阶导数](chapters/chapter-14/index.md) {#chapter-14}
+
+本章学时：6 小时（理论 4.5，应用 1.5）。
+
+1. [局部线性模型怎样通过和、积、商传递？](chapters/chapter-14/u-04-14-01-algebraic-derivative-rules.md)
+2. [复合函数的局部误差怎样层层传递？](chapters/chapter-14/u-04-14-02-chain-rule.md)
+3. [反函数的变化率为何是原导数的倒数？](chapters/chapter-14/u-04-14-03-inverse-elementary-derivatives.md)
+4. [隐式关系与高阶导数怎样记录复杂变化？](chapters/chapter-14/u-04-14-04-implicit-higher-derivatives.md)
+
 ## 后续路线
 
-第四部第 14 章至第十二部继续覆盖求导法则、中值定理、Taylor 公式、优化、积分、级数、
-多元微积分、常微分方程与现代分析的章级路线；在内容写作完成前不创建空白单元页。
+第四部第 15 章至第十二部继续覆盖中值定理、Taylor 公式、优化、积分、级数、多元微积分、
+常微分方程与现代分析的章级路线；在内容写作完成前不创建空白单元页。

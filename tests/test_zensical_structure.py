@@ -26,6 +26,14 @@ class ZensicalStructureTests(unittest.TestCase):
         self.assertNotIn("mkdocs build", makefile)
         self.assertNotIn("mkdocs serve", makefile)
 
+    def test_readme_uses_zensical_commands_and_current_release_scope(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn("第四部第 14 章，共 60 个学习单元", readme)
+        self.assertIn("zensical serve", readme)
+        self.assertIn("zensical build --strict", readme)
+        self.assertNotIn("mkdocs serve", readme)
+        self.assertNotIn("mkdocs build", readme)
+
 
 if __name__ == "__main__":
     unittest.main()

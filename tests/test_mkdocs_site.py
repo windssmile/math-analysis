@@ -127,6 +127,26 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             REQUIRED_NAVIGATION_MARKERS[page],
         )
 
+    def test_checks_chapter_fourteen_chain_rule_page(self) -> None:
+        page = "chapters/chapter-14/u-04-14-02-chain-rule/index.html"
+        self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+        self.assertIn(page, REQUIRED_NAVIGATION_MARKERS)
+        self.assertEqual(
+            [
+                "thm-u-04-14-02-chain-rule",
+                "ex-u-04-14-02-zero-inner-increment",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第四部：微分与局部线性化",
+                "第 14 章：求导法则、反函数与高阶导数",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
