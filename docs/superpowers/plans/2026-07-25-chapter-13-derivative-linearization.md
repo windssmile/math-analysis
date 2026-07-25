@@ -367,7 +367,58 @@ git add content/chapters/chapter-13/u-04-13-04-sensitivity-linear-model.md
 git commit -m "feat: connect linearization to sensitivity"
 ```
 
-### Task 6: 发布第 13 章并闭合站点合同
+### Task 6: 发布前内容审查与修复
+
+**Files:**
+
+- Review: `content/chapters/chapter-13/index.md`
+- Review: `content/chapters/chapter-13/u-04-13-01-average-instantaneous-rate.md`
+- Review: `content/chapters/chapter-13/u-04-13-02-derivative-existence-failure.md`
+- Review: `content/chapters/chapter-13/u-04-13-03-local-linearization.md`
+- Review: `content/chapters/chapter-13/u-04-13-04-sensitivity-linear-model.md`
+- Test: `tests/test_chapter_13.py`
+
+- [ ] **Step 1: 逐页执行数学正确性审查**
+
+逐项核对并记录发现：
+
+- 函数定义域、内点、端点和趋近方向是否明确；
+- 所有导数是否只定义为有限实数极限；
+- 单侧判别中的必要性、充分性和量词是否完整；
+- \(r(h)=o(h)\) 是否写成比例条件，而不是只写 \(r(h)\to0\)；
+- 可导蕴含连续是否完全独立于后续定理；
+- 相对误差是否明确要求 \(a\ne0\)、\(f(a)\ne0\)；
+- 示例、即时检验和习题答案是否与正文定义一致；
+- 是否存在未声明先备、循环依赖或提前使用第 14 章以后结论。
+
+- [ ] **Step 2: 执行自学可用性审查**
+
+逐页检查牵引问题是否由正文回答，证明障碍和路线是否显式，例题是否展示方法选择，
+答案是否解释关键转折，误区是否覆盖本页最可能的错误，并检查前后页接口是否可达。
+
+- [ ] **Step 3: 修复审查发现并运行专项检查**
+
+所有内容缺陷必须直接修复；若缺陷能够由结构或稳定标记自动防止复发，先补失败测试再
+修正文。运行：
+
+```bash
+python3.12 -m unittest tests.test_chapter_13 -v
+python3.12 scripts/check_content.py
+git diff --check
+```
+
+Expected: 内容检查和格式检查通过；专项测试只允许因尚未进行发布集成而失败。
+
+- [ ] **Step 4: 提交内容审查修复**
+
+```bash
+git add tests/test_chapter_13.py content/chapters/chapter-13
+git commit -m "fix: strengthen chapter thirteen content"
+```
+
+若审查没有产生文件修改，则不创建空提交，但在最终验收记录中列出已核对的项目。
+
+### Task 7: 发布第 13 章并闭合站点合同
 
 **Files:**
 
