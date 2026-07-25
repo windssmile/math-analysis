@@ -150,12 +150,60 @@ class ChapterFourteenTests(unittest.TestCase):
         for marker in (r"反函数 \(g=f^{-1}\) 在 \(b\) 连续", r"f'(a)\ne0", r"y\to b"):
             self.assertIn(marker, text)
 
+    def test_interval_inverse_continuity_is_proved_locally(self) -> None:
+        path = unit_path(EXPECTED_UNITS[2])
+        self.assertTrue(path.is_file(), "missing inverse-function unit")
+        text = path.read_text(encoding="utf-8")
+        self.assertIn("### 引理：区间反函数连续", text)
+        self.assertIn(r"f(a-\varepsilon)<y<f(a+\varepsilon)", text)
+        self.assertNotIn("可以由第 10 章的连续性与区间", text)
+
+    def test_zero_original_derivative_rules_out_a_finite_inverse_derivative(self) -> None:
+        path = unit_path(EXPECTED_UNITS[2])
+        self.assertTrue(path.is_file(), "missing inverse-function unit")
+        text = path.read_text(encoding="utf-8")
+        self.assertIn(
+            r"反函数 \(g\) 不可能在 \(b\) 处有有限导数",
+            text,
+        )
+        self.assertNotIn("原导数为零时反函数一定不可导", text)
+
+    def test_inverse_theorem_applications_verify_inverse_continuity(self) -> None:
+        path = unit_path(EXPECTED_UNITS[2])
+        self.assertTrue(path.is_file(), "missing inverse-function unit")
+        text = path.read_text(encoding="utf-8")
+        self.assertIn(
+            r"\(G(x)=x^{1/q}\) 在 \((0,\infty)\) 上连续",
+            text,
+        )
+        self.assertIn(
+            r"\(\ln x\) 在 \((0,\infty)\) 上连续",
+            text,
+        )
+
+    def test_trigonometric_basic_limit_does_not_assume_cosine_continuity(self) -> None:
+        path = unit_path(EXPECTED_UNITS[2])
+        self.assertTrue(path.is_file(), "missing inverse-function unit")
+        text = path.read_text(encoding="utf-8")
+        self.assertIn(r"0\le1-\cos h", text)
+        self.assertIn(r"\le\frac{h^2}{2}", text)
+        self.assertNotIn("余弦连续性给出", text)
+
     def test_implicit_differentiation_is_conditional(self) -> None:
         path = unit_path(EXPECTED_UNITS[3])
         self.assertTrue(path.is_file(), "missing implicit-differentiation unit")
         text = path.read_text(encoding="utf-8")
         self.assertIn(r"先已知 \(y\) 在该点可导", text)
         self.assertNotIn("隐函数定理保证", text)
+
+    def test_second_derivative_counterexample_orders_one_sided_limits(self) -> None:
+        path = unit_path(EXPECTED_UNITS[3])
+        self.assertTrue(path.is_file(), "missing higher-derivative unit")
+        text = path.read_text(encoding="utf-8")
+        self.assertIn(
+            r"左极限为 \(-2\)，右极限为 \(2\)",
+            text,
+        )
 
 
 if __name__ == "__main__":
