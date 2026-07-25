@@ -43,7 +43,8 @@ REQUIRED_RENDERED_ANCHORS = {
         "thm-u-03-10-05-algebraic-continuity",
     ],
     "chapters/chapter-11/u-03-11-01-compact-intervals/index.html": [
-        "thm-u-03-11-01-heine-borel",
+        "def-u-03-11-01-sequential-compactness",
+        "thm-u-03-11-01-closed-interval-sequentially-compact",
     ],
     "chapters/chapter-12/u-03-12-02-certified-bisection/index.html": [
         "alg-u-03-12-02-bisection",

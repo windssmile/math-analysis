@@ -52,6 +52,12 @@ title: 全书课程地图
 
 ### [第 11 章：闭区间上的整体性质](chapters/chapter-11/index.md) {#chapter-11}
 
+本章学时：6 小时（理论 5，应用 1）。
+
+1. [为什么闭区间中的数列总有收敛子列？](chapters/chapter-11/u-03-11-01-compact-intervals.md)
+2. [连续函数为何一定有界并取得最值？](chapters/chapter-11/u-03-11-02-extreme-value-theorem.md)
+3. [局部连续何时升级为全局一致控制？](chapters/chapter-11/u-03-11-03-uniform-continuity.md)
+
 ### [第 12 章：零点、不动点与迭代求解](chapters/chapter-12/index.md) {#chapter-12}
 
 ## 后续路线

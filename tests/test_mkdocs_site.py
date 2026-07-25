@@ -80,6 +80,15 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             ],
         )
         self.assertEqual(
+            [
+                "def-u-03-11-01-sequential-compactness",
+                "thm-u-03-11-01-closed-interval-sequentially-compact",
+            ],
+            REQUIRED_RENDERED_ANCHORS[
+                "chapters/chapter-11/u-03-11-01-compact-intervals/index.html"
+            ],
+        )
+        self.assertEqual(
             ["alg-u-03-12-02-bisection", "thm-u-03-12-02-bisection-error"],
             REQUIRED_RENDERED_ANCHORS[
                 "chapters/chapter-12/u-03-12-02-certified-bisection/index.html"

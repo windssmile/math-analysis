@@ -62,7 +62,9 @@ REPRESENTATIVE_ANCHORS = {
     "chapter-10/u-03-10-05-elementary-continuity-bridge.md": (
         "thm-u-03-10-05-algebraic-continuity"
     ),
-    "chapter-11/u-03-11-01-compact-intervals.md": "thm-u-03-11-01-heine-borel",
+    "chapter-11/u-03-11-01-compact-intervals.md": (
+        "thm-u-03-11-01-closed-interval-sequentially-compact"
+    ),
     "chapter-12/u-03-12-01-intermediate-value-theorem.md": "thm-u-03-12-01-intermediate-value",
     "chapter-12/u-03-12-02-certified-bisection.md": "alg-u-03-12-02-bisection",
 }

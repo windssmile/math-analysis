@@ -103,7 +103,7 @@ nav:
           - 10.5 常见初等函数的连续性从哪里来？: chapters/chapter-10/u-03-10-05-elementary-continuity-bridge.md
       - 第 11 章：闭区间上的整体性质:
           - 本章导学: chapters/chapter-11/index.md
-          - 11.1 为什么闭区间能把无限局部信息压缩为有限控制？: chapters/chapter-11/u-03-11-01-compact-intervals.md
+          - 11.1 为什么闭区间中的数列总有收敛子列？: chapters/chapter-11/u-03-11-01-compact-intervals.md
           - 11.2 连续函数为何一定有界并取得最值？: chapters/chapter-11/u-03-11-02-extreme-value-theorem.md
           - 11.3 局部连续何时升级为全局一致控制？: chapters/chapter-11/u-03-11-03-uniform-continuity.md
       - 第 12 章：零点、不动点与迭代求解:
