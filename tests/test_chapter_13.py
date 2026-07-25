@@ -129,6 +129,35 @@ class ChapterThirteenTests(unittest.TestCase):
                 for term in FORBIDDEN_CORE_TERMS:
                     self.assertNotIn(term, core)
 
+    def test_one_sided_definition_declares_the_base_value(self) -> None:
+        text = (
+            CHAPTER / "u-04-13-02-derivative-existence-failure.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn(
+            r"设 \(f(a)\) 有定义，且 \(f\) 在 \(a\) 的右侧有定义。",
+            text,
+        )
+
+    def test_piecewise_examples_do_not_assign_values_to_inactive_branches(self) -> None:
+        text = (
+            CHAPTER / "u-04-13-02-derivative-existence-failure.md"
+        ).read_text(encoding="utf-8")
+        self.assertNotIn(r"两段在 \(0\) 的函数值都是", text)
+        self.assertNotIn(r"两段在 \(0\) 都取值", text)
+
+    def test_infinite_slope_uses_unambiguous_real_magnitude(self) -> None:
+        text = (
+            CHAPTER / "u-04-13-02-derivative-existence-failure.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn(r"\frac1{|h|^{2/3}}\to+\infty", text)
+
+    def test_relative_error_explanation_is_self_contained(self) -> None:
+        text = (
+            CHAPTER / "u-04-13-04-sensitivity-linear-model.md"
+        ).read_text(encoding="utf-8")
+        self.assertIn(r"\(o(h/a)\) 表示", text)
+        self.assertIn(r"\frac{V(r+h)-V(r)}h", text)
+
 
 if __name__ == "__main__":
     unittest.main()
