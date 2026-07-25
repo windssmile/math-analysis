@@ -107,6 +107,26 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             ],
         )
 
+    def test_checks_representative_anchors_and_navigation_for_part_four(self) -> None:
+        page = "chapters/chapter-13/u-04-13-03-local-linearization/index.html"
+        self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+        self.assertIn(page, REQUIRED_NAVIGATION_MARKERS)
+        self.assertEqual(
+            [
+                "thm-u-04-13-03-linearization-equivalence",
+                "thm-u-04-13-03-differentiable-continuous",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第四部：微分与局部线性化",
+                "第 13 章：导数、微分与局部线性模型",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

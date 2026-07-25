@@ -4,7 +4,8 @@ title: 全书课程地图
 
 # 全书课程地图 {#sec-curriculum-map}
 
-教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第三部；第 4 部及以后只保留课程路线，尚不作为发布页面。
+教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第三部及第四部第 13 章；
+第四部第 14 章及以后尚不作为发布页面。
 
 ## 第一部：实数、函数与分析语言
 
@@ -67,6 +68,20 @@ title: 全书课程地图
 3. [怎样把有根证明变成误差可证的算法？](chapters/chapter-12/u-03-12-02-certified-bisection.md)
 4. [不同存在与计算证书各自保证什么？](chapters/chapter-12/u-03-12-04-certificate-comparison.md)
 
+## 第四部：微分与局部线性化
+
+**问题弧：** 局部变化能告诉我们多少整体信息？
+
+### [第 13 章：导数、微分与局部线性模型](chapters/chapter-13/index.md) {#chapter-13}
+
+本章学时：7 小时（理论 5.5，应用 1.5）。
+
+1. [平均变化率怎样逼近瞬时变化率？](chapters/chapter-13/u-04-13-01-average-instantaneous-rate.md)
+2. [差商极限何时存在，何时失败？](chapters/chapter-13/u-04-13-02-derivative-existence-failure.md)
+3. [可导为什么等价于一阶局部线性化？](chapters/chapter-13/u-04-13-03-local-linearization.md)
+4. [局部线性模型怎样预测增量、误差与敏感性？](chapters/chapter-13/u-04-13-04-sensitivity-linear-model.md)
+
 ## 后续路线
 
-第四部至第十二部继续覆盖微分、积分、级数、多元微积分、常微分方程与现代分析的章级路线；在内容写作完成前不创建空白单元页。
+第四部第 14 章至第十二部继续覆盖求导法则、中值定理、Taylor 公式、优化、积分、级数、
+多元微积分、常微分方程与现代分析的章级路线；在内容写作完成前不创建空白单元页。

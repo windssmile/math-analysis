@@ -53,6 +53,10 @@ REQUIRED_RENDERED_ANCHORS = {
     "chapters/chapter-12/u-03-12-04-certificate-comparison/index.html": [
         "thm-u-03-12-04-certificate-boundary",
     ],
+    "chapters/chapter-13/u-04-13-03-local-linearization/index.html": [
+        "thm-u-04-13-03-linearization-equivalence",
+        "thm-u-04-13-03-differentiable-continuous",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -73,6 +77,11 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第三部：函数极限、连续性与方程",
         "第 12 章：零点、不动点与迭代求解",
+    ],
+    "chapters/chapter-13/u-04-13-03-local-linearization/index.html": [
+        "md-sidebar",
+        "第四部：微分与局部线性化",
+        "第 13 章：导数、微分与局部线性模型",
     ],
 }
 
