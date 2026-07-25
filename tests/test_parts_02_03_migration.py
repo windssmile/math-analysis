@@ -40,7 +40,9 @@ EXPECTED_UNIT_PAGES = [
     "chapter-09/u-03-09-08-limits-at-infinity.md",
     "chapter-10/u-03-10-01-epsilon-delta-continuity.md",
     "chapter-10/u-03-10-02-continuous-operations.md",
+    "chapter-10/u-03-10-04-one-sided-continuity-extension.md",
     "chapter-10/u-03-10-03-discontinuities-elementary-functions.md",
+    "chapter-10/u-03-10-05-elementary-continuity-bridge.md",
     "chapter-11/u-03-11-01-compact-intervals.md",
     "chapter-11/u-03-11-02-extreme-value-theorem.md",
     "chapter-11/u-03-11-03-uniform-continuity.md",
@@ -54,6 +56,12 @@ REPRESENTATIVE_ANCHORS = {
     "chapter-08/u-02-08-03-cauchy-criterion.md": "thm-u-02-08-03-criterion",
     "chapter-08/u-02-08-05-limsup-liminf.md": "def-u-02-08-05-tail-bounds",
     "chapter-09/u-03-09-02-epsilon-delta-limit.md": "def-u-03-09-02-function-limit",
+    "chapter-10/u-03-10-04-one-sided-continuity-extension.md": (
+        "thm-u-03-10-04-continuous-extension"
+    ),
+    "chapter-10/u-03-10-05-elementary-continuity-bridge.md": (
+        "thm-u-03-10-05-algebraic-continuity"
+    ),
     "chapter-11/u-03-11-01-compact-intervals.md": "thm-u-03-11-01-heine-borel",
     "chapter-12/u-03-12-01-intermediate-value-theorem.md": "thm-u-03-12-01-intermediate-value",
     "chapter-12/u-03-12-02-certified-bisection.md": "alg-u-03-12-02-bisection",
@@ -62,7 +70,7 @@ REPRESENTATIVE_ANCHORS = {
 
 class PartsTwoAndThreeMigrationTests(unittest.TestCase):
     def test_all_unit_pages_keep_their_page_local_ids_and_h1_anchors(self) -> None:
-        self.assertEqual(38, len(EXPECTED_UNIT_PAGES))
+        self.assertEqual(40, len(EXPECTED_UNIT_PAGES))
         missing = [path for path in EXPECTED_UNIT_PAGES if not (CONTENT / path).is_file()]
         self.assertEqual([], missing)
         for relative_path in EXPECTED_UNIT_PAGES:

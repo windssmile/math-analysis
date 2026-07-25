@@ -96,9 +96,11 @@ nav:
           - 9.8 自变量趋于无穷时怎样定义函数极限？: chapters/chapter-09/u-03-09-08-limits-at-infinity.md
       - 第 10 章：连续函数与连续运算:
           - 本章导学: chapters/chapter-10/index.md
-          - 10.1 连续性怎样写成局部控制？: chapters/chapter-10/u-03-10-01-epsilon-delta-continuity.md
+          - 10.1 连续性怎样把极限与函数值接起来？: chapters/chapter-10/u-03-10-01-epsilon-delta-continuity.md
           - 10.2 连续性怎样经过运算和复合传递？: chapters/chapter-10/u-03-10-02-continuous-operations.md
-          - 10.3 函数会以哪些方式失去连续性？: chapters/chapter-10/u-03-10-03-discontinuities-elementary-functions.md
+          - 10.3 端点连续与连续延拓怎样统一处理？: chapters/chapter-10/u-03-10-04-one-sided-continuity-extension.md
+          - 10.4 函数会以哪些方式失去连续性？: chapters/chapter-10/u-03-10-03-discontinuities-elementary-functions.md
+          - 10.5 常见初等函数的连续性从哪里来？: chapters/chapter-10/u-03-10-05-elementary-continuity-bridge.md
       - 第 11 章：闭区间上的整体性质:
           - 本章导学: chapters/chapter-11/index.md
           - 11.1 为什么闭区间能把无限局部信息压缩为有限控制？: chapters/chapter-11/u-03-11-01-compact-intervals.md

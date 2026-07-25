@@ -42,6 +42,14 @@ title: 全书课程地图
 
 ### [第 10 章：连续函数与连续运算](chapters/chapter-10/index.md) {#chapter-10}
 
+本章学时：10 小时（理论 8，应用 2）。
+
+1. [连续性怎样把极限与函数值接起来？](chapters/chapter-10/u-03-10-01-epsilon-delta-continuity.md)
+2. [连续性怎样经过运算和复合传递？](chapters/chapter-10/u-03-10-02-continuous-operations.md)
+3. [端点连续与连续延拓怎样统一处理？](chapters/chapter-10/u-03-10-04-one-sided-continuity-extension.md)
+4. [函数会以哪些方式失去连续性？](chapters/chapter-10/u-03-10-03-discontinuities-elementary-functions.md)
+5. [常见初等函数的连续性从哪里来？](chapters/chapter-10/u-03-10-05-elementary-continuity-bridge.md)
+
 ### [第 11 章：闭区间上的整体性质](chapters/chapter-11/index.md) {#chapter-11}
 
 ### [第 12 章：零点、不动点与迭代求解](chapters/chapter-12/index.md) {#chapter-12}

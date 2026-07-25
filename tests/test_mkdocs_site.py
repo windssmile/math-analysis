@@ -68,6 +68,18 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             ],
         )
         self.assertEqual(
+            ["thm-u-03-10-04-continuous-extension"],
+            REQUIRED_RENDERED_ANCHORS[
+                "chapters/chapter-10/u-03-10-04-one-sided-continuity-extension/index.html"
+            ],
+        )
+        self.assertEqual(
+            ["thm-u-03-10-05-algebraic-continuity"],
+            REQUIRED_RENDERED_ANCHORS[
+                "chapters/chapter-10/u-03-10-05-elementary-continuity-bridge/index.html"
+            ],
+        )
+        self.assertEqual(
             ["alg-u-03-12-02-bisection", "thm-u-03-12-02-bisection-error"],
             REQUIRED_RENDERED_ANCHORS[
                 "chapters/chapter-12/u-03-12-02-certified-bisection/index.html"

@@ -36,6 +36,12 @@ REQUIRED_RENDERED_ANCHORS = {
     "chapters/chapter-09/u-03-09-02-epsilon-delta-limit/index.html": [
         "def-u-03-09-02-function-limit",
     ],
+    "chapters/chapter-10/u-03-10-04-one-sided-continuity-extension/index.html": [
+        "thm-u-03-10-04-continuous-extension",
+    ],
+    "chapters/chapter-10/u-03-10-05-elementary-continuity-bridge/index.html": [
+        "thm-u-03-10-05-algebraic-continuity",
+    ],
     "chapters/chapter-11/u-03-11-01-compact-intervals/index.html": [
         "thm-u-03-11-01-heine-borel",
     ],
