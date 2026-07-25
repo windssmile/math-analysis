@@ -60,6 +60,13 @@ title: 全书课程地图
 
 ### [第 12 章：零点、不动点与迭代求解](chapters/chapter-12/index.md) {#chapter-12}
 
+本章学时：8 小时（理论 6，应用 2）。
+
+1. [连续函数怎样保证取遍中间值？](chapters/chapter-12/u-03-12-01-intermediate-value-theorem.md)
+2. [有固定点是否意味着简单迭代会收敛？](chapters/chapter-12/u-03-12-03-fixed-points-and-iteration.md)
+3. [怎样把有根证明变成误差可证的算法？](chapters/chapter-12/u-03-12-02-certified-bisection.md)
+4. [不同存在与计算证书各自保证什么？](chapters/chapter-12/u-03-12-04-certificate-comparison.md)
+
 ## 后续路线
 
 第四部至第十二部继续覆盖微分、积分、级数、多元微积分、常微分方程与现代分析的章级路线；在内容写作完成前不创建空白单元页。

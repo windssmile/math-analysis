@@ -50,6 +50,9 @@ REQUIRED_RENDERED_ANCHORS = {
         "alg-u-03-12-02-bisection",
         "thm-u-03-12-02-bisection-error",
     ],
+    "chapters/chapter-12/u-03-12-04-certificate-comparison/index.html": [
+        "thm-u-03-12-04-certificate-boundary",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {

@@ -49,6 +49,7 @@ EXPECTED_UNIT_PAGES = [
     "chapter-12/u-03-12-01-intermediate-value-theorem.md",
     "chapter-12/u-03-12-02-certified-bisection.md",
     "chapter-12/u-03-12-03-fixed-points-and-iteration.md",
+    "chapter-12/u-03-12-04-certificate-comparison.md",
 ]
 
 REPRESENTATIVE_ANCHORS = {
@@ -72,7 +73,7 @@ REPRESENTATIVE_ANCHORS = {
 
 class PartsTwoAndThreeMigrationTests(unittest.TestCase):
     def test_all_unit_pages_keep_their_page_local_ids_and_h1_anchors(self) -> None:
-        self.assertEqual(40, len(EXPECTED_UNIT_PAGES))
+        self.assertEqual(41, len(EXPECTED_UNIT_PAGES))
         missing = [path for path in EXPECTED_UNIT_PAGES if not (CONTENT / path).is_file()]
         self.assertEqual([], missing)
         for relative_path in EXPECTED_UNIT_PAGES:
