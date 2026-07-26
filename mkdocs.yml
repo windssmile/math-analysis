@@ -131,6 +131,12 @@ nav:
           - 15.2 导数符号能推出哪些整体性质？: chapters/chapter-15/u-04-15-02-monotonicity-darboux.md
           - 15.3 两个函数的变化率怎样进行严格比较？: chapters/chapter-15/u-04-15-03-cauchy-mean-value.md
           - 15.4 L’Hôpital 法则何时能判定未定式极限？: chapters/chapter-15/u-04-15-04-lhopital-rule.md
+      - 第 16 章：Taylor 公式与余项:
+          - 本章导学: chapters/chapter-16/index.md
+          - 16.1 高阶局部信息怎样形成 Peano 展开？: chapters/chapter-16/u-04-16-01-peano-expansion.md
+          - 16.2 Lagrange 余项怎样给出可计算误差界？: chapters/chapter-16/u-04-16-02-lagrange-remainder.md
+          - 16.3 Cauchy 余项揭示了怎样的证明结构？: chapters/chapter-16/u-04-16-03-cauchy-remainder.md
+          - 16.4 怎样把 Taylor 多项式变成可信的近似工具？: chapters/chapter-16/u-04-16-04-trusted-approximation.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

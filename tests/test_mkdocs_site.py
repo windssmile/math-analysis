@@ -167,6 +167,26 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             REQUIRED_NAVIGATION_MARKERS[page],
         )
 
+    def test_checks_chapter_sixteen_trusted_approximation_page(self) -> None:
+        page = "chapters/chapter-16/u-04-16-04-trusted-approximation/index.html"
+        self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+        self.assertIn(page, REQUIRED_NAVIGATION_MARKERS)
+        self.assertEqual(
+            [
+                "alg-u-04-16-04-horner",
+                "alg-u-04-16-04-centered-difference",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第四部：微分与局部线性化",
+                "第 16 章：Taylor 公式与余项",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
