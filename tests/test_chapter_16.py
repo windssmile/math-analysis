@@ -197,6 +197,11 @@ class ChapterSixteenTests(unittest.TestCase):
             r"f'(x)+O(h^2)",
             "经验步长不提供误差证书",
             "不能倒过来证明函数可导",
+            "evaluate_taylor",
+            "forward_difference",
+            "centered_difference",
+            "DifferenceEstimate",
+            "src/mathbook_examples/differentiation.py",
         ):
             self.assertIn(marker, text)
 
