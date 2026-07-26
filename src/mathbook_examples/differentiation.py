@@ -1,7 +1,18 @@
-"""Finite Taylor evaluation and uncertified numerical differentiation."""
+"""Finite Taylor tools with heuristic differences, not an error certificate."""
 
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
+from dataclasses import dataclass
 from math import isfinite
+import sys
+
+
+@dataclass(frozen=True)
+class DifferenceEstimate:
+    """An uncertified finite-difference estimate."""
+
+    value: float
+    step: float
+    method: str
 
 
 def _require_finite(value: float, label: str) -> float:
@@ -37,3 +48,48 @@ def evaluate_taylor(
         if not isfinite(value):
             raise ValueError("Taylor evaluation must remain finite")
     return value
+
+
+def _difference_step(point: float, step: float | None, power: float) -> float:
+    if step is not None:
+        step_value = float(step)
+        if not isfinite(step_value) or step_value <= 0:
+            raise ValueError("step must be positive and finite")
+        return step_value
+    return sys.float_info.epsilon**power * max(1.0, abs(point))
+
+
+def _sample(function: Callable[[float], float], point: float) -> float:
+    if not isfinite(point):
+        raise ValueError("sample point must be finite")
+    value = float(function(point))
+    if not isfinite(value):
+        raise ValueError("function value must be finite")
+    return value
+
+
+def forward_difference(
+    function: Callable[[float], float], point: float, *, step: float | None = None
+) -> DifferenceEstimate:
+    """Use a heuristic step for an estimate, not an error certificate."""
+    point_value = _require_finite(point, "point")
+    step_value = _difference_step(point_value, step, 0.5)
+    right = point_value + step_value
+    value = (_sample(function, right) - _sample(function, point_value)) / step_value
+    if not isfinite(value):
+        raise ValueError("difference estimate must be finite")
+    return DifferenceEstimate(value, step_value, "forward")
+
+
+def centered_difference(
+    function: Callable[[float], float], point: float, *, step: float | None = None
+) -> DifferenceEstimate:
+    """Use a heuristic step for an estimate, not an error certificate."""
+    point_value = _require_finite(point, "point")
+    step_value = _difference_step(point_value, step, 1 / 3)
+    right = point_value + step_value
+    left = point_value - step_value
+    value = (_sample(function, right) - _sample(function, left)) / (2 * step_value)
+    if not isfinite(value):
+        raise ValueError("difference estimate must be finite")
+    return DifferenceEstimate(value, step_value, "centered")
