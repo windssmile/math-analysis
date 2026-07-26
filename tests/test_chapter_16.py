@@ -169,6 +169,15 @@ class ChapterSixteenTests(unittest.TestCase):
         ):
             self.assertIn(marker, text)
 
+    def test_order_budget_proves_all_lower_orders_fail(self) -> None:
+        path = unit_path(EXPECTED_UNITS[1])
+        self.assertTrue(path.is_file(), "missing Lagrange remainder unit")
+        if not path.is_file():
+            return
+        text = path.read_text(encoding="utf-8")
+        self.assertIn(r"相邻上界的比值为 \(0.5/(n+2)<1\)", text)
+        self.assertIn("所有低于四阶的上界更大", text)
+
     def test_cauchy_remainder_has_correct_cancellation_and_factorial(self) -> None:
         path = unit_path(EXPECTED_UNITS[2])
         self.assertTrue(path.is_file(), "missing Cauchy remainder unit")
