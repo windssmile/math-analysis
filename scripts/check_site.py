@@ -61,6 +61,10 @@ REQUIRED_RENDERED_ANCHORS = {
         "thm-u-04-14-02-chain-rule",
         "ex-u-04-14-02-zero-inner-increment",
     ],
+    "chapters/chapter-15/u-04-15-03-cauchy-mean-value/index.html": [
+        "thm-u-04-15-03-cauchy-cross",
+        "cor-u-04-15-03-cauchy-ratio",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -91,6 +95,11 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第四部：微分与局部线性化",
         "第 14 章：求导法则、反函数与高阶导数",
+    ],
+    "chapters/chapter-15/u-04-15-03-cauchy-mean-value/index.html": [
+        "md-sidebar",
+        "第四部：微分与局部线性化",
+        "第 15 章：微分中值定理",
     ],
 }
 

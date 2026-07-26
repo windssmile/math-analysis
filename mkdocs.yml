@@ -125,6 +125,12 @@ nav:
           - 14.2 复合函数的局部误差怎样层层传递？: chapters/chapter-14/u-04-14-02-chain-rule.md
           - 14.3 反函数的变化率为何是原导数的倒数？: chapters/chapter-14/u-04-14-03-inverse-elementary-derivatives.md
           - 14.4 隐式关系与高阶导数怎样记录复杂变化？: chapters/chapter-14/u-04-14-04-implicit-higher-derivatives.md
+      - 第 15 章：微分中值定理:
+          - 本章导学: chapters/chapter-15/index.md
+          - 15.1 两个端点的信息怎样迫使中间出现特殊切线？: chapters/chapter-15/u-04-15-01-fermat-rolle-lagrange.md
+          - 15.2 导数符号能推出哪些整体性质？: chapters/chapter-15/u-04-15-02-monotonicity-darboux.md
+          - 15.3 两个函数的变化率怎样进行严格比较？: chapters/chapter-15/u-04-15-03-cauchy-mean-value.md
+          - 15.4 L’Hôpital 法则何时能判定未定式极限？: chapters/chapter-15/u-04-15-04-lhopital-rule.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

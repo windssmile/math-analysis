@@ -147,6 +147,26 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             REQUIRED_NAVIGATION_MARKERS[page],
         )
 
+    def test_checks_chapter_fifteen_cauchy_page(self) -> None:
+        page = "chapters/chapter-15/u-04-15-03-cauchy-mean-value/index.html"
+        self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+        self.assertIn(page, REQUIRED_NAVIGATION_MARKERS)
+        self.assertEqual(
+            [
+                "thm-u-04-15-03-cauchy-cross",
+                "cor-u-04-15-03-cauchy-ratio",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第四部：微分与局部线性化",
+                "第 15 章：微分中值定理",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

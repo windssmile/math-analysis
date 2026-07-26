@@ -4,8 +4,8 @@ title: 全书课程地图
 
 # 全书课程地图 {#sec-curriculum-map}
 
-教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第三部及第四部第 13、
-14 章；第四部第 15 章及以后尚不作为发布页面。
+教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第三部及第四部第 13–
+15 章；第四部第 16 章及以后尚不作为发布页面。
 
 ## 第一部：实数、函数与分析语言
 
@@ -90,7 +90,16 @@ title: 全书课程地图
 3. [反函数的变化率为何是原导数的倒数？](chapters/chapter-14/u-04-14-03-inverse-elementary-derivatives.md)
 4. [隐式关系与高阶导数怎样记录复杂变化？](chapters/chapter-14/u-04-14-04-implicit-higher-derivatives.md)
 
+### [第 15 章：微分中值定理](chapters/chapter-15/index.md) {#chapter-15}
+
+本章学时：8.5 小时（理论 6.5，应用 2.0）。
+
+1. [两个端点的信息怎样迫使中间出现特殊切线？](chapters/chapter-15/u-04-15-01-fermat-rolle-lagrange.md)
+2. [导数符号能推出哪些整体性质？](chapters/chapter-15/u-04-15-02-monotonicity-darboux.md)
+3. [两个函数的变化率怎样进行严格比较？](chapters/chapter-15/u-04-15-03-cauchy-mean-value.md)
+4. [L’Hôpital 法则何时能判定未定式极限？](chapters/chapter-15/u-04-15-04-lhopital-rule.md)
+
 ## 后续路线
 
-第四部第 15 章至第十二部继续覆盖中值定理、Taylor 公式、优化、积分、级数、多元微积分、
-常微分方程与现代分析的章级路线；在内容写作完成前不创建空白单元页。
+第四部第 16 章至第十二部继续覆盖 Taylor 公式、优化、积分、级数、多元微积分、常微分
+方程与现代分析的章级路线；在内容写作完成前不创建空白单元页。
