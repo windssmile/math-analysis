@@ -212,6 +212,15 @@ class ChapterFifteenTests(unittest.TestCase):
         ):
             self.assertIn(marker, text)
 
+    def test_infinity_over_infinity_extended_limit_uses_target_threshold(self) -> None:
+        path = unit_path(EXPECTED_UNITS[3])
+        self.assertTrue(path.is_file(), "missing L'Hopital unit")
+        if not path.is_file():
+            return
+        text = path.read_text(encoding="utf-8")
+        self.assertIn(r"先令增量比大于 \(3K\)", text)
+        self.assertIn(r"原商最终大于 \(K\)", text)
+
 
 if __name__ == "__main__":
     unittest.main()
