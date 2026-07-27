@@ -65,6 +65,16 @@ REQUIRED_RENDERED_ANCHORS = {
         "thm-u-04-15-03-cauchy-cross",
         "cor-u-04-15-03-cauchy-ratio",
     ],
+    "chapters/chapter-16/u-04-16-04-trusted-approximation/index.html": [
+        "alg-u-04-16-04-horner",
+        "alg-u-04-16-04-centered-difference",
+    ],
+    "chapters/chapter-17/u-04-17-04-safeguarded-newton/index.html": [
+        "alg-u-04-17-04-safeguarded-newton",
+        "thm-u-04-17-04-bracket-contraction",
+        "def-u-04-17-04-verifiable-certificate",
+        "tbl-u-04-17-04-certificate-comparison",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -100,6 +110,16 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第四部：微分与局部线性化",
         "第 15 章：微分中值定理",
+    ],
+    "chapters/chapter-16/u-04-16-04-trusted-approximation/index.html": [
+        "md-sidebar",
+        "第四部：微分与局部线性化",
+        "第 16 章：Taylor 公式与余项",
+    ],
+    "chapters/chapter-17/u-04-17-04-safeguarded-newton/index.html": [
+        "md-sidebar",
+        "第四部：微分与局部线性化",
+        "第 17 章：凸性、优化、函数形态与 Newton 方法",
     ],
 }
 

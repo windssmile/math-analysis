@@ -127,6 +127,26 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             REQUIRED_NAVIGATION_MARKERS[page],
         )
 
+    def test_checks_chapter_seventeen_safeguarded_newton_page(self) -> None:
+        page = "chapters/chapter-17/u-04-17-04-safeguarded-newton/index.html"
+        self.assertEqual(
+            [
+                "alg-u-04-17-04-safeguarded-newton",
+                "thm-u-04-17-04-bracket-contraction",
+                "def-u-04-17-04-verifiable-certificate",
+                "tbl-u-04-17-04-certificate-comparison",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第四部：微分与局部线性化",
+                "第 17 章：凸性、优化、函数形态与 Newton 方法",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
     def test_checks_chapter_fourteen_chain_rule_page(self) -> None:
         page = "chapters/chapter-14/u-04-14-02-chain-rule/index.html"
         self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
@@ -163,6 +183,26 @@ class ZensicalSiteValidationTests(unittest.TestCase):
                 "md-sidebar",
                 "第四部：微分与局部线性化",
                 "第 15 章：微分中值定理",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
+    def test_checks_chapter_sixteen_trusted_approximation_page(self) -> None:
+        page = "chapters/chapter-16/u-04-16-04-trusted-approximation/index.html"
+        self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+        self.assertIn(page, REQUIRED_NAVIGATION_MARKERS)
+        self.assertEqual(
+            [
+                "alg-u-04-16-04-horner",
+                "alg-u-04-16-04-centered-difference",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第四部：微分与局部线性化",
+                "第 16 章：Taylor 公式与余项",
             ],
             REQUIRED_NAVIGATION_MARKERS[page],
         )

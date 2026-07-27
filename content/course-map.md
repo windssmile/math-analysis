@@ -5,7 +5,7 @@ title: 全书课程地图
 # 全书课程地图 {#sec-curriculum-map}
 
 教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第三部及第四部第 13–
-15 章；第四部第 16 章及以后尚不作为发布页面。
+17 章，共 72 个学习单元；第 18 章及以后尚不作为发布页面。
 
 ## 第一部：实数、函数与分析语言
 
@@ -99,7 +99,25 @@ title: 全书课程地图
 3. [两个函数的变化率怎样进行严格比较？](chapters/chapter-15/u-04-15-03-cauchy-mean-value.md)
 4. [L’Hôpital 法则何时能判定未定式极限？](chapters/chapter-15/u-04-15-04-lhopital-rule.md)
 
+### [第 16 章：Taylor 公式与余项](chapters/chapter-16/index.md) {#chapter-16}
+
+本章学时：7 小时（理论 4.5，应用 2.5）。
+
+1. [高阶局部信息怎样形成 Peano 展开？](chapters/chapter-16/u-04-16-01-peano-expansion.md)
+2. [Lagrange 余项怎样给出可计算误差界？](chapters/chapter-16/u-04-16-02-lagrange-remainder.md)
+3. [Cauchy 余项揭示了怎样的证明结构？](chapters/chapter-16/u-04-16-03-cauchy-remainder.md)
+4. [怎样把 Taylor 多项式变成可信的近似工具？](chapters/chapter-16/u-04-16-04-trusted-approximation.md)
+
+### [第 17 章：凸性、优化、函数形态与 Newton 方法](chapters/chapter-17/index.md) {#chapter-17}
+
+本章学时：8 小时（理论 4.5，应用 3.5）。
+
+1. [导数怎样还原函数的增减、极值与弯曲形态？](chapters/chapter-17/u-04-17-01-function-shape.md)
+2. [凸性为何能把局部极小升级为整体极小？](chapters/chapter-17/u-04-17-02-convexity-optimization.md)
+3. [Newton 迭代为什么可能快速收敛，也可能失败？](chapters/chapter-17/u-04-17-03-newton-convergence-failure.md)
+4. [怎样实现具有保护机制和停止证书的 Newton 算法？](chapters/chapter-17/u-04-17-04-safeguarded-newton.md)
+
 ## 后续路线
 
-第四部第 16 章至第十二部继续覆盖 Taylor 公式、优化、积分、级数、多元微积分、常微分
-方程与现代分析的章级路线；在内容写作完成前不创建空白单元页。
+第 18 章至第十二部继续覆盖积分、级数、多元微积分、常微分方程与现代分析
+的章级路线；在内容写作完成前不创建空白单元页。
