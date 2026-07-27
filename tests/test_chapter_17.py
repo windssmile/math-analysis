@@ -187,11 +187,29 @@ class ChapterSeventeenTests(unittest.TestCase):
             / "specs"
             / "2026-07-25-part-04-differentiation-design.md"
         ).read_text(encoding="utf-8")
+        master_design = (
+            ROOT
+            / "docs"
+            / "superpowers"
+            / "specs"
+            / "2026-07-18-mathematical-analysis-textbook-design.md"
+        ).read_text(encoding="utf-8")
 
         self.assertIn("第四部第 17 章，共 72 个学习单元", readme)
         self.assertIn("本章学时：8 小时（理论 4.5，应用 3.5）。", course_map)
         self.assertIn("| 第 17 章 | 4.5 | 3.5 | 8 |", part_design)
         self.assertIn("| **第四部** | **25.5** | **11** | **36.5** |", part_design)
+        self.assertNotIn(r"第四部学时 \(24+10=34\)", part_design)
+        self.assertNotIn("学时闭合为理论 24、应用 10", part_design)
+        self.assertIn(
+            "| IV | 微分与局部线性化 | 25.5 | 11 | 36.5 |",
+            master_design,
+        )
+        self.assertIn(
+            "| **当前总计** |  | **291.5** | **95** | **386.5** |",
+            master_design,
+        )
+        self.assertIn("由 384 增至 386.5", master_design)
 
         navigation_positions = []
         map_positions = []

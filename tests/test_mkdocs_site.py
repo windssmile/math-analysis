@@ -127,6 +127,26 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             REQUIRED_NAVIGATION_MARKERS[page],
         )
 
+    def test_checks_chapter_seventeen_safeguarded_newton_page(self) -> None:
+        page = "chapters/chapter-17/u-04-17-04-safeguarded-newton/index.html"
+        self.assertEqual(
+            [
+                "alg-u-04-17-04-safeguarded-newton",
+                "thm-u-04-17-04-bracket-contraction",
+                "def-u-04-17-04-verifiable-certificate",
+                "tbl-u-04-17-04-certificate-comparison",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第四部：微分与局部线性化",
+                "第 17 章：凸性、优化、函数形态与 Newton 方法",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
     def test_checks_chapter_fourteen_chain_rule_page(self) -> None:
         page = "chapters/chapter-14/u-04-14-02-chain-rule/index.html"
         self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
