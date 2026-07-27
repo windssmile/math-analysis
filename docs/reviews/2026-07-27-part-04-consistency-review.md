@@ -109,11 +109,12 @@ Horner 和数值微分只引用唯一源码；经验步长、残差与数值轨�
 
 ## 最终验证
 
-已观察到的阶段性结果：
+最终观察结果：
 
-- 第 17 章发布相关 37 项测试通过；
+- `make verify` 中 143 项测试全部通过，0 失败；
 - `scripts/check_content.py` 通过；
 - `zensical build --strict` 输出 `No issues found`；
-- `scripts/check_site.py` 通过。
-
-最终全量 `make verify` 的测试数、构建结果和工作树状态将在发布验证完成后补记。
+- `scripts/check_site.py` 通过；
+- 第 17 章导学页与四个单元的 5 个生成页面均存在；
+- 17.1 一阶判别、17.2 导数单调等价、17.3 局部二次收敛和 17.4 保护算法的代表锚点
+  均在生成 HTML 中可检出，17.4 导航标题正确。
