@@ -176,6 +176,36 @@ class ChapterSeventeenTests(unittest.TestCase):
         ):
             self.assertIn(marker, text)
 
+    def test_publication_uses_final_order_hours_and_release_scope(self) -> None:
+        config = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
+        course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        part_design = (
+            ROOT
+            / "docs"
+            / "superpowers"
+            / "specs"
+            / "2026-07-25-part-04-differentiation-design.md"
+        ).read_text(encoding="utf-8")
+
+        self.assertIn("第四部第 17 章，共 72 个学习单元", readme)
+        self.assertIn("本章学时：8 小时（理论 4.5，应用 3.5）。", course_map)
+        self.assertIn("| 第 17 章 | 4.5 | 3.5 | 8 |", part_design)
+        self.assertIn("| **第四部** | **25.5** | **11** | **36.5** |", part_design)
+
+        navigation_positions = []
+        map_positions = []
+        for unit_id, title, _theory, _applied, suffix in EXPECTED_UNITS:
+            path = f"chapters/chapter-17/{unit_id}-{suffix}.md"
+            self.assertEqual(1, config.count(f"{title}: {path}"))
+            self.assertEqual(1, course_map.count(f"[{title}]({path})"))
+            if path in config:
+                navigation_positions.append(config.index(path))
+            if path in course_map:
+                map_positions.append(course_map.index(path))
+        self.assertEqual(sorted(navigation_positions), navigation_positions)
+        self.assertEqual(sorted(map_positions), map_positions)
+
     def test_core_does_not_use_later_topics(self) -> None:
         for unit in EXPECTED_UNITS:
             path = unit_path(unit)
