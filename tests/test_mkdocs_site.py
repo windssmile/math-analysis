@@ -230,6 +230,48 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             REQUIRED_NAVIGATION_MARKERS[page],
         )
 
+    def test_checks_chapter_nineteen_equivalence_page(self) -> None:
+        page = "chapters/chapter-19/u-05-19-02-riemann-darboux-equivalence/index.html"
+        self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+        self.assertIn(page, REQUIRED_NAVIGATION_MARKERS)
+        self.assertEqual(
+            [
+                "thm-u-05-19-02-darboux-criterion",
+                "lem-u-05-19-02-common-refinement-control",
+                "thm-u-05-19-02-riemann-darboux-equivalence",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第五部：积分、累积与数值求积",
+                "第 19 章：Riemann 积分与可积性",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
+    def test_checks_chapter_nineteen_integral_properties_page(self) -> None:
+        page = "chapters/chapter-19/u-05-19-04-integral-properties/index.html"
+        self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+        self.assertIn(page, REQUIRED_NAVIGATION_MARKERS)
+        self.assertEqual(
+            [
+                "thm-u-05-19-04-algebra-closure",
+                "thm-u-05-19-04-order-bounds",
+                "thm-u-05-19-04-interval-additivity",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第五部：积分、累积与数值求积",
+                "第 19 章：Riemann 积分与可积性",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
     def test_checks_chapter_fifteen_cauchy_page(self) -> None:
         page = "chapters/chapter-15/u-04-15-03-cauchy-mean-value/index.html"
         self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
