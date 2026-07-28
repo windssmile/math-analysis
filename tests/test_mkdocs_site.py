@@ -189,6 +189,47 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             REQUIRED_NAVIGATION_MARKERS[page],
         )
 
+    def test_checks_chapter_eighteen_antiderivative_page(self) -> None:
+        page = "chapters/chapter-18/u-05-18-01-antiderivatives/index.html"
+        self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+        self.assertIn(page, REQUIRED_NAVIGATION_MARKERS)
+        self.assertEqual(
+            [
+                "def-u-05-18-01-antiderivative",
+                "thm-u-05-18-01-constant-difference",
+                "ex-u-05-18-01-darboux-obstruction",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第五部：积分、累积与数值求积",
+                "第 18 章：原函数与积分方法",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
+    def test_checks_chapter_eighteen_method_selection_page(self) -> None:
+        page = "chapters/chapter-18/u-05-18-05-method-selection/index.html"
+        self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+        self.assertIn(page, REQUIRED_NAVIGATION_MARKERS)
+        self.assertEqual(
+            [
+                "alg-u-05-18-05-method-selection",
+                "tbl-u-05-18-05-verification",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第五部：积分、累积与数值求积",
+                "第 18 章：原函数与积分方法",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
     def test_checks_chapter_fifteen_cauchy_page(self) -> None:
         page = "chapters/chapter-15/u-04-15-03-cauchy-mean-value/index.html"
         self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
