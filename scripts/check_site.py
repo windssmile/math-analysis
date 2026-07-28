@@ -61,6 +61,11 @@ REQUIRED_RENDERED_ANCHORS = {
         "thm-u-04-14-02-chain-rule",
         "ex-u-04-14-02-zero-inner-increment",
     ],
+    "chapters/chapter-14/u-04-14-05-derivative-fluency-for-antiderivatives/index.html": [
+        "tbl-u-04-14-05-structure-signals",
+        "ex-u-04-14-05-nested-chain",
+        "ex-u-04-14-05-error-diagnosis",
+    ],
     "chapters/chapter-15/u-04-15-03-cauchy-mean-value/index.html": [
         "thm-u-04-15-03-cauchy-cross",
         "cor-u-04-15-03-cauchy-ratio",
@@ -102,6 +107,11 @@ REQUIRED_NAVIGATION_MARKERS = {
         "第 13 章：导数、微分与局部线性模型",
     ],
     "chapters/chapter-14/u-04-14-02-chain-rule/index.html": [
+        "md-sidebar",
+        "第四部：微分与局部线性化",
+        "第 14 章：求导法则、反函数与高阶导数",
+    ],
+    "chapters/chapter-14/u-04-14-05-derivative-fluency-for-antiderivatives/index.html": [
         "md-sidebar",
         "第四部：微分与局部线性化",
         "第 14 章：求导法则、反函数与高阶导数",

@@ -167,6 +167,28 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             REQUIRED_NAVIGATION_MARKERS[page],
         )
 
+    def test_checks_chapter_fourteen_derivative_fluency_page(self) -> None:
+        page = (
+            "chapters/chapter-14/"
+            "u-04-14-05-derivative-fluency-for-antiderivatives/index.html"
+        )
+        self.assertEqual(
+            [
+                "tbl-u-04-14-05-structure-signals",
+                "ex-u-04-14-05-nested-chain",
+                "ex-u-04-14-05-error-diagnosis",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第四部：微分与局部线性化",
+                "第 14 章：求导法则、反函数与高阶导数",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
     def test_checks_chapter_fifteen_cauchy_page(self) -> None:
         page = "chapters/chapter-15/u-04-15-03-cauchy-mean-value/index.html"
         self.assertIn(page, REQUIRED_RENDERED_ANCHORS)

@@ -126,7 +126,7 @@ class ChapterFourteenTests(unittest.TestCase):
     def test_navigation_and_course_map_use_final_order(self) -> None:
         config = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
         course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
-        self.assertIn("本章学时：6 小时（理论 4.5，应用 1.5）。", course_map)
+        self.assertIn("本章学时：8 小时（理论 5，应用 3）。", course_map)
         navigation_positions = []
         map_positions = []
         for unit in EXPECTED_UNITS:

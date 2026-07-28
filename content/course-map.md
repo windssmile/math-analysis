@@ -5,7 +5,7 @@ title: 全书课程地图
 # 全书课程地图 {#sec-curriculum-map}
 
 教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第三部及第四部第 13–
-17 章，共 72 个学习单元；第 18 章及以后尚不作为发布页面。
+17 章，共 73 个学习单元；第 18 章及以后尚不作为发布页面。
 
 ## 第一部：实数、函数与分析语言
 
@@ -83,12 +83,13 @@ title: 全书课程地图
 
 ### [第 14 章：求导法则、反函数与高阶导数](chapters/chapter-14/index.md) {#chapter-14}
 
-本章学时：6 小时（理论 4.5，应用 1.5）。
+本章学时：8 小时（理论 5，应用 3）。
 
 1. [局部线性模型怎样通过和、积、商传递？](chapters/chapter-14/u-04-14-01-algebraic-derivative-rules.md)
 2. [复合函数的局部误差怎样层层传递？](chapters/chapter-14/u-04-14-02-chain-rule.md)
 3. [反函数的变化率为何是原导数的倒数？](chapters/chapter-14/u-04-14-03-inverse-elementary-derivatives.md)
 4. [隐式关系与高阶导数怎样记录复杂变化？](chapters/chapter-14/u-04-14-04-implicit-higher-derivatives.md)
+5. [怎样为原函数计算准备可靠的求导能力？](chapters/chapter-14/u-04-14-05-derivative-fluency-for-antiderivatives.md)
 
 ### [第 15 章：微分中值定理](chapters/chapter-15/index.md) {#chapter-15}
 
