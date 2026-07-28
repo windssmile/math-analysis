@@ -26,31 +26,32 @@ def metadata(path: Path) -> dict[str, object]:
 
 
 class PartFourConsistencyTests(unittest.TestCase):
-    def test_twenty_unique_v2_units_close_final_hours(self) -> None:
+    def test_twenty_one_unique_v2_units_close_final_hours(self) -> None:
         units = part_four_units()
-        self.assertEqual(20, len(units))
+        self.assertEqual(21, len(units))
         records = [metadata(path) for path in units]
         unit_ids = [str(record["unit_id"]) for record in records]
-        self.assertEqual(20, len(set(unit_ids)))
+        self.assertEqual(21, len(set(unit_ids)))
         self.assertTrue(all(record["content_standard"] == 2 for record in records))
         self.assertEqual(
-            25.5,
+            26.0,
             sum(float(record["hours"]["theory"]) for record in records),
         )
         self.assertEqual(
-            11.0,
+            12.5,
             sum(float(record["hours"]["applied"]) for record in records),
         )
 
     def test_designs_use_reconciled_current_totals(self) -> None:
         part = PART_DESIGN.read_text(encoding="utf-8")
         master = MASTER_DESIGN.read_text(encoding="utf-8")
-        self.assertIn("| **第四部** | **25.5** | **11** | **36.5** |", part)
+        self.assertIn("| **第四部** | **26** | **12.5** | **38.5** |", part)
         self.assertNotIn("第四部学时 \\(24+10=34\\)", part)
         self.assertNotIn("学时闭合为理论 24、应用 10", part)
-        self.assertIn("| IV | 微分与局部线性化 | 25.5 | 11 | 36.5 |", master)
-        self.assertIn("| **当前总计** |  | **291.5** | **95** | **386.5** |", master)
-        self.assertIn("由 384 增至 386.5", master)
+        self.assertIn("| IV | 微分与局部线性化 | 26 | 12.5 | 38.5 |", master)
+        self.assertIn("| V | 积分、累积与数值求积 | 26 | 13.5 | 39.5 |", master)
+        self.assertIn("| **当前总计** |  | **292** | **100** | **392** |", master)
+        self.assertIn("由 386.5 增至 392", master)
 
     def test_dependency_map_covers_interfaces_and_every_unit(self) -> None:
         text = DEPENDENCIES.read_text(encoding="utf-8")
@@ -84,8 +85,8 @@ class PartFourConsistencyTests(unittest.TestCase):
         course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
         navigation = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
         site_checker = (ROOT / "scripts" / "check_site.py").read_text(encoding="utf-8")
-        self.assertIn("第四部第 17 章，共 72 个学习单元", readme)
-        self.assertIn("17 章，共 72 个学习单元", course_map)
+        self.assertIn("第四部第 17 章，共 73 个学习单元", readme)
+        self.assertIn("17 章，共 73 个学习单元", course_map)
         self.assertIn("第 17 章：凸性、优化、函数形态与 Newton 方法", navigation)
         self.assertIn(
             "chapters/chapter-17/u-04-17-04-safeguarded-newton/index.html",

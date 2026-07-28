@@ -36,6 +36,13 @@ EXPECTED_UNITS = [
         0.50,
         "implicit-higher-derivatives",
     ),
+    (
+        "u-04-14-05",
+        "怎样为原函数计算准备可靠的求导能力？",
+        0.50,
+        1.50,
+        "derivative-fluency-for-antiderivatives",
+    ),
 ]
 
 REQUIRED_ANCHORS = {
@@ -54,6 +61,11 @@ REQUIRED_ANCHORS = {
     "u-04-14-04": (
         "def-u-04-14-04-higher-derivatives",
         "thm-u-04-14-04-implicit-conditional",
+    ),
+    "u-04-14-05": (
+        "tbl-u-04-14-05-structure-signals",
+        "ex-u-04-14-05-nested-chain",
+        "ex-u-04-14-05-error-diagnosis",
     ),
 }
 
@@ -97,15 +109,16 @@ class ChapterFourteenTests(unittest.TestCase):
                     self.assertIn(f"{{#{anchor}}}", text)
                 theory += metadata["hours"]["theory"]
                 applied += metadata["hours"]["applied"]
-        self.assertEqual(4.5, theory)
-        self.assertEqual(1.5, applied)
+        self.assertEqual(5.0, theory)
+        self.assertEqual(3.0, applied)
 
     def test_chapter_guide_lists_units_hours_and_boundaries(self) -> None:
         guide_path = CHAPTER / "index.md"
         self.assertTrue(guide_path.is_file(), "missing chapter guide")
         guide = guide_path.read_text(encoding="utf-8")
-        self.assertIn("本章共4个核心单元，6学时（理论4.5，应用1.5）。", guide)
+        self.assertIn("本章共5个核心单元，8学时（理论5，应用3）。", guide)
         self.assertIn("第 15–17 章", guide)
+        self.assertIn("第 18 章", guide)
         for unit in EXPECTED_UNITS:
             _unit_id, title, _theory, _applied, suffix = unit
             self.assertEqual(1, guide.count(f"[{title}]({unit[0]}-{suffix}.md)"))
@@ -204,6 +217,26 @@ class ChapterFourteenTests(unittest.TestCase):
             r"左极限为 \(-2\)，右极限为 \(2\)",
             text,
         )
+
+    def test_derivative_fluency_unit_prepares_integration_without_teaching_it(self) -> None:
+        path = unit_path(EXPECTED_UNITS[4])
+        self.assertTrue(path.is_file(), "missing derivative-fluency unit")
+        if not path.is_file():
+            return
+        text = path.read_text(encoding="utf-8")
+        self.assertGreaterEqual(text.count("{#pr-u-04-14-05-"), 12)
+        self.assertGreaterEqual(text.count('??? note "答案"'), 14)
+        for marker in (
+            "结构识别",
+            "错误诊断",
+            "定义域",
+            "第 18 章",
+            "求导回验",
+        ):
+            self.assertIn(marker, text)
+        core = text.split("## 常见误区与后续", 1)[0]
+        for forbidden in ("换元积分公式", "分部积分公式", "Riemann 积分", "微积分基本定理"):
+            self.assertNotIn(forbidden, core)
 
 
 if __name__ == "__main__":
