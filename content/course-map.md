@@ -4,8 +4,8 @@ title: 全书课程地图
 
 # 全书课程地图 {#sec-curriculum-map}
 
-教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第四部及第五部第 18
-章，共 78 个学习单元；第 19 章及以后尚不作为发布页面。
+教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第四部及第五部第 19
+章，共 82 个学习单元；第 20 章及以后尚不作为发布页面。
 
 ## 第一部：实数、函数与分析语言
 
@@ -132,7 +132,16 @@ title: 全书课程地图
 4. [有理函数怎样通过代数分解获得原函数？](chapters/chapter-18/u-05-18-04-rational-functions.md)
 5. [怎样选择积分方法并用求导可靠回验？](chapters/chapter-18/u-05-18-05-method-selection.md)
 
+### [第 19 章：Riemann 积分与可积性](chapters/chapter-19/index.md) {#chapter-19}
+
+本章学时：7.5 小时（理论 6，应用 1.5）。
+
+1. [怎样用分割和上下和夹住未知总量？](chapters/chapter-19/u-05-19-01-partitions-darboux-sums.md)
+2. [Riemann 和何时拥有与取样无关的极限？](chapters/chapter-19/u-05-19-02-riemann-darboux-equivalence.md)
+3. [哪些函数可积，证明障碍在哪里？](chapters/chapter-19/u-05-19-03-integrable-classes.md)
+4. [可积函数的代数、序与区间结构怎样传递？](chapters/chapter-19/u-05-19-04-integral-properties.md)
+
 ## 后续路线
 
-第 19 章至第十二部继续覆盖定积分、级数、多元微积分、常微分方程与现代分析
+第 20 章至第十二部继续覆盖微积分基本定理、积分模型、级数、多元微积分、常微分方程与现代分析
 的章级路线；在内容写作完成前不创建空白单元页。

@@ -152,6 +152,12 @@ nav:
           - 18.3 乘积法则怎样反向产生分部积分法？: chapters/chapter-18/u-05-18-03-integration-by-parts.md
           - 18.4 有理函数怎样通过代数分解获得原函数？: chapters/chapter-18/u-05-18-04-rational-functions.md
           - 18.5 怎样选择积分方法并用求导可靠回验？: chapters/chapter-18/u-05-18-05-method-selection.md
+      - 第 19 章：Riemann 积分与可积性:
+          - 本章导学: chapters/chapter-19/index.md
+          - 19.1 怎样用分割和上下和夹住未知总量？: chapters/chapter-19/u-05-19-01-partitions-darboux-sums.md
+          - 19.2 Riemann 和何时拥有与取样无关的极限？: chapters/chapter-19/u-05-19-02-riemann-darboux-equivalence.md
+          - 19.3 哪些函数可积，证明障碍在哪里？: chapters/chapter-19/u-05-19-03-integrable-classes.md
+          - 19.4 可积函数的代数、序与区间结构怎样传递？: chapters/chapter-19/u-05-19-04-integral-properties.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

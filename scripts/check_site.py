@@ -89,6 +89,16 @@ REQUIRED_RENDERED_ANCHORS = {
         "alg-u-05-18-05-method-selection",
         "tbl-u-05-18-05-verification",
     ],
+    "chapters/chapter-19/u-05-19-02-riemann-darboux-equivalence/index.html": [
+        "thm-u-05-19-02-darboux-criterion",
+        "lem-u-05-19-02-common-refinement-control",
+        "thm-u-05-19-02-riemann-darboux-equivalence",
+    ],
+    "chapters/chapter-19/u-05-19-04-integral-properties/index.html": [
+        "thm-u-05-19-04-algebra-closure",
+        "thm-u-05-19-04-order-bounds",
+        "thm-u-05-19-04-interval-additivity",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -149,6 +159,16 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第五部：积分、累积与数值求积",
         "第 18 章：原函数与积分方法",
+    ],
+    "chapters/chapter-19/u-05-19-02-riemann-darboux-equivalence/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 19 章：Riemann 积分与可积性",
+    ],
+    "chapters/chapter-19/u-05-19-04-integral-properties/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 19 章：Riemann 积分与可积性",
     ],
 }
 
