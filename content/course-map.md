@@ -4,8 +4,8 @@ title: 全书课程地图
 
 # 全书课程地图 {#sec-curriculum-map}
 
-教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第三部及第四部第 13–
-17 章，共 73 个学习单元；第 18 章及以后尚不作为发布页面。
+教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第四部及第五部第 18
+章，共 78 个学习单元；第 19 章及以后尚不作为发布页面。
 
 ## 第一部：实数、函数与分析语言
 
@@ -118,7 +118,21 @@ title: 全书课程地图
 3. [Newton 迭代为什么可能快速收敛，也可能失败？](chapters/chapter-17/u-04-17-03-newton-convergence-failure.md)
 4. [怎样实现具有保护机制和停止证书的 Newton 算法？](chapters/chapter-17/u-04-17-04-safeguarded-newton.md)
 
+## 第五部：积分、累积与数值求积
+
+**问题弧：** 怎样从局部变化率恢复函数，并把无限细分转化为可验证的累积量？
+
+### [第 18 章：原函数与积分方法](chapters/chapter-18/index.md) {#chapter-18}
+
+本章学时：8 小时（理论 4.5，应用 3.5）。
+
+1. [导数能否反向恢复原函数？](chapters/chapter-18/u-05-18-01-antiderivatives.md)
+2. [复合函数的导数怎样反向产生换元法？](chapters/chapter-18/u-05-18-02-substitution.md)
+3. [乘积法则怎样反向产生分部积分法？](chapters/chapter-18/u-05-18-03-integration-by-parts.md)
+4. [有理函数怎样通过代数分解获得原函数？](chapters/chapter-18/u-05-18-04-rational-functions.md)
+5. [怎样选择积分方法并用求导可靠回验？](chapters/chapter-18/u-05-18-05-method-selection.md)
+
 ## 后续路线
 
-第 18 章至第十二部继续覆盖积分、级数、多元微积分、常微分方程与现代分析
+第 19 章至第十二部继续覆盖定积分、级数、多元微积分、常微分方程与现代分析
 的章级路线；在内容写作完成前不创建空白单元页。

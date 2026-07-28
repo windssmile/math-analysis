@@ -85,8 +85,8 @@ class PartFourConsistencyTests(unittest.TestCase):
         course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
         navigation = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
         site_checker = (ROOT / "scripts" / "check_site.py").read_text(encoding="utf-8")
-        self.assertIn("第四部第 17 章，共 73 个学习单元", readme)
-        self.assertIn("17 章，共 73 个学习单元", course_map)
+        self.assertIn("第五部第 18 章，共 78 个学习单元", readme)
+        self.assertIn("章，共 78 个学习单元", course_map)
         self.assertIn("第 17 章：凸性、优化、函数形态与 Newton 方法", navigation)
         self.assertIn(
             "chapters/chapter-17/u-04-17-04-safeguarded-newton/index.html",

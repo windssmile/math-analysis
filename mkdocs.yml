@@ -144,6 +144,14 @@ nav:
           - 17.2 凸性为何能把局部极小升级为整体极小？: chapters/chapter-17/u-04-17-02-convexity-optimization.md
           - 17.3 Newton 迭代为什么可能快速收敛，也可能失败？: chapters/chapter-17/u-04-17-03-newton-convergence-failure.md
           - 17.4 怎样实现具有保护机制和停止证书的 Newton 算法？: chapters/chapter-17/u-04-17-04-safeguarded-newton.md
+  - 第五部：积分、累积与数值求积:
+      - 第 18 章：原函数与积分方法:
+          - 本章导学: chapters/chapter-18/index.md
+          - 18.1 导数能否反向恢复原函数？: chapters/chapter-18/u-05-18-01-antiderivatives.md
+          - 18.2 复合函数的导数怎样反向产生换元法？: chapters/chapter-18/u-05-18-02-substitution.md
+          - 18.3 乘积法则怎样反向产生分部积分法？: chapters/chapter-18/u-05-18-03-integration-by-parts.md
+          - 18.4 有理函数怎样通过代数分解获得原函数？: chapters/chapter-18/u-05-18-04-rational-functions.md
+          - 18.5 怎样选择积分方法并用求导可靠回验？: chapters/chapter-18/u-05-18-05-method-selection.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

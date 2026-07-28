@@ -80,6 +80,15 @@ REQUIRED_RENDERED_ANCHORS = {
         "def-u-04-17-04-verifiable-certificate",
         "tbl-u-04-17-04-certificate-comparison",
     ],
+    "chapters/chapter-18/u-05-18-01-antiderivatives/index.html": [
+        "def-u-05-18-01-antiderivative",
+        "thm-u-05-18-01-constant-difference",
+        "ex-u-05-18-01-darboux-obstruction",
+    ],
+    "chapters/chapter-18/u-05-18-05-method-selection/index.html": [
+        "alg-u-05-18-05-method-selection",
+        "tbl-u-05-18-05-verification",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -130,6 +139,16 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第四部：微分与局部线性化",
         "第 17 章：凸性、优化、函数形态与 Newton 方法",
+    ],
+    "chapters/chapter-18/u-05-18-01-antiderivatives/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 18 章：原函数与积分方法",
+    ],
+    "chapters/chapter-18/u-05-18-05-method-selection/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 18 章：原函数与积分方法",
     ],
 }
 

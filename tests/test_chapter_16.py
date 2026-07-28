@@ -115,7 +115,7 @@ class ChapterSixteenTests(unittest.TestCase):
         course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("本章学时：7 小时（理论 4.5，应用 2.5）。", course_map)
-        self.assertIn("第四部第 17 章，共 73 个学习单元", readme)
+        self.assertIn("第五部第 18 章，共 78 个学习单元", readme)
         navigation_positions = []
         map_positions = []
         for unit_id, title, _theory, _applied, suffix in EXPECTED_UNITS:
