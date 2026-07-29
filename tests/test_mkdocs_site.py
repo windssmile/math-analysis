@@ -272,6 +272,60 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             REQUIRED_NAVIGATION_MARKERS[page],
         )
 
+    def test_checks_chapter_twenty_ftc_page(self) -> None:
+        page = "chapters/chapter-20/u-05-20-02-fundamental-theorem-part-one/index.html"
+        self.assertEqual(
+            [
+                "lem-u-05-20-02-local-average-control",
+                "thm-u-05-20-02-ftc-part-one-pointwise",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第五部：积分、累积与数值求积",
+                "第 20 章：微积分基本定理",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
+    def test_checks_chapter_twenty_newton_leibniz_page(self) -> None:
+        page = "chapters/chapter-20/u-05-20-03-newton-leibniz/index.html"
+        self.assertEqual(
+            [
+                "thm-u-05-20-03-newton-leibniz-continuous",
+                "thm-u-05-20-03-newton-leibniz-integrable-derivative",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第五部：积分、累积与数值求积",
+                "第 20 章：微积分基本定理",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
+    def test_checks_chapter_twenty_practice_page(self) -> None:
+        page = "chapters/chapter-20/u-05-20-05-definite-integral-practice/index.html"
+        self.assertEqual(
+            [
+                "tbl-u-05-20-05-method-selection",
+                "thm-u-05-20-05-reflection-symmetry",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第五部：积分、累积与数值求积",
+                "第 20 章：微积分基本定理",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
     def test_checks_chapter_fifteen_cauchy_page(self) -> None:
         page = "chapters/chapter-15/u-04-15-03-cauchy-mean-value/index.html"
         self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
