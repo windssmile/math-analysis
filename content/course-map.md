@@ -4,8 +4,8 @@ title: 全书课程地图
 
 # 全书课程地图 {#sec-curriculum-map}
 
-教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第四部及第五部第 19
-章，共 82 个学习单元；第 20 章及以后尚不作为发布页面。
+教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第四部及第五部第 20
+章，共 87 个学习单元；第 21 章及以后尚不作为发布页面。
 
 ## 第一部：实数、函数与分析语言
 
@@ -141,7 +141,17 @@ title: 全书课程地图
 3. [哪些函数可积，证明障碍在哪里？](chapters/chapter-19/u-05-19-03-integrable-classes.md)
 4. [可积函数的代数、序与区间结构怎样传递？](chapters/chapter-19/u-05-19-04-integral-properties.md)
 
+### [第 20 章：微积分基本定理](chapters/chapter-20/index.md) {#chapter-20}
+
+本章学时：8 小时（理论 5.25，应用 2.75）。
+
+1. [变上限累积函数为什么连续？](chapters/chapter-20/u-05-20-01-accumulation-continuity.md)
+2. [局部平均怎样恢复被积函数？](chapters/chapter-20/u-05-20-02-fundamental-theorem-part-one.md)
+3. [原函数怎样把分割极限化为端点差？](chapters/chapter-20/u-05-20-03-newton-leibniz.md)
+4. [定积分的换元与分部积分怎样合法使用？](chapters/chapter-20/u-05-20-04-definite-substitution-parts.md)
+5. [定积分综合计算怎样处理端点、对称与错误诊断？](chapters/chapter-20/u-05-20-05-definite-integral-practice.md)
+
 ## 后续路线
 
-第 20 章至第十二部继续覆盖微积分基本定理、积分模型、级数、多元微积分、常微分方程与现代分析
-的章级路线；在内容写作完成前不创建空白单元页。
+第 21 章至第十二部继续覆盖积分模型、级数、多元微积分、常微分方程与现代分析的章级
+路线；在内容写作完成前不创建空白单元页。

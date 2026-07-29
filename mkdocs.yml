@@ -158,6 +158,13 @@ nav:
           - 19.2 Riemann 和何时拥有与取样无关的极限？: chapters/chapter-19/u-05-19-02-riemann-darboux-equivalence.md
           - 19.3 哪些函数可积，证明障碍在哪里？: chapters/chapter-19/u-05-19-03-integrable-classes.md
           - 19.4 可积函数的代数、序与区间结构怎样传递？: chapters/chapter-19/u-05-19-04-integral-properties.md
+      - 第 20 章：微积分基本定理:
+          - 本章导学: chapters/chapter-20/index.md
+          - 20.1 变上限累积函数为什么连续？: chapters/chapter-20/u-05-20-01-accumulation-continuity.md
+          - 20.2 局部平均怎样恢复被积函数？: chapters/chapter-20/u-05-20-02-fundamental-theorem-part-one.md
+          - 20.3 原函数怎样把分割极限化为端点差？: chapters/chapter-20/u-05-20-03-newton-leibniz.md
+          - 20.4 定积分的换元与分部积分怎样合法使用？: chapters/chapter-20/u-05-20-04-definite-substitution-parts.md
+          - 20.5 定积分综合计算怎样处理端点、对称与错误诊断？: chapters/chapter-20/u-05-20-05-definite-integral-practice.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

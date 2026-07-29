@@ -127,7 +127,7 @@ class ChapterFifteenTests(unittest.TestCase):
             / "2026-07-25-part-04-differentiation-design.md"
         ).read_text(encoding="utf-8")
         self.assertIn("本章学时：8.5 小时（理论 6.5，应用 2.0）。", course_map)
-        self.assertIn("第五部第 19 章，共 82 个学习单元", readme)
+        self.assertIn("第五部第 20 章，共 87 个学习单元", readme)
         self.assertIn("| 第 15 章 | 6.5 | 2.0 | 8.5 |", part_design)
         self.assertIn("| **第四部** | **26** | **12.5** | **38.5** |", part_design)
         navigation_positions = []

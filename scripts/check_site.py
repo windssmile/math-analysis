@@ -99,6 +99,18 @@ REQUIRED_RENDERED_ANCHORS = {
         "thm-u-05-19-04-order-bounds",
         "thm-u-05-19-04-interval-additivity",
     ],
+    "chapters/chapter-20/u-05-20-02-fundamental-theorem-part-one/index.html": [
+        "lem-u-05-20-02-local-average-control",
+        "thm-u-05-20-02-ftc-part-one-pointwise",
+    ],
+    "chapters/chapter-20/u-05-20-03-newton-leibniz/index.html": [
+        "thm-u-05-20-03-newton-leibniz-continuous",
+        "thm-u-05-20-03-newton-leibniz-integrable-derivative",
+    ],
+    "chapters/chapter-20/u-05-20-05-definite-integral-practice/index.html": [
+        "tbl-u-05-20-05-method-selection",
+        "thm-u-05-20-05-reflection-symmetry",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -169,6 +181,21 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第五部：积分、累积与数值求积",
         "第 19 章：Riemann 积分与可积性",
+    ],
+    "chapters/chapter-20/u-05-20-02-fundamental-theorem-part-one/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 20 章：微积分基本定理",
+    ],
+    "chapters/chapter-20/u-05-20-03-newton-leibniz/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 20 章：微积分基本定理",
+    ],
+    "chapters/chapter-20/u-05-20-05-definite-integral-practice/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 20 章：微积分基本定理",
     ],
 }
 

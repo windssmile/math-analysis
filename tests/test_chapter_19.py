@@ -208,10 +208,10 @@ class ChapterNineteenTests(unittest.TestCase):
         config = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
         course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("当前发布边界：第 19 章", deps)
+        self.assertIn("当前发布边界：第 20 章", deps)
         self.assertIn("第 19 章：Riemann 积分与可积性", config)
         self.assertIn("本章学时：7.5 小时（理论 6，应用 1.5）。", course_map)
-        self.assertIn("第五部第 19 章，共 82 个学习单元", readme)
+        self.assertIn("第五部第 20 章，共 87 个学习单元", readme)
         for unit_id, title, _theory, _applied, suffix, _exercises in EXPECTED_UNITS:
             path = f"chapters/chapter-19/{unit_id}-{suffix}.md"
             self.assertEqual(1, config.count(f"{title}: {path}"))
