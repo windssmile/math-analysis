@@ -11,6 +11,29 @@ from scripts.check_site import (
 
 
 class ZensicalSiteValidationTests(unittest.TestCase):
+    def test_checks_chapter_twenty_three_cauchy_and_integral_pages(self) -> None:
+        for page, anchors in {
+            "chapters/chapter-23/u-06-23-02-cauchy-tail/index.html": (
+                "thm-u-06-23-02-cauchy-tail",
+                "tbl-u-06-23-02-evidence-boundary",
+            ),
+            "chapters/chapter-23/u-06-23-05-integral-condensation/index.html": (
+                "thm-u-06-23-05-integral-test",
+                "alg-u-06-23-05-certified-truncation",
+            ),
+        }.items():
+            self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+            for anchor in anchors:
+                self.assertIn(anchor, REQUIRED_RENDERED_ANCHORS[page])
+            self.assertEqual(
+                [
+                    "md-sidebar",
+                    "第六部：无穷级数与函数逼近",
+                    "第 23 章：数项级数的收敛与正项判别",
+                ],
+                REQUIRED_NAVIGATION_MARKERS[page],
+            )
+
     def test_verify_target_runs_the_zensical_site_checker(self) -> None:
         makefile = (Path(__file__).resolve().parents[1] / "Makefile").read_text(
             encoding="utf-8"
