@@ -195,7 +195,7 @@ class ChapterSeventeenTests(unittest.TestCase):
             / "2026-07-18-mathematical-analysis-textbook-design.md"
         ).read_text(encoding="utf-8")
 
-        self.assertIn("第五部第 20 章，共 87 个学习单元", readme)
+        self.assertIn("第五部第 21 章，共 92 个学习单元", readme)
         self.assertIn("本章学时：8 小时（理论 4.5，应用 3.5）。", course_map)
         self.assertIn("| 第 17 章 | 4.5 | 3.5 | 8 |", part_design)
         self.assertIn("| **第四部** | **26** | **12.5** | **38.5** |", part_design)

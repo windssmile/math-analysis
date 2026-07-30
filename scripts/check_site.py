@@ -111,6 +111,18 @@ REQUIRED_RENDERED_ANCHORS = {
         "tbl-u-05-20-05-method-selection",
         "thm-u-05-20-05-reflection-symmetry",
     ],
+    "chapters/chapter-21/u-05-21-02-volume-models/index.html": [
+        "lem-u-05-21-02-shell-remainder",
+        "thm-u-05-21-02-shell-volume",
+    ],
+    "chapters/chapter-21/u-05-21-03-arc-length/index.html": [
+        "def-u-05-21-03-graph-arc-length",
+        "thm-u-05-21-03-c1-graph-arc-length",
+    ],
+    "chapters/chapter-21/u-05-21-05-modeling-practice/index.html": [
+        "alg-u-05-21-05-modeling-workflow",
+        "tbl-u-05-21-05-model-selection",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -196,6 +208,21 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第五部：积分、累积与数值求积",
         "第 20 章：微积分基本定理",
+    ],
+    "chapters/chapter-21/u-05-21-02-volume-models/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 21 章：积分的几何与物理模型",
+    ],
+    "chapters/chapter-21/u-05-21-03-arc-length/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 21 章：积分的几何与物理模型",
+    ],
+    "chapters/chapter-21/u-05-21-05-modeling-practice/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 21 章：积分的几何与物理模型",
     ],
 }
 

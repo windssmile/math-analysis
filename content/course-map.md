@@ -4,8 +4,8 @@ title: 全书课程地图
 
 # 全书课程地图 {#sec-curriculum-map}
 
-教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第四部及第五部第 20
-章，共 87 个学习单元；第 21 章及以后尚不作为发布页面。
+教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第四部及第五部第 21
+章，共 92 个学习单元；第 22 章及以后尚不作为发布页面。
 
 ## 第一部：实数、函数与分析语言
 
@@ -151,7 +151,17 @@ title: 全书课程地图
 4. [定积分的换元与分部积分怎样合法使用？](chapters/chapter-20/u-05-20-04-definite-substitution-parts.md)
 5. [定积分综合计算怎样处理端点、对称与错误诊断？](chapters/chapter-20/u-05-20-05-definite-integral-practice.md)
 
+### [第 21 章：积分的几何与物理模型](chapters/chapter-21/index.md) {#chapter-21}
+
+本章学时：7 小时（理论 4，应用 3）。
+
+1. [面积怎样从局部条带与有向积分产生？](chapters/chapter-21/u-05-21-01-area-models.md)
+2. [截面怎样重建立体体积？](chapters/chapter-21/u-05-21-02-volume-models.md)
+3. [折线长度怎样逼近光滑图像的弧长？](chapters/chapter-21/u-05-21-03-arc-length.md)
+4. [功、质量与平均值怎样选择局部贡献？](chapters/chapter-21/u-05-21-04-work-mass-average.md)
+5. [几何与物理综合建模怎样选变量并回验？](chapters/chapter-21/u-05-21-05-modeling-practice.md)
+
 ## 后续路线
 
-第 21 章至第十二部继续覆盖积分模型、级数、多元微积分、常微分方程与现代分析的章级
+第 22 章至第十二部继续覆盖反常积分、数值求积、级数、多元微积分、常微分方程与现代分析的章级
 路线；在内容写作完成前不创建空白单元页。

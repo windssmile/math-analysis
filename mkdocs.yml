@@ -165,6 +165,13 @@ nav:
           - 20.3 原函数怎样把分割极限化为端点差？: chapters/chapter-20/u-05-20-03-newton-leibniz.md
           - 20.4 定积分的换元与分部积分怎样合法使用？: chapters/chapter-20/u-05-20-04-definite-substitution-parts.md
           - 20.5 定积分综合计算怎样处理端点、对称与错误诊断？: chapters/chapter-20/u-05-20-05-definite-integral-practice.md
+      - 第 21 章：积分的几何与物理模型:
+          - 本章导学: chapters/chapter-21/index.md
+          - 21.1 面积怎样从局部条带与有向积分产生？: chapters/chapter-21/u-05-21-01-area-models.md
+          - 21.2 截面怎样重建立体体积？: chapters/chapter-21/u-05-21-02-volume-models.md
+          - 21.3 折线长度怎样逼近光滑图像的弧长？: chapters/chapter-21/u-05-21-03-arc-length.md
+          - 21.4 功、质量与平均值怎样选择局部贡献？: chapters/chapter-21/u-05-21-04-work-mass-average.md
+          - 21.5 几何与物理综合建模怎样选变量并回验？: chapters/chapter-21/u-05-21-05-modeling-practice.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
