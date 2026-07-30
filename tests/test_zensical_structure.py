@@ -28,7 +28,7 @@ class ZensicalStructureTests(unittest.TestCase):
 
     def test_readme_uses_zensical_commands_and_current_release_scope(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("第六部第 26 章，共 118 个学习单元", readme)
+        self.assertIn("第六部第 27 章，共 122 个学习单元", readme)
         self.assertIn("zensical serve", readme)
         self.assertIn("zensical build --strict", readme)
         self.assertNotIn("mkdocs serve", readme)

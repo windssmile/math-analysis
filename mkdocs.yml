@@ -209,6 +209,12 @@ nav:
           - 26.3 为什么幂级数可以逐项积分与微分？: chapters/chapter-26/u-06-26-03-termwise-operations.md
           - 26.4 Taylor 级数什么时候真的等于原函数？: chapters/chapter-26/u-06-26-04-taylor-analytic.md
           - 26.5 常用展开怎样形成可靠计算工具？: chapters/chapter-26/u-06-26-05-standard-expansions.md
+      - 第 27 章：多项式逼近与误差控制:
+          - 本章导学: chapters/chapter-27/index.md
+          - 27.1 函数逼近问题应怎样衡量误差？: chapters/chapter-27/u-06-27-01-approximation-error.md
+          - 27.2 Bernstein 多项式怎样逼近连续函数？: chapters/chapter-27/u-06-27-02-bernstein-weierstrass.md
+          - 27.3 连续性模怎样给出显式误差界？: chapters/chapter-27/u-06-27-03-modulus-error.md
+          - 27.4 怎样可靠构造并评价逼近多项式？: chapters/chapter-27/u-06-27-04-reliable-bernstein.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

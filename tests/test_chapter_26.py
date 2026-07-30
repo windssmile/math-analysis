@@ -108,10 +108,9 @@ class ChapterTwentySixTests(unittest.TestCase):
 
     def test_publication_reaches_chapter_26_only(self):
         dependencies = self.required_text(DEPENDENCIES)
-        self.assertIn("当前发布边界：第 26 章", dependencies)
-        self.assertIn("20 个核心单元、35 学时", dependencies)
-        self.assertIn("第六部第 26 章，共 118 个学习单元", self.required_text(ROOT / "README.md"))
+        self.assertIn("当前发布边界：第 27 章", dependencies)
+        self.assertIn("24 个核心单元、42 学时", dependencies)
+        self.assertIn("第六部第 27 章，共 122 个学习单元", self.required_text(ROOT / "README.md"))
         config = self.required_text(ROOT / "mkdocs.yml")
         self.assertIn("第 26 章：幂级数与解析表示", config)
-        self.assertNotIn("chapters/chapter-27/", config)
-
+        self.assertIn("chapters/chapter-27/", config)

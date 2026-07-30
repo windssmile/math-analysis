@@ -183,6 +183,18 @@ REQUIRED_RENDERED_ANCHORS = {
         "thm-u-06-26-04-remainder-criterion",
         "ex-u-06-26-04-smooth-not-analytic",
     ],
+    "chapters/chapter-27/u-06-27-02-bernstein-weierstrass/index.html": [
+        "lem-u-06-27-02-moments",
+        "thm-u-06-27-02-weierstrass",
+    ],
+    "chapters/chapter-27/u-06-27-03-modulus-error/index.html": [
+        "thm-u-06-27-03-quantitative-bound",
+        "cor-u-06-27-03-lipschitz-budget",
+    ],
+    "chapters/chapter-27/u-06-27-04-reliable-bernstein/index.html": [
+        "alg-u-06-27-04-stable-evaluation",
+        "tbl-u-06-27-04-output-semantics",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -358,6 +370,21 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第六部：无穷级数与函数逼近",
         "第 26 章：幂级数与解析表示",
+    ],
+    "chapters/chapter-27/u-06-27-02-bernstein-weierstrass/index.html": [
+        "md-sidebar",
+        "第六部：无穷级数与函数逼近",
+        "第 27 章：多项式逼近与误差控制",
+    ],
+    "chapters/chapter-27/u-06-27-03-modulus-error/index.html": [
+        "md-sidebar",
+        "第六部：无穷级数与函数逼近",
+        "第 27 章：多项式逼近与误差控制",
+    ],
+    "chapters/chapter-27/u-06-27-04-reliable-bernstein/index.html": [
+        "md-sidebar",
+        "第六部：无穷级数与函数逼近",
+        "第 27 章：多项式逼近与误差控制",
     ],
 }
 

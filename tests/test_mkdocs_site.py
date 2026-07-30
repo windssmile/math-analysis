@@ -11,6 +11,29 @@ from scripts.check_site import (
 
 
 class ZensicalSiteValidationTests(unittest.TestCase):
+    def test_checks_chapter_twenty_seven_core_pages(self) -> None:
+        for page, anchors in {
+            "chapters/chapter-27/u-06-27-02-bernstein-weierstrass/index.html": (
+                "lem-u-06-27-02-moments",
+                "thm-u-06-27-02-weierstrass",
+            ),
+            "chapters/chapter-27/u-06-27-03-modulus-error/index.html": (
+                "thm-u-06-27-03-quantitative-bound",
+                "cor-u-06-27-03-lipschitz-budget",
+            ),
+            "chapters/chapter-27/u-06-27-04-reliable-bernstein/index.html": (
+                "alg-u-06-27-04-stable-evaluation",
+                "tbl-u-06-27-04-output-semantics",
+            ),
+        }.items():
+            self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+            for anchor in anchors:
+                self.assertIn(anchor, REQUIRED_RENDERED_ANCHORS[page])
+            self.assertEqual(
+                ["md-sidebar", "第六部：无穷级数与函数逼近", "第 27 章：多项式逼近与误差控制"],
+                REQUIRED_NAVIGATION_MARKERS[page],
+            )
+
     def test_checks_chapter_twenty_six_core_pages(self) -> None:
         for page, anchors in {
             "chapters/chapter-26/u-06-26-01-radius/index.html": (
