@@ -69,8 +69,8 @@ EXPECTED_UNITS = [
     ("u-05-22-02", "正函数怎样比较收敛并控制尾部？", 1.50, 0.25, "comparison-tests", 7, 9),
     ("u-05-22-03", "绝对、条件与振荡收敛怎样区分？", 1.50, 0.50, "absolute-conditional-oscillation", 8, 10),
     ("u-05-22-04", "中点与梯形公式怎样产生可证明误差界？", 1.25, 0.75, "midpoint-trapezoid", 7, 9),
-    ("u-05-22-05", "Simpson 方法怎样给出预算与误差证书？", 1.00, 1.50, "simpson-certificates", 8, 10),
-    ("u-05-22-06", "反常积分怎样完成可靠数值计算？", 0.50, 1.50, "certified-improper-quadrature", 12, 16),
+    ("u-05-22-05", "Simpson 方法怎样给出预算与误差证书？", 1.00, 1.25, "simpson-certificates", 8, 10),
+    ("u-05-22-06", "反常积分怎样完成可靠数值计算？", 0.50, 1.75, "certified-improper-quadrature", 12, 16),
 ]
 ```
 
@@ -803,7 +803,7 @@ git commit -m "docs: derive midpoint and trapezoid error bounds"
 ---
 title: Simpson 方法怎样给出预算与误差证书？
 unit_id: u-05-22-05
-hours: {theory: 1.0, applied: 1.5}
+hours: {theory: 1.0, applied: 1.25}
 difficulty: 5
 prerequisites:
   book: [u-04-15-01, u-04-16-02, u-05-22-04]
@@ -879,7 +879,7 @@ git commit -m "docs: derive Simpson budgets and certificates"
 ---
 title: 反常积分怎样完成可靠数值计算？
 unit_id: u-05-22-06
-hours: {theory: 0.5, applied: 1.5}
+hours: {theory: 0.5, applied: 1.75}
 difficulty: 5
 prerequisites:
   book: [u-05-22-01, u-05-22-02, u-05-22-03, u-05-22-04, u-05-22-05]
