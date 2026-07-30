@@ -146,11 +146,10 @@ class ChapterTwentyFiveTests(unittest.TestCase):
 
     def test_publication_scope_reaches_chapter_25_only(self) -> None:
         dependencies = self.required_text(DEPENDENCIES)
-        self.assertIn("当前发布边界：第 25 章", dependencies)
-        self.assertIn("15 个核心单元、27 学时", dependencies)
+        self.assertIn("当前发布边界：第 26 章", dependencies)
+        self.assertIn("20 个核心单元、35 学时", dependencies)
         readme = self.required_text(ROOT / "README.md")
-        self.assertIn("第六部第 25 章，共 113 个学习单元", readme)
+        self.assertIn("第六部第 26 章，共 118 个学习单元", readme)
         config = self.required_text(ROOT / "mkdocs.yml")
         self.assertIn("第 25 章：函数列、函数项级数与一致收敛", config)
-        self.assertNotIn("chapters/chapter-26/", config)
-
+        self.assertNotIn("chapters/chapter-27/", config)

@@ -202,6 +202,13 @@ nav:
           - 25.3 函数项级数怎样获得一致收敛判别？: chapters/chapter-25/u-06-25-03-uniform-series-tests.md
           - 25.4 极限什么时候可以穿过连续与积分？: chapters/chapter-25/u-06-25-04-continuity-integration.md
           - 25.5 微分为什么需要比积分更强的条件？: chapters/chapter-25/u-06-25-05-differentiation.md
+      - 第 26 章：幂级数与解析表示:
+          - 本章导学: chapters/chapter-26/index.md
+          - 26.1 系数怎样决定收敛半径？: chapters/chapter-26/u-06-26-01-radius.md
+          - 26.2 幂级数为什么在收敛区间内部表现稳定？: chapters/chapter-26/u-06-26-02-interior-uniformity.md
+          - 26.3 为什么幂级数可以逐项积分与微分？: chapters/chapter-26/u-06-26-03-termwise-operations.md
+          - 26.4 Taylor 级数什么时候真的等于原函数？: chapters/chapter-26/u-06-26-04-taylor-analytic.md
+          - 26.5 常用展开怎样形成可靠计算工具？: chapters/chapter-26/u-06-26-05-standard-expansions.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

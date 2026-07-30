@@ -171,6 +171,18 @@ REQUIRED_RENDERED_ANCHORS = {
         "thm-u-06-25-05-derivative-interchange",
         "tbl-u-06-25-05-exchange-conditions",
     ],
+    "chapters/chapter-26/u-06-26-01-radius/index.html": [
+        "thm-u-06-26-01-radius-dichotomy",
+        "thm-u-06-26-01-cauchy-hadamard",
+    ],
+    "chapters/chapter-26/u-06-26-03-termwise-operations/index.html": [
+        "thm-u-06-26-03-termwise-operations",
+        "thm-u-06-26-03-coefficient-uniqueness",
+    ],
+    "chapters/chapter-26/u-06-26-04-taylor-analytic/index.html": [
+        "thm-u-06-26-04-remainder-criterion",
+        "ex-u-06-26-04-smooth-not-analytic",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -331,6 +343,21 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第六部：无穷级数与函数逼近",
         "第 25 章：函数列、函数项级数与一致收敛",
+    ],
+    "chapters/chapter-26/u-06-26-01-radius/index.html": [
+        "md-sidebar",
+        "第六部：无穷级数与函数逼近",
+        "第 26 章：幂级数与解析表示",
+    ],
+    "chapters/chapter-26/u-06-26-03-termwise-operations/index.html": [
+        "md-sidebar",
+        "第六部：无穷级数与函数逼近",
+        "第 26 章：幂级数与解析表示",
+    ],
+    "chapters/chapter-26/u-06-26-04-taylor-analytic/index.html": [
+        "md-sidebar",
+        "第六部：无穷级数与函数逼近",
+        "第 26 章：幂级数与解析表示",
     ],
 }
 

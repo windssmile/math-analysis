@@ -11,6 +11,29 @@ from scripts.check_site import (
 
 
 class ZensicalSiteValidationTests(unittest.TestCase):
+    def test_checks_chapter_twenty_six_core_pages(self) -> None:
+        for page, anchors in {
+            "chapters/chapter-26/u-06-26-01-radius/index.html": (
+                "thm-u-06-26-01-radius-dichotomy",
+                "thm-u-06-26-01-cauchy-hadamard",
+            ),
+            "chapters/chapter-26/u-06-26-03-termwise-operations/index.html": (
+                "thm-u-06-26-03-termwise-operations",
+                "thm-u-06-26-03-coefficient-uniqueness",
+            ),
+            "chapters/chapter-26/u-06-26-04-taylor-analytic/index.html": (
+                "thm-u-06-26-04-remainder-criterion",
+                "ex-u-06-26-04-smooth-not-analytic",
+            ),
+        }.items():
+            self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+            for anchor in anchors:
+                self.assertIn(anchor, REQUIRED_RENDERED_ANCHORS[page])
+            self.assertEqual(
+                ["md-sidebar", "第六部：无穷级数与函数逼近", "第 26 章：幂级数与解析表示"],
+                REQUIRED_NAVIGATION_MARKERS[page],
+            )
+
     def test_checks_chapter_twenty_five_core_pages(self) -> None:
         for page, anchors in {
             "chapters/chapter-25/u-06-25-01-pointwise-uniform/index.html": (
