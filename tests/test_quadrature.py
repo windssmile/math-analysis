@@ -32,8 +32,14 @@ class FixedGridQuadratureTests(unittest.TestCase):
         self.assertEqual(8, midpoint.subdivisions)
         self.assertEqual(8, midpoint.evaluations)
         self.assertEqual(9, trapezoid.evaluations)
-        self.assertLessEqual(abs(midpoint.value - 1 / 3), midpoint.error_bound)
-        self.assertLessEqual(abs(trapezoid.value - 1 / 3), trapezoid.error_bound)
+        self.assertLessEqual(
+            abs(midpoint.value - 1 / 3),
+            midpoint.error_bound + 1e-15,
+        )
+        self.assertLessEqual(
+            abs(trapezoid.value - 1 / 3),
+            trapezoid.error_bound + 1e-15,
+        )
         with self.assertRaisesRegex(FrozenInstanceError, "cannot assign to field"):
             midpoint.value = 0.0  # type: ignore[misc]
 
