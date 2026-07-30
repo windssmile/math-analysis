@@ -180,6 +180,14 @@ nav:
           - 22.4 中点与梯形公式怎样产生可证明误差界？: chapters/chapter-22/u-05-22-04-midpoint-trapezoid.md
           - 22.5 Simpson 方法怎样给出预算与误差证书？: chapters/chapter-22/u-05-22-05-simpson-certificates.md
           - 22.6 反常积分怎样完成可靠数值计算？: chapters/chapter-22/u-05-22-06-certified-improper-quadrature.md
+  - 第六部：无穷级数与函数逼近:
+      - 第 23 章：数项级数的收敛与正项判别:
+          - 本章导学: chapters/chapter-23/index.md
+          - 23.1 无限求和怎样由部分和定义？: chapters/chapter-23/u-06-23-01-partial-sums.md
+          - 23.2 Cauchy 尾部判据怎样控制无限求和？: chapters/chapter-23/u-06-23-02-cauchy-tail.md
+          - 23.3 正项级数怎样通过比较判断收敛？: chapters/chapter-23/u-06-23-03-comparison-tests.md
+          - 23.4 局部增长率怎样产生比值与根值判别？: chapters/chapter-23/u-06-23-04-ratio-root-tests.md
+          - 23.5 积分与凝聚怎样提供判别和余项证书？: chapters/chapter-23/u-06-23-05-integral-condensation.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

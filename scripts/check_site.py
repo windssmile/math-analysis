@@ -138,6 +138,15 @@ REQUIRED_RENDERED_ANCHORS = {
         "alg-u-05-22-06-total-error-workflow",
         "thm-u-05-22-06-total-error-certificate",
     ],
+    "chapters/chapter-23/u-06-23-02-cauchy-tail/index.html": [
+        "thm-u-06-23-02-cauchy-tail",
+        "tbl-u-06-23-02-evidence-boundary",
+    ],
+    "chapters/chapter-23/u-06-23-05-integral-condensation/index.html": [
+        "thm-u-06-23-05-integral-test",
+        "thm-u-06-23-05-cauchy-condensation",
+        "alg-u-06-23-05-certified-truncation",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -258,6 +267,16 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第五部：积分、累积与数值求积",
         "第 22 章：反常积分与数值求积",
+    ],
+    "chapters/chapter-23/u-06-23-02-cauchy-tail/index.html": [
+        "md-sidebar",
+        "第六部：无穷级数与函数逼近",
+        "第 23 章：数项级数的收敛与正项判别",
+    ],
+    "chapters/chapter-23/u-06-23-05-integral-condensation/index.html": [
+        "md-sidebar",
+        "第六部：无穷级数与函数逼近",
+        "第 23 章：数项级数的收敛与正项判别",
     ],
 }
 

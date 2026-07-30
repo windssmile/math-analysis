@@ -338,7 +338,7 @@ class ChapterTwentyTwoTests(unittest.TestCase):
             "本章学时：12 小时（理论 7.25，应用 4.75）。",
             course_map,
         )
-        self.assertIn("第五部第 22 章，共 98 个学习单元", readme)
+        self.assertIn("第六部第 23 章，共 103 个学习单元", readme)
         self.assertIn(
             "| **当前总计** |  | **292.75** | **101.25** | **394** |",
             master,
