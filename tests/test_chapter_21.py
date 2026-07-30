@@ -309,7 +309,7 @@ class ChapterTwentyOneTests(unittest.TestCase):
         )
         self.assertIn("第 21 章：积分的几何与物理模型", config)
         self.assertIn("本章学时：7 小时（理论 4，应用 3）。", course_map)
-        self.assertIn("第六部第 23 章，共 103 个学习单元", readme)
+        self.assertIn("第六部第 24 章，共 108 个学习单元", readme)
         navigation_positions = []
         map_positions = []
         for unit_id, title, _theory, _applied, suffix, _exercises, _answers in EXPECTED_UNITS:

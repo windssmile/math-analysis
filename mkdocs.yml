@@ -188,6 +188,13 @@ nav:
           - 23.3 正项级数怎样通过比较判断收敛？: chapters/chapter-23/u-06-23-03-comparison-tests.md
           - 23.4 局部增长率怎样产生比值与根值判别？: chapters/chapter-23/u-06-23-04-ratio-root-tests.md
           - 23.5 积分与凝聚怎样提供判别和余项证书？: chapters/chapter-23/u-06-23-05-integral-condensation.md
+      - 第 24 章：一般项级数、重排与乘积:
+          - 本章导学: chapters/chapter-24/index.md
+          - 24.1 绝对收敛为什么能够控制符号变化？: chapters/chapter-24/u-06-24-01-absolute-conditional.md
+          - 24.2 交错与振荡级数怎样利用抵消？: chapters/chapter-24/u-06-24-02-leibniz-dirichlet-abel.md
+          - 24.3 改变求和次序为什么可能改变结果？: chapters/chapter-24/u-06-24-03-rearrangements.md
+          - 24.4 两个无穷和什么时候可以相乘？: chapters/chapter-24/u-06-24-04-cauchy-products.md
+          - 24.5 怎样选择判别法并给出收敛证书？: chapters/chapter-24/u-06-24-05-series-diagnosis.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

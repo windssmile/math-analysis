@@ -147,6 +147,18 @@ REQUIRED_RENDERED_ANCHORS = {
         "thm-u-06-23-05-cauchy-condensation",
         "alg-u-06-23-05-certified-truncation",
     ],
+    "chapters/chapter-24/u-06-24-02-leibniz-dirichlet-abel/index.html": [
+        "thm-u-06-24-02-leibniz",
+        "thm-u-06-24-02-dirichlet",
+    ],
+    "chapters/chapter-24/u-06-24-03-rearrangements/index.html": [
+        "thm-u-06-24-03-absolute-rearrangement",
+        "thm-u-06-24-03-riemann-rearrangement",
+    ],
+    "chapters/chapter-24/u-06-24-04-cauchy-products/index.html": [
+        "def-u-06-24-04-cauchy-product",
+        "thm-u-06-24-04-mertens",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -277,6 +289,21 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第六部：无穷级数与函数逼近",
         "第 23 章：数项级数的收敛与正项判别",
+    ],
+    "chapters/chapter-24/u-06-24-02-leibniz-dirichlet-abel/index.html": [
+        "md-sidebar",
+        "第六部：无穷级数与函数逼近",
+        "第 24 章：一般项级数、重排与乘积",
+    ],
+    "chapters/chapter-24/u-06-24-03-rearrangements/index.html": [
+        "md-sidebar",
+        "第六部：无穷级数与函数逼近",
+        "第 24 章：一般项级数、重排与乘积",
+    ],
+    "chapters/chapter-24/u-06-24-04-cauchy-products/index.html": [
+        "md-sidebar",
+        "第六部：无穷级数与函数逼近",
+        "第 24 章：一般项级数、重排与乘积",
     ],
 }
 

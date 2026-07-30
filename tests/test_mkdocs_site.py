@@ -11,6 +11,33 @@ from scripts.check_site import (
 
 
 class ZensicalSiteValidationTests(unittest.TestCase):
+    def test_checks_chapter_twenty_four_core_pages(self) -> None:
+        for page, anchors in {
+            "chapters/chapter-24/u-06-24-02-leibniz-dirichlet-abel/index.html": (
+                "thm-u-06-24-02-leibniz",
+                "thm-u-06-24-02-dirichlet",
+            ),
+            "chapters/chapter-24/u-06-24-03-rearrangements/index.html": (
+                "thm-u-06-24-03-absolute-rearrangement",
+                "thm-u-06-24-03-riemann-rearrangement",
+            ),
+            "chapters/chapter-24/u-06-24-04-cauchy-products/index.html": (
+                "def-u-06-24-04-cauchy-product",
+                "thm-u-06-24-04-mertens",
+            ),
+        }.items():
+            self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+            for anchor in anchors:
+                self.assertIn(anchor, REQUIRED_RENDERED_ANCHORS[page])
+            self.assertEqual(
+                [
+                    "md-sidebar",
+                    "第六部：无穷级数与函数逼近",
+                    "第 24 章：一般项级数、重排与乘积",
+                ],
+                REQUIRED_NAVIGATION_MARKERS[page],
+            )
+
     def test_checks_chapter_twenty_three_cauchy_and_integral_pages(self) -> None:
         for page, anchors in {
             "chapters/chapter-23/u-06-23-02-cauchy-tail/index.html": (
