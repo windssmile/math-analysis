@@ -300,16 +300,16 @@ class ChapterTwentyOneTests(unittest.TestCase):
         config = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
         course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("24 个核心单元", deps)
-        self.assertIn("当前发布边界：第 21 章", deps)
-        self.assertIn("40.5 学时", deps)
+        self.assertIn("25 个核心单元", deps)
+        self.assertIn("当前发布边界：第 22 章", deps)
+        self.assertIn("42.5 学时", deps)
         self.assertIn(
             "| `u-05-21-05` | `u-05-21-01`–`04`、`u-05-20-05` |",
             deps,
         )
         self.assertIn("第 21 章：积分的几何与物理模型", config)
         self.assertIn("本章学时：7 小时（理论 4，应用 3）。", course_map)
-        self.assertIn("第五部第 21 章，共 92 个学习单元", readme)
+        self.assertIn("第五部第 22 章，共 98 个学习单元", readme)
         navigation_positions = []
         map_positions = []
         for unit_id, title, _theory, _applied, suffix, _exercises, _answers in EXPECTED_UNITS:

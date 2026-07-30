@@ -172,6 +172,14 @@ nav:
           - 21.3 折线长度怎样逼近光滑图像的弧长？: chapters/chapter-21/u-05-21-03-arc-length.md
           - 21.4 功、质量与平均值怎样选择局部贡献？: chapters/chapter-21/u-05-21-04-work-mass-average.md
           - 21.5 几何与物理综合建模怎样选变量并回验？: chapters/chapter-21/u-05-21-05-modeling-practice.md
+      - 第 22 章：反常积分与数值求积:
+          - 本章导学: chapters/chapter-22/index.md
+          - 22.1 反常积分怎样由逐端点极限定义？: chapters/chapter-22/u-05-22-01-improper-definition.md
+          - 22.2 正函数怎样比较收敛并控制尾部？: chapters/chapter-22/u-05-22-02-comparison-tests.md
+          - 22.3 绝对、条件与振荡收敛怎样区分？: chapters/chapter-22/u-05-22-03-absolute-conditional-oscillation.md
+          - 22.4 中点与梯形公式怎样产生可证明误差界？: chapters/chapter-22/u-05-22-04-midpoint-trapezoid.md
+          - 22.5 Simpson 方法怎样给出预算与误差证书？: chapters/chapter-22/u-05-22-05-simpson-certificates.md
+          - 22.6 反常积分怎样完成可靠数值计算？: chapters/chapter-22/u-05-22-06-certified-improper-quadrature.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

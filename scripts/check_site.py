@@ -123,6 +123,21 @@ REQUIRED_RENDERED_ANCHORS = {
         "alg-u-05-21-05-modeling-workflow",
         "tbl-u-05-21-05-model-selection",
     ],
+    "chapters/chapter-22/u-05-22-01-improper-definition/index.html": [
+        "def-u-05-22-01-infinite-interval-improper-integral",
+        "thm-u-05-22-01-cauchy-tail-criterion",
+    ],
+    "chapters/chapter-22/u-05-22-03-absolute-conditional-oscillation/index.html": [
+        "thm-u-05-22-03-dirichlet-test",
+    ],
+    "chapters/chapter-22/u-05-22-05-simpson-certificates/index.html": [
+        "thm-u-05-22-05-simpson-error",
+        "alg-u-05-22-05-certified-simpson-budget",
+    ],
+    "chapters/chapter-22/u-05-22-06-certified-improper-quadrature/index.html": [
+        "alg-u-05-22-06-total-error-workflow",
+        "thm-u-05-22-06-total-error-certificate",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -223,6 +238,26 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第五部：积分、累积与数值求积",
         "第 21 章：积分的几何与物理模型",
+    ],
+    "chapters/chapter-22/u-05-22-01-improper-definition/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 22 章：反常积分与数值求积",
+    ],
+    "chapters/chapter-22/u-05-22-03-absolute-conditional-oscillation/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 22 章：反常积分与数值求积",
+    ],
+    "chapters/chapter-22/u-05-22-05-simpson-certificates/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 22 章：反常积分与数值求积",
+    ],
+    "chapters/chapter-22/u-05-22-06-certified-improper-quadrature/index.html": [
+        "md-sidebar",
+        "第五部：积分、累积与数值求积",
+        "第 22 章：反常积分与数值求积",
     ],
 }
 

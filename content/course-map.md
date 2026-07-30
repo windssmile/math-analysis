@@ -4,8 +4,8 @@ title: 全书课程地图
 
 # 全书课程地图 {#sec-curriculum-map}
 
-教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第四部及第五部第 21
-章，共 92 个学习单元；第 22 章及以后尚不作为发布页面。
+教材以“定义—证明—算法证书”两条线并行组织。当前已发布第一至第四部及完整第五部
+第 22 章，共 98 个学习单元；第六部及以后尚不作为发布页面。
 
 ## 第一部：实数、函数与分析语言
 
@@ -161,7 +161,22 @@ title: 全书课程地图
 4. [功、质量与平均值怎样选择局部贡献？](chapters/chapter-21/u-05-21-04-work-mass-average.md)
 5. [几何与物理综合建模怎样选变量并回验？](chapters/chapter-21/u-05-21-05-modeling-practice.md)
 
+### [第 22 章：反常积分与数值求积](chapters/chapter-22/index.md) {#chapter-22}
+
+本章学时：12 小时（理论 7.25，应用 4.75）。
+
+1. [反常积分怎样由逐端点极限定义？](chapters/chapter-22/u-05-22-01-improper-definition.md)
+2. [正函数怎样比较收敛并控制尾部？](chapters/chapter-22/u-05-22-02-comparison-tests.md)
+3. [绝对、条件与振荡收敛怎样区分？](chapters/chapter-22/u-05-22-03-absolute-conditional-oscillation.md)
+4. [中点与梯形公式怎样产生可证明误差界？](chapters/chapter-22/u-05-22-04-midpoint-trapezoid.md)
+5. [Simpson 方法怎样给出预算与误差证书？](chapters/chapter-22/u-05-22-05-simpson-certificates.md)
+6. [反常积分怎样完成可靠数值计算？](chapters/chapter-22/u-05-22-06-certified-improper-quadrature.md)
+
+本章沿两条路线推进：反常积分路线用逐端点极限、收敛判别与尾部界控制截断误差；
+数值求积路线用局部近似、导数界与预算状态控制有限区间误差。第 22.6 单元用三角
+不等式把两类证书合并。至此第五部闭合。
+
 ## 后续路线
 
-第 22 章至第十二部继续覆盖反常积分、数值求积、级数、多元微积分、常微分方程与现代分析的章级
+第六部至第十二部继续覆盖级数、函数逼近、多元微积分、常微分方程与现代分析的章级
 路线；在内容写作完成前不创建空白单元页。

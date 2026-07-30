@@ -176,7 +176,7 @@ class ChapterEighteenTests(unittest.TestCase):
         for chapter, count in ((18, 5), (19, 4), (20, 5), (21, 5), (22, 5)):
             for unit in range(1, count + 1):
                 self.assertIn(f"u-05-{chapter:02d}-{unit:02d}", text)
-        self.assertIn("当前发布边界：第 21 章", text)
+        self.assertIn("当前发布边界：第 22 章", text)
 
     def test_navigation_course_map_and_release_scope(self) -> None:
         config = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
@@ -184,7 +184,7 @@ class ChapterEighteenTests(unittest.TestCase):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("第五部：积分、累积与数值求积", config)
         self.assertIn("本章学时：8 小时（理论 4.5，应用 3.5）。", course_map)
-        self.assertIn("第五部第 21 章，共 92 个学习单元", readme)
+        self.assertIn("第五部第 22 章，共 98 个学习单元", readme)
         navigation_positions = []
         map_positions = []
         for unit_id, title, _theory, _applied, suffix in EXPECTED_UNITS:
