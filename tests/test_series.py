@@ -1,6 +1,12 @@
 from dataclasses import FrozenInstanceError
 import math
+from pathlib import Path
+import sys
 import unittest
+
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
 
 from mathbook_examples.series import (
     geometric_series_certificate,
