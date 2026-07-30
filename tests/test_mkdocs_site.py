@@ -326,6 +326,60 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             REQUIRED_NAVIGATION_MARKERS[page],
         )
 
+    def test_checks_chapter_twenty_one_volume_page(self) -> None:
+        page = "chapters/chapter-21/u-05-21-02-volume-models/index.html"
+        self.assertEqual(
+            [
+                "lem-u-05-21-02-shell-remainder",
+                "thm-u-05-21-02-shell-volume",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第五部：积分、累积与数值求积",
+                "第 21 章：积分的几何与物理模型",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
+    def test_checks_chapter_twenty_one_arc_length_page(self) -> None:
+        page = "chapters/chapter-21/u-05-21-03-arc-length/index.html"
+        self.assertEqual(
+            [
+                "def-u-05-21-03-graph-arc-length",
+                "thm-u-05-21-03-c1-graph-arc-length",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第五部：积分、累积与数值求积",
+                "第 21 章：积分的几何与物理模型",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
+    def test_checks_chapter_twenty_one_practice_page(self) -> None:
+        page = "chapters/chapter-21/u-05-21-05-modeling-practice/index.html"
+        self.assertEqual(
+            [
+                "alg-u-05-21-05-modeling-workflow",
+                "tbl-u-05-21-05-model-selection",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第五部：积分、累积与数值求积",
+                "第 21 章：积分的几何与物理模型",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
     def test_checks_chapter_fifteen_cauchy_page(self) -> None:
         page = "chapters/chapter-15/u-04-15-03-cauchy-mean-value/index.html"
         self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
