@@ -187,13 +187,12 @@ class ChapterTwentyFourTests(unittest.TestCase):
             for forbidden in FORBIDDEN_CORE_TERMS:
                 self.assertNotIn(forbidden, core)
 
-    def test_publication_scope_reaches_chapter_24_only(self) -> None:
+    def test_publication_scope_includes_chapter_24_without_future_placeholders(self) -> None:
         dependencies = self.required_text(DEPENDENCIES)
-        self.assertIn("当前发布边界：第 24 章", dependencies)
-        self.assertIn("10 个核心单元、18 学时", dependencies)
+        self.assertIn("当前发布边界：第 25 章", dependencies)
+        self.assertIn("15 个核心单元、27 学时", dependencies)
         readme = self.required_text(ROOT / "README.md")
-        self.assertIn("第六部第 24 章，共 108 个学习单元", readme)
+        self.assertIn("第六部第 25 章，共 113 个学习单元", readme)
         config = self.required_text(ROOT / "mkdocs.yml")
         self.assertIn("第 24 章：一般项级数、重排与乘积", config)
-        self.assertNotIn("chapters/chapter-25/", config)
-
+        self.assertNotIn("chapters/chapter-26/", config)

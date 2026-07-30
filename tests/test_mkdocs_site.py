@@ -11,6 +11,33 @@ from scripts.check_site import (
 
 
 class ZensicalSiteValidationTests(unittest.TestCase):
+    def test_checks_chapter_twenty_five_core_pages(self) -> None:
+        for page, anchors in {
+            "chapters/chapter-25/u-06-25-01-pointwise-uniform/index.html": (
+                "def-u-06-25-01-pointwise",
+                "def-u-06-25-01-uniform",
+            ),
+            "chapters/chapter-25/u-06-25-03-uniform-series-tests/index.html": (
+                "thm-u-06-25-03-m-test",
+                "thm-u-06-25-03-uniform-dirichlet",
+            ),
+            "chapters/chapter-25/u-06-25-05-differentiation/index.html": (
+                "thm-u-06-25-05-derivative-interchange",
+                "tbl-u-06-25-05-exchange-conditions",
+            ),
+        }.items():
+            self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+            for anchor in anchors:
+                self.assertIn(anchor, REQUIRED_RENDERED_ANCHORS[page])
+            self.assertEqual(
+                [
+                    "md-sidebar",
+                    "第六部：无穷级数与函数逼近",
+                    "第 25 章：函数列、函数项级数与一致收敛",
+                ],
+                REQUIRED_NAVIGATION_MARKERS[page],
+            )
+
     def test_checks_chapter_twenty_four_core_pages(self) -> None:
         for page, anchors in {
             "chapters/chapter-24/u-06-24-02-leibniz-dirichlet-abel/index.html": (

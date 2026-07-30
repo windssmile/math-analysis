@@ -195,6 +195,13 @@ nav:
           - 24.3 改变求和次序为什么可能改变结果？: chapters/chapter-24/u-06-24-03-rearrangements.md
           - 24.4 两个无穷和什么时候可以相乘？: chapters/chapter-24/u-06-24-04-cauchy-products.md
           - 24.5 怎样选择判别法并给出收敛证书？: chapters/chapter-24/u-06-24-05-series-diagnosis.md
+      - 第 25 章：函数列、函数项级数与一致收敛:
+          - 本章导学: chapters/chapter-25/index.md
+          - 25.1 逐点收敛为什么不足以控制整体行为？: chapters/chapter-25/u-06-25-01-pointwise-uniform.md
+          - 25.2 怎样用统一尾部控制刻画一致收敛？: chapters/chapter-25/u-06-25-02-uniform-cauchy.md
+          - 25.3 函数项级数怎样获得一致收敛判别？: chapters/chapter-25/u-06-25-03-uniform-series-tests.md
+          - 25.4 极限什么时候可以穿过连续与积分？: chapters/chapter-25/u-06-25-04-continuity-integration.md
+          - 25.5 微分为什么需要比积分更强的条件？: chapters/chapter-25/u-06-25-05-differentiation.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
