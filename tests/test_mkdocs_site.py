@@ -380,6 +380,63 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             REQUIRED_NAVIGATION_MARKERS[page],
         )
 
+    def test_checks_chapter_twenty_two_definition_page(self) -> None:
+        page = "chapters/chapter-22/u-05-22-01-improper-definition/index.html"
+        self.assertEqual(
+            [
+                "def-u-05-22-01-infinite-interval-improper-integral",
+                "thm-u-05-22-01-cauchy-tail-criterion",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第五部：积分、累积与数值求积",
+                "第 22 章：反常积分与数值求积",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
+    def test_checks_chapter_twenty_two_simpson_page(self) -> None:
+        page = "chapters/chapter-22/u-05-22-05-simpson-certificates/index.html"
+        self.assertEqual(
+            [
+                "thm-u-05-22-05-simpson-error",
+                "alg-u-05-22-05-certified-simpson-budget",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第五部：积分、累积与数值求积",
+                "第 22 章：反常积分与数值求积",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
+    def test_checks_chapter_twenty_two_total_error_page(self) -> None:
+        page = (
+            "chapters/chapter-22/"
+            "u-05-22-06-certified-improper-quadrature/index.html"
+        )
+        self.assertEqual(
+            [
+                "alg-u-05-22-06-total-error-workflow",
+                "thm-u-05-22-06-total-error-certificate",
+            ],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第五部：积分、累积与数值求积",
+                "第 22 章：反常积分与数值求积",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+
     def test_checks_chapter_fifteen_cauchy_page(self) -> None:
         page = "chapters/chapter-15/u-04-15-03-cauchy-mean-value/index.html"
         self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
