@@ -68,15 +68,13 @@ class ChapterThirtyTests(unittest.TestCase):
         for marker in ("g(t)=f(a+th)", "[a,a+h]", "线段完全位于定义域", "Lagrange 余项", "Peano 余项"):
             self.assertIn(marker, text)
 
-    def test_publication_reaches_chapter_30_only(self) -> None:
+    def test_chapter_30_remains_on_the_publication_surfaces(self) -> None:
         config = self.required_text(ROOT / "mkdocs.yml")
         self.assertIn("chapters/chapter-30/", config)
-        self.assertNotIn("chapters/chapter-31/", config)
         readme = self.required_text(ROOT / "README.md")
-        self.assertIn("第七部第 30 章", readme)
-        self.assertIn("137 个学习单元", readme)
+        self.assertIn("第七部第 31 章", readme)
         dependencies = self.required_text(ROOT / "docs" / "curriculum" / "part-07-dependencies.md")
-        self.assertIn("当前发布边界：第 30 章", dependencies)
+        self.assertIn("| 第 30 章 | 4 | 5.50 | 1.50 | 7.00 | 已发布 |", dependencies)
 
 
 if __name__ == "__main__":

@@ -201,8 +201,8 @@ title: 全书课程地图
 **问题弧：** 多变量系统能否用线性与二次对象作可靠的局部近似，并据此求解方程和
 极值问题？
 
-第七部蓝图为 25 个核心单元、44 学时（理论 33.75，应用 10.25）。当前发布第 28–30
-章 15 个核心单元、26 学时；未完成章节不创建正文、链接或导航。
+第七部蓝图为 25 个核心单元、44 学时（理论 33.75，应用 10.25）。当前发布第 28–31
+章 19 个核心单元、33 学时；未完成章节不创建正文、链接或导航。
 
 ### [第 28 章：Euclid 空间、极限与连续](chapters/chapter-28/index.md) {#chapter-28}
 
@@ -234,9 +234,14 @@ title: 全书课程地图
 3. [多元 Taylor 公式怎样给出可证明的余项？](chapters/chapter-30/u-07-30-03-multivariable-taylor.md)
 4. [二次模型怎样支持误差界和敏感性分析？](chapters/chapter-30/u-07-30-04-quadratic-models.md)
 
-### 第 31 章：反函数、隐函数与局部求解
+### [第 31 章：反函数、隐函数与局部求解](chapters/chapter-31/index.md) {#chapter-31}
 
-规划 4 个单元、7 学时，建立局部可逆、隐式表示、参数化和 Newton 方程组。
+本章学时：7 小时（理论 5.25，应用 1.75）。
+
+1. [Jacobian 可逆怎样产生局部反函数？](chapters/chapter-31/u-07-31-01-inverse-function.md)
+2. [隐式方程什么时候能局部解出变量？](chapters/chapter-31/u-07-31-02-implicit-function.md)
+3. [局部参数化怎样给出灵敏度并区分分支？](chapters/chapter-31/u-07-31-03-local-parameterization.md)
+4. [Newton 法怎样可靠求解非线性方程组？](chapters/chapter-31/u-07-31-04-newton-systems.md)
 
 ### 第 32 章：多元极值与约束优化
 

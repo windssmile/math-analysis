@@ -237,6 +237,12 @@ nav:
           - 30.2 高阶微分和多重指标怎样组织混合偏导？: chapters/chapter-30/u-07-30-02-higher-derivatives.md
           - 30.3 多元 Taylor 公式怎样给出可证明的余项？: chapters/chapter-30/u-07-30-03-multivariable-taylor.md
           - 30.4 二次模型怎样支持误差界和敏感性分析？: chapters/chapter-30/u-07-30-04-quadratic-models.md
+      - 第 31 章：反函数、隐函数与局部求解:
+          - 本章导学: chapters/chapter-31/index.md
+          - 31.1 Jacobian 可逆怎样产生局部反函数？: chapters/chapter-31/u-07-31-01-inverse-function.md
+          - 31.2 隐式方程什么时候能局部解出变量？: chapters/chapter-31/u-07-31-02-implicit-function.md
+          - 31.3 局部参数化怎样给出灵敏度并区分分支？: chapters/chapter-31/u-07-31-03-local-parameterization.md
+          - 31.4 Newton 法怎样可靠求解非线性方程组？: chapters/chapter-31/u-07-31-04-newton-systems.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
