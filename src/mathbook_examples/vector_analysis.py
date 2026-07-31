@@ -1,6 +1,7 @@
 """Oriented composite-midpoint line and flux integral approximations."""
 
 from dataclasses import dataclass
+from fractions import Fraction
 import math
 from typing import Callable, Iterable
 
@@ -91,19 +92,32 @@ def _finite_product(factors: Iterable[float], message: str) -> float:
     return product
 
 
-def _sum_factors(terms: list[float]) -> tuple[float, ...]:
+def _scaled_sum(
+    terms: list[float], lengths: tuple[float, ...], divisors: tuple[int, ...]
+) -> float:
     try:
-        return (math.fsum(terms),)
+        raw_sum = math.fsum(terms)
     except OverflowError:
-        pass
-    scale = max(abs(term) for term in terms)
-    if scale == 0.0:
-        return (0.0,)
-    normalized = _finite_fsum(
-        (term / scale for term in terms),
+        exact = sum((Fraction.from_float(term) for term in terms), Fraction(0))
+        for divisor in divisors:
+            exact *= Fraction(1, divisor)
+        for length in lengths:
+            exact *= Fraction.from_float(length)
+        try:
+            value = float(exact)
+        except OverflowError as error:
+            raise ValueError("integral accumulation must be finite") from error
+        if not math.isfinite(value):
+            raise ValueError("integral accumulation must be finite")
+        return value
+    return _finite_product(
+        (
+            raw_sum,
+            *(1.0 / divisor for divisor in divisors),
+            *lengths,
+        ),
         "integral accumulation must be finite",
     )
-    return scale, normalized
 
 
 def composite_midpoint_line_integral(
@@ -135,14 +149,7 @@ def composite_midpoint_line_integral(
             "line dot product must be finite",
         )
         terms.append(term)
-    value = _finite_product(
-        (
-            *_sum_factors(terms),
-            1.0 / n,
-            interval_length,
-        ),
-        "integral accumulation must be finite",
-    )
+    value = _scaled_sum(terms, (interval_length,), (n,))
     return LineIntegralResult(value, (lower, upper), n, n)
 
 
@@ -188,14 +195,5 @@ def composite_midpoint_flux_integral(
                 "flux dot product must be finite",
             )
             terms.append(term)
-    value = _finite_product(
-        (
-            *_sum_factors(terms),
-            1.0 / nu,
-            1.0 / nv,
-            u_length,
-            v_length,
-        ),
-        "integral accumulation must be finite",
-    )
+    value = _scaled_sum(terms, (u_length, v_length), (nu, nv))
     return FluxIntegralResult(value, (u0, u1), (v0, v1), nu, nv, nu * nv)

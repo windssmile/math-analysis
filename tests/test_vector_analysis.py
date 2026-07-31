@@ -115,6 +115,25 @@ class LineIntegralTests(unittest.TestCase):
                 )
                 self.assertEqual(residual, result.value)
 
+    def test_exact_fallback_preserves_line_residual_after_intermediate_overflow(self) -> None:
+        minimum = math.ulp(0.0)
+        for residual in (minimum, -minimum):
+            values = (1e308, 1e308, -1e308, -1e308, residual)
+            with self.subTest(residual=residual):
+                result = composite_midpoint_line_integral(
+                    lambda p, values=values: (values[int(p[0])], 0.0),
+                    curve=lambda t: (t, 0.0), curve_derivative=lambda t: (1.0, 0.0),
+                    bounds=(0.0, 5.0), n=5,
+                )
+                self.assertEqual(residual, result.value)
+
+    def test_rejects_true_overflow_after_line_scaling(self) -> None:
+        with self.assertRaisesRegex(ValueError, "integral accumulation must be finite"):
+            composite_midpoint_line_integral(
+                lambda p: (1e308, 0.0), curve=lambda t: (t, 0.0),
+                curve_derivative=lambda t: (1.0, 0.0), bounds=(0.0, 2.0), n=1,
+            )
+
 
 class FluxIntegralTests(unittest.TestCase):
     def test_constant_vertical_field_through_unit_square(self) -> None:
@@ -235,6 +254,29 @@ class FluxIntegralTests(unittest.TestCase):
                     u_bounds=(0.0, 3.0), v_bounds=(0.0, 1.0), nu=3, nv=1,
                 )
                 self.assertEqual(residual, result.value)
+
+    def test_exact_fallback_preserves_flux_residual_after_intermediate_overflow(self) -> None:
+        minimum = math.ulp(0.0)
+        for residual in (minimum, -minimum):
+            values = (1e308, 1e308, -1e308, -1e308, residual)
+            with self.subTest(residual=residual):
+                result = composite_midpoint_flux_integral(
+                    lambda p, values=values: (0.0, 0.0, values[int(p[0])]),
+                    surface=lambda u, v: (u, v, 0.0),
+                    surface_u=lambda u, v: (1.0, 0.0, 0.0),
+                    surface_v=lambda u, v: (0.0, 1.0, 0.0),
+                    u_bounds=(0.0, 5.0), v_bounds=(0.0, 1.0), nu=5, nv=1,
+                )
+                self.assertEqual(residual, result.value)
+
+    def test_rejects_true_overflow_after_flux_scaling(self) -> None:
+        with self.assertRaisesRegex(ValueError, "integral accumulation must be finite"):
+            composite_midpoint_flux_integral(
+                lambda p: (0.0, 0.0, 1e308), surface=lambda u, v: (u, v, 0.0),
+                surface_u=lambda u, v: (1.0, 0.0, 0.0),
+                surface_v=lambda u, v: (0.0, 1.0, 0.0),
+                u_bounds=(0.0, 2.0), v_bounds=(0.0, 1.0), nu=1, nv=1,
+            )
 
     def test_scales_large_area_without_spurious_intermediate_overflow(self) -> None:
         for flux, nu, nv, expected in (
