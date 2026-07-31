@@ -185,6 +185,9 @@ class ChapterTwentyOneTests(unittest.TestCase):
 
     def test_chapter_guide_lists_units_hours_route_and_boundaries(self) -> None:
         guide = self.required_text(CHAPTER / "index.md")
+        normalized_guide = "".join(guide.split())
+        self.assertNotIn("本章验收后停在第21章", normalized_guide)
+        self.assertNotIn("不创建第22章空白页面", normalized_guide)
         self.assertIn("本章共5个核心单元，7学时（理论4，应用3）。", guide)
         for marker in (
             "局部贡献",

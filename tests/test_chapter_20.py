@@ -191,6 +191,9 @@ class ChapterTwentyTests(unittest.TestCase):
 
     def test_chapter_guide_lists_units_hours_route_and_boundaries(self) -> None:
         guide = self.required_text(CHAPTER / "index.md")
+        normalized_guide = "".join(guide.split())
+        self.assertNotIn("本章验收后停在第20章", normalized_guide)
+        self.assertNotIn("不创建第21章空白页面", normalized_guide)
         self.assertIn("本章共5个核心单元，8学时（理论5.25，应用2.75）。", guide)
         for marker in (
             "Riemann 分割极限",
