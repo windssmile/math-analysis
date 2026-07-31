@@ -48,12 +48,14 @@
 
 ### Important
 
-#### I1. 第 27 章被文字错误地声明为直接依赖第 26 章
+#### I1. 第 27 章与第 26 章的“直接前置/可选背景”接口措辞漂移
 
-- **双侧证据：** 第 27 章 guide 称“输入是第 26 章与更早章节”（`content/chapters/chapter-27/index.md:27-28`），首单元又称需“上一章的一致误差记号”（`content/chapters/chapter-27/u-06-27-01-approximation-error.md:14-16`）；但依赖图把 `u-06-27-01` 直接输入锁为一致收敛与闭区间连续性（`docs/curriculum/part-06-dependencies.md:41-44`），接口矩阵把第 27 章直接前置锁为 `ch-10`、`ch-11`、`ch-25`（`docs/reviews/2026-07-31-parts-01-09-interface-matrix.md:42`）。
-- **影响：** 读者会误以为必须先学幂级数/解析函数才能学习 Weierstrass–Bernstein；同时使 front matter、依赖图和章 guide 不能共同作为可靠依赖合同。实际四个单元的证明没有使用第 26 章结论，因此这是接口表述漂移而非数学证明缺口。
-- **修复：** 保留第 26 章作为动机对照，改成“第 26 章处理解析函数的特殊逼近；本章从第 10、11、25 章分叉”；把“上一章的一致误差记号”改为“第 25 章的一致收敛/上确界误差语言”。
-- **回归：** 增加章级直接前置的双向测试：汇总第 27 章 front matter 与 guide 的规范章 ID，必须恰为 `ch-10,ch-11,ch-25`，并断言不含 `ch-26`；再运行 `make verify`。
+- **双侧证据（直接前置层）：** 第 27 章 guide 称“输入是第 26 章与更早章节”（`content/chapters/chapter-27/index.md:27-28`），首单元又称需“上一章的一致误差记号”（`content/chapters/chapter-27/u-06-27-01-approximation-error.md:14-16`）；但依赖图把 `u-06-27-01` 的直接输入列为一致收敛与闭区间连续性（`docs/curriculum/part-06-dependencies.md:41-44`），接口矩阵的 **direct prerequisites** 单元格把第 27 章直接前置列为 `ch-10`、`ch-11`、`ch-25`（`docs/reviews/2026-07-31-parts-01-09-interface-matrix.md:42`）。
+- **双侧证据（阅读顺序/消费者层）：** 同一矩阵的第 26 章“向后输出与主要消费者”单元格写有“幂级数与解析工具 → 第 27 章”，而第 27 章 direct prerequisites 不含 `ch-26`（`docs/reviews/2026-07-31-parts-01-09-interface-matrix.md:41-42`）。前者可以解释为出版阅读顺序或给第 27 章提供“解析函数特殊逼近”的动机对照，并不等于必需前置；但直接箭头与 guide 的“输入”措辞叠加后容易被读成强依赖，矩阵本身也需要消歧。
+- **实际证明证据：** Bernstein 主证明只调用闭区间一致连续性、二项式有限矩和一致误差（`content/chapters/chapter-27/u-06-27-02-bernstein-weierstrass.md:36-82`）；第 27.3 的定量界只继续调用这些有限矩与连续性模（`content/chapters/chapter-27/u-06-27-03-modulus-error.md:36-79`）。四个单元均未使用收敛半径、幂级数逐项运算或解析表示。
+- **影响：** 读者会误以为必须先学幂级数/解析函数才能学习 Weierstrass–Bernstein；guide、依赖图与矩阵两种接口栏的语义也不够清晰。这是接口表述漂移，不是数学证明缺口。
+- **修复：** guide 改成“第 26 章处理解析函数的特殊逼近；本章从第 10、11、25 章分叉”，首单元把“上一章的一致误差记号”改为“第 25 章的一致收敛/上确界误差语言”；矩阵第 26 章输出改为“为第 27 章提供可选解析对照/后续背景”，避免使用表示直接依赖的箭头措辞。
+- **回归：** 在 `tests/test_chapter_27.py` 显式断言 guide 不含“输入是第 26 章”或“上一章的一致误差”，各单元 front matter 的 `prerequisites.book` 不含幂级数/解析表示且第 27.1 含一致收敛；在 cross-consistency 测试中精确断言矩阵第 27 章 direct-prerequisites 单元格不含 `ch-26`，并断言第 26 章 background/output 单元格使用“可选背景（解析对照）”而非直指第 27 章的箭头措辞。修复后运行这两个测试模块与 `make verify`。
 
 ### Minor
 
