@@ -98,13 +98,22 @@ N_h\le C h^{-(d-1)},\qquad N_h(Ch)^d\le C' h.
 \gamma=\operatorname{dist}(\partial D,\mathbb R^d\setminus U)>0.
 \]
 
+另一方面，由 \(f\) 在 \(\overline D\) 上一致连续，可先取 \(\delta_\varepsilon>0\)，
+使得对任意 \(x,y\in\overline D\)，只要 \(|x-y|<\delta_\varepsilon\)，就有
+\[
+|f(x)-f(y)|<\frac{\varepsilon}{2\operatorname{vol}(R)}.
+\]
 现在取 \(R\) 的轴对齐网格，使每个闭格 \(Q\) 都有
-\(\operatorname{diam}(Q)<\gamma\)。若 \(Q\cap\partial D\ne\varnothing\)，从交点到
+\[
+\operatorname{diam}(Q)<\min\{\gamma,\delta_\varepsilon\}.
+\]
+若 \(Q\cap\partial D\ne\varnothing\)，从交点到
 \(Q\) 中任一点的距离都小于 \(\gamma\)，所以 \(Q\subset U\)。因此**所有边界格**都
 整体落在同一个可控的加厚覆盖中；其余格不碰 \(\partial D\)，其内部全在 \(D\) 中或
 全在 \(R\setminus D\) 中。
 
-在不碰边界且位于 \(D\) 内的小盒上，一致连续性使 \(f\) 的振幅小于
+在不碰边界且位于 \(D\) 内的**内部格**上，由上述 \(\delta_\varepsilon\) 的选择，
+\(f\) 的振幅小于
 \(\varepsilon/(2\operatorname{vol}(R))\)；位于 \(D\) 外的小盒上零延拓振幅为零。
 边界格的振幅贡献至多
 \[

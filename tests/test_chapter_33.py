@@ -100,13 +100,28 @@ class ChapterThirtyThreeTests(unittest.TestCase):
             "逐盒膨胀",
             r"\operatorname{vol}(U)<\eta",
             r"\gamma=\operatorname{dist}(\partial D,\mathbb R^d\setminus U)>0",
-            r"\operatorname{diam}(Q)<\gamma",
+            r"\operatorname{diam}(Q)<\min\{\gamma,\delta_\varepsilon\}",
             r"Q\cap\partial D\ne\varnothing",
             r"Q\subset U",
             "所有边界格",
         )
         positions = []
         for marker in ordered_margin_steps:
+            self.assertIn(marker, text)
+            positions.append(text.index(marker))
+        self.assertEqual(sorted(positions), positions)
+
+    def test_zero_extension_grid_also_respects_uniform_continuity_scale(self) -> None:
+        text = self.required_text(unit_path(EXPECTED_UNITS[3]))
+        ordered_scale_steps = (
+            r"\delta_\varepsilon>0",
+            r"|x-y|<\delta_\varepsilon",
+            r"\frac{\varepsilon}{2\operatorname{vol}(R)}",
+            r"\operatorname{diam}(Q)<\min\{\gamma,\delta_\varepsilon\}",
+            "内部格",
+        )
+        positions = []
+        for marker in ordered_scale_steps:
             self.assertIn(marker, text)
             positions.append(text.index(marker))
         self.assertEqual(sorted(positions), positions)
