@@ -126,6 +126,9 @@ class ChapterFortyTests(unittest.TestCase):
         course_map = self.text(ROOT / "content" / "course-map.md")
         self.assertIn("第 40 章：Gauss 公式与通量](chapters/chapter-40/index.md)", course_map)
         self.assertIn("第 41 章：Stokes 公式与三大公式的统一（规划中）", course_map)
+        self.assertIn("当前发布第 37–40 章；\n第 41 章仍为规划中，不创建正文页面或导航入口。", course_map)
+        self.assertNotIn("当前发布第 37–39 章", course_map)
+        self.assertNotIn("第 40–41 章仍为规划中", course_map)
 
     def test_dependency_review_and_representative_html(self):
         dependencies = self.text(ROOT / "docs" / "curriculum" / "part-09-dependencies.md")
