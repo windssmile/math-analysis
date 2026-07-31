@@ -27,4 +27,4 @@
 - 严格构建：`zensical build --strict`，通过。
 - 站点成品：`python3.12 scripts/check_site.py`，通过。
 - 补丁格式：`git diff --check`，通过。
-- 全量绿门：`make verify`，365 项测试及后续检查通过。
+- 全量绿门：`make verify`，366 项测试及后续检查通过。

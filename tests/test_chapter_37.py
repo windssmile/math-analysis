@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 import unittest
 import yaml
 
@@ -108,6 +109,28 @@ class ChapterThirtySevenTests(unittest.TestCase):
         for marker in ("章级测试", "part_09", "test_zensical_structure", "check_content.py",
                        "zensical build --strict", "check_site.py", "git diff --check", "通过"):
             self.assertIn(marker, review)
+
+    def test_path_independence_converse_states_continuous_field_hypothesis(self):
+        text = self.text(path(EXPECTED[3]))
+        theorem_window = re.search(
+            r"反过来，设(?P<statement>.{0,260})固定.*?定义",
+            text,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(theorem_window, "missing path-independence converse statement")
+        statement = theorem_window.group("statement")
+        self.assertRegex(statement, r"F:D\\to\\mathbb\{R\}\^n")
+        self.assertIn("连续", statement)
+        assumptions = re.search(
+            r"### 假设位置(?P<body>.*?)(?=\n### |\n## )",
+            text,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(assumptions, "missing assumptions section")
+        self.assertRegex(
+            assumptions.group("body"),
+            r"连续性[\s\S]*坐标线段[\s\S]*平均[\s\S]*趋于[\s\S]*F_i\(x\)",
+        )
 
 
 if __name__ == "__main__":
