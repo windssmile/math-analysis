@@ -1,11 +1,11 @@
 from pathlib import Path
 from tempfile import TemporaryDirectory
-import re
 import unittest
 
 from scripts.check_site import (
     REQUIRED_NAVIGATION_MARKERS,
     REQUIRED_RENDERED_ANCHORS,
+    REQUIRED_RENDERED_CONTENT,
     published_page_paths,
     validate_site,
 )
@@ -19,50 +19,68 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             "chapters/chapter-41/u-09-41-05-vector-theorem-selection/index.html":
                 "workflow-u-09-41-05-selection",
         }
-        root = Path(__file__).resolve().parents[1]
-        display_count = 0
         for page, anchor in pages.items():
             self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
             self.assertIn(anchor, REQUIRED_RENDERED_ANCHORS[page])
-            html = (root / "site" / page).read_text(encoding="utf-8")
-            self.assertIn(f'id="{anchor}"', html)
-            self.assertGreaterEqual(html.count('class="arithmatex"'), 12)
-            displays = re.findall(
-                r'<div class="arithmatex">\\\[(?P<body>[\s\S]*?)\\\]</div>',
-                html,
-            )
-            display_count += len(displays)
-            for body in displays:
-                self.assertNotIn(r"\(", body)
-                self.assertNotIn(r"\)", body)
-        self.assertGreater(display_count, 0)
-        patch_html = (root / "site" / next(iter(pages))).read_text(encoding="utf-8")
-        self.assertIn(r"\operatorname{curl}F(r)\cdot(r_u\times r_v)", patch_html)
-        self.assertNotIn(r"<p>B_u-A_v=\operatorname{curl}", patch_html)
+            self.assertIn(page, REQUIRED_RENDERED_CONTENT)
+
+    def test_rendered_math_contract_uses_minimal_site_fixtures(self) -> None:
+        page = "unit/index.html"
+        anchor = "thm-u-09-41-03-stokes-patch"
+        contract = {
+            page: {
+                "min_arithmatex": 2,
+                "required_math": [r"\operatorname{curl}F(r)\cdot(r_u\times r_v)"],
+                "forbidden_raw_tex": [r"<p>B_u-A_v=\operatorname{curl}"],
+                "forbid_nested_display_delimiters": True,
+                "forbid_mathjax_errors": True,
+            }
+        }
+        good = (
+            '<title>Stokes</title><h3 id="thm-u-09-41-03-stokes-patch">proof</h3>'
+            '<span class="arithmatex">\\(A\\)</span>'
+            '<div class="arithmatex">\\[\\operatorname{curl}F(r)\\cdot(r_u\\times r_v)\\]</div>'
+        )
+
+        def errors_for(html: str, *, anchors: bool = True) -> list[str]:
+            with TemporaryDirectory() as directory:
+                site = Path(directory)
+                (site / "index.html").write_text("<title>home</title>", encoding="utf-8")
+                target = site / page
+                target.parent.mkdir()
+                target.write_text(html, encoding="utf-8")
+                return validate_site(
+                    site,
+                    expected_anchors={page: [anchor]} if anchors else {},
+                    expected_content=contract,
+                )
+
+        self.assertEqual([], errors_for(good))
+        cases = {
+            "is missing required anchor": good.replace(f' id="{anchor}"', ""),
+            "has 1 arithmatex nodes; expected at least 2": good.replace('<span class="arithmatex">\\(A\\)</span>', ""),
+            "contains forbidden raw TeX": good + r"<p>B_u-A_v=\operatorname{curl}F</p>",
+            "nests inline delimiters inside display math": good.replace(
+                r"\operatorname{curl}F(r)\cdot(r_u\times r_v)",
+                r"\(\operatorname{curl}F(r)\cdot(r_u\times r_v)\)",
+            ),
+            "contains MathJax error markup": good + "<mjx-merror>bad</mjx-merror>",
+        }
+        for expected, html in cases.items():
+            with self.subTest(expected=expected):
+                self.assertTrue(any(expected in error for error in errors_for(html)))
 
     def test_checks_chapter_forty_math_page(self) -> None:
         page = "chapters/chapter-40/u-09-40-04-gauss-applications-singularities/index.html"
         self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
         self.assertIn("ex-u-09-40-04-punctured-flux", REQUIRED_RENDERED_ANCHORS[page])
-        html = (Path(__file__).resolve().parents[1] / "site" / page).read_text(encoding="utf-8")
-        self.assertIn("arithmatex", html)
-        self.assertGreaterEqual(html.count('class="arithmatex"'), 12)
-        self.assertIn(r"\frac{x}{\lVert x\rVert^3}", html)
-        self.assertNotIn(r"<p>F(x)=\frac", html)
+        self.assertIn(page, REQUIRED_RENDERED_CONTENT)
 
     def test_checks_chapter_thirty_nine_math_page(self) -> None:
         page = "chapters/chapter-39/u-09-39-04-green-applications/index.html"
         self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
         self.assertIn("thm-u-09-39-04-path-independence", REQUIRED_RENDERED_ANCHORS[page])
-        html = (Path(__file__).resolve().parents[1] / "site" / page).read_text(encoding="utf-8")
-        self.assertIn("arithmatex", html)
-        self.assertGreaterEqual(html.count('<div class="arithmatex">\\['), 4)
-        self.assertIn(
-            r'<span class="arithmatex">\(D=\mathbb R^2\setminus\{0\}\)</span>',
-            html,
-        )
-        self.assertNotIn(r"<p>在穿孔域 (D=\mathbb R^2\setminus", html)
-        self.assertNotIn("<p>[\n\\", html)
+        self.assertIn(page, REQUIRED_RENDERED_CONTENT)
 
     def test_checks_chapter_twenty_seven_core_pages(self) -> None:
         for page, anchors in {

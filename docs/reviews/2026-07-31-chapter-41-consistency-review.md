@@ -20,8 +20,11 @@
 ## 出版与可见性
 
 - README、课程地图、依赖图谱和导航统一到第 41 章；第 42 章无正文。
-- 构建产物自动检查：`tests/test_mkdocs_site.py` 与 `scripts/check_site.py` 已把 41.3、
-  41.5 纳入代表页面，检查稳定 anchor、arithmatex、关键公式和 display 定界。
+- 构建产物自动检查：`scripts/check_site.py` 已把 41.3、41.5 纳入 post-build 代表页面，
+  检查稳定 anchor、arithmatex、关键公式必须由 MathJax 包装、禁止裸 TeX、display
+  嵌套定界与 MathJax 错误标记。`tests/test_mkdocs_site.py` 只用
+  `TemporaryDirectory` 最小 HTML fixtures 检查 checker 的好坏分支，不读取 ignored
+  `ROOT/site`。
 - **人工 390 × 844 浏览器验收：** 下列宽度与 MathJax 节点数据来自应用内 Chromium
   的人工浏览器门，不由 unittest 声称覆盖；仓库当前没有可移植浏览器 fixture，因而
   本章不新增 npm 依赖。
@@ -38,8 +41,11 @@
 
 ## 绿门证据
 
+- 将原 `site/` 移至临时目录后，在 `site/` 不存在时运行章级、站点 checker fixture
+  与算法测试共 68 项：通过，证明 unittest 阶段不依赖构建产物。
 - `python3.12 -m unittest tests.test_chapter_41`：通过。
-- `make verify`：通过。
+- 从无 `site/` 状态运行 `make verify`：433 项测试通过，随后严格构建新鲜站点并由
+  `scripts/check_site.py` 完成 post-build 内容合同检查。
 - `python3.12 scripts/check_content.py`：通过。
 - `zensical build --strict`：通过。
 - `python3.12 scripts/check_site.py`：通过。

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from html.parser import HTMLParser
 from pathlib import Path
+import re
 from urllib.parse import unquote, urlsplit
 import sys
 
@@ -468,6 +469,34 @@ REQUIRED_NAVIGATION_MARKERS = {
     ],
 }
 
+REQUIRED_RENDERED_CONTENT = {
+    "chapters/chapter-39/u-09-39-04-green-applications/index.html": {
+        "min_arithmatex": 12,
+        "min_display_math": 4,
+        "required_math": [r"D=\mathbb R^2\setminus\{0\}"],
+        "forbidden_raw_tex": [r"<p>在穿孔域 (D=\mathbb R^2\setminus", "<p>[\n\\"],
+    },
+    "chapters/chapter-40/u-09-40-04-gauss-applications-singularities/index.html": {
+        "min_arithmatex": 12,
+        "required_math": [r"\frac{x}{\lVert x\rVert^3}"],
+        "forbidden_raw_tex": [r"<p>F(x)=\frac"],
+    },
+    "chapters/chapter-41/u-09-41-03-stokes-parametric-patch/index.html": {
+        "min_arithmatex": 12,
+        "required_math": [r"\operatorname{curl}F(r)\cdot(r_u\times r_v)"],
+        "forbidden_raw_tex": [r"<p>B_u-A_v=\operatorname{curl}"],
+        "forbid_nested_display_delimiters": True,
+        "forbid_mathjax_errors": True,
+    },
+    "chapters/chapter-41/u-09-41-05-vector-theorem-selection/index.html": {
+        "min_arithmatex": 12,
+        "required_math": [r"\operatorname{div}F"],
+        "forbidden_raw_tex": [r"<p>\operatorname{div}F"],
+        "forbid_nested_display_delimiters": True,
+        "forbid_mathjax_errors": True,
+    },
+}
+
 
 class PageParser(HTMLParser):
     def __init__(self) -> None:
@@ -526,6 +555,7 @@ def validate_site(
     expected_anchors: dict[str, list[str]] | None = None,
     expected_navigation: dict[str, list[str]] | None = None,
     expected_titles: dict[str, str] | None = None,
+    expected_content: dict[str, dict[str, object]] | None = None,
 ) -> list[str]:
     errors: list[str] = []
     if not (site / "index.html").is_file():
@@ -571,6 +601,54 @@ def validate_site(
         parser.feed(page.read_text(encoding="utf-8"))
         if not (parser.title == title or parser.title.startswith(f"{title} - ")):
             errors.append(f"rendered site page {expected_page} has wrong title: expected {title}")
+
+    for expected_page, contract in (expected_content or {}).items():
+        page = site / expected_page
+        if not page.is_file():
+            continue
+        rendered = page.read_text(encoding="utf-8")
+        math_nodes = re.findall(
+            r'<(?:span|div) class="arithmatex">(?P<body>[\s\S]*?)</(?:span|div)>',
+            rendered,
+        )
+        minimum = int(contract.get("min_arithmatex", 0))
+        if len(math_nodes) < minimum:
+            errors.append(
+                f"rendered site page {expected_page} has {len(math_nodes)} arithmatex nodes; "
+                f"expected at least {minimum}"
+            )
+        displays = re.findall(
+            r'<div class="arithmatex">\\\[(?P<body>[\s\S]*?)\\\]</div>',
+            rendered,
+        )
+        minimum_displays = int(contract.get("min_display_math", 0))
+        if len(displays) < minimum_displays:
+            errors.append(
+                f"rendered site page {expected_page} has {len(displays)} display math nodes; "
+                f"expected at least {minimum_displays}"
+            )
+        math_text = "\n".join(math_nodes)
+        for formula in contract.get("required_math", []):
+            if formula not in math_text:
+                errors.append(
+                    f"rendered site page {expected_page} is missing required wrapped math: {formula}"
+                )
+        for raw_tex in contract.get("forbidden_raw_tex", []):
+            if raw_tex in rendered:
+                errors.append(
+                    f"rendered site page {expected_page} contains forbidden raw TeX: {raw_tex}"
+                )
+        if contract.get("forbid_nested_display_delimiters"):
+            if any(r"\(" in body or r"\)" in body for body in displays):
+                errors.append(
+                    f"rendered site page {expected_page} nests inline delimiters inside display math"
+                )
+        if contract.get("forbid_mathjax_errors") and (
+            "<mjx-merror" in rendered or "<merror" in rendered
+        ):
+            errors.append(
+                f"rendered site page {expected_page} contains MathJax error markup"
+            )
     return errors
 
 
@@ -598,6 +676,7 @@ def main() -> int:
         expected_anchors=REQUIRED_RENDERED_ANCHORS,
         expected_navigation=REQUIRED_NAVIGATION_MARKERS,
         expected_titles=titles,
+        expected_content=REQUIRED_RENDERED_CONTENT,
     )
     for error in errors:
         print(error)
