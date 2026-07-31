@@ -6,6 +6,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 DEPENDENCIES = ROOT / "docs" / "curriculum" / "part-09-dependencies.md"
 COURSE_MAP = ROOT / "content" / "course-map.md"
+APPENDIX = ROOT / "content" / "appendices" / "part-09-differential-forms.md"
 NAVIGATION = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
 
 PART_09_UNITS = [
@@ -84,6 +85,24 @@ class PartNineConsistencyTests(unittest.TestCase):
         text = self.required_text(DEPENDENCIES)
         self.assertIn("选读附录不计入核心学时", text)
 
+    def test_optional_differential_forms_appendix_is_published_without_hours_metadata(self) -> None:
+        text = self.required_text(APPENDIX)
+        self.assertEqual(1, NAVIGATION.count("appendices/part-09-differential-forms.md"))
+        self.assertNotRegex(text, r"(?m)^hours:")
+        for marker in [
+            "0-形式", "1-形式", "2-形式", "3-形式", "外微分", "拉回",
+            "广义 Stokes", "不证明一般流形上的广义 Stokes 定理",
+        ]:
+            with self.subTest(marker=marker):
+                self.assertIn(marker, text)
+        self.assertIn("| Green", text)
+        self.assertIn("| Gauss", text)
+        self.assertIn("| Stokes", text)
+        self.assertIn("一般流形", text)
+        self.assertIn("切丛", text)
+        self.assertIn("上同调", text)
+        self.assertIn("完整外代数", text)
+
     def test_course_map_locks_every_planned_unit(self) -> None:
         text = self.required_text(COURSE_MAP)
         self.assertEqual(1, text.count("[第 37 章：参数曲线与曲线积分](chapters/chapter-37/index.md)"))
@@ -99,7 +118,10 @@ class PartNineConsistencyTests(unittest.TestCase):
             )
             with self.subTest(unit=unit_id):
                 self.assertEqual(1, len(re.findall(pattern, text, re.MULTILINE)))
-        self.assertIn("### 选读附录：从向量分析到微分形式（规划中）", text)
+        self.assertIn(
+            "### [选读附录：从向量分析到微分形式](appendices/part-09-differential-forms.md)",
+            text,
+        )
         self.assertIn("第九部共 21 个核心单元、32 学时（理论 24，应用 8）", text)
 
 

@@ -311,6 +311,7 @@ nav:
           - 41.3 Stokes 公式怎样在单个参数曲面片上证明？: chapters/chapter-41/u-09-41-03-stokes-parametric-patch.md
           - 41.4 分片曲面上的内部边界为什么成对抵消？: chapters/chapter-41/u-09-41-04-stokes-piecewise-surfaces.md
           - 41.5 怎样选择并核验 Green、Gauss 与 Stokes 公式？: chapters/chapter-41/u-09-41-05-vector-theorem-selection.md
+      - 选读附录：从向量分析到微分形式: appendices/part-09-differential-forms.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

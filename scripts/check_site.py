@@ -226,6 +226,9 @@ REQUIRED_RENDERED_ANCHORS = {
     "appendices/part-08-jordan-content/index.html": [
         "appendix-part-08-jordan-content",
     ],
+    "appendices/part-09-differential-forms/index.html": [
+        "appendix-part-09-differential-forms",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -467,9 +470,20 @@ REQUIRED_NAVIGATION_MARKERS = {
         "第八部：重积分与空间测量",
         "选读附录：从 Jordan 区域到测度观点",
     ],
+    "appendices/part-09-differential-forms/index.html": [
+        "md-sidebar",
+        "第九部：曲线、曲面与向量分析",
+        "选读附录：从向量分析到微分形式",
+    ],
 }
 
 REQUIRED_RENDERED_CONTENT = {
+    "appendices/part-09-differential-forms/index.html": {
+        "min_arithmatex": 16,
+        "min_display_math": 6,
+        "required_math": [r"\int_{\partial M}\omega=\int_M d\omega"],
+        "forbidden_raw_tex": [r"<p>\int_{\partial M}", r"<p>d\omega="],
+    },
     "chapters/chapter-39/u-09-39-04-green-applications/index.html": {
         "min_arithmatex": 12,
         "min_display_math": 4,

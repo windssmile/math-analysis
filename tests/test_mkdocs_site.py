@@ -695,6 +695,27 @@ class ZensicalSiteValidationTests(unittest.TestCase):
                     REQUIRED_NAVIGATION_MARKERS[page],
                 )
 
+    def test_checks_part_nine_differential_forms_appendix(self) -> None:
+        page = "appendices/part-09-differential-forms/index.html"
+        self.assertEqual(
+            ["appendix-part-09-differential-forms"],
+            REQUIRED_RENDERED_ANCHORS[page],
+        )
+        self.assertEqual(
+            [
+                "md-sidebar",
+                "第九部：曲线、曲面与向量分析",
+                "选读附录：从向量分析到微分形式",
+            ],
+            REQUIRED_NAVIGATION_MARKERS[page],
+        )
+        self.assertEqual(16, REQUIRED_RENDERED_CONTENT[page]["min_arithmatex"])
+        self.assertIn(
+            r"\int_{\partial M}\omega=\int_M d\omega",
+            REQUIRED_RENDERED_CONTENT[page]["required_math"],
+        )
+        self.assertTrue(REQUIRED_RENDERED_CONTENT[page]["forbidden_raw_tex"])
+
 
 if __name__ == "__main__":
     unittest.main()

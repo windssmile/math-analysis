@@ -191,7 +191,10 @@ class ChapterFortyOneTests(unittest.TestCase):
         course_map = self.text(ROOT / "content" / "course-map.md")
         self.assertIn("第 41 章：Stokes 公式与三大公式的统一](chapters/chapter-41/index.md)", course_map)
         self.assertIn("当前发布第 37–41 章；第九部核心正文已全部发布", course_map)
-        self.assertIn("选读附录：从向量分析到微分形式（规划中）", course_map)
+        self.assertIn(
+            "[选读附录：从向量分析到微分形式](appendices/part-09-differential-forms.md)",
+            course_map,
+        )
 
     def test_dependency_and_manual_review_record(self):
         dependencies = self.text(ROOT / "docs" / "curriculum" / "part-09-dependencies.md")
