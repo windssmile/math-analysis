@@ -64,11 +64,10 @@ class ChapterThirtyThreeTests(unittest.TestCase):
             self.assertEqual(1, guide.count(f"[{unit[1]}]({unit[0]}-{unit[4]}.md)"))
         navigation = self.required_text(ROOT / "mkdocs.yml")
         self.assertIn("chapters/chapter-33/", navigation)
-        self.assertNotIn("chapters/chapter-34/", navigation)
         readme = self.required_text(ROOT / "README.md")
-        self.assertIn("151 个学习单元", readme)
+        self.assertIn("第八部已发布", readme)
         dependencies = self.required_text(ROOT / "docs" / "curriculum" / "part-08-dependencies.md")
-        self.assertIn("当前发布边界：第 33 章", dependencies)
+        self.assertIn("| 第 33 章 | 4 | 6.25 | 0.75 | 7.00 | 已发布 |", dependencies)
 
 
 if __name__ == "__main__":
