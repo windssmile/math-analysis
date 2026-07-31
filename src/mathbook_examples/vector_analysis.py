@@ -91,10 +91,14 @@ def _finite_product(factors: Iterable[float], message: str) -> float:
     return product
 
 
-def _normalized_sum(terms: list[float]) -> tuple[float, float]:
+def _sum_factors(terms: list[float]) -> tuple[float, ...]:
+    try:
+        return (math.fsum(terms),)
+    except OverflowError:
+        pass
     scale = max(abs(term) for term in terms)
     if scale == 0.0:
-        return 0.0, 0.0
+        return (0.0,)
     normalized = _finite_fsum(
         (term / scale for term in terms),
         "integral accumulation must be finite",
@@ -131,11 +135,9 @@ def composite_midpoint_line_integral(
             "line dot product must be finite",
         )
         terms.append(term)
-    scale, normalized_sum = _normalized_sum(terms)
     value = _finite_product(
         (
-            scale,
-            normalized_sum,
+            *_sum_factors(terms),
             1.0 / n,
             interval_length,
         ),
@@ -186,11 +188,9 @@ def composite_midpoint_flux_integral(
                 "flux dot product must be finite",
             )
             terms.append(term)
-    scale, normalized_sum = _normalized_sum(terms)
     value = _finite_product(
         (
-            scale,
-            normalized_sum,
+            *_sum_factors(terms),
             1.0 / nu,
             1.0 / nv,
             u_length,

@@ -98,6 +98,23 @@ class LineIntegralTests(unittest.TestCase):
                 )
                 self.assertEqual(expected, result.value)
 
+    def test_preserves_subnormal_residual_after_large_line_cancellation(self) -> None:
+        minimum = math.ulp(0.0)
+        for residual in (minimum, -minimum):
+            def field(point, residual=residual):
+                if point[0] < 1.0:
+                    return (1e308, 0.0)
+                if point[0] < 2.0:
+                    return (-1e308, 0.0)
+                return (residual, 0.0)
+
+            with self.subTest(residual=residual):
+                result = composite_midpoint_line_integral(
+                    field, curve=lambda t: (t, 0.0),
+                    curve_derivative=lambda t: (1.0, 0.0), bounds=(0.0, 3.0), n=3,
+                )
+                self.assertEqual(residual, result.value)
+
 
 class FluxIntegralTests(unittest.TestCase):
     def test_constant_vertical_field_through_unit_square(self) -> None:
@@ -199,6 +216,25 @@ class FluxIntegralTests(unittest.TestCase):
             with self.subTest(expected=expected):
                 result = composite_midpoint_flux_integral(field, **common)
                 self.assertEqual(expected, result.value)
+
+    def test_preserves_subnormal_residual_after_large_flux_cancellation(self) -> None:
+        minimum = math.ulp(0.0)
+        for residual in (minimum, -minimum):
+            def field(point, residual=residual):
+                if point[0] < 1.0:
+                    return (0.0, 0.0, 1e308)
+                if point[0] < 2.0:
+                    return (0.0, 0.0, -1e308)
+                return (0.0, 0.0, residual)
+
+            with self.subTest(residual=residual):
+                result = composite_midpoint_flux_integral(
+                    field, surface=lambda u, v: (u, v, 0.0),
+                    surface_u=lambda u, v: (1.0, 0.0, 0.0),
+                    surface_v=lambda u, v: (0.0, 1.0, 0.0),
+                    u_bounds=(0.0, 3.0), v_bounds=(0.0, 1.0), nu=3, nv=1,
+                )
+                self.assertEqual(residual, result.value)
 
     def test_scales_large_area_without_spurious_intermediate_overflow(self) -> None:
         for flux, nu, nv, expected in (
