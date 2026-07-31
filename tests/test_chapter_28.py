@@ -96,6 +96,11 @@ class ChapterTwentyEightTests(unittest.TestCase):
         text = self.required_text(unit_path(EXPECTED_UNITS[1]))
         for marker in ("开集", "闭集", "内部", "边界", "序列刻画", "补集"):
             self.assertIn(marker, text)
+        for general_theory_anchor in (
+            "{#def-u-07-28-02-open-closed}",
+            "{#thm-u-07-28-02-sequential-closed}",
+        ):
+            self.assertIn(general_theory_anchor, text)
 
     def test_completeness_unit_reduces_to_coordinates(self) -> None:
         text = self.required_text(unit_path(EXPECTED_UNITS[2]))

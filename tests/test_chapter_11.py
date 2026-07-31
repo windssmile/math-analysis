@@ -80,7 +80,8 @@ class ChapterElevenTests(unittest.TestCase):
         preview_heading = "### 选读前瞻：第七部的开覆盖语言"
         core = text.split(preview_heading, 1)[0]
         self.assertIn("Bolzano–Weierstrass", core)
-        self.assertIn("闭性", core)
+        self.assertIn("两个端点都包含在区间中", core)
+        self.assertIn("极限保序性", core)
         self.assertNotIn("开覆盖", core)
         for removed_anchor in (
             "def-u-03-11-01-open-cover",
@@ -88,6 +89,36 @@ class ChapterElevenTests(unittest.TestCase):
             "thm-u-03-11-01-heine-borel",
         ):
             self.assertNotIn(removed_anchor, text)
+
+    def test_unit_one_keeps_general_closed_set_theory_out_of_the_core(self) -> None:
+        text = (
+            CHAPTER / "u-03-11-01-compact-intervals.md"
+        ).read_text(encoding="utf-8")
+        core = text.split("### 选读前瞻：第七部的开覆盖语言", 1)[0]
+        for later_generalization in (
+            "lem-u-03-11-01-closed-limit",
+            "prop-u-03-11-01-closed-bounded",
+            "闭集的补集",
+            "序列紧致集必有界且闭",
+        ):
+            self.assertNotIn(later_generalization, core)
+        for order_step in (
+            "a\\le x_{n_k}\\le b",
+            "极限的保序性",
+            "a\\le x\\le b",
+        ):
+            self.assertIn(order_step, core)
+
+    def test_open_interval_counterexample_is_indexed_inside_the_set(self) -> None:
+        text = (
+            CHAPTER / "u-03-11-01-compact-intervals.md"
+        ).read_text(encoding="utf-8")
+        example = text.split(
+            "### 例题 1：开区间为什么失败", 1
+        )[1].split("### 例题 2：", 1)[0]
+        self.assertIn(r"x_n=1/(n+1)\in(0,1)", example)
+        self.assertNotIn(r"x_n=1/n\in(0,1)", example)
+        self.assertNotIn("从 \\(n\\ge2\\) 开始", example)
 
     def test_navigation_and_course_map_use_final_order_and_hours(self) -> None:
         config = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
