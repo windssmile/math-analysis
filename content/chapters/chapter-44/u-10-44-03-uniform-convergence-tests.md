@@ -20,9 +20,11 @@ content_standard: 2
 ## 概念与理论
 ### Weierstrass 型判据 {#thm-u-10-44-03-weierstrass}
 若对所有参数有 \(|f(x,t)|\le g(x)\)，且 \(\int_a^\infty g(x)dx\) 收敛，则
+
 \[
 \left|\int_A^Bf(x,t)dx\right|\le\int_A^Bg(x)dx
 \]
+
 给出一致收敛。
 ### Dirichlet 型判据
 若 \(G(X,t)=\int_a^Xg(x,t)dx\) 对 \(X,t\) 一致有界，而 \(h(x,t)\) 关于 \(x\) 单调趋于 \(0\)，且趋零对参数一致，则分部积分给出统一尾界，故 \(\int gh\) 一致收敛。

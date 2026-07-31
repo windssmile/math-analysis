@@ -20,9 +20,11 @@ content_standard: 2
 ## 概念与理论
 ### 交换对象
 固定 \(t\in J\)，取足够小的非零 \(h\)，定义
+
 \[
 q_h(x)=\frac{f(x,t+h)-f(x,t)}{h}.
 \]
+
 积分函数的差商正是 \(\int_a^b q_h(x)\,dx\)。要交换的是 \(h\to0\) 的极限与 \(x\) 的积分。
 ### 定理条件
 在包含 \(t\) 的小闭区间 \(K\subset J\) 上，\(\partial_t f\) 在紧矩形
@@ -30,18 +32,24 @@ q_h(x)=\frac{f(x,t+h)-f(x,t)}{h}.
 ### 证明路线 {#thm-u-10-43-02-proof}
 对每个 \(x\)，中值定理给出位于 \(t\) 与 \(t+h\) 之间的
 \(\xi_{x,h}\)，使
+
 \[
 q_h(x)=\partial_t f(x,\xi_{x,h}).
 \]
+
 因此
+
 \[
 \sup_{x\in[a,b]}|q_h(x)-\partial_t f(x,t)|\longrightarrow0.
 \]
+
 这说明 \(q_h\) 对所有 \(x\in[a,b]\) 一致趋于 \(\partial_t f(\cdot,t)\)。由第 42 章的一致极限交换，
+
 \[
 \lim_{h\to0}\frac{F(t+h)-F(t)}h
 =\int_a^b\partial_t f(x,t)\,dx.
 \]
+
 ### 条件用在何处
 固定端点把 \(F\) 的差商写成同一区间上的积分；一元中值定理连接差商与偏导；紧性和偏导连续性把逐点连接升级为一致控制；Riemann 积分的估计完成极限交换。
 ### 失败边界

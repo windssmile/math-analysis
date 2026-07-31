@@ -20,17 +20,21 @@ content_standard: 2
 ## 概念与理论
 ### 无穷区间 {#def-u-10-44-01-infinity}
 设 \(F_A(t)=\int_a^A f(x,t)\,dx\)。若存在 \(F:T\to\mathbb R\)，且
+
 \[
 \forall\varepsilon>0\ \exists A_0\quad
 \forall t\in T\ \forall A\ge A_0,\qquad |F_A(t)-F(t)|<\varepsilon,
 \]
+
 就称 \(\int_a^\infty f(x,t)\,dx\) 关于 \(t\in T\) 一致收敛。这里的 \(A_0\) 不能依赖 \(t\)。
 ### 有限端点奇性 {#def-u-10-44-01-singular}
 若 \(f\) 在 \(a\) 附近可能无界，令 \(G_\delta(t)=\int_{a+\delta}^b f(x,t)\,dx\)。要求
+
 \[
 \forall\varepsilon>0\ \exists\delta_0>0\quad
 \forall t\in T\ \forall\,0<\delta\le\delta_0,\qquad |G_\delta(t)-G(t)|<\varepsilon.
 \]
+
 两类定义都是统一截断：无穷端把截断推远，奇端点把删去区间统一缩小。
 ## 例题与迁移
 ### 例 1：统一指数尾 {#ex-u-10-44-01-exp}

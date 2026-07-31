@@ -20,11 +20,13 @@ content_standard: 2
 ## 概念与理论
 ### 一致 Cauchy 判据 {#thm-u-10-44-02-cauchy}
 \(\int_a^\infty f(x,t)dx\) 关于 \(T\) 一致收敛，当且仅当
+
 \[
 \forall\varepsilon>0\ \exists A_0\quad
 \forall B>A\ge A_0\ \forall t\in T,\qquad
 \left|\int_A^B f(x,t)\,dx\right|<\varepsilon.
 \]
+
 这就是统一尾项条件，也是充要性陈述。
 ### 必要性
 若截断积分一致趋于 \(F\)，取所有截断到 \(F\) 的误差小于 \(\varepsilon/2\)。由三角不等式，任意两个远端截断之差小于 \(\varepsilon\)。

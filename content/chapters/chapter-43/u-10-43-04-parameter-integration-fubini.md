@@ -20,24 +20,30 @@ content_standard: 2
 ## 概念与理论
 ### 经典 Fubini 公式 {#thm-u-10-43-04-fubini}
 若 \(f\) 在闭矩形 \([a,b]\times[c,d]\) 上连续，则它 Riemann 可积，并且
+
 \[
 \int_c^d\left(\int_a^b f(x,t)\,dx\right)dt
 =\int_a^b\left(\int_c^d f(x,t)\,dt\right)dx.
 \]
+
 这两个两次累次积分都等于同一个二重积分。这里讨论的是经典 Fubini 定理：区域固定、函数连续、积分正常。
 ### 交换次序工作流
 先画出固定区域并核对上下限，再确认连续性，最后比较两种次序中哪一种原函数更容易计算。交换只改变累积顺序，不改变积分区域。
 ## 例题与迁移
 ### 例 1：可分离核 {#ex-u-10-43-04-separable}
+
 \[
 \int_0^1\int_0^2 xt\,dx\,dt
 =\left(\int_0^2x\,dx\right)\left(\int_0^1t\,dt\right)=1.
 \]
+
 ### 例 2：按参数先积 {#ex-u-10-43-04-order}
+
 \[
 \int_0^1\int_0^1 e^{xt}\,dx\,dt
 =\int_0^1\int_0^1 e^{xt}\,dt\,dx,
 \]
+
 两个次序合法；实际计算时可依边界与原函数选择。
 ## 即时检验与回望
 ### 即时检验 1

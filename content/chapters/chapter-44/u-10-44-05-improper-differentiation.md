@@ -22,13 +22,17 @@ content_standard: 2
 设 \(J\) 为开区间，\(f,\partial_t f\) 在每个有限矩形上连续。若存在基点 \(t_0\in J\)，使
 \(\int_a^\infty f(x,t_0)dx\) 收敛，并且 \(\int_a^\infty\partial_t f(x,t)dx\)
 在每个紧参数区间上一致收敛，则
+
 \[
 F(t)=\int_a^\infty f(x,t)dx
 \]
+
 对每个参数 \(t\in J\) 有定义、可导，且
+
 \[
 F'(t)=\int_a^\infty\partial_t f(x,t)dx.
 \]
+
 ### 证明路线
 有限截断 \(F_A\) 满足固定端点公式。导数积分一致收敛使 \(F_A'\) 在每个紧参数区间上一致收敛；基点收敛给出 \(F_A(t_0)\) 的极限。函数列求导定理于是给出 \(F_A\to F\) 及导数交换。
 ### 基点收敛为何不可省
