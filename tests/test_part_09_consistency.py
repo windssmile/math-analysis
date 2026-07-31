@@ -32,7 +32,7 @@ PART_09_UNITS = [
     ("u-09-41-05", "怎样选择并核验 Green、Gauss 与 Stokes 公式？", 1.00, 1.00),
 ]
 
-CHAPTER_TITLES = ["第 41 章：Stokes 公式与三大公式的统一（规划中）"]
+CHAPTER_TITLES = ["[第 41 章：Stokes 公式与三大公式的统一](chapters/chapter-41/index.md)"]
 
 
 class PartNineConsistencyTests(unittest.TestCase):
@@ -63,23 +63,22 @@ class PartNineConsistencyTests(unittest.TestCase):
 
     def test_blueprint_tracks_current_release_boundary(self) -> None:
         text = self.required_text(DEPENDENCIES)
-        self.assertIn("当前发布边界：第 40 章", text)
+        self.assertIn("当前发布边界：第 41 章", text)
         self.assertIn("21 个核心单元、32 学时", text)
         chapters = ROOT / "content" / "chapters"
         self.assertIn("chapters/chapter-37/", NAVIGATION)
         self.assertIn("chapters/chapter-38/", NAVIGATION)
         self.assertIn("chapters/chapter-39/", NAVIGATION)
         self.assertIn("chapters/chapter-40/", NAVIGATION)
+        self.assertIn("chapters/chapter-41/", NAVIGATION)
         self.assertEqual(4, len(list((chapters / "chapter-37").glob("u-09-*.md"))))
         self.assertEqual(4, len(list((chapters / "chapter-38").glob("u-09-*.md"))))
         self.assertEqual(4, len(list((chapters / "chapter-39").glob("u-09-*.md"))))
         self.assertEqual(4, len(list((chapters / "chapter-40").glob("u-09-*.md"))))
-        for chapter in range(41, 42):
-            with self.subTest(chapter=chapter):
-                self.assertNotIn(f"chapters/chapter-{chapter:02d}/", NAVIGATION)
-                chapter_dir = chapters / f"chapter-{chapter:02d}"
-                self.assertEqual([], list(chapter_dir.rglob("*.md")))
-        self.assertEqual(16, len(list(chapters.rglob("u-09-*.md"))))
+        self.assertEqual(5, len(list((chapters / "chapter-41").glob("u-09-*.md"))))
+        self.assertNotIn("chapters/chapter-42/", NAVIGATION)
+        self.assertFalse((chapters / "chapter-42").exists())
+        self.assertEqual(21, len(list(chapters.rglob("u-09-*.md"))))
 
     def test_optional_appendix_is_not_core(self) -> None:
         text = self.required_text(DEPENDENCIES)
@@ -95,13 +94,13 @@ class PartNineConsistencyTests(unittest.TestCase):
             self.assertEqual(1, text.count(heading), heading)
         for unit_id, title, theory, applied in PART_09_UNITS[16:]:
             pattern = (
-                rf"^\d+\. `{re.escape(unit_id)}` {re.escape(title)}"
+                rf"^\d+\. \[{re.escape(title)}\]\(chapters/chapter-41/[^)]+\)"
                 rf"（理论 {theory:.2f}，应用 {applied:.2f}）$"
             )
             with self.subTest(unit=unit_id):
                 self.assertEqual(1, len(re.findall(pattern, text, re.MULTILINE)))
         self.assertIn("### 选读附录：从向量分析到微分形式（规划中）", text)
-        self.assertIn("第九部规划 21 个核心单元、32 学时（理论 24，应用 8）", text)
+        self.assertIn("第九部共 21 个核心单元、32 学时（理论 24，应用 8）", text)
 
 
 if __name__ == "__main__":
