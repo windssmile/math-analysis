@@ -88,9 +88,9 @@ class ChapterFortyTests(unittest.TestCase):
         theorem = re.search(r"### 有限分片 Gauss 公式 \{#thm-u-09-40-03-gauss\}(?P<body>.*?)\n### 迁移", text, re.S)
         self.assertIsNotNone(theorem)
         body = theorem.group("body")
-        for marker in ("有限个", "长方体型正则块", "分片光滑", "相反外法向", "成对抵消", "外边界保留"):
+        for marker in ("有限个", "轴对齐长方体", "长方体复形", "阶梯状", "分片光滑", "相反外法向", "成对抵消", "外边界保留"):
             self.assertIn(marker, body)
-        for forbidden in ("任意光滑区域都可网格逼近", "显然推广到任意", "Stokes 公式", "微分形式"):
+        for forbidden in ("长方体型正则块", "C^1 双射坐标图", "任意光滑区域都可网格逼近", "显然推广到任意", "Stokes 公式", "微分形式"):
             self.assertNotIn(forbidden, body)
 
     def test_punctured_domain_checks_inner_normal_and_limit(self):
@@ -98,9 +98,11 @@ class ChapterFortyTests(unittest.TestCase):
         example = re.search(r"### 例 2：点源与挖孔 \{#ex-u-09-40-04-punctured-flux\}(?P<body>.*?)\n## 即时检验", text, re.S)
         self.assertIsNotNone(example)
         body = example.group("body")
-        for marker in ("穿孔域", "正则", "内边界", "相对小球", "负", "单独", "极限", "4\\pi"):
+        for marker in ("立方壳", "穿孔域", "正则", "内边界", "相对小立方体", "负", "六面", "单独", "极限"):
             self.assertIn(marker, body)
         self.assertIn(r"F(x)=\frac{x}{\lVert x\rVert^3}", body)
+        self.assertIn(r"4\arctan\frac1{\sqrt3}=\frac{2\pi}{3}", body)
+        self.assertIn("球面通量只由曲面积分定义直接计算", body)
         self.assertNotIn("在包含原点的球上直接使用", body)
 
     def test_all_tex_is_explicitly_delimited(self):
