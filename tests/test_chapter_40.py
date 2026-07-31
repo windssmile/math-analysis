@@ -104,6 +104,8 @@ class ChapterFortyTests(unittest.TestCase):
         self.assertIn(r"4\arctan\frac1{\sqrt3}=\frac{2\pi}{3}", body)
         self.assertIn("球面通量只由曲面积分定义直接计算", body)
         self.assertNotIn("在包含原点的球上直接使用", body)
+        self.assertIn("若把内边界误取小立方体自身外法向", text)
+        self.assertNotIn(r"若把内边界误取 \(e_r\)", text)
 
     def test_all_tex_is_explicitly_delimited(self):
         suspicious = re.compile(r"(?<!\\)\((?:[^()\n]*(?:\\[A-Za-z]+|[_^])[^()\n]*)\)")
