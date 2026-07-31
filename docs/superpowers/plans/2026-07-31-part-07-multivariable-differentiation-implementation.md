@@ -79,10 +79,9 @@ these headings in order:
 ## 探索与猜想
 ## 概念与理论
 ## 例题与迁移
-## 即时检验
+## 即时检验与回望
 ## 常见误区与后续
-## 习题
-## 小结
+## 习题与答案
 ```
 
 Each computational unit additionally uses:

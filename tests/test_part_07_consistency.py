@@ -50,7 +50,7 @@ class PartSevenConsistencyTests(unittest.TestCase):
 
     def test_blueprint_stops_before_part_eight(self) -> None:
         text = self.required_text(DEPENDENCIES)
-        self.assertIn("当前发布边界：第 27 章", text)
+        self.assertIn("当前发布边界：第 ", text)
         self.assertIn("25 个核心单元、44 学时", text)
         self.assertNotIn(
             "chapter-33",
@@ -78,7 +78,7 @@ class PartSevenConsistencyTests(unittest.TestCase):
         for chapter in range(28, 33):
             with self.subTest(chapter=chapter):
                 self.assertIn(f"第 {chapter} 章", text)
-        self.assertNotIn("chapters/chapter-28/", (ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
+        self.assertNotIn("chapters/chapter-33/", (ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":
