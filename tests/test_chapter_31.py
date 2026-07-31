@@ -74,15 +74,13 @@ class ChapterThirtyOneTests(unittest.TestCase):
         for marker in ("residual", "step", "singular_jacobian", "ill_conditioned_jacobian", "max_iterations", "停止信号", "不是根误差证书"):
             self.assertIn(marker, text)
 
-    def test_publication_reaches_chapter_31_only(self) -> None:
+    def test_chapter_31_remains_on_the_publication_surfaces(self) -> None:
         config = self.required_text(ROOT / "mkdocs.yml")
         self.assertIn("chapters/chapter-31/", config)
-        self.assertNotIn("chapters/chapter-32/", config)
         readme = self.required_text(ROOT / "README.md")
-        self.assertIn("第七部第 31 章", readme)
-        self.assertIn("141 个学习单元", readme)
+        self.assertIn("第七部已经完整发布", readme)
         dependencies = self.required_text(ROOT / "docs" / "curriculum" / "part-07-dependencies.md")
-        self.assertIn("当前发布边界：第 31 章", dependencies)
+        self.assertIn("| 第 31 章 | 4 | 5.25 | 1.75 | 7.00 | 已发布 |", dependencies)
 
 
 if __name__ == "__main__":

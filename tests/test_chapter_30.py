@@ -72,7 +72,7 @@ class ChapterThirtyTests(unittest.TestCase):
         config = self.required_text(ROOT / "mkdocs.yml")
         self.assertIn("chapters/chapter-30/", config)
         readme = self.required_text(ROOT / "README.md")
-        self.assertIn("第七部第 31 章", readme)
+        self.assertIn("第七部已经完整发布", readme)
         dependencies = self.required_text(ROOT / "docs" / "curriculum" / "part-07-dependencies.md")
         self.assertIn("| 第 30 章 | 4 | 5.50 | 1.50 | 7.00 | 已发布 |", dependencies)
 

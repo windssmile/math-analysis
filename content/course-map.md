@@ -201,8 +201,7 @@ title: 全书课程地图
 **问题弧：** 多变量系统能否用线性与二次对象作可靠的局部近似，并据此求解方程和
 极值问题？
 
-第七部蓝图为 25 个核心单元、44 学时（理论 33.75，应用 10.25）。当前发布第 28–31
-章 19 个核心单元、33 学时；未完成章节不创建正文、链接或导航。
+第七部共 25 个核心单元、44 学时（理论 33.75，应用 10.25），第 28–32 章已完整发布。
 
 ### [第 28 章：Euclid 空间、极限与连续](chapters/chapter-28/index.md) {#chapter-28}
 
@@ -243,12 +242,19 @@ title: 全书课程地图
 3. [局部参数化怎样给出灵敏度并区分分支？](chapters/chapter-31/u-07-31-03-local-parameterization.md)
 4. [Newton 法怎样可靠求解非线性方程组？](chapters/chapter-31/u-07-31-04-newton-systems.md)
 
-### 第 32 章：多元极值与约束优化
+### [第 32 章：多元极值与约束优化](chapters/chapter-32/index.md) {#chapter-32}
 
-规划 6 个单元、11 学时，建立极值存在性、最优性条件、等式约束和数值核验。
+本章学时：11 小时（理论 8，应用 3）。
+
+1. [多元极值什么时候存在，模型定义域怎样影响答案？](chapters/chapter-32/u-07-32-01-extrema-existence.md)
+2. [无约束极值为什么满足一阶必要条件？](chapters/chapter-32/u-07-32-02-first-order-extrema.md)
+3. [Hessian 怎样给出二阶必要与充分条件？](chapters/chapter-32/u-07-32-03-second-order-tests.md)
+4. [Lagrange 乘子怎样处理正则等式约束？](chapters/chapter-32/u-07-32-04-lagrange-multipliers.md)
+5. [多个约束、几何解释和异常点怎样处理？](chapters/chapter-32/u-07-32-05-multiple-constraints.md)
+6. [梯度法、Newton 法和约束候选怎样可靠核验？](chapters/chapter-32/u-07-32-06-optimization-check.md)
 
 ## 后续路线
 
-第七部逐章通过内容、算法与出版质量门后才加入导航。第八至十二部继续覆盖重积分、
+第七部已完成内容、算法与出版质量闭合。第八至十二部继续覆盖重积分、
 曲线曲面与向量分析、含参积分、Lebesgue 积分和 Fourier 级数；对应内容完成前不
 创建空白单元页。

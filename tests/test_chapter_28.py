@@ -117,7 +117,7 @@ class ChapterTwentyEightTests(unittest.TestCase):
         self.assertIn("| 第 28 章 | 5 | 7.25 | 1.75 | 9.00 | 已发布 |", dependencies)
         self.assertIn("第 28 章", (ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("第七部第 28–", readme)
+        self.assertIn("第七部已经完整发布", readme)
 
 
 if __name__ == "__main__":

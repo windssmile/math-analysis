@@ -243,6 +243,14 @@ nav:
           - 31.2 隐式方程什么时候能局部解出变量？: chapters/chapter-31/u-07-31-02-implicit-function.md
           - 31.3 局部参数化怎样给出灵敏度并区分分支？: chapters/chapter-31/u-07-31-03-local-parameterization.md
           - 31.4 Newton 法怎样可靠求解非线性方程组？: chapters/chapter-31/u-07-31-04-newton-systems.md
+      - 第 32 章：多元极值与约束优化:
+          - 本章导学: chapters/chapter-32/index.md
+          - 32.1 多元极值什么时候存在，模型定义域怎样影响答案？: chapters/chapter-32/u-07-32-01-extrema-existence.md
+          - 32.2 无约束极值为什么满足一阶必要条件？: chapters/chapter-32/u-07-32-02-first-order-extrema.md
+          - 32.3 Hessian 怎样给出二阶必要与充分条件？: chapters/chapter-32/u-07-32-03-second-order-tests.md
+          - 32.4 Lagrange 乘子怎样处理正则等式约束？: chapters/chapter-32/u-07-32-04-lagrange-multipliers.md
+          - 32.5 多个约束、几何解释和异常点怎样处理？: chapters/chapter-32/u-07-32-05-multiple-constraints.md
+          - 32.6 梯度法、Newton 法和约束候选怎样可靠核验？: chapters/chapter-32/u-07-32-06-optimization-check.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
