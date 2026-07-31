@@ -90,7 +90,6 @@ class ChapterFortyFourTests(unittest.TestCase):
             self.assertIn(f"{row[0]}-{row[4]}.md", guide)
             self.assertEqual(1, NAVIGATION.count(f"chapters/chapter-44/{row[0]}-{row[4]}.md"))
         self.assertIn("8 学时（理论 6.00，应用 2.00）", guide)
-        self.assertNotIn("chapters/chapter-45/", NAVIGATION)
 
 if __name__ == "__main__":
     unittest.main()

@@ -334,6 +334,13 @@ nav:
           - 44.3 Weierstrass、Dirichlet 与 Abel 型判据怎样控制参数族？: chapters/chapter-44/u-10-44-03-uniform-convergence-tests.md
           - 44.4 连续性、极限与参数积分何时可同反常积分交换？: chapters/chapter-44/u-10-44-04-improper-exchange.md
           - 44.5 积分号下求导何时成立，反例揭示哪些条件缺口？: chapters/chapter-44/u-10-44-05-improper-differentiation.md
+      - 第 45 章：Gamma、Beta 函数与参数敏感性:
+          - 本章导学: chapters/chapter-45/index.md
+          - 45.1 Gamma 积分在哪些参数上收敛，递推公式怎样得到？: chapters/chapter-45/u-10-45-01-gamma-convergence-recurrence.md
+          - 45.2 Beta 积分的端点奇性怎样控制？: chapters/chapter-45/u-10-45-02-beta-endpoint-singularities.md
+          - 45.3 Beta–Gamma 关系怎样由重积分与换元推出？: chapters/chapter-45/u-10-45-03-beta-gamma-relation.md
+          - 45.4 参数求导怎样产生含对数因子的积分与敏感性公式？: chapters/chapter-45/u-10-45-04-logarithmic-parameter-derivatives.md
+          - 45.5 怎样对 Gamma、Beta 积分作带状态的可靠近似？: chapters/chapter-45/u-10-45-05-certified-gamma-beta.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

@@ -238,6 +238,15 @@ REQUIRED_RENDERED_ANCHORS = {
     "chapters/chapter-41/u-09-41-05-vector-theorem-selection/index.html": [
         "workflow-u-09-41-05-selection",
     ],
+    "chapters/chapter-45/u-10-45-03-beta-gamma-relation/index.html": [
+        "thm-u-10-45-03-product",
+        "thm-u-10-45-03-polar",
+    ],
+    "chapters/chapter-45/u-10-45-05-certified-gamma-beta/index.html": [
+        "workflow-u-10-45-05-certificate",
+        "ex-u-10-45-05-met",
+        "ex-u-10-45-05-uncertified",
+    ],
     "appendices/part-08-jordan-content/index.html": [
         "appendix-part-08-jordan-content",
     ],
@@ -495,6 +504,16 @@ REQUIRED_NAVIGATION_MARKERS = {
         "第九部：曲线、曲面与向量分析",
         "第 41 章：Stokes 公式与三大公式的统一",
     ],
+    "chapters/chapter-45/u-10-45-03-beta-gamma-relation/index.html": [
+        "md-sidebar",
+        "第十部：含参变量积分",
+        "第 45 章：Gamma、Beta 函数与参数敏感性",
+    ],
+    "chapters/chapter-45/u-10-45-05-certified-gamma-beta/index.html": [
+        "md-sidebar",
+        "第十部：含参变量积分",
+        "第 45 章：Gamma、Beta 函数与参数敏感性",
+    ],
     "appendices/part-08-jordan-content/index.html": [
         "md-sidebar",
         "第八部：重积分与空间测量",
@@ -554,6 +573,17 @@ REQUIRED_RENDERED_CONTENT = {
         "required_math": [r"\operatorname{div}F"],
         "forbidden_raw_tex": [r"<p>\operatorname{div}F"],
         "forbid_nested_display_delimiters": True,
+        "forbid_mathjax_errors": True,
+    },
+    "chapters/chapter-45/u-10-45-03-beta-gamma-relation/index.html": {
+        "min_arithmatex": 10,
+        "required_math": [r"B(p,q)=\frac{\Gamma(p)\Gamma(q)}{\Gamma(p+q)}"],
+        "forbid_nested_display_delimiters": True,
+        "forbid_mathjax_errors": True,
+    },
+    "chapters/chapter-45/u-10-45-05-certified-gamma-beta/index.html": {
+        "min_arithmatex": 0,
+        "forbidden_raw_tex": [r"<p>\Gamma"],
         "forbid_mathjax_errors": True,
     },
 }

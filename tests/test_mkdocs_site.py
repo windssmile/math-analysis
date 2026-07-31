@@ -736,6 +736,14 @@ class ZensicalSiteValidationTests(unittest.TestCase):
         )
         self.assertTrue(REQUIRED_RENDERED_CONTENT[page]["forbid_mathjax_errors"])
 
+    def test_checks_part_ten_beta_gamma_and_status_pages(self) -> None:
+        relation = "chapters/chapter-45/u-10-45-03-beta-gamma-relation/index.html"
+        status = "chapters/chapter-45/u-10-45-05-certified-gamma-beta/index.html"
+        self.assertIn("thm-u-10-45-03-polar", REQUIRED_RENDERED_ANCHORS[relation])
+        self.assertIn("workflow-u-10-45-05-certificate", REQUIRED_RENDERED_ANCHORS[status])
+        self.assertIn(r"B(p,q)=\frac{\Gamma(p)\Gamma(q)}{\Gamma(p+q)}",
+                      REQUIRED_RENDERED_CONTENT[relation]["required_math"])
+
 
 if __name__ == "__main__":
     unittest.main()
