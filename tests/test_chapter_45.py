@@ -80,7 +80,9 @@ class ChapterFortyFiveTests(unittest.TestCase):
             self.assertNotIn("解析延拓", core)
             self.assertNotIn("复参数", core)
         self.assertIn("7 学时（理论 4.50，应用 2.50）", guide)
-        self.assertNotIn("chapters/chapter-46/", NAVIGATION)
+        if "chapters/chapter-46/" in NAVIGATION:
+            self.assertLess(NAVIGATION.index("chapters/chapter-45/"),
+                            NAVIGATION.index("chapters/chapter-46/"))
 
 if __name__ == "__main__":
     unittest.main()

@@ -341,6 +341,14 @@ nav:
           - 45.3 Beta–Gamma 关系怎样由重积分与换元推出？: chapters/chapter-45/u-10-45-03-beta-gamma-relation.md
           - 45.4 参数求导怎样产生含对数因子的积分与敏感性公式？: chapters/chapter-45/u-10-45-04-logarithmic-parameter-derivatives.md
           - 45.5 怎样对 Gamma、Beta 积分作带状态的可靠近似？: chapters/chapter-45/u-10-45-05-certified-gamma-beta.md
+  - 第十一部：测度与 Lebesgue 积分:
+      - 第 46 章：从长度问题到测度:
+          - 本章导学: chapters/chapter-46/index.md
+          - 46.1 区间长度应满足哪些基本性质？: chapters/chapter-46/u-11-46-01-interval-length-axioms.md
+          - 46.2 可数区间覆盖怎样定义 Lebesgue 外测度？: chapters/chapter-46/u-11-46-02-outer-measure-definition.md
+          - 46.3 外测度为何单调并满足可数次可加性？: chapters/chapter-46/u-11-46-03-outer-measure-properties.md
+          - 46.4 区间的外测度为何恰好等于区间长度？: chapters/chapter-46/u-11-46-04-interval-outer-measure.md
+          - 46.5 可数集为何是零测集，Jordan 理论的边界在哪里？: chapters/chapter-46/u-11-46-05-null-countable-sets.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
