@@ -23,7 +23,7 @@ EXPECTED = [
      "stokes-piecewise-surfaces", 10, 12, ["u-09-39-03", "u-09-41-03"],
      ["piecewise_stokes", "internal_boundary_cancellation", "compatible_patches"]),
     ("u-09-41-05", "怎样选择并核验 Green、Gauss 与 Stokes 公式？", 1.00, 1.00,
-     "vector-theorem-selection", 12, 15, ["u-09-39-04", "u-09-40-04", "u-09-41-04"],
+     "vector-theorem-selection", 14, 20, ["u-09-39-04", "u-09-40-04", "u-09-41-04"],
      ["vector_theorem_selection", "line_integral_check", "flux_integral_check"]),
 ]
 HEADINGS = ["先备知识", "学习目标", "牵引问题", "探索与猜想", "概念与理论", "例题与迁移",
@@ -45,6 +45,15 @@ class ChapterFortyOneTests(unittest.TestCase):
     def text(self, path):
         self.assertTrue(path.is_file(), f"missing {path}")
         return path.read_text(encoding="utf-8") if path.is_file() else ""
+
+    def test_final_comprehensive_exercises_stage_formula_and_failure_diagnosis(self):
+        text = self.text(unit_path(EXPECTED[-1]))
+        for marker in (
+            "{#pr-u-09-41-05-13}", "{#pr-u-09-41-05-14}",
+            "阶段一：定理选择与条件", "阶段二：方向与独立核验",
+            "阶段一：奇点合法性", "阶段二：取向诊断", "阶段三：数值证据边界",
+        ):
+            self.assertIn(marker, text)
 
     def test_unit_contract(self):
         totals = [0.0, 0.0, 0, 0]
@@ -68,7 +77,7 @@ class ChapterFortyOneTests(unittest.TestCase):
             for marker in MARKERS[uid]:
                 self.assertIn(marker, text)
             totals = [totals[0] + theory, totals[1] + applied, totals[2] + exercises, totals[3] + answers]
-        self.assertEqual([6.0, 2.0, 49, 60], totals)
+        self.assertEqual([6.0, 2.0, 51, 65], totals)
 
     def test_local_curl_comes_from_oriented_small_rectangle_with_remainder(self):
         text = self.text(unit_path(EXPECTED[0]))

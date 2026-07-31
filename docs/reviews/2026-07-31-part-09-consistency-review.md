@@ -12,8 +12,8 @@
 
 - 依赖登记表的 21 个单元 ID、标题、理论/应用学时，逐页与 front matter、章导学页、
   课程地图及导航唯一顺序核对一致。
-- 核心页逐页解析为 199 道稳定锚点习题、242 个折叠答案；附录为 2 道稳定锚点练习、
-  5 个折叠答案，出版面合计 201 道稳定锚点习题、247 个折叠答案。
+- 核心页逐页解析为 201 道稳定锚点习题、247 个折叠答案；附录另计 2 道稳定锚点练习、
+  5 个折叠答案，出版面合计 203 道稳定锚点练习、252 个折叠答案。
 - 第 37–41 章五份章级 consistency review 均存在；本文件承担会随后续出版变化的全局总数、
   当前边界和跨章闭合事实，历史章测试只保留本章合同及可扩展的后继接口。
 
@@ -32,23 +32,32 @@ post-build 合同覆盖 37.4、38.2、38.4、39.3、40.4、41.2、41.3 与微分
 锚点、侧栏、章标题、arithmatex 与 MathJax 错误标记。严格构建后以 390 × 844 浏览器
 视口逐页读取 DOM，结果如下：
 
-| 页面 | H1 | arithmatex | clientWidth | scrollWidth | MathJax error |
-|---|---:|---:|---:|---:|---:|
-| 37.4 | 1 | 56 | 390 | 390 | 0 |
-| 38.2 | 1 | 69 | 390 | 390 | 0 |
-| 38.4 | 1 | 43 | 390 | 390 | 0 |
-| 39.3 | 1 | 19 | 390 | 390 | 0 |
-| 40.4 | 1 | 50 | 390 | 390 | 0 |
-| 41.2 | 1 | 16 | 390 | 390 | 0 |
-| 41.3 | 1 | 59 | 390 | 390 | 0 |
-| 微分形式附录 | 1 | 88 | 390 | 390 | 0 |
+| page | viewport | clientWidth | scrollWidth | H1 | arithmatex | merror | checked_at | tool |
+|---|---|---:|---:|---:|---:|---:|---|---|
+| 37.4 | 390×844 | 390 | 390 | 1 | 56 | 0 | 2026-07-31T23:59:50+08:00 | Chrome DevTools MCP |
+| 38.2 | 390×844 | 390 | 390 | 1 | 69 | 0 | 2026-07-31T23:59:50+08:00 | Chrome DevTools MCP |
+| 38.4 | 390×844 | 390 | 390 | 1 | 43 | 0 | 2026-07-31T23:59:50+08:00 | Chrome DevTools MCP |
+| 39.3 | 390×844 | 390 | 390 | 1 | 19 | 0 | 2026-07-31T23:59:50+08:00 | Chrome DevTools MCP |
+| 40.4 | 390×844 | 390 | 390 | 1 | 50 | 0 | 2026-07-31T23:59:50+08:00 | Chrome DevTools MCP |
+| 41.2 | 390×844 | 390 | 390 | 1 | 16 | 0 | 2026-07-31T23:59:50+08:00 | Chrome DevTools MCP |
+| 41.3 | 390×844 | 390 | 390 | 1 | 59 | 0 | 2026-07-31T23:59:50+08:00 | Chrome DevTools MCP |
+| 微分形式附录 | 390×844 | 390 | 390 | 1 | 88 | 0 | 2026-07-31T23:59:50+08:00 | Chrome DevTools MCP |
 
 38.2 首轮因长叉积展开产生 `scrollWidth=636`；将同一等式引入短记号并拆成两个显示式后，
 复核为 `scrollWidth=clientWidth=390`。其余七页首轮即无页面级横向滚动。
 
 ## 最终验证记录
 
-最终审查运行 focused tests、第九部完整测试、`make verify`、
+focused tests 使用实施计划中的完整可复现命令：
+
+```bash
+python3.12 -m unittest \
+  tests.test_chapter_37 tests.test_chapter_38 tests.test_chapter_39 \
+  tests.test_chapter_40 tests.test_chapter_41 tests.test_vector_analysis \
+  tests.test_part_09_consistency tests.test_mkdocs_site -v
+```
+
+最终审查还运行 `make verify`、
 `python3.12 scripts/check_content.py`、`zensical build --strict`、
 `python3.12 scripts/check_site.py` 与 `git diff --check`。focused 与第九部套件为 119 tests；
-最终 `make verify` 为 445 tests，随后内容检查、严格构建与生成站点检查均通过。
+最终 `make verify` 为 446 tests，随后内容检查、严格构建与生成站点检查均通过。

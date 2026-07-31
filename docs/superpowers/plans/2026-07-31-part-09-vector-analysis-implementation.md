@@ -34,7 +34,7 @@ PART_09_UNITS = [
     ("u-09-41-02", "曲面取向怎样诱导边界曲线的正方向？", 1.25, 0.25, "induced-boundary-orientation", 9, 11),
     ("u-09-41-03", "Stokes 公式怎样在单个参数曲面片上证明？", 1.25, 0.25, "stokes-parametric-patch", 10, 12),
     ("u-09-41-04", "分片曲面上的内部边界为什么成对抵消？", 1.00, 0.50, "stokes-piecewise-surfaces", 10, 12),
-    ("u-09-41-05", "怎样选择并核验 Green、Gauss 与 Stokes 公式？", 1.00, 1.00, "vector-theorem-selection", 12, 15),
+    ("u-09-41-05", "怎样选择并核验 Green、Gauss 与 Stokes 公式？", 1.00, 1.00, "vector-theorem-selection", 14, 20),
 ]
 ```
 

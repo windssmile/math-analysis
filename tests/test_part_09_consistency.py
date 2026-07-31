@@ -63,7 +63,7 @@ PAGE_COUNTS = {
     "u-09-38-01": (8, 10), "u-09-38-02": (9, 11), "u-09-38-03": (9, 11), "u-09-38-04": (10, 12),
     "u-09-39-01": (8, 10), "u-09-39-02": (10, 12), "u-09-39-03": (10, 12), "u-09-39-04": (11, 13),
     "u-09-40-01": (8, 10), "u-09-40-02": (10, 12), "u-09-40-03": (10, 12), "u-09-40-04": (11, 13),
-    "u-09-41-01": (8, 10), "u-09-41-02": (9, 11), "u-09-41-03": (10, 12), "u-09-41-04": (10, 12), "u-09-41-05": (12, 15),
+    "u-09-41-01": (8, 10), "u-09-41-02": (9, 11), "u-09-41-03": (10, 12), "u-09-41-04": (10, 12), "u-09-41-05": (14, 20),
 }
 
 
@@ -221,8 +221,11 @@ class PartNineConsistencyTests(unittest.TestCase):
             len(re.findall(r"\{#pr-appendix-part-09-[^}]+\}", appendix)),
             appendix.count('??? note "答案"'),
         )
+        core = tuple(sum(per_page[unit_id][i] for unit_id, *_ in PART_09_UNITS) for i in range(2))
+        self.assertEqual((201, 247), core)
         self.assertEqual((2, 5), per_page["appendix"])
-        self.assertEqual((201, 247), tuple(sum(values[i] for values in per_page.values()) for i in range(2)))
+        published = tuple(sum(values[i] for values in per_page.values()) for i in range(2))
+        self.assertEqual((203, 252), published)
 
     def test_algorithms_have_one_source_one_call_each_and_are_not_certificates(self) -> None:
         source = self.required_text(ROOT / "src" / "mathbook_examples" / "vector_analysis.py")
@@ -251,7 +254,8 @@ class PartNineConsistencyTests(unittest.TestCase):
             self.assertIn("337 学时", text)
         self.assertIn("第八部 18 个核心单元、32 学时已经历史闭合", readme)
         self.assertIn("第九部 21 个核心单元、32 学时已经完整发布", readme)
-        self.assertIn("201 道稳定锚点习题和 247 个折叠答案", dependencies)
+        self.assertIn("核心正文共 201 道稳定锚点习题和 247 个折叠答案", dependencies)
+        self.assertIn("出版面合计 203 道稳定锚点练习和 252 个折叠答案", dependencies)
         self.assertIn("不自动形成数学证书", dependencies)
 
     def test_surface_area_cross_product_expansion_is_mobile_compact(self) -> None:
