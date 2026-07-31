@@ -23,7 +23,7 @@ content_standard: 2
 
 \[
 \operatorname{curl}F=\nabla\times F
-=\(R_y-Q_z,\ P_z-R_x,\ Q_x-P_y\).
+=(R_y-Q_z,\ P_z-R_x,\ Q_x-P_y).
 \]
 
 它不是无向的“转速”：分量符号依赖取向。以 \(e_z\) 为法向时，右手规则规定从
@@ -35,7 +35,7 @@ content_standard: 2
 
 \[
 \oint_{\partial R}F\cdot dr
-=\bigl\(Q_x-P_y\bigr\)\(x_0,y_0,z_0\)hk+o\(hk\).
+=\bigl(Q_x-P_y\bigr)(x_0,y_0,z_0)hk+o(hk).
 \]
 
 这里水平两边的 \(P\) 项相减给出 \(-P_yhk+o(hk)\)，竖直两边的 \(Q\) 项相减给出

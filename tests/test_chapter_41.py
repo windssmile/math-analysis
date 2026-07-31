@@ -75,6 +75,23 @@ class ChapterFortyOneTests(unittest.TestCase):
         self.assertRegex(text, r"环流[\s\S]{0,2200}Q_x-P_y")
         self.assertRegex(text, r"除以[\s\S]{0,600}面积[\s\S]{0,600}趋于")
 
+    def test_display_math_never_nests_inline_delimiters(self):
+        for row in EXPECTED:
+            text = self.text(unit_path(row))
+            displays = re.findall(r"\\\[(?P<body>[\s\S]*?)\\\]", text)
+            for body in displays:
+                self.assertNotIn(r"\(", body, row[0])
+                self.assertNotIn(r"\)", body, row[0])
+        curl = self.text(unit_path(EXPECTED[0]))
+        self.assertIn(
+            r"=(R_y-Q_z,\ P_z-R_x,\ Q_x-P_y).",
+            curl,
+        )
+        self.assertIn(
+            r"=\bigl(Q_x-P_y\bigr)(x_0,y_0,z_0)hk+o(hk).",
+            curl,
+        )
+
     def test_induced_orientation_matches_parameter_domain_and_left_side_rule(self):
         text = self.text(unit_path(EXPECTED[1]))
         block = re.search(r"### 诱导边界方向 \{#def-u-09-41-02-induced-orientation\}(?P<body>.*?)\n### 迁移", text, re.S)
@@ -93,6 +110,22 @@ class ChapterFortyOneTests(unittest.TestCase):
                        "F(r)\\cdot dr", "F(r)\\cdot r_u", "F(r)\\cdot r_v", "链式法则",
                        "\\operatorname{curl}F(r)\\cdot(r_u\\times r_v)", "### 证明障碍", "### 证明路线",
                        "### 逐步证明", "### 假设位置", "### 边界"):
+            self.assertIn(marker, body)
+        for marker in (
+            r"r=(x,y,z)", r"F=(P,Q,R)",
+            r"B_u&=r_v\cdot DF(r)r_u+F(r)\cdot r_{vu}",
+            r"A_v&=r_u\cdot DF(r)r_v+F(r)\cdot r_{uv}",
+            r"F(r)\cdot(r_{vu}-r_{uv})=0",
+            r"P_y(y_u x_v-y_v x_u)",
+            r"P_z(z_u x_v-z_v x_u)",
+            r"Q_x(x_u y_v-x_v y_u)",
+            r"Q_z(z_u y_v-z_v y_u)",
+            r"R_x(x_u z_v-x_v z_u)",
+            r"R_y(y_u z_v-y_v z_u)",
+            r"(R_y-Q_z)(y_u z_v-z_u y_v)",
+            r"(P_z-R_x)(z_u x_v-x_u z_v)",
+            r"(Q_x-P_y)(x_u y_v-y_u x_v)",
+        ):
             self.assertIn(marker, body)
 
     def test_piecewise_stokes_is_finite_and_honest_about_seams(self):

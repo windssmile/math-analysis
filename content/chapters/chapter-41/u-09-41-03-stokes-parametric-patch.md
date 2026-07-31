@@ -47,16 +47,70 @@ F(r)\cdot dr=F(r)\cdot r_u\,du+F(r)\cdot r_v\,dv=A\,du+B\,dv.
 =\iint_D(B_u-A_v)\,du\,dv.
 \]
 
-链式法则展开 \(B_u-A_v\)。其中含 \(r_{uv}\) 与 \(r_{vu}\) 的项因 \(r\in C^2\)
-相消，其余交叉偏导整理为
+为避免把链式法则藏在记号里，写
+\(r=(x,y,z)\)、\(F=(P,Q,R)\)。于是
 
 \[
-B_u-A_v=\operatorname{curl}F(r)\cdot(r_u\times r_v).
+\begin{aligned}
+A&=P(r)x_u+Q(r)y_u+R(r)z_u,\\
+B&=P(r)x_v+Q(r)y_v+R(r)z_v.
+\end{aligned}
+\]
+
+把 \(DF(r)\) 看作 \(F\) 的 Jacobian，乘积法则与链式法则逐项给出
+
+\[
+\begin{aligned}
+B_u&=r_v\cdot DF(r)r_u+F(r)\cdot r_{vu},\\
+A_v&=r_u\cdot DF(r)r_v+F(r)\cdot r_{uv}.
+\end{aligned}
+\]
+
+因此
+
+\[
+B_u-A_v
+=r_v\cdot DF(r)r_u-r_u\cdot DF(r)r_v
++F(r)\cdot(r_{vu}-r_{uv}).
+\]
+
+因为 \(r\in C^2\)，三个坐标函数的混合偏导都相等，即
+\(r_{vu}=r_{uv}\)，所以
+
+\[
+F(r)\cdot(r_{vu}-r_{uv})=0.
+\]
+
+现在把剩余项完全展开。对角项 \(P_xx_ux_v\)、\(Q_yy_uy_v\)、
+\(R_zz_uz_v\) 两两抵消，留下严格的六项排列：
+
+\[
+\begin{aligned}
+B_u-A_v={}&P_y(y_u x_v-y_v x_u)
++P_z(z_u x_v-z_v x_u)\\
+&+Q_x(x_u y_v-x_v y_u)
++Q_z(z_u y_v-z_v y_u)\\
+&+R_x(x_u z_v-x_v z_u)
++R_y(y_u z_v-y_v z_u).
+\end{aligned}
+\]
+
+按偏导差分组，恰为
+
+\[
+\begin{aligned}
+B_u-A_v={}&(R_y-Q_z)(y_u z_v-z_u y_v)\\
+&+(P_z-R_x)(z_u x_v-x_u z_v)\\
+&+(Q_x-P_y)(x_u y_v-y_u x_v)\\
+=&\operatorname{curl}F(r)\cdot(r_u\times r_v).
+\end{aligned}
 \]
 
 代回即得结论。
 ### 假设位置
-\(F\in C^1\) 保证链式法则中的偏导连续；\(r\in C^2\) 保证混合偏导相等；正则性
+\(F\in C^1\) 保证 \(DF\) 存在且连续，使上述复合函数链式法则和 Green 公式合法；
+\(r\in C^2\) 保证 \(r_u,r_v\) 可再微分并由混合偏导定理得到 \(r_{vu}=r_{uv}\)；
+正则性
 保证面积向量不退化；一一性避免参数域重复覆盖；分片光滑边界使 Green 与线积分合法。
 ### 边界
 本证明只覆盖上述单个参数片。非一一覆盖、退化点、奇点或多片接缝不能被这一步隐藏。
