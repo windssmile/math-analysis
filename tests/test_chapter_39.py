@@ -106,6 +106,25 @@ class ChapterThirtyNineTests(unittest.TestCase):
         for marker in ("穿孔域", "(-y/(x^2+y^2),x/(x^2+y^2))", "奇点", "不在域", "2\\pi", "不能保证势函数"):
             self.assertIn(marker, text)
 
+    def test_path_independence_uses_only_the_proved_finite_loop_class(self):
+        text = self.text(unit_path(EXPECTED[3]))
+        theorem = re.search(
+            r"### 路径无关判据 \{#thm-u-09-39-04-path-independence\}"
+            r"(?P<body>.*?)\n### 环流、通量与不可压缩",
+            text,
+            re.S,
+        )
+        self.assertIsNotNone(theorem)
+        body = theorem.group("body")
+        for marker in (
+            "有限条 C1 弧", "有限个交点", "有限切分",
+            "有限个分片光滑 Jordan 闭路", "逐个简单环", "方向相反",
+            "重边抵消", "gamma_1*(-gamma_2)", "路径积分相等",
+            "无限自交", "不在本章已证范围",
+        ):
+            self.assertIn(marker, body)
+        self.assertNotIn("每条分片光滑闭路都可用有限分片区域", body)
+
     def test_guide_and_release_surfaces(self):
         guide = self.text(CHAPTER / "index.md")
         for row in EXPECTED:
