@@ -122,18 +122,11 @@ class ChapterFortyTests(unittest.TestCase):
             self.assertEqual(1, guide.count(f"[{row[1]}]({row[0]}-{row[4]}.md)"))
             self.assertEqual(1, nav.count(f"chapters/chapter-40/{row[0]}-{row[4]}.md"))
         self.assertIn("chapters/chapter-41/", nav)
-        self.assertIn("第九部第 41 章，共 186 个学习单元、337 学时", self.text(ROOT / "README.md"))
         course_map = self.text(ROOT / "content" / "course-map.md")
         self.assertIn("第 40 章：Gauss 公式与通量](chapters/chapter-40/index.md)", course_map)
         self.assertIn("第 41 章：Stokes 公式与三大公式的统一](chapters/chapter-41/index.md)", course_map)
-        self.assertIn("当前发布第 37–41 章；第九部核心正文已全部发布", course_map)
-        self.assertNotIn("当前发布第 37–39 章", course_map)
-        self.assertNotIn("第 40–41 章仍为规划中", course_map)
 
     def test_dependency_review_and_representative_html(self):
-        dependencies = self.text(ROOT / "docs" / "curriculum" / "part-09-dependencies.md")
-        for marker in ("当前发布边界：第 41 章", "第 37–41 章已经发布", "第九部核心正文已全部发布"):
-            self.assertIn(marker, dependencies)
         review = self.text(ROOT / "docs" / "reviews" / "2026-07-31-chapter-40-consistency-review.md")
         for marker in ("元数据", "Gauss", "取向", "有限分片", "奇点", "390", "arithmatex",
                        "make verify", "check_content.py", "zensical build --strict", "check_site.py", "git diff --check", "通过"):

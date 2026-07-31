@@ -1,6 +1,7 @@
 from pathlib import Path
 import re
 import unittest
+import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,6 +35,36 @@ PART_09_UNITS = [
 ]
 
 CHAPTER_TITLES = ["[第 41 章：Stokes 公式与三大公式的统一](chapters/chapter-41/index.md)"]
+UNIT_SLUGS = {
+    "u-09-37-01": "regular-parametric-curves",
+    "u-09-37-02": "arc-length-scalar-line-integral",
+    "u-09-37-03": "work-circulation",
+    "u-09-37-04": "reparameterization-conservative-fields",
+    "u-09-38-01": "regular-parametric-surfaces",
+    "u-09-38-02": "surface-area-element",
+    "u-09-38-03": "scalar-surface-integral",
+    "u-09-38-04": "flux-integral",
+    "u-09-39-01": "planar-divergence-curl",
+    "u-09-39-02": "green-theorem",
+    "u-09-39-03": "multiply-connected-green",
+    "u-09-39-04": "green-applications",
+    "u-09-40-01": "spatial-divergence",
+    "u-09-40-02": "gauss-box",
+    "u-09-40-03": "gauss-piecewise-regions",
+    "u-09-40-04": "gauss-applications-singularities",
+    "u-09-41-01": "spatial-curl",
+    "u-09-41-02": "induced-boundary-orientation",
+    "u-09-41-03": "stokes-parametric-patch",
+    "u-09-41-04": "stokes-piecewise-surfaces",
+    "u-09-41-05": "vector-theorem-selection",
+}
+PAGE_COUNTS = {
+    "u-09-37-01": (8, 10), "u-09-37-02": (9, 11), "u-09-37-03": (9, 11), "u-09-37-04": (10, 12),
+    "u-09-38-01": (8, 10), "u-09-38-02": (9, 11), "u-09-38-03": (9, 11), "u-09-38-04": (10, 12),
+    "u-09-39-01": (8, 10), "u-09-39-02": (10, 12), "u-09-39-03": (10, 12), "u-09-39-04": (11, 13),
+    "u-09-40-01": (8, 10), "u-09-40-02": (10, 12), "u-09-40-03": (10, 12), "u-09-40-04": (11, 13),
+    "u-09-41-01": (8, 10), "u-09-41-02": (9, 11), "u-09-41-03": (10, 12), "u-09-41-04": (10, 12), "u-09-41-05": (12, 15),
+}
 
 
 class PartNineConsistencyTests(unittest.TestCase):
@@ -148,6 +179,87 @@ class PartNineConsistencyTests(unittest.TestCase):
             text,
         )
         self.assertIn("第九部共 21 个核心单元、32 学时（理论 24，应用 8）", text)
+
+    def test_every_registry_row_matches_page_guide_course_map_and_nav_once(self) -> None:
+        course_map = self.required_text(COURSE_MAP)
+        for unit_id, title, theory, applied in PART_09_UNITS:
+            chapter = unit_id.split("-")[2]
+            filename = f"{unit_id}-{UNIT_SLUGS[unit_id]}.md"
+            page = ROOT / "content" / "chapters" / f"chapter-{chapter}" / filename
+            metadata = yaml.safe_load(self.required_text(page).split("---\n", 2)[1])
+            self.assertEqual((unit_id, title, theory, applied), (
+                metadata["unit_id"], metadata["title"],
+                float(metadata["hours"]["theory"]), float(metadata["hours"]["applied"]),
+            ))
+            guide = self.required_text(page.parent / "index.md")
+            self.assertEqual(1, guide.count(f"[{title}]({filename})"))
+            self.assertEqual(1, NAVIGATION.count(f"chapters/chapter-{chapter}/{filename}"))
+            map_line = f"[{title}](chapters/chapter-{chapter}/{filename})（理论 {theory:.2f}，应用 {applied:.2f}）"
+            self.assertEqual(1, course_map.count(map_line))
+
+    def test_release_has_exact_core_guides_appendix_and_reviews(self) -> None:
+        chapters = ROOT / "content" / "chapters"
+        self.assertEqual(21, len(list(chapters.glob("chapter-*/u-09-*.md"))))
+        self.assertEqual(5, sum((chapters / f"chapter-{chapter}" / "index.md").is_file() for chapter in range(37, 42)))
+        self.assertTrue(APPENDIX.is_file())
+        for chapter in range(37, 42):
+            self.assertTrue((ROOT / "docs" / "reviews" / f"2026-07-31-chapter-{chapter}-consistency-review.md").is_file())
+        review = ROOT / "docs" / "reviews" / "2026-07-31-part-09-consistency-review.md"
+        self.assertTrue(review.is_file())
+
+    def test_actual_page_counts_reconcile_with_registry_including_appendix(self) -> None:
+        per_page = {}
+        for unit_id, *_ in PART_09_UNITS:
+            chapter = unit_id.split("-")[2]
+            page = ROOT / "content" / "chapters" / f"chapter-{chapter}" / f"{unit_id}-{UNIT_SLUGS[unit_id]}.md"
+            text = self.required_text(page)
+            actual = (len(re.findall(r"\{#pr-u-09-[^}]+\}", text)), text.count('??? note "答案"'))
+            self.assertEqual(PAGE_COUNTS[unit_id], actual, page.name)
+            per_page[unit_id] = actual
+        appendix = self.required_text(APPENDIX)
+        per_page["appendix"] = (
+            len(re.findall(r"\{#pr-appendix-part-09-[^}]+\}", appendix)),
+            appendix.count('??? note "答案"'),
+        )
+        self.assertEqual((2, 5), per_page["appendix"])
+        self.assertEqual((201, 247), tuple(sum(values[i] for values in per_page.values()) for i in range(2)))
+
+    def test_algorithms_have_one_source_one_call_each_and_are_not_certificates(self) -> None:
+        source = self.required_text(ROOT / "src" / "mathbook_examples" / "vector_analysis.py")
+        call_page = self.required_text(ROOT / "content" / "chapters" / "chapter-41" / "u-09-41-05-vector-theorem-selection.md")
+        all_part_text = "\n".join(self.required_text(p) for p in sorted((ROOT / "content").glob("chapters/chapter-*/u-09-*.md")))
+        for name in ("composite_midpoint_line_integral", "composite_midpoint_flux_integral"):
+            self.assertEqual(1, len(re.findall(rf"^def {name}\(", source, re.MULTILINE)))
+            self.assertEqual(1, call_page.count(f"{name}("))
+            self.assertEqual(1, all_part_text.count(f"{name}("))
+        for marker in ("数值结果不能证明", "不能证明正则性", "不是经过认证的上下界"):
+            self.assertIn(marker, call_page)
+
+    def test_historical_chapter_tests_do_not_lock_future_global_release_state(self) -> None:
+        for chapter in range(37, 41):
+            source = self.required_text(ROOT / "tests" / f"test_chapter_{chapter}.py")
+            for global_fact in ("186 个学习单元", "337 学时", "当前发布边界：第 41 章"):
+                self.assertNotIn(global_fact, source, f"chapter {chapter} owns a global fact")
+            self.assertIn(f"chapter-{chapter}", source)
+
+    def test_final_surfaces_record_release_totals_and_scope(self) -> None:
+        readme = self.required_text(ROOT / "README.md")
+        course_map = self.required_text(COURSE_MAP)
+        dependencies = self.required_text(DEPENDENCIES)
+        for text in (readme, course_map):
+            self.assertIn("186 个学习单元", text)
+            self.assertIn("337 学时", text)
+        self.assertIn("第八部 18 个核心单元、32 学时已经历史闭合", readme)
+        self.assertIn("第九部 21 个核心单元、32 学时已经完整发布", readme)
+        self.assertIn("201 道稳定锚点习题和 247 个折叠答案", dependencies)
+        self.assertIn("不自动形成数学证书", dependencies)
+
+    def test_surface_area_cross_product_expansion_is_mobile_compact(self) -> None:
+        text = self.required_text(
+            ROOT / "content" / "chapters" / "chapter-38" / "u-09-38-02-surface-area-element.md"
+        )
+        self.assertIn(r"X_j:=Ae_j+\eta_j", text)
+        self.assertIn(r"\Delta_T:=X_1\times X_2-Ae_1\times Ae_2", text)
 
 
 if __name__ == "__main__":

@@ -211,6 +211,18 @@ REQUIRED_RENDERED_ANCHORS = {
     "chapters/chapter-36/u-08-36-04-joint-density/index.html": [
         "u-08-36-04",
     ],
+    "chapters/chapter-37/u-09-37-04-reparameterization-conservative-fields/index.html": [
+        "thm-u-09-37-04-reparameterization",
+    ],
+    "chapters/chapter-38/u-09-38-02-surface-area-element/index.html": [
+        "thm-u-09-38-02-area-element",
+    ],
+    "chapters/chapter-38/u-09-38-04-flux-integral/index.html": [
+        "def-u-09-38-04-flux-integral",
+    ],
+    "chapters/chapter-39/u-09-39-03-multiply-connected-green/index.html": [
+        "thm-u-09-39-03-multiply-connected-green",
+    ],
     "chapters/chapter-39/u-09-39-04-green-applications/index.html": [
         "thm-u-09-39-04-path-independence",
     ],
@@ -219,6 +231,9 @@ REQUIRED_RENDERED_ANCHORS = {
     ],
     "chapters/chapter-41/u-09-41-03-stokes-parametric-patch/index.html": [
         "thm-u-09-41-03-stokes-patch",
+    ],
+    "chapters/chapter-41/u-09-41-02-induced-boundary-orientation/index.html": [
+        "def-u-09-41-02-induced-orientation",
     ],
     "chapters/chapter-41/u-09-41-05-vector-theorem-selection/index.html": [
         "workflow-u-09-41-05-selection",
@@ -445,6 +460,18 @@ REQUIRED_NAVIGATION_MARKERS = {
         "第八部：重积分与空间测量",
         "第 36 章：反常重积分与质量、概率模型",
     ],
+    "chapters/chapter-37/u-09-37-04-reparameterization-conservative-fields/index.html": [
+        "md-sidebar", "第九部：曲线、曲面与向量分析", "第 37 章：参数曲线与曲线积分",
+    ],
+    "chapters/chapter-38/u-09-38-02-surface-area-element/index.html": [
+        "md-sidebar", "第九部：曲线、曲面与向量分析", "第 38 章：参数曲面与曲面积分",
+    ],
+    "chapters/chapter-38/u-09-38-04-flux-integral/index.html": [
+        "md-sidebar", "第九部：曲线、曲面与向量分析", "第 38 章：参数曲面与曲面积分",
+    ],
+    "chapters/chapter-39/u-09-39-03-multiply-connected-green/index.html": [
+        "md-sidebar", "第九部：曲线、曲面与向量分析", "第 39 章：Green 公式与平面场",
+    ],
     "chapters/chapter-39/u-09-39-04-green-applications/index.html": [
         "md-sidebar",
         "第九部：曲线、曲面与向量分析",
@@ -459,6 +486,9 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第九部：曲线、曲面与向量分析",
         "第 41 章：Stokes 公式与三大公式的统一",
+    ],
+    "chapters/chapter-41/u-09-41-02-induced-boundary-orientation/index.html": [
+        "md-sidebar", "第九部：曲线、曲面与向量分析", "第 41 章：Stokes 公式与三大公式的统一",
     ],
     "chapters/chapter-41/u-09-41-05-vector-theorem-selection/index.html": [
         "md-sidebar",
@@ -478,6 +508,21 @@ REQUIRED_NAVIGATION_MARKERS = {
 }
 
 REQUIRED_RENDERED_CONTENT = {
+    "chapters/chapter-37/u-09-37-04-reparameterization-conservative-fields/index.html": {
+        "min_arithmatex": 8, "forbid_mathjax_errors": True,
+    },
+    "chapters/chapter-38/u-09-38-02-surface-area-element/index.html": {
+        "min_arithmatex": 8, "forbid_mathjax_errors": True,
+    },
+    "chapters/chapter-38/u-09-38-04-flux-integral/index.html": {
+        "min_arithmatex": 8, "forbid_mathjax_errors": True,
+    },
+    "chapters/chapter-39/u-09-39-03-multiply-connected-green/index.html": {
+        "min_arithmatex": 8, "forbid_mathjax_errors": True,
+    },
+    "chapters/chapter-41/u-09-41-02-induced-boundary-orientation/index.html": {
+        "min_arithmatex": 8, "forbid_mathjax_errors": True,
+    },
     "appendices/part-09-differential-forms/index.html": {
         "min_arithmatex": 16,
         "min_display_math": 6,

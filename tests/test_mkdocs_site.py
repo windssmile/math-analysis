@@ -12,6 +12,22 @@ from scripts.check_site import (
 
 
 class ZensicalSiteValidationTests(unittest.TestCase):
+    def test_checks_all_part_nine_mobile_review_pages(self) -> None:
+        pages = {
+            "chapters/chapter-37/u-09-37-04-reparameterization-conservative-fields/index.html": "thm-u-09-37-04-reparameterization",
+            "chapters/chapter-38/u-09-38-02-surface-area-element/index.html": "thm-u-09-38-02-area-element",
+            "chapters/chapter-38/u-09-38-04-flux-integral/index.html": "def-u-09-38-04-flux-integral",
+            "chapters/chapter-39/u-09-39-03-multiply-connected-green/index.html": "thm-u-09-39-03-multiply-connected-green",
+            "chapters/chapter-40/u-09-40-04-gauss-applications-singularities/index.html": "ex-u-09-40-04-punctured-flux",
+            "chapters/chapter-41/u-09-41-02-induced-boundary-orientation/index.html": "def-u-09-41-02-induced-orientation",
+            "chapters/chapter-41/u-09-41-03-stokes-parametric-patch/index.html": "thm-u-09-41-03-stokes-patch",
+            "appendices/part-09-differential-forms/index.html": "appendix-part-09-differential-forms",
+        }
+        for page, anchor in pages.items():
+            self.assertIn(anchor, REQUIRED_RENDERED_ANCHORS[page])
+            self.assertIn(page, REQUIRED_NAVIGATION_MARKERS)
+            self.assertIn(page, REQUIRED_RENDERED_CONTENT)
+
     def test_checks_chapter_forty_one_stokes_pages(self) -> None:
         pages = {
             "chapters/chapter-41/u-09-41-03-stokes-parametric-patch/index.html":

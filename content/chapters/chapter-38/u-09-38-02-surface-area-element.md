@@ -59,12 +59,14 @@ content_standard: 2
 r(a+e_j)-r(a)=Dr(a)e_j+\eta_j,\qquad
 \lVert\eta_j\rVert\le\omega(h)\lVert e_j\rVert,\quad j=1,2.
 \]
-其中 \(\eta_j\) 是线性化余项；这是边向量的关键估计。令 \(A=Dr(a)\)。由叉积的双线性，
+其中 \(\eta_j\) 是线性化余项；这是边向量的关键估计。令
+\(A=Dr(a)\)、\(X_j:=Ae_j+\eta_j\)。由叉积的双线性，
 \[
-\begin{aligned}
-&(Ae_1+\eta_1)\times(Ae_2+\eta_2)-Ae_1\times Ae_2\\
-&=Ae_1\times\eta_2+\eta_1\times Ae_2+\eta_1\times\eta_2 .
-\end{aligned}
+\Delta_T:=X_1\times X_2-Ae_1\times Ae_2,
+\]
+并且
+\[
+\Delta_T=Ae_1\times\eta_2+\eta_1\times Ae_2+\eta_1\times\eta_2 .
 \]
 再用 \(|\lVert x\rVert-\lVert y\rVert|\le\lVert x-y\rVert\)，单三角形面积差满足
 \[

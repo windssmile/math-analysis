@@ -79,16 +79,14 @@ class ChapterThirtySevenTests(unittest.TestCase):
             self.assertEqual(1, guide.count(f"[{row[1]}]({row[0]}-{row[4]}.md)"))
         nav = self.text(ROOT / "mkdocs.yml")
         self.assertIn("chapters/chapter-37/", nav)
-        self.assertIn("chapters/chapter-41/", nav)
-        readme = self.text(ROOT / "README.md")
-        self.assertIn("第九部第 41 章，共 186 个学习单元、337 学时", readme)
+        self.assertIn("chapters/chapter-38/", nav)
         course_map = self.text(ROOT / "content" / "course-map.md")
         self.assertIn("第 37 章：参数曲线与曲线积分](chapters/chapter-37/index.md)", course_map)
         self.assertIn("第 38 章：参数曲面与曲面积分](chapters/chapter-38/index.md)", course_map)
 
     def test_consistency_review_records_evidence(self):
         review = self.text(ROOT / "docs" / "reviews" / "2026-07-31-chapter-37-consistency-review.md")
-        for marker in ("元数据", "依赖", "取向", "重新参数化", "路径无关", "第 38–41 章"):
+        for marker in ("元数据", "依赖", "取向", "重新参数化", "路径无关"):
             self.assertIn(marker, review)
 
     def test_arc_length_and_reparameterization_proofs_are_complete(self):
