@@ -65,7 +65,20 @@
 - **当前发布矛盾：** 当前第 21、22 章及完整第六部第 23–27 章均已有核心单元；第五部依赖图声明第五部已闭合并列出第 20→21→22 章接口（`docs/curriculum/part-05-dependencies.md:9-19`、`docs/curriculum/part-05-dependencies.md:34-49`），第六部依赖图声明 24 个核心单元全部发布（`docs/curriculum/part-06-dependencies.md:3-15`、`docs/curriculum/part-06-dependencies.md:46-55`）。
 - **影响：** 不改变数学逻辑，但让三个正式 guide 停留在逐章开发检查点，并与当前实际出版范围矛盾。
 - **修复：** 分别修改 `content/chapters/chapter-20/index.md`、`chapter-21/index.md`、`chapter-22/index.md`：保留下一章/下一部的数学职责与范围边界，删除“验收后停在”“不创建空白页面”等发布操作记录。
-- **回归：** 在 guide 内容检查中，仅扫描“继承、输出与边界”“后续”“验收/发布边界”等段落，对含章节或部编号的开发状态组合使用正则/语义匹配，例如 `验收后停在.*第?[一二三四五六七八九十0-9]+[章节部]`、`(?:暂不|不)创建.*(?:第?[一二三四五六七八九十0-9]+[章节部].*)?空白页面`、`暂不创建.*页面`；不对例题、习题或一般教学中的“停止”“创建页面”孤立词做全书匹配。修复后对三份 guide 运行该检查及 `make verify`。
+- **回归：** 在 guide 内容检查中，先截取“继承、输出与边界”“后续”“验收/发布边界”等目标段落，再用 `re.sub(r"\s+", " ", section)` 把 Markdown 换行与连续空白规范为单空格后匹配；这样第 20、21 章跨行的“不创建……空白页面”不会漏检。可直接实现为：
+
+  ```python
+  normalized = re.sub(r"\s+", " ", section)
+  stale_patterns = (
+      r"验收后停在.*?第?\s*[一二三四五六七八九十0-9]+\s*[章节部]",
+      r"(?:暂不|不)创建.*?(?:第?\s*[一二三四五六七八九十0-9]+\s*[章节部].*?)?空白页面",
+      r"暂不创建.*?页面",
+  )
+  matches = [p for p in stale_patterns if re.search(p, normalized)]
+  assert not matches, f"guide contains stale publication workflow text: {matches}"
+  ```
+
+  对当前三份 guide 的目标段落运行该代码，第一条与第二条可捕获第 20、21 章，第二条可捕获第 22 章。不要对例题、习题或一般教学中的“停止”“创建页面”孤立词做全书匹配。修复后运行该检查及 `make verify`。（若不先规范空白，等价实现须给跨行表达式使用 `re.S` 或 `[\s\S]*?`。）
 
 ## 无问题项与回归基线
 
