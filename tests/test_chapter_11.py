@@ -94,12 +94,20 @@ class ChapterElevenTests(unittest.TestCase):
         text = (
             CHAPTER / "u-03-11-01-compact-intervals.md"
         ).read_text(encoding="utf-8")
-        core = text.split("### 选读前瞻：第七部的开覆盖语言", 1)[0]
+        before_preview, preview_and_after = text.split(
+            "### 选读前瞻：第七部的开覆盖语言", 1
+        )
+        _preview, after_preview = preview_and_after.split(
+            "## 常见误区与后续", 1
+        )
+        core = before_preview + after_preview
         for later_generalization in (
             "lem-u-03-11-01-closed-limit",
             "prop-u-03-11-01-closed-bounded",
             "闭集的补集",
             "序列紧致集必有界且闭",
+            "闭只保证已有收敛列",
+            "与闭性拼接",
         ):
             self.assertNotIn(later_generalization, core)
         for order_step in (
