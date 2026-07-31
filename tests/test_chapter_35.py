@@ -137,5 +137,28 @@ class ChapterThirtyFiveTests(unittest.TestCase):
             positions.append(text.index(marker))
         self.assertEqual(sorted(positions), positions)
 
+    def test_finite_dimensional_cube_contraction_is_proved_before_use(self):
+        text = self.text(path(EXPECTED[1]))
+        meta = yaml.safe_load(text.split("---\n", 2)[1])
+        self.assertIn("Euclid 空间完备性", meta["prerequisites"]["book"])
+        self.assertNotIn("第 8 章压缩定理", text)
+        ordered = (
+            "{#lem-u-08-35-02-cube-contraction}",
+            r"F:Q\to Q",
+            r"\|F(x)-F(y)\|\le q\|x-y\|",
+            r"x_{n+1}=F(x_n)",
+            r"\le\frac{q^n}{1-q}\|x_1-x_0\|",
+            "第 28 章的 Euclid 空间完备性",
+            r"x_\ast\in Q",
+            r"F(x_\ast)=F\!\left(\lim_n x_n\right)=\lim_n x_{n+1}=x_\ast",
+            r"(1-q)\|x_\ast-y_\ast\|\le0",
+            r"将上一引理用于 \(\Phi_y\)",
+        )
+        positions = []
+        for marker in ordered:
+            self.assertIn(marker, text)
+            positions.append(text.index(marker))
+        self.assertEqual(sorted(positions), positions)
+
 if __name__ == "__main__":
     unittest.main()

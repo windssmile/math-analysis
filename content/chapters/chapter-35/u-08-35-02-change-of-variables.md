@@ -3,16 +3,16 @@ title: 重积分换元公式需要哪些条件？
 unit_id: u-08-35-02
 hours: {theory: 1.5, applied: 0.25}
 difficulty: 4
-prerequisites: {book: [Jacobian 局部伸缩, 反函数定理, Riemann 重积分, 区域零延拓], higher_algebra: [行列式], analytic_geometry: [区域映射], python: []}
+prerequisites: {book: [Euclid 空间完备性, Jacobian 局部伸缩, 反函数定理, Riemann 重积分, 区域零延拓], higher_algebra: [行列式], analytic_geometry: [区域映射], python: []}
 capabilities: [change_of_variables_theorem, hypothesis_audit, transformed_region]
-learning_goals: [陈述换元定理, 解释每项假设, 证明一致小盒像体积估计, 按 Riemann 和证明公式]
+learning_goals: [陈述换元定理, 解释每项假设, 证明有限维立方体压缩引理, 证明一致小盒像体积估计, 按 Riemann 和证明公式]
 content_standard: 2
 ---
 
 # 重积分换元公式需要哪些条件？ {#u-08-35-02}
 
 ## 先备知识
-掌握局部线性化、Jacobian 伸缩、反函数定理和区域积分。
+掌握有限维 Euclid 空间完备性、局部线性化、Jacobian 伸缩、反函数定理和区域积分。
 
 ## 学习目标
 在使用换元公式前核验区域、映射、Jacobian 和坐标覆盖。
@@ -46,6 +46,36 @@ content_standard: 2
 | \(T\) 在内部一一 | 不同参数小盒的像内部不重叠，不会重复累计 |
 | \(f\) 在 \(\overline D\) 连续 | 被积函数有界且一致连续，Riemann 和振幅可统一压小 |
 | 有限边界片 | \(\partial G\) 及其 Lipschitz 像可由任意小总体积的有限薄盒覆盖 |
+
+### 引理：有限维闭立方体上的压缩 {#lem-u-08-35-02-cube-contraction}
+
+设 \(Q\subset\mathbb R^d\) 是非空闭立方体，映射 \(F:Q\to Q\) 满足：存在
+\(0\le q<1\)，使任意 \(x,y\in Q\) 都有
+\[
+\|F(x)-F(y)\|\le q\|x-y\|.
+\]
+则 \(F\) 在 \(Q\) 中有唯一不动点。
+
+**证明。** 任取 \(x_0\in Q\)，递推定义 \(x_{n+1}=F(x_n)\)。由压缩估计归纳得
+\(\|x_{n+1}-x_n\|\le q^n\|x_1-x_0\|\)。因此当 \(m>n\) 时，三角不等式和几何级数给出
+\[
+\|x_m-x_n\|\le\sum_{k=n}^{m-1}\|x_{k+1}-x_k\|
+\le\frac{q^n}{1-q}\|x_1-x_0\|.
+\]
+右端随 \(n\to\infty\) 趋于零，故 \((x_n)\) 是 Cauchy 序列。第 28 章的 Euclid 空间完备性
+给出 \(x_n\to x_\ast\in\mathbb R^d\)；闭立方体 \(Q\) 是闭集且
+所有 \(x_n\in Q\)，所以 \(x_\ast\in Q\)。压缩估计还说明 \(F\) 连续，于是
+\[
+F(x_\ast)=F\!\left(\lim_n x_n\right)=\lim_n x_{n+1}=x_\ast.
+\]
+若 \(y_\ast\) 也是不动点，则
+\[
+\|x_\ast-y_\ast\|
+=\|F(x_\ast)-F(y_\ast)\|
+\le q\|x_\ast-y_\ast\|,
+\qquad (1-q)\|x_\ast-y_\ast\|\le0,
+\]
+故 \(x_\ast=y_\ast\)。\(\square\)
 
 ### 引理：小盒像体积的一致估计 {#lem-u-08-35-02-uniform-box-volume}
 
@@ -81,8 +111,9 @@ T(Q)\subset T(a)+A(Q-a)+B(0,\rho_h).
 \Phi_y(z)=a+A^{-1}\bigl(y-R_a(z)\bigr).
 \]
 充分小的 \(h\) 使 \(M\omega(Ch)<1/2\)；中心点 \(a+A^{-1}y\) 的边界余量保证
-\(\Phi_y\) 把 \(Q\) 送入自身且为压缩映射。第 8 章压缩定理给出唯一不动点 \(z\in Q\)，即
-\(T(z)=T(a)+y\)。故线性平行多面体去掉厚度 \(O(\rho_h)\) 的边界层后包含于
+\(\Phi_y\) 把 \(Q\) 送入自身，且其 Lipschitz 常数至多 \(M\omega(Ch)<1/2\)。
+将上一引理用于 \(\Phi_y\)，得到唯一不动点 \(z\in Q\)，即 \(T(z)=T(a)+y\)。故线性
+平行多面体去掉厚度 \(O(\rho_h)\) 的边界层后包含于
 \(T(Q)-T(a)\)，而 \(T(Q)-T(a)\) 又包含在线性像的 \(O(\rho_h)\) 外层中。
 
 \(\|A\|,\|A^{-1}\|\) 一致有界，所以这两个平行多面体边界层的体积均不超过
