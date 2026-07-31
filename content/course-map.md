@@ -520,8 +520,8 @@ title: 全书课程地图
 
 **问题弧：** Riemann 积分失效后，“大小”与“总量”应怎样重建？
 
-第 46–50 章规划已锁定：25 个核心单元、38 学时（理论 31，应用 7）。第 46 章已发布，
-第 47–50 章尚未创建正文页或导航项。
+第 46–50 章规划已锁定：25 个核心单元、38 学时（理论 31，应用 7）。第 46–47 章已发布，
+第 48–50 章尚未创建正文页或导航项。
 
 ### [第 46 章：从长度问题到测度](chapters/chapter-46/index.md) {#chapter-46}
 
@@ -531,13 +531,13 @@ title: 全书课程地图
 4. [区间的外测度为何恰好等于区间长度？](chapters/chapter-46/u-11-46-04-interval-outer-measure.md)
 5. [可数集为何是零测集，Jordan 理论的边界在哪里？](chapters/chapter-46/u-11-46-05-null-countable-sets.md)
 
-### 第 47 章：σ-代数与测度（规划中）
+### [第 47 章：σ-代数与测度](chapters/chapter-47/index.md) {#chapter-47}
 
-1. 为什么集合运算必须对可数过程封闭？
-2. Carathéodory 判据怎样定义可测集合？
-3. 可测集合为何构成 σ-代数？
-4. 外测度在可测集上为何成为可数可加的测度？
-5. Borel 集、零测集及其子集怎样进入 Lebesgue 可测世界？
+1. [为什么集合运算必须对可数过程封闭？](chapters/chapter-47/u-11-47-01-sigma-algebras.md)
+2. [Carathéodory 判据怎样定义可测集合？](chapters/chapter-47/u-11-47-02-caratheodory-criterion.md)
+3. [可测集合为何构成 σ-代数？](chapters/chapter-47/u-11-47-03-measurable-sigma-algebra.md)
+4. [外测度在可测集上为何成为可数可加的测度？](chapters/chapter-47/u-11-47-04-countable-additivity.md)
+5. [Borel 集、零测集及其子集怎样进入 Lebesgue 可测世界？](chapters/chapter-47/u-11-47-05-borel-lebesgue-completion.md)
 
 ### 第 48 章：可测函数与收敛方式（规划中）
 
@@ -566,5 +566,5 @@ title: 全书课程地图
 ## 后续路线
 
 第七部与第八部已完成核心内容、算法与出版质量闭合；第九部已完成核心内容与选读附录的出版闭合。
-第十至十二部继续覆盖的路线中，第十部含参积分已经闭合；第十一部已发布第 46 章；
+第十至十二部继续覆盖的路线中，第十部含参积分已经闭合；第十一部已发布第 46–47 章；
 第十二部 Fourier 级数仍待规划。对应内容完成前不创建空白单元页。

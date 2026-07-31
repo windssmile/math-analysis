@@ -86,7 +86,9 @@ class ChapterFortySixTests(unittest.TestCase):
     def test_navigation_hours_and_future_boundary(self) -> None:
         guide = self.text(CHAPTER / "index.md")
         self.assertIn("7.5 学时（理论 6.00，应用 1.50）", guide)
-        self.assertNotIn("chapters/chapter-47/", NAVIGATION)
+        if "chapters/chapter-47/" in NAVIGATION:
+            self.assertLess(NAVIGATION.index("chapters/chapter-46/"),
+                            NAVIGATION.index("chapters/chapter-47/"))
 
 
 if __name__ == "__main__":
