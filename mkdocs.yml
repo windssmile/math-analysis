@@ -320,6 +320,13 @@ nav:
           - 42.3 一致收敛为什么允许极限进入积分号？: chapters/chapter-42/u-10-42-03-uniform-limit-interchange.md
           - 42.4 哪些逐点收敛反例说明一致控制不可省略？: chapters/chapter-42/u-10-42-04-pointwise-failure.md
           - 42.5 怎样为连续性与极限交换建立条件检查表？: chapters/chapter-42/u-10-42-05-exchange-checklist.md
+      - 第 43 章：积分号下运算:
+          - 本章导学: chapters/chapter-43/index.md
+          - 43.1 什么条件允许对含参积分求导？: chapters/chapter-43/u-10-43-01-differentiation-under-integral.md
+          - 43.2 差商与偏导的一致控制怎样完成 Leibniz 公式证明？: chapters/chapter-43/u-10-43-02-difference-quotient-control.md
+          - 43.3 积分端点随参数变化时，边界项从哪里产生？: chapters/chapter-43/u-10-43-03-variable-endpoints-leibniz.md
+          - 43.4 对参数再积分时，怎样通过经典 Fubini 交换次序？: chapters/chapter-43/u-10-43-04-parameter-integration-fubini.md
+          - 43.5 可固定化的移动区域怎样化为固定区域问题？: chapters/chapter-43/u-10-43-05-fixed-domain-transform.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

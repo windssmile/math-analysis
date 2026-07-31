@@ -78,7 +78,6 @@ class ChapterFortyTwoTests(unittest.TestCase):
             self.assertEqual(1, NAVIGATION.count(f"chapters/chapter-42/{row[0]}-{row[4]}.md"))
         self.assertIn("第 42 章：正常含参变量积分", guide)
         self.assertIn("7 学时（理论 5.50，应用 1.50）", guide)
-        self.assertNotIn("chapters/chapter-43/", NAVIGATION)
 
     def test_continuity_proof_exposes_uniform_estimate(self) -> None:
         text = self.text(unit_path(EXPECTED[1]))
