@@ -97,6 +97,30 @@ r(a+e_j)-r(a)=Dr(a)e_j+\eta_j,\qquad
 多重覆盖，上式按覆盖重数计数而不是几何面积；无限覆盖、退化点、非形状正则剖分或
 非 Jordan 可积参数域不在此定理内。
 
+### 零面积边界扩展 {#prop-u-09-38-02-zero-area-boundary}
+经典经纬参数常在参数域**内部一一正则**，却在边界出现**有限接缝重复**、**边界退化**
+或**边界遗漏**。设这些异常参数组成 \(B\subset\partial D\)，其曲面像是有限条
+分片 \(C^1\) 曲线和有限个点，因而是**零面积**集合。取闭子域
+\(D_m\Subset D\setminus B\) 递增穷竭内部，并要求被删参数边界带的平面面积趋于零。
+对面积或后续曲面积分，定义
+\[
+\int_S g\,dS:=\lim_{m\to\infty}
+\iint_{D_m}g(r(u,v))\lVert r_u\times r_v\rVert\,du\,dv.
+\]
+这里 \(g\) 是曲面上的**连续有界**标量；对通量则把被积函数换成连续有界的
+\(F(r)\cdot(r_u\times r_v)\)，并要求各片取向相容。也可直接采用**有限正则片**
+积分之和，各片内部一一正则，只在零面积边界重合。
+
+证明只需经典 Riemann 估计。紧参数矩形上 \(g\circ r\) 与
+\(\lVert r_u\times r_v\rVert\) 有界，故被删边界带的积分绝对值不超过
+\[
+C\,\operatorname{area}(D\setminus D_m)\longrightarrow0.
+\]
+所以边界贡献趋于零；两个闭子域穷竭的差也只落在某条最终任意薄的边界带内，故极限
+**与穷竭无关**。两种有限正则分片取共同细分，新增或重复部分只在零面积边界上，
+同一估计说明结果**与分片无关**。因此有限接缝的重复、极点的退化以及零面积边界的
+遗漏都不改变面积或连续有界被积函数的曲面积分。
+
 ### 迁移
 若 \(r\circ\phi\) 是合法参数变换，则链式法则给
 \(\|(r\circ\phi)_s\times(r\circ\phi)_t\|=\|r_u\times r_v\|\,|\det D\phi|\)。
@@ -110,7 +134,14 @@ r(a+e_j)-r(a)=Dr(a)e_j+\eta_j,\qquad
 \(\sqrt{1+f_x^2+f_y^2}\,dxdy\)，法向可取 \((-f_x,-f_y,1)\)。
 
 ### 例 2：球带面积 {#ex-u-09-38-02-sphere}
-半径 \(R\) 球面取 \(0\le\theta\le2\pi,\alpha\le\phi\le\beta\)，
+设 \(R>0\)、\(0\le\alpha\le\beta\le\pi\)。半径 \(R\) 球面取
+\[
+r(\phi,\theta)=(R\sin\phi\cos\theta,R\sin\phi\sin\theta,R\cos\phi),
+\quad \alpha\le\phi\le\beta,\quad0\le\theta\le2\pi .
+\]
+其中 \(\theta=0\) 与 \(\theta=2\pi\) 是有限重复的接缝；若区间碰到
+\(\phi=0\) 或 \(\phi=\pi\)，相应极点处参数退化。接缝像是一条曲线，极点是点，
+故调用上面的**零面积边界扩展**。由于
 \(\|r_\phi\times r_\theta\|=R^2\sin\phi\)，面积为
 \(2\pi R^2(\cos\alpha-\cos\beta)\)。
 

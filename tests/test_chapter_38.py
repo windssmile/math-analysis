@@ -102,6 +102,59 @@ class ChapterThirtyEightTests(unittest.TestCase):
         self.assertRegex(body, r"C[^\n]{0,100}\\sup_D\\lVert Dr\\rVert[^\n]{0,100}\\omega\(h\)")
         self.assertNotIn("曲面片面积与此值之差", body)
 
+    def test_zero_area_parameter_boundary_extension_is_explicit(self):
+        area = self.text(path(EXPECTED[1]))
+        extension = re.search(
+            r"### 零面积边界扩展 \{#prop-u-09-38-02-zero-area-boundary\}"
+            r"(?P<body>.*?)\n### 迁移",
+            area,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(extension, "missing zero-area parameter-boundary extension")
+        body = extension.group("body")
+        for marker in (
+            "内部一一正则", "有限接缝重复", "边界退化", "边界遗漏",
+            "零面积", "闭子域穷竭", "有限正则片", "连续有界",
+            "边界贡献趋于零", "与穷竭无关", "与分片无关",
+        ):
+            self.assertIn(marker, body)
+
+        sphere = re.search(
+            r"### 例 2：球带面积 \{#ex-u-09-38-02-sphere\}"
+            r"(?P<body>.*?)\n## 即时检验与回望",
+            area,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(sphere)
+        for marker in (
+            "R>0", "0\\le\\alpha\\le\\beta\\le\\pi", "零面积边界扩展",
+            "\\theta=0", "\\theta=2\\pi", "接缝", "极点",
+        ):
+            self.assertIn(marker, sphere.group("body"))
+
+    def test_spherical_integral_examples_invoke_boundary_extension(self):
+        scalar = self.text(path(EXPECTED[2]))
+        half_sphere = re.search(
+            r"### 例 2：半球上的标量分布 \{#ex-u-09-38-03-sphere\}"
+            r"(?P<body>.*?)\n## 即时检验与回望",
+            scalar,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(half_sphere)
+        for marker in ("R>0", "零面积边界扩展", "接缝", "极点"):
+            self.assertIn(marker, half_sphere.group("body"))
+
+        flux = self.text(path(EXPECTED[3]))
+        sphere_flux = re.search(
+            r"### 例 2：球面径向场 \{#ex-u-09-38-04-sphere\}"
+            r"(?P<body>.*?)\n### 例 3",
+            flux,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(sphere_flux)
+        for marker in ("零面积边界扩展", "接缝", "两个极点"):
+            self.assertIn(marker, sphere_flux.group("body"))
+
     def test_reparameterization_and_orientation_contract(self):
         scalar = self.text(path(EXPECTED[2]))
         flux = self.text(path(EXPECTED[3]))
@@ -137,6 +190,8 @@ class ChapterThirtyEightTests(unittest.TestCase):
             "侧面通量", "上盘通量", "下盘通量",
         ):
             self.assertIn(marker, body)
+        self.assertIn("边界曲面", body)
+        self.assertIn(r"\partial\{x^2+y^2\le1,\ 0\le z\le1\}", body)
 
     def test_guide_and_release_surfaces(self):
         guide = self.text(CHAPTER / "index.md")
