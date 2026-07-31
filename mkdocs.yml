@@ -298,6 +298,12 @@ nav:
           - 39.2 Green 公式怎样从简单区域上的微积分基本定理得到？: chapters/chapter-39/u-09-39-02-green-theorem.md
           - 39.3 分片区域、多连通区域与边界方向怎样处理？: chapters/chapter-39/u-09-39-03-multiply-connected-green.md
           - 39.4 Green 公式怎样控制面积、环流、通量与路径无关？: chapters/chapter-39/u-09-39-04-green-applications.md
+      - 第 40 章：Gauss 公式与通量:
+          - 本章导学: chapters/chapter-40/index.md
+          - 40.1 三维散度为什么表示局部源汇密度？: chapters/chapter-40/u-09-40-01-spatial-divergence.md
+          - 40.2 Gauss 公式为什么先在长方体上成立？: chapters/chapter-40/u-09-40-02-gauss-box.md
+          - 40.3 规则区域的分片与内部通量为什么会抵消？: chapters/chapter-40/u-09-40-03-gauss-piecewise-regions.md
+          - 40.4 Gauss 公式怎样分析流量、电通量与奇点？: chapters/chapter-40/u-09-40-04-gauss-applications-singularities.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

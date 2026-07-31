@@ -38,6 +38,8 @@ class ThemeContractTests(unittest.TestCase):
             with self.subTest(css_marker=marker):
                 self.assertIn(marker, css)
         self.assertIn('[data-md-color-scheme="slate"]', css)
+        self.assertIn("overflow-wrap: anywhere", css)
+        self.assertIn("box-sizing: border-box", css)
         for marker in ("page.meta.unit_id", "page.meta.hours", "page.meta.learning_goals"):
             with self.subTest(partial_marker=marker):
                 self.assertIn(marker, partial)

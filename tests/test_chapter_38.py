@@ -199,17 +199,17 @@ class ChapterThirtyEightTests(unittest.TestCase):
             self.assertEqual(1, guide.count(f"[{row[1]}]({row[0]}-{row[4]}.md)"))
         nav = self.text(ROOT / "mkdocs.yml")
         self.assertIn("chapters/chapter-38/", nav)
-        for chapter in range(40, 42):
+        for chapter in range(41, 42):
             self.assertNotIn(f"chapters/chapter-{chapter}/", nav)
         readme = self.text(ROOT / "README.md")
-        self.assertIn("第九部第 39 章，共 177 个学习单元、323 学时", readme)
+        self.assertIn("第九部第 40 章，共 181 个学习单元、329 学时", readme)
         course_map = self.text(ROOT / "content" / "course-map.md")
         self.assertIn("第 38 章：参数曲面与曲面积分](chapters/chapter-38/index.md)", course_map)
         self.assertIn("第 39 章：Green 公式与平面场](chapters/chapter-39/index.md)", course_map)
 
     def test_dependency_map_and_review_record_release_boundary(self):
         dependencies = self.text(ROOT / "docs" / "curriculum" / "part-09-dependencies.md")
-        for marker in ("当前发布边界：第 39 章", "第 37–39 章已经发布", "第 40–41 章仍在规划中"):
+        for marker in ("当前发布边界：第 40 章", "第 37–40 章已经发布", "第 41 章仍在规划中"):
             self.assertIn(marker, dependencies)
         review = self.text(ROOT / "docs" / "reviews" / "2026-07-31-chapter-38-consistency-review.md")
         for marker in ("元数据", "依赖", "取向", "面积元", "重新参数化", "章级测试",

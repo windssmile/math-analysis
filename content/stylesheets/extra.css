@@ -50,6 +50,8 @@
 }
 
 .unit-meta {
+  box-sizing: border-box;
+  max-width: 100%;
   margin: 0 0 1.75rem;
   padding: 1.1rem 1.25rem;
   border: 1px solid var(--mathbook-outline);
@@ -79,6 +81,7 @@
 
 .unit-meta__grid ul {
   padding-left: 1.1rem;
+  overflow-wrap: anywhere;
 }
 
 .md-typeset .admonition,

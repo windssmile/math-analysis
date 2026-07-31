@@ -213,6 +213,9 @@ REQUIRED_RENDERED_ANCHORS = {
     "chapters/chapter-39/u-09-39-04-green-applications/index.html": [
         "thm-u-09-39-04-path-independence",
     ],
+    "chapters/chapter-40/u-09-40-04-gauss-applications-singularities/index.html": [
+        "ex-u-09-40-04-punctured-flux",
+    ],
     "appendices/part-08-jordan-content/index.html": [
         "appendix-part-08-jordan-content",
     ],
@@ -436,6 +439,11 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第九部：曲线、曲面与向量分析",
         "第 39 章：Green 公式与平面场",
+    ],
+    "chapters/chapter-40/u-09-40-04-gauss-applications-singularities/index.html": [
+        "md-sidebar",
+        "第九部：曲线、曲面与向量分析",
+        "第 40 章：Gauss 公式与通量",
     ],
     "appendices/part-08-jordan-content/index.html": [
         "md-sidebar",
