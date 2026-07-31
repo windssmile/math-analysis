@@ -107,9 +107,12 @@ class PartTenConsistencyTests(unittest.TestCase):
         self.assertIn("不是第 42–45 章", part9)
         self.assertIn("微分形式选读附录同样不是前置", part9)
 
-    def test_part_eleven_is_not_created(self) -> None:
-        self.assertFalse((ROOT / "content" / "chapters" / "chapter-46").exists())
-        self.assertNotIn("chapters/chapter-46/", NAVIGATION)
+    def test_part_ten_snapshot_precedes_part_eleven(self) -> None:
+        pages = list((ROOT / "content" / "chapters" / "chapter-45").glob("u-10-45-*.md"))
+        self.assertEqual(5, len(pages))
+        if "chapters/chapter-46/" in NAVIGATION:
+            self.assertLess(NAVIGATION.index("chapters/chapter-45/"),
+                            NAVIGATION.index("chapters/chapter-46/"))
 
 
 if __name__ == "__main__":
