@@ -223,6 +223,14 @@ nav:
           - 28.3 向量序列怎样收敛，有限维空间为什么完备？: chapters/chapter-28/u-07-28-03-sequences-completeness.md
           - 28.4 紧致性为什么等价于闭且有界？: chapters/chapter-28/u-07-28-04-compactness.md
           - 28.5 多元极限、连续与连通性怎样给出存在性结论？: chapters/chapter-28/u-07-28-05-limits-continuity.md
+      - 第 29 章：多元微分与导数映射:
+          - 本章导学: chapters/chapter-29/index.md
+          - 29.1 偏导数和方向导数能否保证函数可微？: chapters/chapter-29/u-07-29-01-partial-directional.md
+          - 29.2 Fréchet 微分怎样刻画最佳线性近似？: chapters/chapter-29/u-07-29-02-frechet-derivative.md
+          - 29.3 连续偏导为什么足以推出可微？: chapters/chapter-29/u-07-29-03-continuous-partials.md
+          - 29.4 导数映射怎样满足代数规则和链式法则？: chapters/chapter-29/u-07-29-04-chain-rule.md
+          - 29.5 Jacobian、梯度与条件数怎样描述敏感性？: chapters/chapter-29/u-07-29-05-jacobian-conditioning.md
+          - 29.6 怎样计算并可靠核验多元线性化？: chapters/chapter-29/u-07-29-06-linearization-check.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

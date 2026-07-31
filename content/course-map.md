@@ -201,8 +201,8 @@ title: 全书课程地图
 **问题弧：** 多变量系统能否用线性与二次对象作可靠的局部近似，并据此求解方程和
 极值问题？
 
-第七部蓝图为 25 个核心单元、44 学时（理论 33.75，应用 10.25）。当前发布第 28 章
-5 个核心单元、9 学时；未完成章节不创建正文、链接或导航。
+第七部蓝图为 25 个核心单元、44 学时（理论 33.75，应用 10.25）。当前发布第 28–29
+章 11 个核心单元、19 学时；未完成章节不创建正文、链接或导航。
 
 ### [第 28 章：Euclid 空间、极限与连续](chapters/chapter-28/index.md) {#chapter-28}
 
@@ -214,9 +214,16 @@ title: 全书课程地图
 4. [紧致性为什么等价于闭且有界？](chapters/chapter-28/u-07-28-04-compactness.md)
 5. [多元极限、连续与连通性怎样给出存在性结论？](chapters/chapter-28/u-07-28-05-limits-continuity.md)
 
-### 第 29 章：多元微分与导数映射
+### [第 29 章：多元微分与导数映射](chapters/chapter-29/index.md) {#chapter-29}
 
-规划 6 个单元、10 学时，以 Fréchet 微分统一偏导、方向导数、Jacobian 和梯度。
+本章学时：10 小时（理论 7.75，应用 2.25）。
+
+1. [偏导数和方向导数能否保证函数可微？](chapters/chapter-29/u-07-29-01-partial-directional.md)
+2. [Fréchet 微分怎样刻画最佳线性近似？](chapters/chapter-29/u-07-29-02-frechet-derivative.md)
+3. [连续偏导为什么足以推出可微？](chapters/chapter-29/u-07-29-03-continuous-partials.md)
+4. [导数映射怎样满足代数规则和链式法则？](chapters/chapter-29/u-07-29-04-chain-rule.md)
+5. [Jacobian、梯度与条件数怎样描述敏感性？](chapters/chapter-29/u-07-29-05-jacobian-conditioning.md)
+6. [怎样计算并可靠核验多元线性化？](chapters/chapter-29/u-07-29-06-linearization-check.md)
 
 ### 第 30 章：高阶微分与多元 Taylor 公式
 

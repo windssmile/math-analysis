@@ -112,14 +112,12 @@ class ChapterTwentyEightTests(unittest.TestCase):
         for marker in ("\\varepsilon", "\\delta", "序列刻画", "不同路径", "有限条路径不能证明极限存在", "连续像", "连通"):
             self.assertIn(marker, text)
 
-    def test_publication_reaches_chapter_28_only(self) -> None:
+    def test_chapter_28_remains_on_the_publication_surfaces(self) -> None:
         dependencies = self.required_text(DEPENDENCIES)
-        self.assertIn("当前发布边界：第 28 章", dependencies)
+        self.assertIn("| 第 28 章 | 5 | 7.25 | 1.75 | 9.00 | 已发布 |", dependencies)
         self.assertIn("第 28 章", (ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
-        self.assertNotIn("chapters/chapter-29/", (ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        self.assertIn("第七部第 28 章", readme)
-        self.assertIn("127 个学习单元", readme)
+        self.assertIn("第七部第 29 章", readme)
 
 
 if __name__ == "__main__":
