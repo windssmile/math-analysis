@@ -119,11 +119,24 @@ class ChapterThirtyNineTests(unittest.TestCase):
         for marker in (
             "有限条 C1 弧", "有限个交点", "有限切分",
             "有限个分片光滑 Jordan 闭路", "逐个简单环", "方向相反",
-            "重边抵消", "gamma_1*(-gamma_2)", "路径积分相等",
-            "无限自交", "不在本章已证范围",
+            "重边抵消", "路径积分相等",
+            r"围成的闭域包含于 \(D\)", "可有限分片", "39.2 条件的简单区域",
+            r"\(\gamma_1*(-\gamma_2)\)", "无限自交", "不在本章已证范围",
         ):
             self.assertIn(marker, body)
+        self.assertNotIn("\ngamma_1*(-gamma_2) 属于", body)
         self.assertNotIn("每条分片光滑闭路都可用有限分片区域", body)
+
+        for number in (3, 11):
+            answer = re.search(
+                rf"### 习题 {number} \{{#pr-u-09-39-04-{number:02d}\}}"
+                rf"(?P<body>.*?)"
+                rf"(?=\n### 习题|\Z)",
+                text,
+                re.S,
+            )
+            self.assertIsNotNone(answer)
+            self.assertIn("本章允许", answer.group("body"))
 
     def test_guide_and_release_surfaces(self):
         guide = self.text(CHAPTER / "index.md")
