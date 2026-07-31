@@ -33,7 +33,6 @@ PART_09_UNITS = [
 ]
 
 CHAPTER_TITLES = [
-    "第 39 章：Green 公式与平面场（规划中）",
     "第 40 章：Gauss 公式与通量（规划中）",
     "第 41 章：Stokes 公式与三大公式的统一（规划中）",
 ]
@@ -67,19 +66,21 @@ class PartNineConsistencyTests(unittest.TestCase):
 
     def test_blueprint_tracks_current_release_boundary(self) -> None:
         text = self.required_text(DEPENDENCIES)
-        self.assertIn("当前发布边界：第 38 章", text)
+        self.assertIn("当前发布边界：第 39 章", text)
         self.assertIn("21 个核心单元、32 学时", text)
         chapters = ROOT / "content" / "chapters"
         self.assertIn("chapters/chapter-37/", NAVIGATION)
         self.assertIn("chapters/chapter-38/", NAVIGATION)
+        self.assertIn("chapters/chapter-39/", NAVIGATION)
         self.assertEqual(4, len(list((chapters / "chapter-37").glob("u-09-*.md"))))
         self.assertEqual(4, len(list((chapters / "chapter-38").glob("u-09-*.md"))))
-        for chapter in range(39, 42):
+        self.assertEqual(4, len(list((chapters / "chapter-39").glob("u-09-*.md"))))
+        for chapter in range(40, 42):
             with self.subTest(chapter=chapter):
                 self.assertNotIn(f"chapters/chapter-{chapter:02d}/", NAVIGATION)
                 chapter_dir = chapters / f"chapter-{chapter:02d}"
                 self.assertEqual([], list(chapter_dir.rglob("*.md")))
-        self.assertEqual(8, len(list(chapters.rglob("u-09-*.md"))))
+        self.assertEqual(12, len(list(chapters.rglob("u-09-*.md"))))
 
     def test_optional_appendix_is_not_core(self) -> None:
         text = self.required_text(DEPENDENCIES)
@@ -89,9 +90,10 @@ class PartNineConsistencyTests(unittest.TestCase):
         text = self.required_text(COURSE_MAP)
         self.assertEqual(1, text.count("[第 37 章：参数曲线与曲线积分](chapters/chapter-37/index.md)"))
         self.assertEqual(1, text.count("[第 38 章：参数曲面与曲面积分](chapters/chapter-38/index.md)"))
+        self.assertEqual(1, text.count("[第 39 章：Green 公式与平面场](chapters/chapter-39/index.md)"))
         for heading in CHAPTER_TITLES:
             self.assertEqual(1, text.count(heading), heading)
-        for unit_id, title, theory, applied in PART_09_UNITS[8:]:
+        for unit_id, title, theory, applied in PART_09_UNITS[12:]:
             pattern = (
                 rf"^\d+\. `{re.escape(unit_id)}` {re.escape(title)}"
                 rf"（理论 {theory:.2f}，应用 {applied:.2f}）$"

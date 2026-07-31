@@ -292,6 +292,12 @@ nav:
           - 38.2 曲面面积元为什么由叉积的模给出？: chapters/chapter-38/u-09-38-02-surface-area-element.md
           - 38.3 第一类曲面积分怎样累积曲面上的标量分布？: chapters/chapter-38/u-09-38-03-scalar-surface-integral.md
           - 38.4 通量积分怎样依赖参数化与曲面取向？: chapters/chapter-38/u-09-38-04-flux-integral.md
+      - 第 39 章：Green 公式与平面场:
+          - 本章导学: chapters/chapter-39/index.md
+          - 39.1 平面场的散度与旋度怎样描述局部变化？: chapters/chapter-39/u-09-39-01-planar-divergence-curl.md
+          - 39.2 Green 公式怎样从简单区域上的微积分基本定理得到？: chapters/chapter-39/u-09-39-02-green-theorem.md
+          - 39.3 分片区域、多连通区域与边界方向怎样处理？: chapters/chapter-39/u-09-39-03-multiply-connected-green.md
+          - 39.4 Green 公式怎样控制面积、环流、通量与路径无关？: chapters/chapter-39/u-09-39-04-green-applications.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
