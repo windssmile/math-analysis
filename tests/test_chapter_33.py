@@ -78,7 +78,7 @@ class ChapterThirtyThreeTests(unittest.TestCase):
             "曲面片需要",
             "有限片合并",
             "{#thm-u-08-33-04-zero-extension}",
-            "共同细分",
+            "正余量",
             "边界格的振幅贡献",
         )
         positions = []
@@ -89,9 +89,27 @@ class ChapterThirtyThreeTests(unittest.TestCase):
         for estimate in (
             "\\[\nN_h\\le C h^{-(d-1)}",
             r"N_h(Ch)^d\le C' h.",
-            "\\[\n2M\\operatorname{vol}(U)<\\varepsilon/2.\n\\]",
+            r"\le 2M\operatorname{vol}(U)<\varepsilon/2.",
         ):
             self.assertIn(estimate, text)
+
+    def test_zero_extension_proof_leaves_margin_around_every_boundary_cell(self) -> None:
+        text = self.required_text(unit_path(EXPECTED_UNITS[3]))
+        ordered_margin_steps = (
+            r"\operatorname{vol}(U_0)<\eta/2",
+            "逐盒膨胀",
+            r"\operatorname{vol}(U)<\eta",
+            r"\gamma=\operatorname{dist}(\partial D,\mathbb R^d\setminus U)>0",
+            r"\operatorname{diam}(Q)<\gamma",
+            r"Q\cap\partial D\ne\varnothing",
+            r"Q\subset U",
+            "所有边界格",
+        )
+        positions = []
+        for marker in ordered_margin_steps:
+            self.assertIn(marker, text)
+            positions.append(text.index(marker))
+        self.assertEqual(sorted(positions), positions)
 
 
 if __name__ == "__main__":

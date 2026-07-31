@@ -80,23 +80,39 @@ N_h\le C h^{-(d-1)},\qquad N_h(Ch)^d\le C' h.
 \(\overline D\) 上连续。则 \(f\) 在外包长方体 \(R\) 上的零延拓
 \(\widetilde f\) Riemann 可积。
 
-**证明。** 由紧致性，\(f\) 有界，记 \(M=\max_{\overline D}|f|\)，且一致连续。给定
-\(\varepsilon>0\)，先用薄盒引理覆盖 \(\partial D\)，并令覆盖并 \(U\) 满足
+**证明。** 由紧致性，\(f\) 有界，记 \(M=\max_{\overline D}|f|\)，且一致连续。若
+\(M=0\)，零延拓恒为零，结论显然。以下设 \(M>0\)。给定 \(\varepsilon>0\)，令
+\(\eta=\varepsilon/(4M)\)。先用薄盒引理取有限闭盒覆盖并 \(U_0\)，使
 \[
-2M\operatorname{vol}(U)<\varepsilon/2.
+\operatorname{vol}(U_0)<\eta/2.
 \]
-把这些盒的所有坐标端点与 \(R\) 的一个足够细网格做**共同细分**。细分后每个小盒
-或者包含在 \(U\) 中，或者不碰 \(\partial D\)；后一类小盒的内部全在 \(D\) 中或全在
-\(R\setminus D\) 中。
+
+这里不能直接断言 \(U_0\) 外的闭网格不碰边界，因为相邻闭格会共享覆盖盒端点。对有限
+个覆盖盒**逐盒膨胀**：每个坐标方向向外增加同一个足够小的正量。有限盒总体积随膨胀量
+连续变化，所以可使膨胀后的开盒并 \(U\) 仍满足
+\[
+\partial D\subset U,\qquad \operatorname{vol}(U)<\eta.
+\]
+\(\partial D\) 是紧集而 \(\mathbb R^d\setminus U\) 是与它不交的闭集，故有正余量
+\[
+\gamma=\operatorname{dist}(\partial D,\mathbb R^d\setminus U)>0.
+\]
+
+现在取 \(R\) 的轴对齐网格，使每个闭格 \(Q\) 都有
+\(\operatorname{diam}(Q)<\gamma\)。若 \(Q\cap\partial D\ne\varnothing\)，从交点到
+\(Q\) 中任一点的距离都小于 \(\gamma\)，所以 \(Q\subset U\)。因此**所有边界格**都
+整体落在同一个可控的加厚覆盖中；其余格不碰 \(\partial D\)，其内部全在 \(D\) 中或
+全在 \(R\setminus D\) 中。
 
 在不碰边界且位于 \(D\) 内的小盒上，一致连续性使 \(f\) 的振幅小于
 \(\varepsilon/(2\operatorname{vol}(R))\)；位于 \(D\) 外的小盒上零延拓振幅为零。
 边界格的振幅贡献至多
 \[
-\sum_{Q\subset U}\operatorname{osc}_Q(\widetilde f)\operatorname{vol}(Q)
+\sum_{Q\cap\partial D\ne\varnothing}
+\operatorname{osc}_Q(\widetilde f)\operatorname{vol}(Q)
 \le 2M\operatorname{vol}(U)<\varepsilon/2.
 \]
-其余格的贡献小于 \(\varepsilon/2\)。所以这次共同细分的 Darboux 上下和之差小于
+其余格的贡献小于 \(\varepsilon/2\)。所以这个网格分割的 Darboux 上下和之差小于
 \(\varepsilon\)，零延拓 Riemann 可积。\(\square\)
 
 该证明同时说明外包矩形无关：把两个外包盒放进同一个更大盒，新增部分上的零延拓恒为
