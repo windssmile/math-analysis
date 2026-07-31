@@ -53,15 +53,15 @@ class ChapterThirtyFiveTests(unittest.TestCase):
     def test_change_of_variables_proof_has_all_classical_riemann_steps(self):
         text = self.text(path(EXPECTED[1]))
         ordered_structure = (
-            "有限矩形并或常用 Jordan 型参数域",
+            "有限矩形并的内部或常用 Jordan 型",
             "假设 | 在证明中的用途",
             "{#lem-u-08-35-02-uniform-box-volume}",
             "紧内部的一致线性化",
             "线性像的体积",
             "余项的外包与内包",
-            "像块不重叠与共同细分",
+            "规则立方网格选出固定内核",
             "被积函数与 Jacobian 的振幅控制",
-            "从紧内部回到全域",
+            "从固定内核回到全域",
         )
         positions = []
         for marker in ordered_structure:
@@ -75,6 +75,67 @@ class ChapterThirtyFiveTests(unittest.TestCase):
             r"\omega_f(Ch)+\|f\|_\infty\omega_J(h)",
         ):
             self.assertIn(formula, text)
+
+    def test_change_of_variables_uses_only_regular_cubes_and_charges_omissions(self):
+        text = self.text(path(EXPECTED[1])).split("### 换元定理的 Riemann 和证明", 1)[1]
+        self.assertNotIn("覆盖盒坐标端点与边长", text)
+        ordered = (
+            "规则立方网格",
+            r"Q_0\cap\partial G\ne\varnothing",
+            "所有未保留格",
+            r"\operatorname{vol}(G\setminus K)<C\eta",
+        )
+        positions = []
+        for marker in ordered:
+            self.assertIn(marker, text)
+            positions.append(text.index(marker))
+        self.assertEqual(sorted(positions), positions)
+
+    def test_change_of_variables_first_exhausts_a_fixed_inner_core(self):
+        text = self.text(path(EXPECTED[1])).split("### 换元定理的 Riemann 和证明", 1)[1]
+        ordered = (
+            r"K=\bigcup_{Q_0\in\mathcal K_0}Q_0\Subset G",
+            r"固定这个 \(K\)",
+            r"K=\bigcup_{Q\in\mathcal K_h}Q",
+            r"h\to0",
+            r"\int_{T(K)}f=\int_K(f\circ T)J",
+            r"\eta\to0",
+        )
+        positions = []
+        for marker in ordered:
+            self.assertIn(marker, text)
+            positions.append(text.index(marker))
+        self.assertEqual(sorted(positions), positions)
+
+    def test_change_of_variables_samples_each_cube_at_its_center(self):
+        text = self.text(path(EXPECTED[1])).split("### 换元定理的 Riemann 和证明", 1)[1]
+        center = r"a_Q=\operatorname{center}(Q)"
+        local_volume = r"J(a_Q)\operatorname{vol}(Q)"
+        uniform_error = r"o_h(\operatorname{vol}(Q))"
+        self.assertIn(center, text)
+        self.assertIn(local_volume, text)
+        self.assertIn(uniform_error, text)
+        self.assertLess(text.index(center), text.index(local_volume))
+        self.assertLess(text.index(local_volume), text.index(uniform_error))
+
+    def test_target_boundary_is_derived_from_ift_and_compactness(self):
+        text = self.text(path(EXPECTED[1])).split("### 换元定理的 Riemann 和证明", 1)[1]
+        ordered = (
+            r"u\in G",
+            "反函数定理",
+            r"T(u)\in\operatorname{int}D",
+            r"y_n=T(u_n)\to y",
+            r"u_{n_k}\to\bar u\in\overline G",
+            r"y=T(\bar u)",
+            r"\bar u\in\partial G",
+            r"\partial D\subset T(\partial G)",
+            "目标边界的零延拓",
+        )
+        positions = []
+        for marker in ordered:
+            self.assertIn(marker, text)
+            positions.append(text.index(marker))
+        self.assertEqual(sorted(positions), positions)
 
 if __name__ == "__main__":
     unittest.main()
