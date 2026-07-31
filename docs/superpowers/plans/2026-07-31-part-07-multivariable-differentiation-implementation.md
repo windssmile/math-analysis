@@ -512,7 +512,7 @@ Require:
 
 - [ ] **Step 6: Publish, verify, review, and commit**
 
-Advance publication to Chapter 32, 147 units, and 273 total published hours. Mark Part VII complete
+Advance publication to Chapter 32, 150 units, and 273 total published hours. Mark Part VII complete
 at 25 units and 44 hours; do not add Chapter 33. Run:
 
 ```bash
@@ -540,7 +540,7 @@ self.assertEqual(25, len(list((ROOT / "content/chapters").glob("chapter-2[89]/u-
     + len(list((ROOT / "content/chapters").glob("chapter-3[0-2]/u-07-*.md"))))
 self.assertNotIn("chapter-33", (ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
 self.assertIn("第七部（第 28–32 章）已经完整发布", README)
-self.assertIn("147 个学习单元", README)
+self.assertIn("150 个学习单元", README)
 ```
 
 Also assert exact 33.75/10.25/44 totals from page metadata, every algorithm page imports its unique

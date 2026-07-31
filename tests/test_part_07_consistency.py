@@ -85,7 +85,7 @@ class PartSevenConsistencyTests(unittest.TestCase):
         paths += list((ROOT / "content" / "chapters").glob("chapter-3[0-2]/u-07-*.md"))
         self.assertEqual(25, len(paths))
         self.assertIn("第七部（第 28–32 章）已经完整发布", README)
-        self.assertIn("147 个学习单元", README)
+        self.assertIn("150 个学习单元", README)
         theory = applied = 0.0
         by_id = {}
         for path in paths:

@@ -174,7 +174,7 @@ class ChapterTwentyThreeTests(unittest.TestCase):
         self.assertIn("当前发布边界：第 27 章", dependencies)
         self.assertIn("第六部 24 个核心单元、42 学时已全部发布", dependencies)
         readme = self.required_text(ROOT / "README.md")
-        self.assertIn("第六部第 27 章，共 122 个学习单元", readme)
+        self.assertIn("第六部第 27 章，共 125 个学习单元", readme)
         config = self.required_text(ROOT / "mkdocs.yml")
         self.assertIn("第六部：无穷级数与函数逼近", config)
         self.assertIn("第 23 章：数项级数的收敛与正项判别", config)

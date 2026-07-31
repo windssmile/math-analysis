@@ -86,6 +86,6 @@ class ChapterTwentySevenTests(unittest.TestCase):
         dependencies = self.required_text(DEPENDENCIES)
         self.assertIn("当前发布边界：第 27 章", dependencies)
         self.assertIn("24 个核心单元、42 学时", dependencies)
-        self.assertIn("第六部第 27 章，共 122 个学习单元", self.required_text(ROOT / "README.md"))
+        self.assertIn("第六部第 27 章，共 125 个学习单元", self.required_text(ROOT / "README.md"))
         self.assertIn("第 27 章：多项式逼近与误差控制", self.required_text(ROOT / "mkdocs.yml"))
 

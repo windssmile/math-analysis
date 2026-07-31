@@ -149,7 +149,7 @@ class ChapterTwentyFiveTests(unittest.TestCase):
         self.assertIn("当前发布边界：第 27 章", dependencies)
         self.assertIn("24 个核心单元、42 学时", dependencies)
         readme = self.required_text(ROOT / "README.md")
-        self.assertIn("第六部第 27 章，共 122 个学习单元", readme)
+        self.assertIn("第六部第 27 章，共 125 个学习单元", readme)
         config = self.required_text(ROOT / "mkdocs.yml")
         self.assertIn("第 25 章：函数列、函数项级数与一致收敛", config)
         self.assertIn("chapters/chapter-27/", config)

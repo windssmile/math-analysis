@@ -308,7 +308,7 @@ class ChapterTwentyTests(unittest.TestCase):
         )
         self.assertIn("第 20 章：微积分基本定理", config)
         self.assertIn("本章学时：8 小时（理论 5.25，应用 2.75）。", course_map)
-        self.assertIn("第六部第 27 章，共 122 个学习单元", readme)
+        self.assertIn("第六部第 27 章，共 125 个学习单元", readme)
         navigation_positions = []
         map_positions = []
         for unit_id, title, _theory, _applied, suffix, _exercises, _answers in EXPECTED_UNITS:

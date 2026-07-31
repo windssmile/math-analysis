@@ -81,7 +81,7 @@ class ChapterThirtyTwoTests(unittest.TestCase):
         self.assertIn("chapters/chapter-32/", config)
         readme = self.required_text(ROOT / "README.md")
         self.assertIn("第七部已经完整发布", readme)
-        self.assertIn("147 个学习单元", readme)
+        self.assertIn("150 个学习单元", readme)
         dependencies = self.required_text(ROOT / "docs" / "curriculum" / "part-07-dependencies.md")
         self.assertIn("当前发布边界：第 32 章", dependencies)
         self.assertIn("25 个核心单元、44 学时", dependencies)

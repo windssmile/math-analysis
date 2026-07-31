@@ -36,8 +36,7 @@ Totals: 4 units, 3.5 theory hours, 3.5 application hours, 7 hours, 38 exercises,
 ## Engineering and publication
 
 - Add `src/mathbook_examples/approximation.py` and `tests/test_approximation.py`.
-- Move release boundary to all of Part VI: 24 units, 42 hours, 122 total units.
+- Move release boundary to all of Part VI: 24 units, 42 hours, 125 total units.
 - Add Chapter 27 navigation and representative rendered checks.
 - Run all gates, audit Chapter 27, then perform a separate full Part VI dependency, proof,
   pedagogy, publication, and rendered-site audit.
-

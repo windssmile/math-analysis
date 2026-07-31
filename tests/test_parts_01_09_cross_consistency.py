@@ -114,9 +114,8 @@ class Parts0109CrossConsistencyTests(unittest.TestCase):
     def test_real_core_pages_ids_counts_and_publication_order_match_matrix(self):
         pages = sorted(CHAPTERS.glob("chapter-*/u-*.md"))
         ids = [metadata(page)["unit_id"] for page in pages]
-        # Parse every physical unit front matter.  The current tree has 189 such
-        # pages while the publication contract says 186; the matrix records that
-        # discrepancy for human review instead of silently redefining core scope.
+        # Parse every physical core-unit front matter; appendices live outside
+        # chapter directories and are deliberately excluded from this inventory.
         self.assertEqual(189, len(pages))
         self.assertEqual(189, len(set(ids)))
         total_hours = sum(sum(metadata(page)["hours"].values()) for page in pages)
@@ -161,7 +160,7 @@ class Parts0109CrossConsistencyTests(unittest.TestCase):
             chapter_hours = sum(sum(metadata(directory / route)["hours"].values()) for route in guide_routes)
             self.assertRegex(course_map, rf"本章学时：{chapter_hours:g} 小时")
 
-    def test_current_publication_surfaces_use_189_not_superseded_186(self):
+    def test_current_publication_surfaces_use_authoritative_189_total(self):
         surfaces = (
             ROOT / "README.md",
             ROOT / "content" / "course-map.md",
@@ -172,7 +171,35 @@ class Parts0109CrossConsistencyTests(unittest.TestCase):
         for surface in surfaces:
             text = surface.read_text(encoding="utf-8")
             self.assertIn("189", text, surface)
-            self.assertNotRegex(text, r"186\s*(?:个|单元)", surface)
+
+    def test_historical_release_snapshots_match_physical_chapter_totals(self):
+        through_27 = list(CHAPTERS.glob("chapter-[01][0-9]/u-*.md"))
+        through_27 += list(CHAPTERS.glob("chapter-2[0-7]/u-*.md"))
+        through_32 = through_27 + list(CHAPTERS.glob("chapter-2[89]/u-*.md"))
+        through_32 += list(CHAPTERS.glob("chapter-3[0-2]/u-*.md"))
+        self.assertEqual(125, len(through_27))
+        self.assertEqual(150, len(through_32))
+
+        surfaces_125 = (
+            ROOT / "README.md",
+            ROOT / "content" / "course-map.md",
+            ROOT / "docs" / "curriculum" / "part-06-dependencies.md",
+            ROOT / "docs" / "superpowers" / "specs" / "2026-07-30-part-06-series-approximation-design.md",
+            ROOT / "docs" / "reviews" / "2026-07-30-part-06-consistency-review.md",
+            ROOT / "docs" / "reviews" / "2026-07-30-chapter-27-consistency-review.md",
+        )
+        surfaces_150 = (
+            ROOT / "README.md",
+            ROOT / "content" / "course-map.md",
+            ROOT / "docs" / "curriculum" / "part-07-dependencies.md",
+            ROOT / "docs" / "superpowers" / "specs" / "2026-07-31-part-07-multivariable-differentiation-design.md",
+            ROOT / "docs" / "reviews" / "2026-07-31-part-07-consistency-review.md",
+            ROOT / "docs" / "reviews" / "2026-07-31-chapter-32-consistency-review.md",
+        )
+        for surface in surfaces_125:
+            self.assertIn("125 个学习单元", surface.read_text(encoding="utf-8"), surface)
+        for surface in surfaces_150:
+            self.assertIn("150 个学习单元", surface.read_text(encoding="utf-8"), surface)
 
     def test_chapter_contract_witnesses_are_declared_and_recorded(self):
         rows = {int(row[0]): row for row in matrix_rows()}

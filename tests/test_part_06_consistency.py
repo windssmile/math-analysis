@@ -51,8 +51,8 @@ class PartSixConsistencyTests(unittest.TestCase):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
         self.assertIn("第六部 24 个核心单元、42 学时已全部发布", dependencies)
-        self.assertIn("第六部第 27 章，共 122 个学习单元", readme)
-        self.assertIn("第 27 章，共 122 个学习单元", course_map)
+        self.assertIn("第六部第 27 章，共 125 个学习单元", readme)
+        self.assertIn("第 27 章，共 125 个学习单元", course_map)
         for unit_id in (f"u-06-{chapter:02d}-{unit:02d}" for chapter, count in ((23, 5), (24, 5), (25, 5), (26, 5), (27, 4)) for unit in range(1, count + 1)):
             self.assertEqual(1, dependencies.count(f"`{unit_id}`"))
 
