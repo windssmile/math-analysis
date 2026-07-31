@@ -63,4 +63,5 @@
 
 第十部 20 个核心页面共登记 197 道稳定锚点习题和 239 个折叠答案。两个公开数值函数
 `gamma_integral` 与 `beta_integral` 只在 `src/mathbook_examples/parametric_integrals.py`
-定义；教材页面只导入调用。第十一部第 46 章尚未创建。
+定义；教材页面只导入调用。第十一部第 46–50 章现已发布，并在 MCT、Fatou、DCT 中
+以测度论假设取代本部的经典一致控制条件。

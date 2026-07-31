@@ -1,5 +1,6 @@
 from pathlib import Path
 import unittest
+import yaml
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -86,6 +87,36 @@ class PartElevenConsistencyTests(unittest.TestCase):
     def test_part_twelve_is_not_created(self) -> None:
         self.assertFalse((ROOT / "content" / "chapters" / "chapter-51").exists())
         self.assertNotIn("chapters/chapter-51/", NAVIGATION)
+
+    def test_final_release_has_exact_pages_hours_navigation_and_reviews(self) -> None:
+        pages = sorted((ROOT / "content" / "chapters").glob("chapter-4[6-9]/u-11-*.md"))
+        pages += sorted((ROOT / "content" / "chapters" / "chapter-50").glob("u-11-*.md"))
+        self.assertEqual(25, len(pages))
+        ids, theory, applied = [], 0.0, 0.0
+        for page in pages:
+            text = page.read_text(encoding="utf-8")
+            meta = yaml.safe_load(text.split("---\n", 2)[1])
+            ids.append(meta["unit_id"]); theory += meta["hours"]["theory"]; applied += meta["hours"]["applied"]
+            self.assertEqual(1, NAVIGATION.count(f"chapters/{page.parent.name}/{page.name}"))
+        self.assertEqual((25, 25, 31.0, 7.0), (len(ids), len(set(ids)), theory, applied))
+        for chapter in range(46, 51):
+            self.assertTrue((ROOT / "docs" / "reviews" / f"2026-08-01-chapter-{chapter}-consistency-review.md").is_file())
+            guide = self.required_text(ROOT / "content" / "chapters" / f"chapter-{chapter}" / "index.md")
+            self.assertIn("序章", guide)
+
+    def test_computation_sources_and_cross_part_handoffs_are_unique(self) -> None:
+        sources = list((ROOT / "src").rglob("*.py"))
+        joined = "\n".join(path.read_text(encoding="utf-8") for path in sources)
+        self.assertEqual(1, joined.count("def simple_integral("))
+        self.assertEqual(1, joined.count("def finite_cover_upper_bound("))
+        handoffs = {
+            "part-05-dependencies.md": "u-11-50-04",
+            "part-06-dependencies.md": "u-11-48-04",
+            "part-08-dependencies.md": "u-11-46-05",
+            "part-10-dependencies.md": "第 46–50 章现已发布",
+        }
+        for name, marker in handoffs.items():
+            self.assertIn(marker, self.required_text(ROOT / "docs" / "curriculum" / name))
 
 
 if __name__ == "__main__":
