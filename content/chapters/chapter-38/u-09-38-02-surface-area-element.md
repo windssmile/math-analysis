@@ -27,37 +27,75 @@ content_standard: 2
 ## 概念与理论
 
 ### 面积元定理 {#thm-u-09-38-02-area-element}
-若 \(r:D\to\mathbb R^3\) 是一一覆盖其像的 \(C^1\) 正则参数化，且边界分片光滑，
-则曲面面积定义为参数矩形像面积和的极限，并满足
+先设 \(D\) 是闭参数矩形，\(r:D\to\mathbb R^3\) 是一一覆盖其像的 \(C^1\)
+正则参数化。取 \(D\) 的**形状正则三角剖分** \(\mathcal T_h\)：最大边长为 \(h\)，
+并有与 \(h\) 无关的常数 \(\kappa\)，使每个三角形 \(T\) 的任意两边长之积不超过
+\(\kappa\operatorname{area}(T)\)。把 \(T\) 的三个顶点经 \(r\) 映射，再以直线连接，
+所得**内接平面三角形**记为 \(P_T\)。定义曲面面积为
+\[
+\operatorname{Area}(S)
+:=\lim_{h\to0}\sum_{T\in\mathcal T_h}\operatorname{area}(P_T),
+\]
+只要极限存在且与上述剖分族无关。下述证明同时给出存在性、独立性和公式
 \[
 \operatorname{Area}(S)=\iint_D\|r_u\times r_v\|\,du\,dv,
 \qquad dS=\|r_u\times r_v\|\,du\,dv.
 \]
 
 ### 证明障碍
-割线小平行四边形并不在曲面上；必须同时控制局部线性化余项和相邻片拼接误差。
+不能用尚未定义的“曲面小片面积”比较线性像。必须直接比较内接平面三角形面积与
+导数线性像面积，并把逐片误差控制成可求和的 \(\operatorname{area}(T)\) 倍数。
 
 ### 证明路线
-先在紧参数矩形上用 Fréchet 微分的一致连续性统一线性化，再用第 35 章面积伸缩计算
-每个线性像，最后夹逼 Riemann 和；一般 \(D\) 由有限个参数矩形逼近。
+先对每个参数三角形的两条边写 Fréchet 局部线性化；再用叉积的双线性估计比较两个
+平面三角形面积。形状正则性把“边长乘积”换成参数三角形面积，求和后误差趋零；
+线性像面积和则是连续面积倍率的 Riemann 和。
 
 ### 逐步证明
-取网格直径 \(h\)，在每个小参数矩形 \(Q_i\) 选点 \(p_i\)。由 \(Dr\) 一致连续，
+记 \(M=\sup_D\lVert Dr\rVert<\infty\)，并令
+\(\omega(h)=\sup_{\lVert x-y\rVert\le h}\lVert Dr(x)-Dr(y)\rVert\to0\)。
+对 \(T=[a,a+e_1,a+e_2]\)，沿线段积分或用 Fréchet 微分得两个像边向量
 \[
-r(p_i+\xi)-r(p_i)=Dr(p_i)\xi+\rho_i(\xi),\quad
-\|\rho_i(\xi)\|\le \omega(h)\|\xi\|,
+r(a+e_j)-r(a)=Dr(a)e_j+\eta_j,\qquad
+\lVert\eta_j\rVert\le\omega(h)\lVert e_j\rVert,\quad j=1,2.
 \]
-其中 \(\omega(h)\to0\)。这是**关键估计**。第 35 章面积伸缩给线性像面积
-\(\|r_u(p_i)\times r_v(p_i)\|\,|Q_i|\)。正则性及导数有界使曲面片面积与此值之差
-至多 \(C\omega(h)|Q_i|\)；求和后总误差不超过 \(C\omega(h)|D|\to0\)。因此面积和
-趋于该连续函数的 Riemann 积分。
+其中 \(\eta_j\) 是线性化余项；这是边向量的关键估计。令 \(A=Dr(a)\)。由叉积的双线性，
+\[
+\begin{aligned}
+&(Ae_1+\eta_1)\times(Ae_2+\eta_2)-Ae_1\times Ae_2\\
+&=Ae_1\times\eta_2+\eta_1\times Ae_2+\eta_1\times\eta_2 .
+\end{aligned}
+\]
+再用 \(|\lVert x\rVert-\lVert y\rVert|\le\lVert x-y\rVert\)，单三角形面积差满足
+\[
+\left|\operatorname{area}(P_T)
+-\tfrac12\lVert Ae_1\times Ae_2\rVert\right|
+\le \tfrac{\kappa}{2}\bigl(2M+\omega(h)\bigr)\omega(h)
+\operatorname{area}(T).
+\]
+因此常数只依赖形状常数 \(\kappa\)、\(\sup_D\lVert Dr\rVert=M\) 与
+\(\omega(h)\)，没有引用待定义的曲面片面积。
+也可把右端写成 \(C(\kappa,\sup_D\lVert Dr\rVert,\omega(h))\omega(h)
+\operatorname{area}(T)\)。第 35 章的线性面积伸缩给
+\[
+\tfrac12\lVert Ae_1\times Ae_2\rVert
+=\lVert r_u(a)\times r_v(a)\rVert\operatorname{area}(T).
+\]
+对全部 \(T\) 求和，累计误差至多
+\(\frac{\kappa}{2}(2M+\omega(h))\omega(h)\operatorname{area}(D)\to0\)；
+右侧线性像面积和是连续函数 \(\lVert r_u\times r_v\rVert\) 的 Riemann 和，故收敛到
+所述积分。由于任一形状常数统一有界的剖分族都逼近同一积分，定义的极限与剖分无关。
 
 ### 假设位置
-\(C^1\) 与紧性给 \(Dr\) 一致连续；正则性给正的局部面积倍率；一一覆盖避免重复计数；
-分片光滑边界使参数矩形逼近的边缘面积趋零。
+\(C^1\) 与紧性给 \(M<\infty\) 和 \(Dr\) 一致连续；形状正则性把
+\(\lVert e_1\rVert\lVert e_2\rVert\) 控制为 \(\operatorname{area}(T)\) 的固定倍数；
+正则性使面积倍率处处为正；一一覆盖避免同一曲面片被重复计数。
 
 ### 边界
-退化点、无限重覆盖或非 Jordan 可积参数域不在此定理内；分片曲面逐片积分并忽略零面积公共边。
+有限个参数矩形可逐块三角剖分。一般分片曲面采用有限覆盖：每片内部一一参数化，
+不同片只允许在参数边界对应的零面积集合重合，然后逐片相加。若同一开曲面片被有限
+多重覆盖，上式按覆盖重数计数而不是几何面积；无限覆盖、退化点、非形状正则剖分或
+非 Jordan 可积参数域不在此定理内。
 
 ### 迁移
 若 \(r\circ\phi\) 是合法参数变换，则链式法则给

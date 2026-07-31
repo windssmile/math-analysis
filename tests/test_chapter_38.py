@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 import unittest
 import yaml
 
@@ -82,6 +83,25 @@ class ChapterThirtyEightTests(unittest.TestCase):
                        "参数矩形", "关键估计", "Jacobian 的绝对值", "取向符号"):
             self.assertIn(marker, text)
 
+    def test_area_element_proof_uses_non_circular_inscribed_triangulations(self):
+        text = self.text(path(EXPECTED[1]))
+        window = re.search(
+            r"### 面积元定理 \{#thm-u-09-38-02-area-element\}"
+            r"(?P<body>.*?)\n### 迁移",
+            text,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(window, "missing anchored area-element proof window")
+        body = window.group("body")
+        for marker in (
+            "形状正则三角剖分", "内接平面三角形", "定义曲面面积", "有限覆盖",
+            "边向量", "Dr(a)", "余项", "\\omega(h)", "叉积的双线性",
+            "单三角形面积差", "\\operatorname{area}(T)", "求和", "Riemann 和",
+        ):
+            self.assertIn(marker, body)
+        self.assertRegex(body, r"C[^\n]{0,100}\\sup_D\\lVert Dr\\rVert[^\n]{0,100}\\omega\(h\)")
+        self.assertNotIn("曲面片面积与此值之差", body)
+
     def test_reparameterization_and_orientation_contract(self):
         scalar = self.text(path(EXPECTED[2]))
         flux = self.text(path(EXPECTED[3]))
@@ -98,6 +118,25 @@ class ChapterThirtyEightTests(unittest.TestCase):
         self.assertIn("非零梯度", combined)
         self.assertIn("局部法向", combined)
         self.assertIn("全局可定向", combined)
+
+    def test_piecewise_cylinder_flux_checks_each_patch_orientation(self):
+        text = self.text(path(EXPECTED[3]))
+        window = re.search(
+            r"### 例 3：分片曲面的逐片核验 \{#ex-u-09-38-04-piecewise\}"
+            r"(?P<body>.*?)\n## 即时检验与回望",
+            text,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(window, "missing anchored piecewise-cylinder example")
+        body = window.group("body")
+        for marker in (
+            "侧面参数化", "0\\le\\theta\\le2\\pi", "0\\le z\\le1",
+            "s_\\theta\\times s_z", "(\\cos\\theta,\\sin\\theta,0)",
+            "上盘参数化", "0\\le\\rho\\le1", "t_\\rho\\times t_\\theta",
+            "下盘参数化", "b_\\theta\\times b_\\rho", "外法向",
+            "侧面通量", "上盘通量", "下盘通量",
+        ):
+            self.assertIn(marker, body)
 
     def test_guide_and_release_surfaces(self):
         guide = self.text(CHAPTER / "index.md")

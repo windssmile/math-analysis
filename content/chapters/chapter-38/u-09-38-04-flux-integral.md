@@ -60,9 +60,26 @@ content_standard: 2
 对 \(F(x)=x\)，有 \(F\cdot n=1\)，通量为 \(4\pi\)。极点为零面积边界，不影响积分。
 
 ### 例 3：分片曲面的逐片核验 {#ex-u-09-38-04-piecewise}
-单位圆柱侧面与上下圆盘组成分片曲面，均取向外。对 \(F=(0,0,1)\)，侧面法向水平，
-通量为 0；上盘法向 \((0,0,1)\) 给 \(\pi\)，下盘法向 \((0,0,-1)\) 给 \(-\pi\)，
-逐片相加为 0。每片都显式写出了法向，未用后续定理。
+单位闭圆柱 \(x^2+y^2\le1,\ 0\le z\le1\) 分成三片，对 \(F=(0,0,1)\) 均取外法向。
+
+- **侧面参数化：**
+  \(s(\theta,z)=(\cos\theta,\sin\theta,z)\)，参数范围
+  \(0\le\theta\le2\pi,\ 0\le z\le1\)。
+  \(s_\theta\times s_z=(\cos\theta,\sin\theta,0)\)，正是径向外法向，故侧面通量
+  \(\int_0^1\int_0^{2\pi}F(s)\cdot(s_\theta\times s_z)\,d\theta dz=0\)。
+- **上盘参数化：**
+  \(t(\rho,\theta)=(\rho\cos\theta,\rho\sin\theta,1)\)，参数范围
+  \(0\le\rho\le1,\ 0\le\theta\le2\pi\)。
+  \(t_\rho\times t_\theta=(0,0,\rho)\) 向上，正是上盘外法向，故上盘通量
+  \(\int_0^{2\pi}\int_0^1\rho\,d\rho d\theta=\pi\)。
+- **下盘参数化：**
+  \(b(\theta,\rho)=(\rho\cos\theta,\rho\sin\theta,0)\)，特意调整参数顺序，范围为
+  \(0\le\theta\le2\pi,\ 0\le\rho\le1\)。
+  \(b_\theta\times b_\rho=(0,0,-\rho)\) 向下，正是下盘外法向，故下盘通量
+  \(\int_0^1\int_0^{2\pi}(-\rho)\,d\theta d\rho=-\pi\)。
+
+三片相加为 \(0+\pi-\pi=0\)。这里逐片写明参数化、参数范围、叉积及外法向核验，
+并通过下盘调整顺序取得正确符号，未用后续定理。
 
 ## 即时检验与回望
 ### 即时检验 1
