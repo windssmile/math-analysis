@@ -75,15 +75,13 @@ class ChapterTwentyNineTests(unittest.TestCase):
         for marker in ("截断误差", "舍入误差", "数值吻合", "不能证明 Fréchet 可微"):
             self.assertIn(marker, text)
 
-    def test_publication_reaches_chapter_29_only(self) -> None:
+    def test_chapter_29_remains_on_the_publication_surfaces(self) -> None:
         config = self.required_text(ROOT / "mkdocs.yml")
         self.assertIn("chapters/chapter-29/", config)
-        self.assertNotIn("chapters/chapter-30/", config)
         readme = self.required_text(ROOT / "README.md")
-        self.assertIn("第七部第 29 章", readme)
-        self.assertIn("133 个学习单元", readme)
+        self.assertIn("第七部第 30 章", readme)
         dependencies = self.required_text(ROOT / "docs" / "curriculum" / "part-07-dependencies.md")
-        self.assertIn("当前发布边界：第 29 章", dependencies)
+        self.assertIn("| 第 29 章 | 6 | 7.75 | 2.25 | 10.00 | 已发布 |", dependencies)
 
 
 if __name__ == "__main__":

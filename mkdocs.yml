@@ -231,6 +231,12 @@ nav:
           - 29.4 导数映射怎样满足代数规则和链式法则？: chapters/chapter-29/u-07-29-04-chain-rule.md
           - 29.5 Jacobian、梯度与条件数怎样描述敏感性？: chapters/chapter-29/u-07-29-05-jacobian-conditioning.md
           - 29.6 怎样计算并可靠核验多元线性化？: chapters/chapter-29/u-07-29-06-linearization-check.md
+      - 第 30 章：高阶微分与多元 Taylor 公式:
+          - 本章导学: chapters/chapter-30/index.md
+          - 30.1 二阶微分和 Hessian 为什么是双线性对象？: chapters/chapter-30/u-07-30-01-second-derivative.md
+          - 30.2 高阶微分和多重指标怎样组织混合偏导？: chapters/chapter-30/u-07-30-02-higher-derivatives.md
+          - 30.3 多元 Taylor 公式怎样给出可证明的余项？: chapters/chapter-30/u-07-30-03-multivariable-taylor.md
+          - 30.4 二次模型怎样支持误差界和敏感性分析？: chapters/chapter-30/u-07-30-04-quadratic-models.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
