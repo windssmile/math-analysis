@@ -91,6 +91,24 @@ class ChapterThirtySevenTests(unittest.TestCase):
         for marker in ("元数据", "依赖", "取向", "重新参数化", "路径无关", "第 38–41 章"):
             self.assertIn(marker, review)
 
+    def test_arc_length_and_reparameterization_proofs_are_complete(self):
+        scalar = self.text(path(EXPECTED[1]))
+        reparameterization = self.text(path(EXPECTED[3]))
+        for marker in ("### 证明障碍", "### 证明路线", "### 逐步证明", "### 假设位置",
+                       "### 边界", "### 迁移"):
+            self.assertIn(marker, scalar)
+        for marker in ("折线和上界", "一致连续", "分割逼近", "保向情形", "反向情形",
+                       "换元公式只要求", "保持正则参数化还要求", "每个光滑段", "不为零"):
+            self.assertIn(marker, scalar)
+        for marker in ("保持正则参数化还要求", "每个光滑段", "不为零", "递增", "递减"):
+            self.assertIn(marker, reparameterization)
+
+    def test_review_records_green_gates(self):
+        review = self.text(ROOT / "docs" / "reviews" / "2026-07-31-chapter-37-consistency-review.md")
+        for marker in ("章级测试", "part_09", "test_zensical_structure", "check_content.py",
+                       "zensical build --strict", "check_site.py", "git diff --check", "通过"):
+            self.assertIn(marker, review)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -18,3 +18,13 @@
 
 导航只加入第 37 章；课程地图、README 与依赖图同步到同一边界。第 38–41 章仍为
 规划状态且没有正文或导航。正文证明不以 Green、Gauss 或 Stokes 公式为前提。
+
+## 验证与绿门
+
+- 章级测试：`python3.12 -m unittest tests.test_chapter_37 -v`，通过。
+- 发布一致性与结构：`python3.12 -m unittest tests.test_part_09_consistency tests.test_zensical_structure -v`，通过。
+- 内容合同：`python3.12 scripts/check_content.py`，通过。
+- 严格构建：`zensical build --strict`，通过。
+- 站点成品：`python3.12 scripts/check_site.py`，通过。
+- 补丁格式：`git diff --check`，通过。
+- 全量绿门：`make verify`，365 项测试及后续检查通过。
