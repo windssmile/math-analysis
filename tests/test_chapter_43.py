@@ -117,7 +117,6 @@ class ChapterFortyThreeTests(unittest.TestCase):
                 self.assertNotIn(r"\(", body)
                 self.assertNotIn(r"\)", body)
         self.assertIn("8 学时（理论 6.00，应用 2.00）", guide)
-        self.assertNotIn("chapters/chapter-44/", NAVIGATION)
 
 
 if __name__ == "__main__":

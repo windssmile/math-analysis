@@ -56,14 +56,14 @@ class PartTenConsistencyTests(unittest.TestCase):
 
     def test_blueprint_starts_after_part_nine(self) -> None:
         text = self.required_text(DEPENDENCIES)
-        self.assertIn("当前发布边界：第 43 章", text)
+        self.assertIn("当前发布边界：第 44 章", text)
         self.assertIn("20 个核心单元、30 学时", text)
         self.assertIn("chapters/chapter-42/", NAVIGATION)
 
     def test_course_map_records_planned_part(self) -> None:
         text = self.required_text(COURSE_MAP)
         self.assertIn("## 第十部：含参变量积分", text)
-        self.assertIn("第 42–43 章已发布，第 44–45 章规划中", text)
+        self.assertIn("第 42–44 章已发布，第 45 章规划中", text)
         for unit_id, title, _, _ in PART_10_UNITS:
             with self.subTest(unit_id=unit_id):
                 self.assertIn(title, text)

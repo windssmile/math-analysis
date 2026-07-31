@@ -327,6 +327,13 @@ nav:
           - 43.3 积分端点随参数变化时，边界项从哪里产生？: chapters/chapter-43/u-10-43-03-variable-endpoints-leibniz.md
           - 43.4 对参数再积分时，怎样通过经典 Fubini 交换次序？: chapters/chapter-43/u-10-43-04-parameter-integration-fubini.md
           - 43.5 可固定化的移动区域怎样化为固定区域问题？: chapters/chapter-43/u-10-43-05-fixed-domain-transform.md
+      - 第 44 章：含参反常积分的一致收敛:
+          - 本章导学: chapters/chapter-44/index.md
+          - 44.1 含参反常积分的一致收敛应怎样定义？: chapters/chapter-44/u-10-44-01-uniform-improper-definition.md
+          - 44.2 一致 Cauchy 判据怎样把尾部转化为可检查条件？: chapters/chapter-44/u-10-44-02-uniform-cauchy-criterion.md
+          - 44.3 Weierstrass、Dirichlet 与 Abel 型判据怎样控制参数族？: chapters/chapter-44/u-10-44-03-uniform-convergence-tests.md
+          - 44.4 连续性、极限与参数积分何时可同反常积分交换？: chapters/chapter-44/u-10-44-04-improper-exchange.md
+          - 44.5 积分号下求导何时成立，反例揭示哪些条件缺口？: chapters/chapter-44/u-10-44-05-improper-differentiation.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

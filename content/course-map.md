@@ -4,8 +4,8 @@ title: 全书课程地图
 
 # 全书课程地图 {#sec-curriculum-map}
 
-教材以“定义—证明—算法证书”两条线并行组织。当前已发布至第十部第 43 章，
-共 199 个学习单元、352 学时。第九部闭合时为 189 个学习单元、337 学时。
+教材以“定义—证明—算法证书”两条线并行组织。当前已发布至第十部第 44 章，
+共 204 个学习单元、360 学时。第九部闭合时为 189 个学习单元、337 学时。
 历史发布里程碑包括第 27 章，共 125 个学习单元，
 以及第 32 章，共 150 个学习单元。
 
@@ -474,7 +474,7 @@ title: 全书课程地图
 
 **问题弧：** 什么时候可以把极限、微分或积分移进积分号？
 
-第十部共 20 个核心单元、30 学时（理论 22，应用 8）；第 42–43 章已发布，第 44–45 章规划中。
+第十部共 20 个核心单元、30 学时（理论 22，应用 8）；第 42–44 章已发布，第 45 章规划中。
 
 ### [第 42 章：正常含参变量积分](chapters/chapter-42/index.md) {#chapter-42}
 
@@ -496,13 +496,15 @@ title: 全书课程地图
 4. [对参数再积分时，怎样通过经典 Fubini 交换次序？](chapters/chapter-43/u-10-43-04-parameter-integration-fubini.md)
 5. [可固定化的移动区域怎样化为固定区域问题？](chapters/chapter-43/u-10-43-05-fixed-domain-transform.md)
 
-### 第 44 章：含参反常积分的一致收敛（规划中）
+### [第 44 章：含参反常积分的一致收敛](chapters/chapter-44/index.md) {#chapter-44}
 
-1. 含参反常积分的一致收敛应怎样定义？
-2. 一致 Cauchy 判据怎样把尾部转化为可检查条件？
-3. Weierstrass、Dirichlet 与 Abel 型判据怎样控制参数族？
-4. 连续性、极限与参数积分何时可同反常积分交换？
-5. 积分号下求导何时成立，反例揭示哪些条件缺口？
+本章学时：8 小时（理论 6.00，应用 2.00）。
+
+1. [含参反常积分的一致收敛应怎样定义？](chapters/chapter-44/u-10-44-01-uniform-improper-definition.md)
+2. [一致 Cauchy 判据怎样把尾部转化为可检查条件？](chapters/chapter-44/u-10-44-02-uniform-cauchy-criterion.md)
+3. [Weierstrass、Dirichlet 与 Abel 型判据怎样控制参数族？](chapters/chapter-44/u-10-44-03-uniform-convergence-tests.md)
+4. [连续性、极限与参数积分何时可同反常积分交换？](chapters/chapter-44/u-10-44-04-improper-exchange.md)
+5. [积分号下求导何时成立，反例揭示哪些条件缺口？](chapters/chapter-44/u-10-44-05-improper-differentiation.md)
 
 ### 第 45 章：Gamma、Beta 函数与参数敏感性（规划中）
 
