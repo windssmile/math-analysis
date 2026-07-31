@@ -75,6 +75,25 @@ class ChapterTwentySevenTests(unittest.TestCase):
         )
         self.assertIn("第 27 章的直接输入是第 10、11、25 章", normalized_dependencies)
 
+    def test_no_unit_declares_chapter_26_theory_as_a_direct_prerequisite(self):
+        forbidden = re.compile(r"(?:chapter-26|u-06-26|幂级数|解析表示)")
+        for unit in EXPECTED_UNITS:
+            path = unit_path(unit)
+            text = self.required_text(path)
+            metadata = yaml.safe_load(text.split("---\n", 2)[1])
+            book_prerequisites = metadata["prerequisites"]["book"]
+            with self.subTest(unit=unit[0]):
+                self.assertIsInstance(book_prerequisites, list)
+                self.assertEqual(
+                    [],
+                    [
+                        prerequisite
+                        for prerequisite in book_prerequisites
+                        if forbidden.search(str(prerequisite))
+                    ],
+                    "chapter 26 may be optional context but not a direct prerequisite",
+                )
+
     def test_error_unit_keeps_method_boundaries(self):
         text = self.required_text(unit_path(EXPECTED_UNITS[0]))
         for marker in ("最佳误差下确界", "不保证取得", "插值", "最小二乘", "逐点逼近", "一致逼近", "Runge", "仿射变换"):
