@@ -217,6 +217,7 @@ class ChapterTwentyTwoTests(unittest.TestCase):
         guide = self.required_text(CHAPTER / "index.md")
         normalized_guide = "".join(guide.split())
         self.assertNotIn("不创建第六部空白页面", normalized_guide)
+        self.assertIn("第22章完成后，第五部闭合。", normalized_guide)
         self.assertIn("本章共6个核心单元，12学时（理论7.25，应用4.75）。", guide)
         for marker in (
             "逐端点极限",
