@@ -247,6 +247,15 @@ REQUIRED_RENDERED_ANCHORS = {
         "ex-u-10-45-05-met",
         "ex-u-10-45-05-uncertified",
     ],
+    "chapters/chapter-50/u-11-50-01-monotone-convergence/index.html": [
+        "thm-u-11-50-01-mct",
+    ],
+    "chapters/chapter-50/u-11-50-04-riemann-lebesgue-comparison/index.html": [
+        "thm-u-11-50-04-criterion",
+    ],
+    "chapters/chapter-50/u-11-50-05-intro-sequence-closure/index.html": [
+        "thm-u-11-50-05-closure",
+    ],
     "appendices/part-08-jordan-content/index.html": [
         "appendix-part-08-jordan-content",
     ],
@@ -514,6 +523,11 @@ REQUIRED_NAVIGATION_MARKERS = {
         "第十部：含参变量积分",
         "第 45 章：Gamma、Beta 函数与参数敏感性",
     ],
+    "chapters/chapter-50/u-11-50-05-intro-sequence-closure/index.html": [
+        "md-sidebar",
+        "第十一部：测度与 Lebesgue 积分",
+        "第 50 章：收敛定理与 Riemann 理论比较",
+    ],
     "appendices/part-08-jordan-content/index.html": [
         "md-sidebar",
         "第八部：重积分与空间测量",
@@ -584,6 +598,18 @@ REQUIRED_RENDERED_CONTENT = {
     "chapters/chapter-45/u-10-45-05-certified-gamma-beta/index.html": {
         "min_arithmatex": 0,
         "forbidden_raw_tex": [r"<p>\Gamma"],
+        "forbid_mathjax_errors": True,
+    },
+    "chapters/chapter-50/u-11-50-01-monotone-convergence/index.html": {
+        "min_arithmatex": 2,
+        "required_math": [r"\int f\,dm=\lim_{n\to\infty}\int f_n\,dm"],
+        "forbid_nested_display_delimiters": True,
+        "forbid_mathjax_errors": True,
+    },
+    "chapters/chapter-50/u-11-50-05-intro-sequence-closure/index.html": {
+        "min_arithmatex": 4,
+        "required_math": [r"f_n=\mathbf1_{\{q_1,\ldots,q_n\}}"],
+        "forbid_nested_display_delimiters": True,
         "forbid_mathjax_errors": True,
     },
 }

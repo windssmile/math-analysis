@@ -555,16 +555,16 @@ title: 全书课程地图
 4. [正部、负部怎样定义一般函数的积分？](chapters/chapter-49/u-11-49-04-signed-integral.md)
 5. [绝对可积、零测集修改与积分估计怎样统一？](chapters/chapter-49/u-11-49-05-absolute-integrability.md)
 
-### 第 50 章：三大收敛定理与 Riemann 理论比较（规划中）
+### [第 50 章：收敛定理与 Riemann 理论比较](chapters/chapter-50/index.md) {#chapter-50}
 
-1. 单调收敛定理怎样闭合递增逼近？
-2. Fatou 引理怎样给出下极限不等式？
-3. 控制收敛定理为何需要可积控制函数？
-4. Riemann 可积函数与 Lebesgue 积分怎样兼容？
-5. 序章失败序列怎样被新理论完整解释？
+1. [单调收敛定理怎样闭合递增逼近？](chapters/chapter-50/u-11-50-01-monotone-convergence.md)
+2. [Fatou 引理怎样给出下极限不等式？](chapters/chapter-50/u-11-50-02-fatou-lemma.md)
+3. [控制收敛定理为何需要可积控制函数？](chapters/chapter-50/u-11-50-03-dominated-convergence.md)
+4. [Riemann 可积函数与 Lebesgue 积分怎样兼容？](chapters/chapter-50/u-11-50-04-riemann-lebesgue-comparison.md)
+5. [序章失败序列怎样被新理论完整解释？](chapters/chapter-50/u-11-50-05-intro-sequence-closure.md)
 
 ## 后续路线
 
 第七部与第八部已完成核心内容、算法与出版质量闭合；第九部已完成核心内容与选读附录的出版闭合。
-第十至十二部继续覆盖的路线中，第十部含参积分已经闭合；第十一部已发布第 46–49 章；
+第十至十二部继续覆盖的路线中，第十部含参积分已经闭合；第十一部第 46–50 章已经闭合；
 第十二部 Fourier 级数仍待规划。对应内容完成前不创建空白单元页。

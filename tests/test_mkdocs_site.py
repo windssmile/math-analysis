@@ -12,6 +12,18 @@ from scripts.check_site import (
 
 
 class ZensicalSiteValidationTests(unittest.TestCase):
+    def test_checks_part_eleven_closure_pages(self) -> None:
+        pages = {
+            "chapters/chapter-50/u-11-50-01-monotone-convergence/index.html": "thm-u-11-50-01-mct",
+            "chapters/chapter-50/u-11-50-04-riemann-lebesgue-comparison/index.html": "thm-u-11-50-04-criterion",
+            "chapters/chapter-50/u-11-50-05-intro-sequence-closure/index.html": "thm-u-11-50-05-closure",
+        }
+        for page, anchor in pages.items():
+            self.assertIn(anchor, REQUIRED_RENDERED_ANCHORS[page])
+        closure = "chapters/chapter-50/u-11-50-05-intro-sequence-closure/index.html"
+        self.assertIn(closure, REQUIRED_NAVIGATION_MARKERS)
+        self.assertIn(closure, REQUIRED_RENDERED_CONTENT)
+
     def test_checks_all_part_nine_mobile_review_pages(self) -> None:
         pages = {
             "chapters/chapter-37/u-09-37-04-reparameterization-conservative-fields/index.html": "thm-u-09-37-04-reparameterization",
