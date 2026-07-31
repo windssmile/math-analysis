@@ -28,6 +28,7 @@ content_standard: 2
 
 ### 有界区域上的积分 {#def-u-08-33-04-region-integral}
 设有界区域 \(D\subset\mathbb R^2\) 包含在矩形 \(R\) 内。定义零延拓
+
 \[
 \widetilde f(x,y)=
 \begin{cases}
@@ -35,10 +36,13 @@ f(x,y),&(x,y)\in D,\\
 0,&(x,y)\in R\setminus D.
 \end{cases}
 \]
+
 若 \(\widetilde f\) 在 \(R\) 上 Riemann 可积，则定义
+
 \[
 \iint_D f\,dA=\iint_R\widetilde f\,dA.
 \]
+
 再换一个更大的外包矩形时，新增部分函数恒为零，区域可加性说明结果不变。
 
 正文只使用由有限条**分片光滑边界**围成的常用平面区域，以及有限张分片光滑曲面
@@ -55,6 +59,7 @@ f(x,y),&(x,y)\in D,\\
 \(r:P\subset\mathbb R^{d-1}\to\mathbb R^d\)。\(Dr\) 在紧集 \(P\) 上连续，故存在
 \(L<\infty\) 使 \(\|Dr\|\le L\)。连接参数点的线段若跨过参数矩形的边，只需把线段按
 有限矩形分片切开；逐段使用一元中值估计并相加，得到
+
 \[
 \|r(s)-r(t)\|\le L\|s-t\|.
 \]
@@ -66,6 +71,7 @@ f(x,y),&(x,y)\in D,\\
 **曲面片需要的盒数。** 以边长 \(h\) 的参数小正方形覆盖二维参数域，所需数目满足
 \(N_h\le C h^{-2}\)。每块像可放进边长 \(Ch\) 的轴对齐立方体，故覆盖总体积至多
 \(N_h(Ch)^3\le C'h\)。这两种计数统一写成
+
 \[
 N_h\le C h^{-(d-1)},\qquad N_h(Ch)^d\le C' h.
 \]
@@ -83,6 +89,7 @@ N_h\le C h^{-(d-1)},\qquad N_h(Ch)^d\le C' h.
 **证明。** 由紧致性，\(f\) 有界，记 \(M=\max_{\overline D}|f|\)，且一致连续。若
 \(M=0\)，零延拓恒为零，结论显然。以下设 \(M>0\)。给定 \(\varepsilon>0\)，令
 \(\eta=\varepsilon/(4M)\)。先用薄盒引理取有限闭盒覆盖并 \(U_0\)，使
+
 \[
 \operatorname{vol}(U_0)<\eta/2.
 \]
@@ -90,23 +97,30 @@ N_h\le C h^{-(d-1)},\qquad N_h(Ch)^d\le C' h.
 这里不能直接断言 \(U_0\) 外的闭网格不碰边界，因为相邻闭格会共享覆盖盒端点。对有限
 个覆盖盒**逐盒膨胀**：每个坐标方向向外增加同一个足够小的正量。有限盒总体积随膨胀量
 连续变化，所以可使膨胀后的开盒并 \(U\) 仍满足
+
 \[
 \partial D\subset U,\qquad \operatorname{vol}(U)<\eta.
 \]
+
 \(\partial D\) 是紧集而 \(\mathbb R^d\setminus U\) 是与它不交的闭集，故有正余量
+
 \[
 \gamma=\operatorname{dist}(\partial D,\mathbb R^d\setminus U)>0.
 \]
 
 另一方面，由 \(f\) 在 \(\overline D\) 上一致连续，可先取 \(\delta_\varepsilon>0\)，
 使得对任意 \(x,y\in\overline D\)，只要 \(|x-y|<\delta_\varepsilon\)，就有
+
 \[
 |f(x)-f(y)|<\frac{\varepsilon}{2\operatorname{vol}(R)}.
 \]
+
 现在取 \(R\) 的轴对齐网格，使每个闭格 \(Q\) 都有
+
 \[
 \operatorname{diam}(Q)<\min\{\gamma,\delta_\varepsilon\}.
 \]
+
 若 \(Q\cap\partial D\ne\varnothing\)，从交点到
 \(Q\) 中任一点的距离都小于 \(\gamma\)，所以 \(Q\subset U\)。因此**所有边界格**都
 整体落在同一个可控的加厚覆盖中；其余格不碰 \(\partial D\)，其内部全在 \(D\) 中或
@@ -116,11 +130,13 @@ N_h\le C h^{-(d-1)},\qquad N_h(Ch)^d\le C' h.
 \(f\) 的振幅小于
 \(\varepsilon/(2\operatorname{vol}(R))\)；位于 \(D\) 外的小盒上零延拓振幅为零。
 边界格的振幅贡献至多
+
 \[
 \sum_{Q\cap\partial D\ne\varnothing}
 \operatorname{osc}_Q(\widetilde f)\operatorname{vol}(Q)
 \le 2M\operatorname{vol}(U)<\varepsilon/2.
 \]
+
 其余格的贡献小于 \(\varepsilon/2\)。所以这个网格分割的 Darboux 上下和之差小于
 \(\varepsilon\)，零延拓 Riemann 可积。\(\square\)
 

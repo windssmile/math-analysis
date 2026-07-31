@@ -38,12 +38,15 @@ content_standard: 2
 ### 连续性模 {#def-u-06-27-03-modulus}
 
 对 \(f\in C([0,1])\)，定义
+
 \[
 \omega_f(\delta)=
 \sup_{\substack{x,y\in[0,1]\\|x-y|\le\delta}}|f(x)-f(y)|.
 \]
+
 它非负、关于 \(\delta\) 单调不减，且由一致连续性
 \(\omega_f(\delta)\to0\)（\(\delta\downarrow0\)）。分段连接两点可得
+
 \[
 |f(u)-f(x)|\le\left(1+\frac{|u-x|}{\delta}\right)\omega_f(\delta).
 \]
@@ -51,6 +54,7 @@ content_standard: 2
 ### 定量 Bernstein 界 {#thm-u-06-27-03-quantitative-bound}
 
 把上式乘权重求和，并用 Cauchy–Schwarz 与二阶中心矩：
+
 \[
 \begin{aligned}
 |B_n(f;x)-f(x)|
@@ -59,7 +63,9 @@ content_standard: 2
 &\le\omega_f(\delta)\left(1+\frac1{2\delta\sqrt n}\right).
 \end{aligned}
 \]
+
 取 \(\delta=n^{-1/2}\)，得到显式一致界
+
 \[
 \|B_n(f)-f\|_\infty\le\frac32\,\omega_f(n^{-1/2}).
 \]
@@ -67,19 +73,24 @@ content_standard: 2
 ### Lipschitz 次数预算 {#cor-u-06-27-03-lipschitz-budget}
 
 若 \(|f(u)-f(x)|\le L|u-x|\)，则直接由一阶绝对中心矩得
+
 \[
 \|B_n(f)-f\|_\infty\le\frac{L}{2\sqrt n}.
 \]
+
 要使误差不超过 \(\varepsilon\)，足够取
+
 \[
 n\ge\left(\frac{L}{2\varepsilon}\right)^2.
 \]
 
 若 \(f\in C^2([0,1])\) 且 \(\|f''\|_\infty\le M\)，对每个样本点作一阶 Taylor
 展开；常数与线性项由矩恒等式精确保持，余项给出
+
 \[
 \|B_n(f)-f\|_\infty\le\frac{M}{8n}.
 \]
+
 一般区间 \([a,b]\) 上两界分别乘 \(b-a\) 与 \((b-a)^2\)。
 
 ## 例题与迁移

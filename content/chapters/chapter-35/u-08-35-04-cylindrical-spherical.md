@@ -27,10 +27,13 @@ content_standard: 2
 ## 概念与理论
 
 柱面坐标
+
 \[
 (x,y,z)=(r\cos\theta,r\sin\theta,z)
 \]
+
 的导数矩阵为
+
 \[
 \left(\begin{smallmatrix}
 \cos\theta&-r\sin\theta&0\\
@@ -39,17 +42,22 @@ content_standard: 2
 \end{smallmatrix}\right),
 \quad \det=r,
 \]
+
 故 \(dV=r\,dr\,d\theta\,dz\)（次序可按区域调整）。
 
 球面坐标取
+
 \[
 (x,y,z)=(\rho\sin\phi\cos\theta,\rho\sin\phi\sin\theta,\rho\cos\phi).
 \]
+
 直接对三列偏导计算三重积：
+
 \[
 \det\frac{\partial(x,y,z)}{\partial(\rho,\phi,\theta)}
 =\rho^2\sin\phi.
 \]
+
 因此 \(dV=\rho^2\sin\phi\,d\rho\,d\phi\,d\theta\)。标准范围为
 \(\rho\ge0,\ 0\le\phi\le\pi\)，\(\theta\) 取长度 \(2\pi\) 的区间。
 
@@ -62,6 +70,7 @@ content_standard: 2
 ## 例题与迁移
 
 ### 例 1：球体体积 {#ex-u-08-35-04-ball}
+
 \[
 \int_0^{2\pi}\int_0^\pi\int_0^R\rho^2\sin\phi\,d\rho\,d\phi\,d\theta
 =\frac{4\pi R^3}{3}.

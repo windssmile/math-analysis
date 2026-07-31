@@ -200,6 +200,7 @@ I=\frac12e^x(\sin x+\cos x)+C.
 ??? note "答案"
 
     回验：
+
     \[
     \frac{d}{dx}\left[\frac12e^x(\sin x+\cos x)\right]
     =e^x\cos x.
@@ -234,6 +235,7 @@ I=\frac12e^x(\sin x+\cos x)+C.
 ??? note "答案"
 
     取 \(u=x\)、\(dv=\sin x\,dx\)，得到
+
     \[
     \int x\sin x\,dx=-x\cos x+\sin x+C.
     \]
@@ -245,6 +247,7 @@ I=\frac12e^x(\sin x+\cos x)+C.
 ??? note "答案"
 
     连续两次让多项式降次：
+
     \[
     \int x^2e^x\,dx
     =x^2e^x-2\int xe^x\,dx
@@ -258,6 +261,7 @@ I=\frac12e^x(\sin x+\cos x)+C.
 ??? note "答案"
 
     取 \(u=\arctan x\)、\(dv=dx\)：
+
     \[
     \int\arctan x\,dx
     =x\arctan x-\int\frac{x}{1+x^2}\,dx
@@ -280,9 +284,11 @@ I=\frac12e^x(\sin x+\cos x)+C.
 ??? note "答案"
 
     此时 \(du=e^x dx\)、\(v=x^2/2\)，新积分为
+
     \[
     \frac12\int x^2e^x\,dx,
     \]
+
     多项式次数从 \(1\) 升到 \(2\)，问题更复杂。公式没有错，拆分选择没有产生进展。
 
 ## 常见误区与后续

@@ -29,9 +29,11 @@ content_standard: 2
 ### Fermat 必要条件 {#thm-u-07-32-02-fermat}
 设 \(U\subset\mathbb R^n\) 开，\(f:U\to\mathbb R\) 在内点 \(a\) 可微。若 \(a\)
 为局部极大或极小点，则
+
 \[
 Df(a)=0,\qquad \nabla f(a)=0.
 \]
+
 证明对每个 \(v\) 使用上述一元限制，得 \(Df(a)v=0\)。线性泛函对所有方向为零，
 故它自身为零。这是**一阶必要条件**，不是充分条件。
 

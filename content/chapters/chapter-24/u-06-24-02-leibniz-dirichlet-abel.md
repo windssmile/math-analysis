@@ -47,18 +47,22 @@ content_standard: 2
 ### 交错余项 {#cor-u-06-24-02-alternating-remainder}
 
 若和为 \(S\)，则 \(S\) 位于相邻的 \(S_n,S_{n+1}\) 之间，因此
+
 \[
 |S-S_n|\le b_{n+1}.
 \]
+
 误差不超过首个被舍项。单调递减与趋于零缺一不可。
 
 ### 有限分部求和 {#lem-u-06-24-02-summation-by-parts}
 
 令 \(A_k=\sum_{j=m}^{k}a_j\)，并约定 \(A_{m-1}=0\)。逐项展开可得有限分部求和：
+
 \[
 \sum_{k=m}^{n}a_kb_k
 =A_nb_n+\sum_{k=m}^{n-1}A_k(b_k-b_{k+1}).
 \]
+
 这是有限恒等式，不需要预设任何无穷和存在。
 
 ### Dirichlet 判别 {#thm-u-06-24-02-dirichlet}
@@ -68,11 +72,13 @@ content_standard: 2
 
 **证明。** 对尾段从 \(m\) 重新累计 \(A_k=\sum_{j=m}^ka_j\)。原部分和有界说明
 \(|A_k|\le2M\)。有限分部求和给出
+
 \[
 \left|\sum_{k=m}^{n}a_kb_k\right|
 \le2M b_n+2M\sum_{k=m}^{n-1}(b_k-b_{k+1})
 \le4M b_m.
 \]
+
 因 \(b_m\to0\)，任意有限尾段一致趋小，Cauchy 判据完成证明。
 
 ### Abel 判别 {#cor-u-06-24-02-abel}
@@ -81,9 +87,11 @@ content_standard: 2
 \(\sum a_nb_n\) 收敛。
 
 证明时令 \(b_n\to b\)，写成
+
 \[
 a_nb_n=b\,a_n+a_n(b_n-b).
 \]
+
 第一项级数收敛；若 \(b_n-b\) 单调趋于零，第二项由 Dirichlet 判别收敛。若原序列
 单调递增，则取相反数即可。条件必须逐一可见。
 

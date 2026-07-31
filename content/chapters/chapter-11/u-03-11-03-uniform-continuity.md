@@ -58,6 +58,7 @@ content_standard: 2
 ### 定义：一致连续 {#def-u-03-11-03-uniform-continuity}
 
 函数 \(f:D\to\mathbb R\) 称为在 \(D\) 上一致连续，若
+
 \[
 \forall\varepsilon>0\;\exists\delta>0\;\forall x,y\in D,\qquad
 |x-y|<\delta\Longrightarrow |f(x)-f(y)|<\varepsilon. \tag{11.3}
@@ -65,10 +66,12 @@ content_standard: 2
 
 这里 \(\delta\) 可以依赖 \(\varepsilon\) 和整个函数，但不能依赖随后选择的
 \(x,y\)。与逐点连续比较：
+
 \[
 \forall a\in D\;\forall\varepsilon>0\;\exists\delta(a,\varepsilon)>0
 \;\forall x\in D.
 \]
+
 一致连续把 \(\exists\delta\) 移到所有中心点之前。
 
 一致连续必推出每一点连续：固定 \(a\in D\)，在 (11.3) 中令 \(y=a\) 即可。
@@ -78,6 +81,7 @@ content_standard: 2
 
 \(f\) 在 \(D\) 上不一致连续，当且仅当存在 \(\varepsilon_0>0\)，使对每个
 \(\delta>0\)，都存在 \(x,y\in D\) 满足
+
 \[
 |x-y|<\delta,\qquad |f(x)-f(y)|\ge\varepsilon_0.
 \]
@@ -85,6 +89,7 @@ content_standard: 2
 **说明。** 否定“对每个 \(\varepsilon\) 存在一个统一 \(\delta\)”时，必须先固定
 一个失败的 \(\varepsilon_0\)；坏点对可以随 \(\delta\) 改变。把
 \(\delta=1/n\) 依次代入，可得
+
 \[
 |x_n-y_n|<\frac1n,\qquad
 |f(x_n)-f(y_n)|\ge\varepsilon_0. \tag{11.4}
@@ -98,26 +103,34 @@ content_standard: 2
 \(\varepsilon_0>0\) 和两列 \(x_n,y_n\in[a,b]\)，满足 (11.4)。
 
 由闭区间序列紧致性，\((x_n)\) 有子列
+
 \[
 x_{n_k}\to c\in[a,b].
 \]
+
 又因为
+
 \[
 |y_{n_k}-c|
 \le |y_{n_k}-x_{n_k}|+|x_{n_k}-c|
 <\frac1{n_k}+|x_{n_k}-c|\to0,
 \]
+
 所以 \(y_{n_k}\to c\)。
 
 函数在 \(c\) 连续，故
+
 \[
 f(x_{n_k})\to f(c),\qquad f(y_{n_k})\to f(c).
 \]
+
 于是
+
 \[
 |f(x_{n_k})-f(y_{n_k})|
 \le |f(x_{n_k})-f(c)|+|f(y_{n_k})-f(c)|\to0,
 \]
+
 这与它始终不小于 \(\varepsilon_0\) 矛盾。因此 \(f\) 一致连续。\(\square\)
 
 证明只需在抽出的公共极限点 \(c\) 使用一点连续；序列紧致性把假想的全局失败集中到
@@ -126,9 +139,11 @@ f(x_{n_k})\to f(c),\qquad f(y_{n_k})\to f(c).
 ### 判据：成对点列证伪 {#prop-u-03-11-03-paired-sequences}
 
 若存在 \(x_n,y_n\in D\)，使
+
 \[
 |x_n-y_n|\to0
 \]
+
 但 \(|f(x_n)-f(y_n)|\) 不趋于 \(0\)，则 \(f\) 在 \(D\) 上不一致连续。
 
 **证明。** 若 \(f\) 一致连续，给定任意 \(\varepsilon>0\)，统一半径
@@ -142,9 +157,11 @@ f(x_{n_k})\to f(c),\qquad f(y_{n_k})\to f(c).
 证明 \(f(x)=x^2\) 在 \([0,2]\) 上一致连续。
 
 **证明。** 对 \(x,y\in[0,2]\)，
+
 \[
 |x^2-y^2|=|x-y|\,|x+y|\le4|x-y|.
 \]
+
 给定 \(\varepsilon>0\)，取 \(\delta=\varepsilon/4\)。若
 \(|x-y|<\delta\)，则输出差小于 \(\varepsilon\)。这个 \(\delta\) 与点的位置
 无关。\(\square\)
@@ -154,17 +171,23 @@ f(x_{n_k})\to f(c),\qquad f(y_{n_k})\to f(c).
 证明 \(f(x)=1/x\) 在 \((0,1)\) 上不一致连续。
 
 **证明。** 取
+
 \[
 x_n=\frac1n,\qquad y_n=\frac1{n+1}.
 \]
+
 则
+
 \[
 |x_n-y_n|=\frac1{n(n+1)}\to0,
 \]
+
 但
+
 \[
 |f(x_n)-f(y_n)|=|n-(n+1)|=1.
 \]
+
 由成对点列判据，函数不一致连续。坏点向缺失端点 \(0\) 聚集。\(\square\)
 
 ## 即时检验与回望
@@ -181,9 +204,11 @@ x_n=\frac1n,\qquad y_n=\frac1{n+1}.
 ??? note "答案"
 
     成对距离满足 \(|x_n-y_n|\to0\)。若 \(x_{n_k}\to c\)，三角不等式给出
+
     \[
     |y_{n_k}-c|\le|y_{n_k}-x_{n_k}|+|x_{n_k}-c|\to0,
     \]
+
     所以配对的 \(y_{n_k}\) 自动趋于同一个 \(c\)。
 
 ## 习题与答案
@@ -196,6 +221,7 @@ x_n=\frac1n,\qquad y_n=\frac1{n+1}.
 
     给定 \(\varepsilon>0\)，取 \(\delta=\varepsilon\)。任意
     \(x,y\in\mathbb R\) 满足 \(|x-y|<\delta\) 时，
+
     \[
     |f(x)-f(y)|=|x-y|<\varepsilon.
     \]
@@ -207,10 +233,12 @@ x_n=\frac1n,\qquad y_n=\frac1{n+1}.
 ??? note "答案"
 
     取 \(x_n=n\)、\(y_n=n+1/n\)。输入差为 \(1/n\to0\)，但
+
     \[
     y_n^2-x_n^2
     =2+\frac1{n^2}\to2.
     \]
+
     输出差不趋于零，所以不一致连续。
 
 ### 习题 3：一致连续推出连续 {#pr-u-03-11-03-implies-continuity}
@@ -226,20 +254,24 @@ x_n=\frac1n,\qquad y_n=\frac1{n+1}.
 ### 习题 4：平方根的统一估计 {#pr-u-03-11-03-square-root}
 
 用
+
 \[
 |\sqrt{x}-\sqrt y|\le\sqrt{|x-y|}
 \]
+
 证明平方根函数在 \([0,\infty)\) 上一致连续。
 
 ??? note "答案"
 
     给定 \(\varepsilon>0\)，取 \(\delta=\varepsilon^2\)。若
     \(x,y\ge0\) 且 \(|x-y|<\delta\)，则
+
     \[
     |\sqrt{x}-\sqrt y|
     \le\sqrt{|x-y|}
     <\sqrt{\delta}=\varepsilon.
     \]
+
     半径与 \(x,y\) 无关。
 
 ### 习题 5：有界不等于一致连续 {#pr-u-03-11-03-bounded-not-enough}
@@ -249,10 +281,12 @@ x_n=\frac1n,\qquad y_n=\frac1{n+1}.
 ??? note "答案"
 
     取
+
     \[
     x_n=\frac1{\pi/2+2\pi n},\qquad
     y_n=\frac1{3\pi/2+2\pi n}.
     \]
+
     两列都趋于 \(0\)，所以 \(|x_n-y_n|\to0\)，但
     \(f(x_n)=1\)、\(f(y_n)=-1\)，输出差恒为 \(2\)。函数虽有界，却不一致连续。
 

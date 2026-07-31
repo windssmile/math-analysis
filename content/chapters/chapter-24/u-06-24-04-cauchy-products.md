@@ -38,13 +38,17 @@ content_standard: 2
 ### Cauchy 乘积 {#def-u-06-24-04-cauchy-product}
 
 给定 \(\sum_{n=0}^\infty a_n\)、\(\sum_{n=0}^\infty b_n\)，定义
+
 \[
 c_n=\sum_{k=0}^{n}a_kb_{n-k}.
 \]
+
 级数 \(\sum c_n\) 称为二者的 Cauchy 乘积。其部分和是三角截断：
+
 \[
 C_n=\sum_{r=0}^nc_r=\sum_{j+k\le n}a_jb_k.
 \]
+
 而 \(A_nB_n=\sum_{0\le j,k\le n}a_jb_k\) 是方形截断。形式乘法只有在能证明两种
 截断趋于同一极限时才合法。
 
@@ -55,13 +59,17 @@ C_n=\sum_{r=0}^nc_r=\sum_{j+k\le n}a_jb_k.
 
 **证明。** 不妨设 \(\sum|a_n|<\infty\)。记 \(B_m=\sum_{k=0}^mb_k\)，并令
 \(B_m=0\)（\(m<0\)）。有限换序得
+
 \[
 C_n=\sum_{j=0}^{n}a_jB_{n-j}.
 \]
+
 于是
+
 \[
 C_n-AB=\sum_{j=0}^{n}a_j(B_{n-j}-B)-B\sum_{j>n}a_j.
 \]
+
 第二项趋零。给定 \(\varepsilon>0\)，先选 \(J\) 使绝对尾部
 \(\sum_{j>J}|a_j|\) 很小；\((B_m)\) 收敛故有界，尾部贡献可统一控制。对有限头部
 \(j\le J\)，再令 \(n\) 足够大使每个 \(B_{n-j}-B\) 小。故第一项也趋零，
@@ -71,9 +79,11 @@ C_n-AB=\sum_{j=0}^{n}a_j(B_{n-j}-B)-B\sum_{j>n}a_j.
 
 取 \(a_n=b_n=(-1)^n/\sqrt{n+1}\)。两因子由 Leibniz 判别收敛，但都不绝对收敛。
 其 Cauchy 系数满足
+
 \[
 c_n=(-1)^n\sum_{k=0}^{n}\frac1{\sqrt{(k+1)(n-k+1)}}.
 \]
+
 中间至少约 \(n/2\) 项的分母不超过 \(n+1\)，故 \(|c_n|\ge1/2\)（充分大时）。
 因此 \(c_n\not\to0\)，Cauchy 乘积发散。这说明不能只做形式乘法。
 

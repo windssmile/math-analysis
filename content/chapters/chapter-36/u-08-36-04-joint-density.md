@@ -31,17 +31,23 @@ content_standard: 2
 2. 在支持区域 \(D\) 上**归一化**：\(\iint_Dp\,dA=1\)。
 
 若截线范围由 \(D\) 决定，\(X\) 的**边缘密度**
+
 \[
 p_X(x)=\int p(x,y)\,dy,
 \]
+
 类似定义 \(p_Y\)。期望是加权积分：
+
 \[
 E[X]=\iint_Dxp\,dA,\quad E[XY]=\iint_Dxyp\,dA.
 \]
+
 **协方差**
+
 \[
 \operatorname{Cov}(X,Y)=E[XY]-E[X]E[Y].
 \]
+
 这些公式建立在积分存在的前提下。本单元不讲条件分布、概率公理或一般随机变量变换。
 
 ## 例题与迁移

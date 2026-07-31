@@ -27,9 +27,11 @@ content_standard: 2
 ## 概念与理论
 
 对小矩形 \(Q\)，定义函数的**振幅**
+
 \[
 \omega(f;Q)=\sup_Q f-\inf_Q f.
 \]
+
 若在分割 \(P\) 的每个 \(Q\) 上振幅至多 \(\eta\)，则任意两组取样和之差至多
 \(\eta\,\operatorname{area}(R)\)。
 
@@ -39,9 +41,11 @@ content_standard: 2
 **证明。** 连续性与闭矩形的紧致性给出一致连续性。给定
 \(\varepsilon>0\)，取 \(\delta>0\)，使
 \(\|x-y\|<\delta\) 时
+
 \[
 |f(x)-f(y)|<\frac{\varepsilon}{2\,\operatorname{area}(R)}.
 \]
+
 网格小于 \(\delta\) 时，每个小矩形的振幅都小于右端常数。因此任意两组取样和
 之差小于 \(\varepsilon/2\)。固定一列网格趋零的分割和；上述估计使其成为 Cauchy
 列，故收敛到某个 \(I\)。再把任意足够细的和与该列中一个细和比较，得到它距

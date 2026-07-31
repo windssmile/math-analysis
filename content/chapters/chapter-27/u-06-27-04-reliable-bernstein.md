@@ -48,9 +48,11 @@ Bernstein 表示可由重复凸插值得到：从节点值开始，每层用
 ### 算法思想 {#alg-u-06-27-04-stable-evaluation}
 
 de Casteljau 算法从 \(v_k=f(a+(b-a)k/n)\) 开始，反复执行
+
 \[
 v_k\leftarrow(1-t)v_k+tv_{k+1}.
 \]
+
 最后的 \(v_0\) 等于 Bernstein 多项式值。每一步是凸组合，避免直接计算二项式系数。
 
 ### 误差与适用条件

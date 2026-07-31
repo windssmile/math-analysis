@@ -30,9 +30,11 @@ content_standard: 2
 设 \(G:\mathbb R^n\to\mathbb R^m\) 为 \(C^1\)，\(G(a)=0\)，且约束梯度
 \(\nabla g_1(a),\ldots,\nabla g_m(a)\) **梯度线性无关**。若 \(a\) 为约束局部极值，
 则存在 \(\lambda\in\mathbb R^m\) 使
+
 \[
 \nabla f(a)+DG(a)^\mathsf\lambda=0,\qquad G(a)=0.
 \]
+
 这就是**多个约束**的正则乘子条件。几何上目标梯度属于法空间
 \(\operatorname{range}DG(a)^\mathsf\)。
 

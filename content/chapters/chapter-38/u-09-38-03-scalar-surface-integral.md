@@ -29,11 +29,13 @@ content_standard: 2
 ### 第一类曲面积分 {#def-u-09-38-03-scalar-surface-integral}
 设 \(S\) 有一一的分片 \(C^1\) 正则参数化 \(r:D\to S\)，\(f\) 在 \(S\) 上连续。
 把曲面分成小片 \(S_i\)，定义
+
 \[
 \iint_S f\,dS=\lim_{\max\operatorname{diam}S_i\to0}
 \sum_i f(\xi_i)\operatorname{Area}(S_i)
 =\iint_D f(r(u,v))\|r_u\times r_v\|\,du\,dv.
 \]
+
 它不选择法向，是**无向**的；\(f=\rho\) 时表示曲面密度的总量，例如薄膜质量。
 
 ### 合法参数变换下的不变性
@@ -47,6 +49,7 @@ content_standard: 2
 ### 例 1：图形薄膜质量 {#ex-u-09-38-03-graph}
 在图形曲面 \(z=x+y\)、参数范围 \(0\le x,y\le1\) 上，面密度 \(\rho=z\)。
 向上法向可取 \((-1,-1,1)\)，但第一类积分不依赖它：
+
 \[
 M=\int_0^1\int_0^1(x+y)\sqrt3\,dxdy=\sqrt3.
 \]

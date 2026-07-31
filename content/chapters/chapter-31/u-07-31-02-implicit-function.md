@@ -23,9 +23,11 @@ content_standard: 2
 
 ## 探索与猜想
 把 \(x\) 保留下来，同时把 \(F\) 当作新坐标：
+
 \[
 \Phi(x,y)=(x,F(x,y)).
 \]
+
 若关于 \(y\) 的导数块可逆，则 \(\Phi\) 的分块 Jacobian 可逆，反函数定理便能恢复
 \((x,y)\)。
 
@@ -35,12 +37,15 @@ content_standard: 2
 设 \(F:U\subset\mathbb R^p\times\mathbb R^q\to\mathbb R^q\) 为 \(C^1\)，
 \(F(a,b)=0\)，且分块 Jacobian \(D_yF(a,b)\) 可逆。则存在 \(a,b\) 的邻域以及唯一
 \(C^1\) 映射 \(\varphi\)，使
+
 \[
 F(x,\varphi(x))=0,\qquad \varphi(a)=b,
 \]
+
 并且邻域内所有解恰由该图像给出。
 
 ### 从反函数定理推出 {#proof-u-07-31-02-reduction}
+
 \[
 D\Phi(a,b)=
 \begin{pmatrix}
@@ -48,17 +53,20 @@ I_p&0\\
 D_xF(a,b)&D_yF(a,b)
 \end{pmatrix}.
 \]
+
 它是分块下三角矩阵，因 \(D_yF(a,b)\) 可逆而可逆。反函数定理给 \(\Phi\) 的局部
 反函数。把第二个新坐标固定为零，就得到 \(y=\varphi(x)\)。因此本章先证明反函数定理，
 再得到 **隐函数定理**，而不是反向循环依赖。
 
 ### 导数公式 {#def-u-07-31-02-derivative}
 对恒等式 \(F(x,\varphi(x))=0\) 使用链式法则：
+
 \[
 D_xF+D_yF\,D\varphi=0,
 \qquad
 D\varphi(x)=-[D_yF(x,\varphi(x))]^{-1}D_xF(x,\varphi(x)).
 \]
+
 尺寸为 \(q\times p\)，与 \(\varphi:\mathbb R^p\to\mathbb R^q\) 相符。
 
 定理给的是**隐函数局部存在**与局部唯一，不承诺显式闭式表达，也不排除远处的解。

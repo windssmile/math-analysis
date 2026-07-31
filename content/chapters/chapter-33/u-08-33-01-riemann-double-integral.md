@@ -33,9 +33,11 @@ content_standard: 2
 ### 二重 Riemann 积分 {#def-u-08-33-01-riemann-double-integral}
 若存在 \(I\in\mathbb R\)，使对每个 \(\varepsilon>0\)，存在
 \(\delta>0\)，当分割网格小于 \(\delta\) 时，对任意取样都有
+
 \[
 \left|\sum_{i,j}f(\xi_{ij})\Delta A_{ij}-I\right|<\varepsilon,
 \]
+
 则称 \(f\) 在 \(R\) 上可积，记 \(I=\iint_R f\,dA\)。和式称为
 **Riemann 和**。
 

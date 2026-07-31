@@ -140,6 +140,7 @@ U(f,P)-L(f,P)
 
 > 对所有分割 \(Q\) 和所有取样点
 > \(\xi_i\in[y_{i-1},y_i]\)，只要 \(\|Q\|<\delta\)，就有
+>
 > \[
 > |S(f;Q,\xi)-I|<\varepsilon,
 > \]
@@ -434,13 +435,17 @@ U(h,P)-L(h,P)\le2\eta<\varepsilon.
 ??? note "答案"
 
     引理误差为
+
     \[
     2Mk\|Q\|=24\|Q\|.
     \]
+
     取
+
     \[
     \|Q\|<\frac{\varepsilon}{48}
     \]
+
     即可使它小于 \(\varepsilon/2\)。
 
 ### 练习 5：逼近确界而非取得确界 {#pr-u-05-19-02-05}
@@ -451,10 +456,12 @@ U(h,P)-L(h,P)\le2\eta<\varepsilon.
 ??? note "答案"
 
     有
+
     \[
     0\le M_i\Delta x_i-f(\alpha_i)\Delta x_i
     <\eta\Delta x_i.
     \]
+
     对所有子区间求和后，总误差小于 \(\eta(b-a)\)。
 
 ### 练习 6：积分值唯一 {#pr-u-05-19-02-06}
@@ -465,12 +472,14 @@ U(h,P)-L(h,P)\le2\eta<\varepsilon.
 
     若 \(I\ne J\)，取 \(\varepsilon=|I-J|/3\)。分别由两个定义得到网格阈值，取更小
     者，并选任一满足它的标记分割。则
+
     \[
     |I-J|
     \le|I-S|+|S-J|
     <2\varepsilon
     =\frac23|I-J|,
     \]
+
     矛盾。
 
 ## 常见误区与后续

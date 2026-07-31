@@ -64,30 +64,40 @@ content_standard: 2
 常数函数 \(c(x)=C\) 和恒等函数 \(i(x)=x\) 在 \(\mathbb R\) 上连续。
 
 **证明。** 固定 \(a\in\mathbb R\)。对常数函数，
+
 \[
 |c(x)-c(a)|=0,
 \]
+
 所以任意 \(\delta>0\) 都有效。对恒等函数，给定 \(\varepsilon>0\)，取
 \(\delta=\varepsilon\)，则
+
 \[
 |i(x)-i(a)|=|x-a|<\varepsilon.
 \]
+
 由于 \(a\) 任意，两函数处处连续。\(\square\)
 
 ### 定理：多项式与有理函数的连续性 {#thm-u-03-10-05-algebraic-continuity}
 
 每个实系数多项式
+
 \[
 p(x)=a_0+a_1x+\cdots+a_nx^n
 \]
+
 在 \(\mathbb R\) 上连续。若 \(p,q\) 是多项式，则有理函数
+
 \[
 r(x)=\frac{p(x)}{q(x)}
 \]
+
 在其自然定义域
+
 \[
 D=\{x\in\mathbb R:q(x)\ne0\}
 \]
+
 上连续。
 
 **证明。** 由恒等函数连续，有限次乘法给出每个幂函数
@@ -103,14 +113,18 @@ D=\{x\in\mathbb R:q(x)\ne0\}
 函数 \(A(x)=|x|\) 在 \(\mathbb R\) 上连续。
 
 **证明。** 反三角不等式给出
+
 \[
 \bigl||x|-|a|\bigr|\le |x-a|.
 \]
+
 给定 \(\varepsilon>0\)，取 \(\delta=\varepsilon\)。当
 \(|x-a|<\delta\) 时，
+
 \[
 |A(x)-A(a)|=\bigl||x|-|a|\bigr|<\varepsilon.
 \]
+
 所以 \(A\) 在任意 \(a\in\mathbb R\) 连续。\(\square\)
 
 因此若 \(f\) 连续，\(|f|=A\circ f\) 也在相应点连续。
@@ -123,22 +137,27 @@ D=\{x\in\mathbb R:q(x)\ne0\}
 
 若 \(a=0\)，给定 \(\varepsilon>0\)，取 \(\delta=\varepsilon^2\)。对
 \(x\ge0\)，若 \(|x|<\delta\)，则
+
 \[
 |\sqrt{x}-\sqrt0|=\sqrt{x}<\varepsilon.
 \]
 
 若 \(a>0\)，由有理化，
+
 \[
 |\sqrt{x}-\sqrt a|
 =\frac{|x-a|}{\sqrt{x}+\sqrt a}
 \le\frac{|x-a|}{\sqrt a}
 \qquad(x\ge0).
 \]
+
 给定 \(\varepsilon>0\)，取 \(\delta=\varepsilon\sqrt a\)。对定义域中满足
 \(|x-a|<\delta\) 的 \(x\)，有
+
 \[
 |\sqrt{x}-\sqrt a|<\varepsilon.
 \]
+
 两种情形覆盖所有 \(a\in[0,\infty)\)，故平方根函数在自然定义域上连续。
 \(\square\)
 
@@ -160,9 +179,11 @@ D=\{x\in\mathbb R:q(x)\ne0\}
 ### 例题 1：含绝对值的有理函数 {#ex-u-03-10-05-absolute-rational}
 
 确定
+
 \[
 f(x)=\frac{|x^2-1|}{x+2}
 \]
+
 的连续域。
 
 **解。** \(x^2-1\) 是多项式，处处连续；绝对值与它复合后仍处处连续。分母
@@ -172,9 +193,11 @@ f(x)=\frac{|x^2-1|}{x+2}
 ### 例题 2：嵌套根式的定义域 {#ex-u-03-10-05-nested-root}
 
 说明
+
 \[
 g(x)=\sqrt{\,1-\sqrt{x}\,}
 \]
+
 在哪些点连续。
 
 **解。** 内层 \(\sqrt{x}\) 要求 \(x\ge0\)；外层根号还要求
@@ -189,9 +212,11 @@ g(x)=\sqrt{\,1-\sqrt{x}\,}
 ??? note "答案"
 
     正点证明使用
+
     \[
     |\sqrt{x}-\sqrt a|\le |x-a|/\sqrt a.
     \]
+
     当 \(a=0\) 时分母为零，这个估计失效。端点处应直接用
     \(\sqrt{x}<\varepsilon\iff x<\varepsilon^2\) 取半径。
 
@@ -207,6 +232,7 @@ g(x)=\sqrt{\,1-\sqrt{x}\,}
 ### 习题 1：多项式取值 {#pr-u-03-10-05-polynomial-limit}
 
 利用连续性求
+
 \[
 \lim_{x\to2}(x^4-3x+1).
 \]
@@ -214,6 +240,7 @@ g(x)=\sqrt{\,1-\sqrt{x}\,}
 ??? note "答案"
 
     多项式在 \(\mathbb R\) 上连续，因此极限等于点值：
+
     \[
     2^4-3\cdot2+1=16-6+1=11.
     \]
@@ -221,9 +248,11 @@ g(x)=\sqrt{\,1-\sqrt{x}\,}
 ### 习题 2：有理函数的连续域 {#pr-u-03-10-05-rational-domain}
 
 求
+
 \[
 r(x)=\frac{x+1}{x^2-4}
 \]
+
 的连续域。
 
 ??? note "答案"
@@ -245,9 +274,11 @@ r(x)=\frac{x+1}{x^2-4}
 ### 习题 4：根式与分母的共同定义域 {#pr-u-03-10-05-root-quotient}
 
 确定
+
 \[
 h(x)=\frac{\sqrt{x-1}}{x-3}
 \]
+
 的连续域。
 
 ??? note "答案"

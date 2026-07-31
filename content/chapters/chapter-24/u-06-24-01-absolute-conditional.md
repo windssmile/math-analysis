@@ -46,22 +46,28 @@ content_standard: 2
 
 **证明。** 给定 \(\varepsilon>0\)。由 \(\sum|a_n|\) 的 Cauchy 尾部性质，存在 \(N\)，
 使 \(n>m\ge N\) 时
+
 \[
 \sum_{k=m+1}^{n}|a_k|<\varepsilon.
 \]
+
 于是
+
 \[
 \left|\sum_{k=m+1}^{n}a_k\right|
 \le\sum_{k=m+1}^{n}|a_k|<\varepsilon.
 \]
+
 故 \(\sum a_n\) 满足 Cauchy 尾部判据，因而收敛。证毕。
 
 ### 正部与负部 {#thm-u-06-24-01-positive-negative-parts}
 
 定义
+
 \[
 a_n^+=\max\{a_n,0\},\qquad a_n^-=\max\{-a_n,0\}.
 \]
+
 则 \(a_n=a_n^+-a_n^-\)，\(|a_n|=a_n^++a_n^-\)。
 
 **定理。** \(\sum a_n\) 绝对收敛，当且仅当两个正项级数

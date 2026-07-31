@@ -27,14 +27,18 @@ content_standard: 2
 ## 概念与理论
 
 若
+
 \[
 \Omega=\{(x,y,z):(x,y)\in D,\ u(x,y)\le z\le v(x,y)\},
 \]
+
 且函数连续，则
+
 \[
 \iiint_\Omega f\,dV
 =\iint_D\left(\int_{u(x,y)}^{v(x,y)}f(x,y,z)\,dz\right)dA.
 \]
+
 再把 \(D\) 写成 x-型或 y-型，得到三层**累次积分**。最内层界来自空间
 **截面**，外两层来自平面**投影**；每次改变**积分次序**都要重新描述立体。
 

@@ -27,18 +27,24 @@ content_standard: 2
 ## 概念与理论
 
 薄片 \(D\) 的面密度为 \(\rho\ge0\)，总**质量**
+
 \[
 M=\iint_D\rho\,dA.
 \]
+
 若 \(M>0\)，**质心**
+
 \[
 \bar x=\frac1M\iint_Dx\rho\,dA,\qquad
 \bar y=\frac1M\iint_Dy\rho\,dA.
 \]
+
 关于 \(z\) 轴的**转动惯量**
+
 \[
 I_z=\iint_D(x^2+y^2)\rho\,dA.
 \]
+
 三维只需把 \(dA\) 换为 \(dV\)，并使用到指定轴的距离平方。
 
 单位必须闭合：面密度为质量/面积，故质量积分单位为质量；一阶矩为质量·长度；

@@ -29,6 +29,7 @@ content_standard: 2
 ## 概念与理论
 
 对所有参数分割取折线和的上确界定义弧长。分段 \(C^1\) 正则曲线满足
+
 \[
 L(C)=\int_a^b\|r'(t)\|dt.
 \]
@@ -47,16 +48,19 @@ L(C)=\int_a^b\|r'(t)\|dt.
 ### 逐步证明
 
 第一步，对任意分割 \(P:a=t_0<\cdots<t_m=b\)，
+
 \[
 \|r(t_i)-r(t_{i-1})\|
 =\left\|\int_{t_{i-1}}^{t_i}r'(t)dt\right\|
 \le\int_{t_{i-1}}^{t_i}\|r'(t)\|dt.
 \]
+
 求和后 \(L_P\le\int_a^b\|r'\|dt\)，再对所有 \(P\) 取上确界，得到
 \(L(C)\le\int_a^b\|r'\|dt\)。
 
 第二步，给定 \(\varepsilon>0\)。因为 \(r'\) 在闭区间上一致连续，可取足够细的
 分割，使同一小区间内 \(\|r'(t)-r'(\xi_i)\|<\varepsilon/[2(b-a)]\)。于是
+
 \[
 \begin{aligned}
 \|r'(\xi_i)\|\Delta t_i
@@ -64,24 +68,30 @@ L(C)=\int_a^b\|r'(t)\|dt.
  +\int_{t_{i-1}}^{t_i}\|r'(\xi_i)-r'(t)\|dt.
 \end{aligned}
 \]
+
 同时选细到使 \(\sum_i\|r'(\xi_i)\|\Delta t_i\) 与
 \(\int_a^b\|r'\|dt\) 相差小于 \(\varepsilon/2\)。求和便得
+
 \[
 \int_a^b\|r'(t)\|dt\le L_P+\varepsilon\le L(C)+\varepsilon.
 \]
+
 令 \(\varepsilon\downarrow0\)，得到反向不等式。分段 \(C^1\) 情形在给定的有限
 分点处切开，对各段应用上述结论并相加，故公式成立。
 
 ### 第一类曲线积分 {#def-u-09-37-02-scalar-line-integral}
 
 若 \(f\) 连续，按“局部密度 × 局部弧长”的和取极限，定义
+
 \[
 \int_C f\,ds=\int_a^b f(r(t))\|r'(t)\|dt.
 \]
+
 取 \(f\equiv1\) 即弧长。设 \(q(s)=r(\phi(s))\)，其中 \(\phi:[c,d]\to[a,b]\)
 是端点匹配的单调 \(C^1\) 双射，分段情形逐段处理。
 
 **保向情形。** 若 \(\phi\) 递增，则 \(\phi'\ge0\)，且
+
 \[
 \int_c^d f(q(s))\|q'(s)\|ds
 =\int_c^d f(r(\phi(s)))\|r'(\phi(s))\|\phi'(s)ds
@@ -90,11 +100,13 @@ L(C)=\int_a^b\|r'(t)\|dt.
 
 **反向情形。** 若 \(\phi\) 递减，则 \(\phi'\le0\)，由
 \(\|q'(s)\|=\|r'(\phi(s))\||\phi'(s)|\) 以及反向换元，
+
 \[
 \int_c^d f(q(s))\|q'(s)\|ds
 =-\int_b^a f(r(t))\|r'(t)\|dt
 =\int_a^b f(r(t))\|r'(t)\|dt.
 \]
+
 所以第一类曲线积分在两种方向下都不变。
 
 ### 假设位置
@@ -125,6 +137,7 @@ L(C)=\int_a^b\|r'(t)\|dt.
 ### 例 2：沿半圆的线密度 {#ex-u-09-37-02-density}
 
 上半圆 \(r(t)=(R\cos t,R\sin t),0\le t\le\pi\)，密度 \(f(x,y)=y\)。于是
+
 \[
 \int_C y\,ds=\int_0^\pi R\sin t\cdot R\,dt=2R^2.
 \]

@@ -49,9 +49,11 @@ content_standard: 2
 ## 牵引问题
 
 函数
+
 \[
 f(x)=\sin\frac1x,\qquad x\ne0
 \]
+
 在 \(0\) 附近不断改变函数值。若只看某一串点，可能得到一个稳定结果；换另一串同样
 趋于 \(0\) 的点，却可能得到不同结果。一个真正的函数极限必须约束**每一条**由定义域
 点组成、避开中心点并趋于中心点的点列。
@@ -75,9 +77,11 @@ f(x)=\sin\frac1x,\qquad x\ne0
 
 1. \(\displaystyle\lim_{x\to a}f(x)=L\)；
 2. 对每个满足
+
    \[
    x_n\in D\setminus\{a\},\qquad x_n\to a
    \]
+
    的点列，都有 \(f(x_n)\to L\)。
 
 这里“每个”不能换成“某个”。点列必须属于定义域且逐项避开 \(a\)，因为原函数极限
@@ -85,19 +89,25 @@ f(x)=\sin\frac1x,\qquad x\ne0
 
 **必要性：由函数极限推出点列极限。** 假设
 \(\lim_{x\to a}f(x)=L\)。任取
+
 \[
 x_n\in D\setminus\{a\},\qquad x_n\to a.
 \]
+
 给定 \(\varepsilon>0\)。由函数极限定义，存在 \(\delta>0\)，使
+
 \[
 x\in D,\quad 0<|x-a|<\delta
 \quad\Longrightarrow\quad |f(x)-L|<\varepsilon.
 \]
+
 由 \(x_n\to a\)，存在 \(N\)，使 \(n\ge N\) 时
 \(|x_n-a|<\delta\)。又因每个 \(x_n\ne a\)，故
+
 \[
 0<|x_n-a|<\delta.
 \]
+
 所以 \(n\ge N\) 时 \(|f(x_n)-L|<\varepsilon\)，即
 \(f(x_n)\to L\)。
 
@@ -113,14 +123,18 @@ x\in D,\quad 0<|x-a|<\delta
 
 固定这个 \(\varepsilon_0\)。对每个 \(n\ge1\)，把
 \(\delta=1/n\) 代入否定式，选出 \(x_n\in D\)，使
+
 \[
 0<|x_n-a|<\frac1n,\qquad
 |f(x_n)-L|\ge\varepsilon_0.
 \]
+
 第一组不等式保证 \(x_n\in D\setminus\{a\}\)，并且
+
 \[
 0\le |x_n-a|<\frac1n\longrightarrow0,
 \]
+
 所以 \(x_n\to a\)。但第二组不等式说明函数值从未进入 \(L\) 的
 \(\varepsilon_0\) 邻域，故 \(f(x_n)\not\to L\)。这与条件 2 矛盾。因此
 函数极限必为 \(L\)。\(\square\)
@@ -131,9 +145,11 @@ x\in D,\quad 0<|x-a|<\delta
 ### 推论：不同路径足以否定极限 {#cor-u-03-09-04-two-paths}
 
 若存在两列
+
 \[
 x_n,y_n\in D\setminus\{a\},\qquad x_n\to a,\quad y_n\to a,
 \]
+
 使 \(f(x_n)\to A\)、\(f(y_n)\to B\) 且 \(A\ne B\)，则
 \(\lim_{x\to a}f(x)\) 不存在有限值。
 
@@ -148,41 +164,53 @@ x_n,y_n\in D\setminus\{a\},\qquad x_n\to a,\quad y_n\to a,
 证明 \(\sin(1/x)\) 在 \(x\to0\) 时不存在有限极限。
 
 **证明。** 对 \(n\ge1\)，令
+
 \[
 x_n=\frac1{2\pi n+\pi/2},\qquad
 y_n=\frac1{2\pi n+3\pi/2}.
 \]
+
 两列均为非零实数且都趋于 \(0\)。同时，
+
 \[
 \sin\frac1{x_n}
 =\sin\left(2\pi n+\frac\pi2\right)=1,
 \]
+
 \[
 \sin\frac1{y_n}
 =\sin\left(2\pi n+\frac{3\pi}2\right)=-1.
 \]
+
 两条函数值点列分别趋于 \(1\) 与 \(-1\)。由不同路径推论，原函数在 \(0\) 没有
 有限极限。\(\square\)
 
 ### 例题 2：把函数极限转移到交错点列 {#ex-u-03-09-04-transfer}
 
 在 \(D=\mathbb R\setminus\{1\}\) 上令
+
 \[
 q(x)=\frac{x^2-1}{x-1}.
 \]
+
 已知 \(\lim_{x\to1}q(x)=2\)。求
+
 \[
 \lim_{n\to\infty}q\left(1+\frac{(-1)^n}{n}\right).
 \]
 
 **解。** 令 \(x_n=1+(-1)^n/n\)。则 \(x_n\ne1\)，所以 \(x_n\in D\)；又有
+
 \[
 |x_n-1|=\frac1n\to0,
 \]
+
 故 \(x_n\to1\)。由序列判别的必要性，
+
 \[
 q(x_n)\to2.
 \]
+
 也可核对 \(q(x_n)=x_n+1=2+(-1)^n/n\to2\)。交错地从左右靠近并不影响已经建立的
 双侧极限。
 
@@ -206,9 +234,11 @@ q(x_n)\to2.
 
     不能。固定半径 \(1\) 只能保证坏点留在一个固定窗口，不能保证它们趋于 \(a\)。
     选择 \(\delta_n=1/n\) 后，
+
     \[
     0<|x_n-a|<1/n\to0,
     \]
+
     夹逼立即给出 \(x_n\to a\)。任何正数列 \(\delta_n\to0\) 都可发挥同样作用。
 
 ## 习题与答案
@@ -222,9 +252,11 @@ q(x_n)\to2.
 
     函数 \(f(x)=x^2\) 的定义域是 \(\mathbb R\)，且给定点列满足
     \(x_n\in\mathbb R\setminus\{2\}\)、\(x_n\to2\)。直接应用 Heine 判别的必要性，
+
     \[
     f(x_n)=x_n^2\to4.
     \]
+
     这说明一个已证函数极限可以同时控制所有允许的逼近点列。
 
 ### 习题 2：一条坏点列否定有限极限 {#pr-u-03-09-04-reciprocal}
@@ -234,15 +266,18 @@ q(x_n)\to2.
 ??? note "答案"
 
     有 \(x_n=1/n\ne0\) 且 \(x_n\to0\)，但
+
     \[
     \frac1{x_n}=n.
     \]
+
     数列 \(n\) 不趋于任何有限实数。若 \(1/x\) 在 \(0\) 有有限极限 \(L\)，必要性将
     推出 \(1/x_n\to L\)，矛盾。因此不存在有限极限。
 
 ### 习题 3：跳跃函数的两侧点列 {#pr-u-03-09-04-jump}
 
 定义
+
 \[
 s(x)=
 \begin{cases}
@@ -250,20 +285,24 @@ s(x)=
 1,&x\ge0.
 \end{cases}
 \]
+
 用两条点列证明 \(s\) 在 \(x\to0\) 时没有有限极限。
 
 ??? note "答案"
 
     取 \(x_n=-1/n\) 与 \(y_n=1/n\)。两列都避开 \(0\) 并趋于 \(0\)，但
+
     \[
     s(x_n)=-1\to-1,\qquad s(y_n)=1\to1.
     \]
+
     两个函数值极限不同，所以由不同路径推论，双侧有限极限不存在。中心点取值
     \(s(0)=1\) 对这个结论没有作用。
 
 ### 习题 4：稠密交错反例 {#pr-u-03-09-04-dense-oscillation}
 
 定义 \(d:\mathbb R\to\mathbb R\)：
+
 \[
 d(x)=
 \begin{cases}
@@ -271,6 +310,7 @@ d(x)=
 0,&x\notin\mathbb Q.
 \end{cases}
 \]
+
 证明 \(d\) 在 \(x\to0\) 时没有有限极限。
 
 ??? note "答案"
@@ -289,9 +329,11 @@ d(x)=
 
     任取 \(x_n\in D\setminus\{a\}\) 且 \(x_n\to a\)。因为 \(x_n\to a\)，存在
     \(N_0\)，使 \(n\ge N_0\) 时 \(x_n\) 落入 \(f=g\) 的那个去心邻域。因此
+
     \[
     g(x_n)=f(x_n)\qquad(n\ge N_0).
     \]
+
     由 \(f\) 的极限及必要性，\(f(x_n)\to L\)。改动数列有限个前项不改变极限，所以
     \(g(x_n)\to L\)。这对任意允许点列成立，由充分性得到 \(g(x)\to L\)。
 

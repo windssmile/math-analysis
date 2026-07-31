@@ -175,9 +175,11 @@ u=g(x),\qquad du=g'(x)\,dx
 ??? note "答案"
 
     常数倍不妨碍匹配：
+
     \[
     x\,dx=\frac12\,d(1+x^2).
     \]
+
     结果为 \(\frac12\log(1+x^2)+C\)。
 
 ## 即时检验与回望
@@ -189,6 +191,7 @@ u=g(x),\qquad du=g'(x)\,dx
 ??? note "答案"
 
     令 \(u=3x\)，\(du=3\,dx\)，所以答案为
+
     \[
     e^{3x}+C.
     \]
@@ -217,6 +220,7 @@ u=g(x),\qquad du=g'(x)\,dx
     \[
     \int\cos(5x-1)\,dx=\frac15\sin(5x-1)+C.
     \]
+
     回验时链式因子 \(5\) 与 \(1/5\) 抵消。
 
 ### 练习 2：指数复合 {#pr-u-05-18-02-02}
@@ -226,6 +230,7 @@ u=g(x),\qquad du=g'(x)\,dx
 ??? note "答案"
 
     令 \(u=x^2\)，则 \(du=2x\,dx\)：
+
     \[
     \int xe^{x^2}\,dx=\frac12e^{x^2}+C.
     \]
@@ -237,6 +242,7 @@ u=g(x),\qquad du=g'(x)\,dx
 ??? note "答案"
 
     令 \(u=\cos x\)，\(du=-\sin x\,dx\)，所以
+
     \[
     \int\sin x\,\cos(\cos x)\,dx
     =-\sin(\cos x)+C.
@@ -251,6 +257,7 @@ u=g(x),\qquad du=g'(x)\,dx
     \[
     \int\frac{dx}{x+2}=\log|x+2|+C.
     \]
+
     工作区间应包含在 \((-\infty,-2)\) 或 \((-2,\infty)\) 中。
 
 ### 练习 5：根式边界 {#pr-u-05-18-02-05}
@@ -264,9 +271,11 @@ u=g(x),\qquad du=g'(x)\,dx
 ??? note "答案"
 
     令 \(u=\sqrt{x}\)，也可直接识别 \((\sqrt{x})'=1/(2\sqrt{x})\)。因此
+
     \[
     \int\frac{dx}{2\sqrt{x}}=\sqrt{x}+C,\qquad x>0.
     \]
+
     公式中的被积函数在 \(x=0\) 无定义。
 
 ## 常见误区与后续

@@ -270,6 +270,24 @@ class ZensicalSiteValidationTests(unittest.TestCase):
                 errors,
             )
 
+    def test_rejects_unwrapped_display_math_on_any_rendered_page(self) -> None:
+        with TemporaryDirectory() as directory:
+            site = Path(directory)
+            (site / "index.html").write_text("<title>home</title>", encoding="utf-8")
+            page = site / "unit" / "index.html"
+            page.parent.mkdir()
+            page.write_text(
+                "<p>方向导数\n[\nD_vf(a)=\\lim_{t\\to0} \\frac{f(a+tv)-f(a)}t\n]\n只观察一条直线。</p>",
+                encoding="utf-8",
+            )
+
+            errors = validate_site(site)
+
+            self.assertIn(
+                "unit/index.html contains unwrapped display-math delimiters",
+                errors,
+            )
+
     def test_checks_representative_anchors_and_navigation_for_all_three_parts(self) -> None:
         self.assertEqual(
             ["thm-u-02-08-04-contraction"],

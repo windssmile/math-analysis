@@ -26,10 +26,12 @@ content_standard: 2
 ## 概念与理论
 
 若 \(f\) 在 \(a\in D\) 有**奇点**，定义
+
 \[
 \lim_{\varepsilon\downarrow0}
 \iint_{D\setminus B(a,\varepsilon)}f\,dA.
 \]
+
 这称为**挖去邻域**的极限。二维中 \(f(x)\sim\|x-a\|^{-p}\) 时，极坐标给局部
 \(\int_0^\delta r^{1-p}dr\)，故 \(p<2\) 收敛，\(p\ge2\) 发散。三维阈值相应为
 \(p<3\)。

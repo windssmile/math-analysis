@@ -29,30 +29,37 @@ content_standard: 2
 
 ### 多重指标 {#def-u-07-30-02-multi-index}
 令 \(\alpha=(\alpha_1,\ldots,\alpha_n)\in\mathbb N_0^n\)，定义
+
 \[
 |\alpha|=\sum_i\alpha_i,\quad
 \alpha!=\prod_i\alpha_i!,\quad
 h^\alpha=\prod_i h_i^{\alpha_i},\quad
 \partial^\alpha f=\partial_1^{\alpha_1}\cdots\partial_n^{\alpha_n}f.
 \]
+
 多项式定理给
+
 \[
 (z_1+\cdots+z_n)^k=\sum_{|\alpha|=k}\frac{k!}{\alpha!}z^\alpha.
 \]
 
 ### 高阶微分 {#def-u-07-30-02-higher}
 递归定义 \(D^kf=D(D^{k-1}f)\)。经自然同构，
+
 \[
 D^kf(a):(\mathbb R^n)^k\to\mathbb R^m
 \]
+
 是连续 \(k\) 线性映射。若 \(f\in C^k\)，逐次应用混合偏导交换定理可知它是
 **对称多线性**映射：任意置换输入方向不改变结果。
 
 对实值函数，
+
 \[
 D^kf(a)[h,\ldots,h]
 =\sum_{|\alpha|=k}\frac{k!}{\alpha!}\partial^\alpha f(a)h^\alpha.
 \]
+
 系数 \(k!/\alpha!\) 是同一组坐标方向在所有排列中出现的次数。
 
 ### 正则性边界 {#thm-u-07-30-02-symmetry}
@@ -62,6 +69,7 @@ D^kf(a)[h,\ldots,h]
 ## 例题与迁移
 ### 例 1：三阶方向展开 {#ex-u-07-30-02-cubic}
 在二维中，
+
 \[
 D^3f(a)[h,h,h]
 =f_{xxx}h_1^3+3f_{xxy}h_1^2h_2+3f_{xyy}h_1h_2^2+f_{yyy}h_2^3.

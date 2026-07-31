@@ -27,15 +27,20 @@ Riemann 和是有限加权和。有限和满足的代数与序性质，在统一
 
 ### 重积分的基本性质 {#thm-u-08-33-03-integral-properties}
 若 \(f,g\) 在矩形 \(R\) 上可积，\(\alpha,\beta\in\mathbb R\)，则
+
 \[
 \iint_R(\alpha f+\beta g)=\alpha\iint_Rf+\beta\iint_Rg.
 \]
+
 若 \(f\le g\)，则积分保持**单调性**；并有**绝对值估计**
+
 \[
 \left|\iint_R f\right|\le \iint_R|f|
 \le \operatorname{area}(R)\sup_R|f|.
 \]
+
 若一条分割线把 \(R\) 分为内部不交的矩形 \(R_1,R_2\)，则
+
 \[
 \iint_R f=\iint_{R_1}f+\iint_{R_2}f.
 \]

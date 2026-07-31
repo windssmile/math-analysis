@@ -28,6 +28,7 @@ content_standard: 2
 
 ### 连续矩形上的累次积分定理 {#thm-u-08-34-01-iterated}
 若 \(f\) 在**闭矩形** \(R=[a,b]\times[c,d]\) 上**连续**，则
+
 \[
 \iint_R f\,dA
 =\int_a^b\left(\int_c^d f(x,y)\,dy\right)dx
@@ -35,9 +36,11 @@ content_standard: 2
 \]
 
 **完整证明。** 令 \(F(x)=\int_c^d f(x,y)\,dy\)。一致连续性给出
+
 \[
 |F(x)-F(x')|\le(d-c)\sup_y|f(x,y)-f(x',y)|,
 \]
+
 故 \(F\) 连续。对横纵分割，在每条竖带选 \(x_i^\ast\)，内层一元积分可由
 \(\sum_j f(x_i^\ast,y_{ij}^\ast)\Delta y_j\) 任意逼近；再乘
 \(\Delta x_i\) 求和，得到同一闭矩形上的二维 Riemann 和。让纵向网格、横向网格

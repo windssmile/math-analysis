@@ -31,10 +31,12 @@ content_standard: 2
 开参数域：它有界，边界由有限个分片 \(C^1\) 参数片组成。设 \(T\) 在 \(\overline G\)
 的一个开邻域内为 \(C^1\)，在 \(G\) 内部一一对应，并且 \(\det DT\ne0\)；允许在边界上出现后续
 坐标公式所需的有限退化片。令 \(D=T(G)\)，并设 \(f\) 在 \(\overline D\) 上连续。则
+
 \[
 \int_D f(x)\,dx
 =\int_G f(T(u))\,|\det DT(u)|\,du.
 \]
+
 这里的积分是第 33 章定义的经典 Riemann 区域积分；二维写作二重积分，三维写作三重
 积分。
 
@@ -51,36 +53,45 @@ content_standard: 2
 
 设 \(Q\subset\mathbb R^d\) 是非空闭立方体，映射 \(F:Q\to Q\) 满足：存在
 \(0\le q<1\)，使任意 \(x,y\in Q\) 都有
+
 \[
 \|F(x)-F(y)\|\le q\|x-y\|.
 \]
+
 则 \(F\) 在 \(Q\) 中有唯一不动点。
 
 **证明。** 任取 \(x_0\in Q\)，递推定义 \(x_{n+1}=F(x_n)\)。由压缩估计归纳得
 \(\|x_{n+1}-x_n\|\le q^n\|x_1-x_0\|\)。因此当 \(m>n\) 时，三角不等式和几何级数给出
+
 \[
 \|x_m-x_n\|\le\sum_{k=n}^{m-1}\|x_{k+1}-x_k\|
 \le\frac{q^n}{1-q}\|x_1-x_0\|.
 \]
+
 右端随 \(n\to\infty\) 趋于零，故 \((x_n)\) 是 Cauchy 序列。第 28 章的 Euclid 空间完备性
 给出 \(x_n\to x_\ast\in\mathbb R^d\)；闭立方体 \(Q\) 是闭集且
 所有 \(x_n\in Q\)，所以 \(x_\ast\in Q\)。压缩估计还说明 \(F\) 连续，于是
+
 \[
 F(x_\ast)=F\!\left(\lim_n x_n\right)=\lim_n x_{n+1}=x_\ast.
 \]
+
 若 \(y_\ast\) 也是不动点，则
+
 \[
 \|x_\ast-y_\ast\|
 =\|F(x_\ast)-F(y_\ast)\|
 \le q\|x_\ast-y_\ast\|,
 \qquad (1-q)\|x_\ast-y_\ast\|\le0,
 \]
+
 故 \(x_\ast=y_\ast\)。\(\square\)
 
 ### 引理：小盒像体积的一致估计 {#lem-u-08-35-02-uniform-box-volume}
 
 设 \(K\Subset G\) 为紧集。对中心 \(a\in K\)、边长 \(h\) 的闭立方体
 \(Q=a+[-h/2,h/2]^d\subset K\)，当 \(h\to0\) 时一致地有
+
 \[
 \operatorname{vol}(T(Q))
 =|\det DT(a)|\operatorname{vol}(Q)+o(\operatorname{vol}(Q)).
@@ -89,27 +100,35 @@ F(x_\ast)=F\!\left(\lim_n x_n\right)=\lim_n x_{n+1}=x_\ast.
 **证明：紧内部的一致线性化。** 记 \(A=DT(a)\)、
 \(R_a(z)=T(z)-T(a)-A(z-a)\)。因 \(DT\) 在 \(K\) 的一个紧邻域上一致连续，存在
 \(\omega(t)\downarrow0\) 使同一邻域内
+
 \[
 \|R_a(z)-R_a(w)\|\le\omega(Ch)\|z-w\|\qquad(z,w\in Q).
 \]
+
 又因 \(|\det DT|\) 在 \(K\) 上有正下界，\(\|A\|\) 与 \(\|A^{-1}\|\) 分别有统一
 上界 \(L\) 与 \(M\)。这些常数都不依赖 \(a\) 或小盒。
 
 **线性像的体积。** 线性代数中的平行多面体公式给出
+
 \[
 \operatorname{vol}(A(Q-a))=|\det A|h^d.
 \]
+
 这一步只处理线性主部，尚不能直接替代 \(T(Q)\)。
 
 **余项的外包与内包。** 令 \(\rho_h=C\omega(Ch)h\)。由余项估计，
+
 \[
 T(Q)\subset T(a)+A(Q-a)+B(0,\rho_h).
 \]
+
 反向内包也必须证明。若 \(y\in A(Q-a)\) 且 \(A^{-1}y\) 到立方体边界的距离大于
 \(2M\rho_h\)，考虑
+
 \[
 \Phi_y(z)=a+A^{-1}\bigl(y-R_a(z)\bigr).
 \]
+
 充分小的 \(h\) 使 \(M\omega(Ch)<1/2\)；中心点 \(a+A^{-1}y\) 的边界余量保证
 \(\Phi_y\) 把 \(Q\) 送入自身，且其 Lipschitz 常数至多 \(M\omega(Ch)<1/2\)。
 将上一引理用于 \(\Phi_y\)，得到唯一不动点 \(z\in Q\)，即 \(T(z)=T(a)+y\)。故线性
@@ -118,10 +137,12 @@ T(Q)\subset T(a)+A(Q-a)+B(0,\rho_h).
 
 \(\|A\|,\|A^{-1}\|\) 一致有界，所以这两个平行多面体边界层的体积均不超过
 \(C\rho_h h^{d-1}=C\omega(Ch)h^d\)。因此
+
 \[
 \left|\operatorname{vol}(T(Q))-|\det DT(a)|h^d\right|
 \le C\omega(Ch)h^d=o(h^d),
 \]
+
 且估计对 \(a\in K\) 一致。\(\square\)
 
 ### 换元定理的 Riemann 和证明
@@ -133,9 +154,11 @@ T(Q)\subset T(a)+A(Q-a)+B(0,\rho_h).
 \(u_{n_k}\to\bar u\in\overline G\)，连续性给出 \(y=T(\bar u)\)。若
 \(\bar u\in G\)，上一段会使 \(y\) 成为 \(D\) 的内点，矛盾；所以
 \(\bar u\in\partial G\)，从而
+
 \[
 \partial D\subset T(\partial G).
 \]
+
 把 \(T\) 与 \(\partial G\) 的有限个分片 \(C^1\) 参数化复合，仍得到有限个分片
 \(C^1\) 参数片。第 33.4 的薄盒论证因而适用于 \(T(\partial G)\)，也控制
 **目标边界的零延拓**；边界上的 Jacobian 退化不影响这个结论。
@@ -148,37 +171,48 @@ T(Q)\subset T(a)+A(Q-a)+B(0,\rho_h).
 立方体之并为 \(W\)；其内部不交，故
 \(\operatorname{vol}(W)<\eta\)。保留其余完全落在 \(G\) 内的粗立方体，记其有限族为
 \(\mathcal K_0\)，并定义闭内域
+
 \[
 K=\bigcup_{Q_0\in\mathcal K_0}Q_0\Subset G.
 \]
+
 任意 \(G\) 中点所在的粗格若未保留，该格必与 \(\partial G\) 相交。因此**所有未保留格**
 对 \(G\) 的遗漏都包含在 \(W\) 中，特别地
+
 \[
 G\setminus K\subset W,
 \qquad \operatorname{vol}(G\setminus K)<C\eta
 \]
+
 （这里实际可取 \(C=1\)）。这一步没有把覆盖盒端点插入网格，保留下来的几何对象始终
 是边长 \(s\) 的立方体。
 
 **固定内核上的像块。** 固定这个 \(K\)，把每个 \(Q_0\in\mathcal K_0\) 等分成边长
 \(h=s/n\) 的闭立方体，所得有限族记为 \(\mathcal K_h\)。于是对每个 \(n\) 都有精确穷尽
+
 \[
 K=\bigcup_{Q\in\mathcal K_h}Q.
 \]
+
 不同 \(Q\) 的内部不交；由 \(T\) 在 \(G\) 内一一且局部为微分同胚，不同
 \(T(Q)\) 的内部也不交。每个 \(T(Q)\) 的边界是有限个 \(C^1\) 参数片的像，故可积；
 有限块可由区域可加性求和。
 
 **被积函数与 Jacobian 的振幅控制。** 写 \(J=|\det DT|\)。对每个细立方体明确取
+
 \[
 a_Q=\operatorname{center}(Q).
 \]
+
 于是 \(Q=a_Q+[-h/2,h/2]^d\)，与上一引理的立方体完全相同，且一致地
+
 \[
 \operatorname{vol}(T(Q))=J(a_Q)\operatorname{vol}(Q)
 +o_h(\operatorname{vol}(Q)).
 \]
+
 由 \(DT\) 有界，\(\operatorname{diam}T(Q)\le Ch\)。上一引理与连续性进一步给出
+
 \[
 \begin{aligned}
 \int_{T(Q)}f
@@ -191,9 +225,11 @@ a_Q=\operatorname{center}(Q).
  \right).
 \end{aligned}
 \]
+
 再用一致小盒体积误差，逐块之差除以 \(\operatorname{vol}(Q)\) 后由一个与 \(Q\)
 无关且趋于零的量控制。细立方体精确穷尽固定 \(K\)，其总体积就是
 \(\operatorname{vol}(K)\)，所以求和并令 \(h\to0\) 得到
+
 \[
 \int_{T(K)}f=\int_K(f\circ T)J.
 \]
@@ -202,9 +238,11 @@ a_Q=\operatorname{center}(Q).
 \(L\)。每个边界粗立方体 \(Q_0\) 的像都装在边长 \(L\sqrt d\,s\) 的轴对齐盒中；把
 这些盒合并，便得到 \(T(W)\) 的有限覆盖，其总体积不超过
 \(C\operatorname{vol}(W)<C\eta\)。由于
+
 \[
 D\setminus T(K)=T(G)\setminus T(K)\subset T(G\setminus K)\subset T(W),
 \]
+
 且 \(f\) 与 \((f\circ T)J\) 都有界，遗漏的目标积分和参数积分的绝对值都小于
 \(C\eta\)。注意这里粗网格中所有未保留格都已通过 \(W\) 计入误差，没有残余格。
 

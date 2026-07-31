@@ -22,9 +22,11 @@ content_standard: 2
 
 ## 探索与猜想
 对第 \(j\) 个坐标，用
+
 \[
 \frac{f(x+he_j)-f(x-he_j)}{2h}
 \]
+
 近似 Jacobian 第 \(j\) 列。多组步长的稳定区间比单次吻合更有信息。
 
 ## 概念与理论

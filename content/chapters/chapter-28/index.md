@@ -16,9 +16,11 @@ title: 第 28 章：Euclid 空间、极限与连续
 5. [多元极限、连续与连通性怎样给出存在性结论？](u-07-28-05-limits-continuity.md)
 
 学习路线是
+
 \[
 \text{Euclid 几何}\to\text{开闭集}\to\text{完备性}\to\text{紧致性}
 \to\text{多元极限、连续与连通}.
 \]
+
 第 29 章将在这些语言之上定义 Fréchet 微分；本章不使用偏导数判断连续或极限。
 

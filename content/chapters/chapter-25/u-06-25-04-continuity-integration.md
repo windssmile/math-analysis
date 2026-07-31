@@ -30,9 +30,11 @@ content_standard: 2
 ## 探索与猜想
 
 三段式
+
 \[
 |f(x)-f(y)|\le|f(x)-f_N(x)|+|f_N(x)-f_N(y)|+|f_N(y)-f(y)|
 \]
+
 揭示了统一 \(N\) 的作用。积分交换则由区间长度乘上统一误差直接控制。
 
 ## 概念与理论
@@ -54,6 +56,7 @@ content_standard: 2
 
 **定理。** 若每个 \(f_n\) 在闭区间 \([a,b]\) 上 Riemann 可积，且 \(f_n\to f\)
 一致，则 \(f\) Riemann 可积，并且
+
 \[
 \int_a^b f=\lim_{n\to\infty}\int_a^bf_n.
 \]
@@ -62,19 +65,23 @@ content_standard: 2
 \(\|f-f_N\|_\infty\) 足够小；再取使 \(f_N\) 上下和差足够小的分割。由
 \(f\) 与 \(f_N\) 的上下确界各相差至多统一误差，得到 \(f\) 的上下和差小于
 \(\varepsilon\)，故 \(f\) 可积。随后
+
 \[
 \left|\int_a^bf_n-\int_a^bf\right|
 \le(b-a)\|f_n-f\|_{\infty,[a,b]}\to0.
 \]
+
 证毕。
 
 ### 逐项积分 {#cor-u-06-25-04-termwise-integration}
 
 若每个 \(u_n\) 在 \([a,b]\) 上 Riemann 可积，且 \(\sum u_n\) 一致收敛到 \(S\)，
 则
+
 \[
 \int_a^bS(x)\,dx=\sum_{n=1}^{\infty}\int_a^bu_n(x)\,dx.
 \]
+
 这是对部分和函数列应用积分交换定理。
 
 这些条件是保证交换的充分条件。某些仅逐点收敛的特殊例子也可能碰巧交换，但不能

@@ -301,9 +301,11 @@ trapezoid = composite_trapezoid(lambda x: x * x, 0.0, 1.0, 4, 2.0)
 ??? note "答案"
 
     \(h=1/2\)，四个中点为
+
     \[
     \frac14,\quad\frac34,\quad\frac54,\quad\frac74.
     \]
+
     因而 \(M_4=\frac12\sum f(m_i)\)。
 
 ### 练习 2：梯形权重 {#pr-u-05-22-04-02}
@@ -327,6 +329,7 @@ trapezoid = composite_trapezoid(lambda x: x * x, 0.0, 1.0, 4, 2.0)
     \quad\Longleftrightarrow\quad
     n^2\ge4500.
     \]
+
     因 \(\sqrt{4500}\approx67.08\)，取 \(n=68\)。
 
 ### 练习 4：梯形预算 {#pr-u-05-22-04-04}
@@ -339,6 +342,7 @@ trapezoid = composite_trapezoid(lambda x: x * x, 0.0, 1.0, 4, 2.0)
     \frac{4\cdot3^3}{12n^2}\le10^{-3}
     \quad\Longleftrightarrow\quad n^2\ge9000.
     \]
+
     \(\sqrt{9000}\approx94.87\)，故取 \(n=95\)。
 
 ### 练习 5：线性函数 {#pr-u-05-22-04-05}

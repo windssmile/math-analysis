@@ -31,10 +31,12 @@ content_standard: 2
 ## 探索与猜想
 
 对 \(x=(x_1,\ldots,x_n)\)，令
+
 \[
 \langle x,y\rangle=\sum_{i=1}^n x_i y_i,\qquad
 \|x\|_2=\sqrt{\langle x,x\rangle}.
 \]
+
 若长度符合几何直觉，就应有 \(|\langle x,y\rangle|\le \|x\|_2\|y\|_2\)。
 
 ## 概念与理论
@@ -42,24 +44,29 @@ content_standard: 2
 ### Cauchy–Schwarz 不等式 {#thm-u-07-28-01-cauchy-schwarz}
 
 对任意 \(x,y\in\mathbb R^n\)，
+
 \[
 |\langle x,y\rangle|\le \|x\|_2\|y\|_2.
 \]
 
 **证明。** 若 \(y=0\) 结论显然。否则对任意实数 \(t\)，
+
 \[
 0\le \|x-ty\|_2^2
 =\|x\|_2^2-2t\langle x,y\rangle+t^2\|y\|_2^2.
 \]
+
 这个二次多项式对所有 \(t\) 非负，因此判别式不大于零，整理即得结论。等号当且
 仅当 \(x,y\) 线性相关。
 
 由此
+
 \[
 \|x+y\|_2^2
 =\|x\|_2^2+2\langle x,y\rangle+\|y\|_2^2
 \le(\|x\|_2+\|y\|_2)^2,
 \]
+
 得到三角不等式。于是 \(d(x,y)=\|x-y\|_2\) 满足距离的非负性、分离性、对称性和
 三角不等式。
 
@@ -69,7 +76,9 @@ content_standard: 2
 \|x\|_1=\sum_{i=1}^n|x_i|,\qquad
 \|x\|_\infty=\max_i|x_i|.
 \]
+
 逐坐标估计与 Cauchy–Schwarz 给出
+
 \[
 \|x\|_\infty\le \|x\|_2\le \|x\|_1,\qquad
 \|x\|_1\le \sqrt n\,\|x\|_2,\qquad
@@ -80,9 +89,11 @@ content_standard: 2
 
 上述不等式说明任取 \(\ell^1,\ell^2,\ell^\infty\) 中两种范数，都存在只依赖于维数的
 正常数 \(c,C\)，使
+
 \[
 c\|x\|_a\le \|x\|_b\le C\|x\|_a.
 \]
+
 所以一个误差在某种范数下趋于零，当且仅当它在另外两种范数下趋于零。这一结论
 依赖“有限个坐标”；无限维时不能照搬这些常数。
 
@@ -91,10 +102,12 @@ c\|x\|_a\le \|x\|_b\le C\|x\|_a.
 ### 例 1：线性观测的误差 {#ex-u-07-28-01-linear-observation}
 
 若观测量为 \(\langle a,x\rangle\)，输入扰动为 \(h\)，则
+
 \[
 |\langle a,x+h\rangle-\langle a,x\rangle|
 \le \|a\|_2\|h\|_2.
 \]
+
 向量 \(a\) 的长度就是该线性观测对 Euclid 扰动的敏感度。
 
 ### 例 2：不同范数下的球 {#ex-u-07-28-01-unit-balls}

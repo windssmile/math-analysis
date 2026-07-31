@@ -58,10 +58,13 @@ content_standard: 2
 
 集合 \(K\subseteq\mathbb R\) 称为**序列紧致的**，若对每个满足
 \(x_n\in K\) 的数列 \((x_n)\)，都存在严格递增指标
+
 \[
 n_1<n_2<\cdots
 \]
+
 和某个 \(x\in K\)，使
+
 \[
 x_{n_k}\to x.
 \]
@@ -73,14 +76,18 @@ x_{n_k}\to x.
 每个闭区间 \([a,b]\) 都是序列紧致的。
 
 **证明。** 任取数列 \(x_n\in[a,b]\)。因为
+
 \[
 a\le x_n\le b,
 \]
+
 该数列有界。由第二部 Bolzano–Weierstrass 定理，存在子列
 \(x_{n_k}\to x\in\mathbb R\)。对子列仍有
+
 \[
 a\le x_{n_k}\le b.
 \]
+
 由极限的保序性，\(a\le x\le b\)，所以 \(x\in[a,b]\)。
 因此每条闭区间点列都有收敛到区间内一点的子列。\(\square\)
 

@@ -45,9 +45,11 @@ content_standard: 2
 
 集合 \(E\) 的内部 \(E^\circ\) 是全部内部点；闭包 \(\overline E\) 是包含 \(E\)
 的最小闭集；边界
+
 \[
 \partial E=\overline E\cap\overline{\mathbb R^n\setminus E}.
 \]
+
 边界点的每个开球都同时遇到 \(E\) 和它的补集。
 
 ### 闭集的序列刻画 {#thm-u-07-28-02-sequential-closed}

@@ -79,6 +79,7 @@ N_r(a)=\{x\in\mathbb R:|x-a|<r\}=(a-r,a+r)
 ### 定义：相对定义域与单侧邻域 {#def-u-03-09-01-deleted-neighborhood}
 
 称
+
 \[
 N_r^*(a)=\{x\in\mathbb R:0<|x-a|<r\}
          =N_r(a)\setminus\{a\}
@@ -232,9 +233,11 @@ D\cap N_r^*(0)=[0,\infty)\cap\{x:0<|x|<r\}=(0,r).
 ??? note "答案"
 
     任取 \(c_1,c_2\in\mathbb R\)。对每个 \(x\in N_1^*(1)\)，都有 \(x\ne1\)，所以
+
     \[
     f_{c_1}(x)=x+1=f_{c_2}(x).
     \]
+
     它们只可能在中心点 \(1\) 取不同值，而去心局部行为不读取中心点，故结论成立。
 
 ### 习题 5：为什么有限检测不够？ {#pr-u-03-09-01-finite-sampling}
@@ -245,6 +248,7 @@ D\cap N_r^*(0)=[0,\infty)\cap\{x:0<|x|<r\}=(0,r).
 ??? note "答案"
 
     定义
+
     \[
     h(x)=
     \begin{cases}
@@ -252,6 +256,7 @@ D\cap N_r^*(0)=[0,\infty)\cap\{x:0<|x|<r\}=(0,r).
     1,&x\notin S.
     \end{cases}
     \]
+
     于是所有采样点都给出 \(0\)。任给 \(r>0\)，区间
     \((-r,r)\setminus(\{0\}\cup S)\) 仍非空；取其中一点 \(y\)，则
     \(0<|y|<r\) 且 \(h(y)=1\)。所以有限采样即使全部一致，也不能控制窗口内的所有点。

@@ -98,9 +98,11 @@ f(n+1)\le\int_n^{n+1}f(x)\,dx\le f(n).
 
 这就是尾项上下界：左侧是尾项下界，右侧是尾项上界。给定容差
 \(\varepsilon\)，只需反解
+
 \[
 \int_m^\infty f(x)\,dx\le\varepsilon
 \]
+
 即可得到严格截断预算。
 
 ### Cauchy 凝聚判别 {#thm-u-06-23-05-cauchy-condensation}
@@ -116,9 +118,11 @@ f(n+1)\le\int_n^{n+1}f(x)\,dx\le f(n).
 同敛散。
 
 **证明。** 把原级数按
+
 \[
 [2^j,2^{j+1}-1]
 \]
+
 分块。该块有 \(2^j\) 项，单调性给出
 
 \[
@@ -139,20 +143,26 @@ f(n+1)\le\int_n^{n+1}f(x)\,dx\le f(n).
 ### 例 1：\(p\)-级数 {#ex-u-06-23-05-p-series}
 
 考虑
+
 \[
 \sum_{n=1}^{\infty}\frac1{n^p}.
 \]
+
 函数 \(f(x)=x^{-p}\) 对 \(p>0\) 非负递减。第 22 章已知
+
 \[
 \int_1^\infty x^{-p}\,dx
 \]
+
 当且仅当 \(p>1\) 收敛，所以
+
 \[
 \sum_{n=1}^{\infty}\frac1{n^p}
 \quad\text{收敛当且仅当}\quad p>1.
 \]
 
 当 \(p>1\) 时，
+
 \[
 \frac{(m+1)^{1-p}}{p-1}
 \le R_m
@@ -162,19 +172,25 @@ f(n+1)\le\int_n^{n+1}f(x)\,dx\le f(n).
 ### 例 2：对数修正族 {#ex-u-06-23-05-logarithmic-family}
 
 对
+
 \[
 \sum_{n=2}^{\infty}\frac1{n(\log n)^q},
 \]
+
 积分代换 \(u=\log x\) 得
+
 \[
 \int_2^\infty\frac{dx}{x(\log x)^q}
 =\int_{\log2}^{\infty}u^{-q}\,du.
 \]
+
 因此级数当且仅当 \(q>1\) 收敛。也可凝聚：
+
 \[
 2^j a_{2^j}
 =\frac1{(j\log2)^q},
 \]
+
 转化为 \(p\)-级数。
 
 ### 例 3：带条件的截断证书 {#alg-u-06-23-05-certified-truncation}
@@ -182,9 +198,11 @@ f(n+1)\le\int_n^{n+1}f(x)\,dx\le f(n).
 **问题来源。** 近似 \(\sum1/n^2\)，并把总误差控制在 \(10^{-2}\) 内。
 
 **数学转化。** 积分尾界给
+
 \[
 R_m\le\int_m^\infty x^{-2}\,dx=\frac1m.
 \]
+
 所以 \(m=100\) 足够。
 
 **算法思想。** 先由已证明的尾界反解项数，再有限求和；若允许项数不足，就返回

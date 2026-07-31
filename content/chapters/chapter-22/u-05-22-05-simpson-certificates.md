@@ -276,9 +276,11 @@ status="budget_exhausted"
 ??? note "答案"
 
     对常数：\(2A+B=2\)。对 \(x^2\)：
+
     \[
     2Ah^3=\int_{-h}^{h}x^2dx=\frac{2h^3}{3},
     \]
+
     所以 \(A=1/3\)，再得 \(B=4/3\)。
 
 ### 练习 2：奇次精确性 {#pr-u-05-22-05-02}
@@ -298,6 +300,7 @@ status="budget_exhausted"
 ??? note "答案"
 
     \(h=2/10=1/5\)，故
+
     \[
     |E_S|\le\frac{2}{180}\cdot6\cdot\left(\frac15\right)^4
     =\frac1{9375}.
@@ -319,6 +322,7 @@ status="budget_exhausted"
 ??? note "答案"
 
     \(f^{(4)}=24\)，故 \(M_4=24\)。上界为
+
     \[
     \frac{24}{180\cdot4^4}=\frac1{1920}.
     \]

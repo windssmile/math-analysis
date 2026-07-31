@@ -27,6 +27,7 @@ content_standard: 2
 ## 概念与理论
 
 ### Jacobian 与梯度 {#def-u-07-29-05-jacobian}
+
 \[
 J_f(a)=\begin{pmatrix}
 \partial_1f_1&\cdots&\partial_nf_1\\
@@ -34,15 +35,18 @@ J_f(a)=\begin{pmatrix}
 \partial_1f_m&\cdots&\partial_nf_m
 \end{pmatrix},\qquad Df(a)h=J_f(a)h.
 \]
+
 实值函数的 Jacobian 是 \(1\times n\) 行矩阵；梯度
 \(\nabla f(a)\) 约定为对应的列向量，于是 \(Df(a)h=\nabla f(a)^\mathsf Th\)。
 Cauchy–Schwarz 表明单位方向中，梯度方向给出最大的方向增长率。
 
 ### 局部条件数 {#def-u-07-29-05-condition}
 线性系统或局部可逆方阵 \(A\) 的绝对放大由 \(\|A\|\) 控制；相对敏感性常用
+
 \[
 \kappa(A)=\|A\|\,\|A^{-1}\|
 \]
+
 衡量。矩阵奇异时条件数视为无穷。条件数描述**问题敏感性**：输入误差可能被放大多少。
 **算法稳定性**描述实现是否额外放大舍入和离散误差，二者不能混同。
 

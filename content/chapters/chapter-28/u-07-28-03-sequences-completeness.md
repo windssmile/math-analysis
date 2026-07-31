@@ -29,10 +29,12 @@ content_standard: 2
 ## 探索与猜想
 
 写 \(x_k=(x_{k,1},\ldots,x_{k,n})\)。不等式
+
 \[
 |x_{k,i}-x_i|\le\|x_k-x\|_2
 \le\sqrt n\max_i|x_{k,i}-x_i|
 \]
+
 提示有限个坐标可以统一控制。
 
 ## 概念与理论

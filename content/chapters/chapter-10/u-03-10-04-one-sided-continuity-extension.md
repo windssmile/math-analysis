@@ -67,10 +67,12 @@ content_standard: 2
 - 若 \(\lim_{x\to a-,\ x\in D}f(x)=f(a)\)，称 \(f\) 在 \(a\)**左连续**。
 
 等价地，右连续要求：对每个 \(\varepsilon>0\)，存在 \(\delta>0\)，使
+
 \[
 x\in D,\quad a\le x<a+\delta
 \quad\Longrightarrow\quad |f(x)-f(a)|<\varepsilon.
 \]
+
 左连续使用 \(a-\delta<x\le a\)。
 
 函数在闭区间 \([a,b]\) 上连续，是指它在每个内点 \(c\in(a,b)\) 连续，在左端点
@@ -86,9 +88,11 @@ x\in D,\quad a\le x<a+\delta
 极限结论给出左右极限也都等于 \(f(a)\)。
 
 反之，若左右连续，则
+
 \[
 \lim_{x\to a-}f(x)=f(a)=\lim_{x\to a+}f(x).
 \]
+
 由双侧极限判别，\(\lim_{x\to a}f(x)=f(a)\)，所以 \(f\) 在 \(a\) 连续。
 \(\square\)
 
@@ -100,14 +104,17 @@ x\in D,\quad a\le x<a+\delta
 设 \(f:D\to\mathbb R\)，\(a\notin D\) 是 \(D\) 的聚点。存在定义在
 \(D\cup\{a\}\) 上、与 \(f\) 在 \(D\) 上相同且在 \(a\) 连续的函数
 \(\widetilde f\)，当且仅当有限极限
+
 \[
 \lim_{\substack{x\to a\\x\in D}}f(x)=L\in\mathbb R
 \]
+
 存在。若延拓存在，它唯一地满足 \(\widetilde f(a)=L\)。
 
 **证明。**
 
 **充分性。** 若有限极限为 \(L\)，定义
+
 \[
 \widetilde f(x)=
 \begin{cases}
@@ -115,6 +122,7 @@ f(x),&x\in D,\\
 L,&x=a.
 \end{cases}
 \]
+
 给定 \(\varepsilon>0\)，由原极限取得 \(\delta>0\)，控制所有
 \(x\in D\) 且 \(0<|x-a|<\delta\) 的点。对扩充定义域中的 \(x=a\)，输出误差
 为零；对其余允许点，原极限估计给出
@@ -122,11 +130,13 @@ L,&x=a.
 \(\widetilde f\) 在 \(a\) 连续。
 
 **必要性。** 若某个 \(\widetilde f\) 在 \(a\) 连续且在 \(D\) 上等于 \(f\)，则
+
 \[
 \lim_{\substack{x\to a\\x\in D}}f(x)
 =\lim_{\substack{x\to a\\x\in D}}\widetilde f(x)
 =\widetilde f(a),
 \]
+
 所以有限极限存在。若有两个连续延拓，它们在 \(a\) 的值都必须等于这个唯一极限，
 故点值相同。\(\square\)
 
@@ -148,24 +158,30 @@ L,&x=a.
 
 **证明。** \(f(0)=0\)。给定 \(\varepsilon>0\)，取
 \(\delta=\varepsilon^2\)。若 \(x\in[0,\infty)\) 且 \(0\le x<\delta\)，则
+
 \[
 |\sqrt{x}-\sqrt0|=\sqrt{x}<\sqrt{\delta}=\varepsilon.
 \]
+
 所以 \(\lim_{x\to0+}\sqrt{x}=0=f(0)\)。左侧没有定义域点，不是需要补做的条件。
 \(\square\)
 
 ### 例题 2：有孔分式的唯一延拓 {#ex-u-03-10-04-rational-extension}
 
 在 \(D=\mathbb R\setminus\{2\}\) 上定义
+
 \[
 f(x)=\frac{x^2-4}{x-2}.
 \]
+
 求它在 \(2\) 的连续延拓。
 
 **解。** 对 \(x\in D\)，有 \(f(x)=x+2\)，所以
+
 \[
 \lim_{x\to2}f(x)=4.
 \]
+
 连续延拓定理要求且只允许定义 \(\widetilde f(2)=4\)。补值后函数实际上在全体实数
 上等于 \(x+2\)。
 
@@ -191,6 +207,7 @@ f(x)=\frac{x^2-4}{x-2}.
 ### 习题 1：分段函数的连接条件 {#pr-u-03-10-04-piecewise-join}
 
 设
+
 \[
 f(x)=
 \begin{cases}
@@ -198,6 +215,7 @@ x^2,&x\le1,\\
 mx+1,&x>1.
 \end{cases}
 \]
+
 求使 \(f\) 在 \(1\) 连续的 \(m\)。
 
 ??? note "答案"
@@ -212,9 +230,11 @@ mx+1,&x>1.
 ??? note "答案"
 
     因为
+
     \[
     |x\sin(1/x)|\le x\qquad(0<x\le1),
     \]
+
     而 \(x\to0+\) 时 \(x\to0\)，夹逼定理给出右极限为 \(0\)。定义
     \(\widetilde f(0)=0\)，由端点版连续延拓定理，补后的函数在 \(0\) 右连续。
 
@@ -245,14 +265,18 @@ mx+1,&x>1.
 ??? note "答案"
 
     由连续性，
+
     \[
     F(a)=\lim_{\substack{x\to a\\x\in D}}F(x)
     =\lim_{\substack{x\to a\\x\in D}}f(x),
     \]
+
     同理
+
     \[
     G(a)=\lim_{\substack{x\to a\\x\in D}}f(x).
     \]
+
     函数极限唯一，所以 \(F(a)=G(a)\)。
 
 ## 常见误区与后续

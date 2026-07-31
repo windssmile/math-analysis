@@ -52,6 +52,7 @@ Heine 序列判别。本单元把极限目标固定为函数在中心点的实�
 ## 探索与猜想
 
 考虑
+
 \[
 p(x)=
 \begin{cases}
@@ -59,6 +60,7 @@ x+1,&x\ne0,\\
 0,&x=0.
 \end{cases}
 \]
+
 去心邻域中的公式给出 \(\lim_{x\to0}p(x)=1\)，但 \(p(0)=0\)。局部趋势存在还不够；
 连续性要求“极限值 = 点值”。若把 \(p(0)\) 改为 \(1\)，邻近行为不变，却修复了
 中心点的连接。
@@ -68,16 +70,20 @@ x+1,&x\ne0,\\
 ### 定义：一点连续与集合上连续 {#def-u-03-10-01-continuity}
 
 设 \(f:D\to\mathbb R\)，\(a\in D\)。若
+
 \[
 \lim_{\substack{x\to a\\x\in D}}f(x)=f(a),
 \]
+
 则称 \(f\) 在 \(a\) 连续。这里的极限相对于 \(D\) 理解。
 
 若 \(a\) 是 \(D\) 的聚点，这一定义等价于
+
 \[
 \forall\varepsilon>0\;\exists\delta>0\;\forall x\in D,\qquad
 |x-a|<\delta\Longrightarrow |f(x)-f(a)|<\varepsilon. \tag{10.1}
 \]
+
 式 (10.1) 不必写 \(0<|x-a|\)：当 \(x=a\) 时，左边是 \(0\)，结论自动成立。
 反过来，从 (10.1) 删除中心点，就得到极限定义。
 
@@ -108,10 +114,13 @@ x+1,&x\ne0,\\
 
 设 \(f:D\to\mathbb R\)，\(a\in D\)。则 \(f\) 在 \(a\) 连续，当且仅当对每个
 满足
+
 \[
 x_n\in D,\qquad x_n\to a
 \]
+
 的数列，都有
+
 \[
 f(x_n)\to f(a).
 \]
@@ -127,9 +136,11 @@ f(x_n)\to f(a).
 **充分性。** 若 \(a\) 是 \(D\) 的孤立点，连续性已由定义成立。以下设 \(a\) 是
 \(D\) 的聚点。取任意满足 \(x_n\in D\setminus\{a\}\)、\(x_n\to a\) 的数列。
 假设给出的序列条件推出 \(f(x_n)\to f(a)\)。由第 9 章 Heine 判别，
+
 \[
 \lim_{\substack{x\to a\\x\in D}}f(x)=f(a),
 \]
+
 所以 \(f\) 在 \(a\) 连续。\(\square\)
 
 必要性允许数列反复取到 \(a\)；这些项的函数值正好等于 \(f(a)\)，不会造成障碍。
@@ -142,24 +153,31 @@ f(x_n)\to f(a).
 证明 \(f(x)=x^2\) 在任意 \(a\in\mathbb R\) 连续。
 
 **证明。** 给定 \(\varepsilon>0\)。先要求 \(|x-a|<1\)，则
+
 \[
 |x+a|\le |x-a|+2|a|<2|a|+1.
 \]
+
 取
+
 \[
 \delta=\min\left\{1,\frac{\varepsilon}{2|a|+1}\right\}.
 \]
+
 若 \(|x-a|<\delta\)，则
+
 \[
 |x^2-a^2|=|x-a|\,|x+a|
 <\delta(2|a|+1)\le\varepsilon.
 \]
+
 所以 \(x^2\) 在 \(a\) 连续。由于 \(a\) 任意，它在 \(\mathbb R\) 上连续。
 \(\square\)
 
 ### 例题 2：点值错接与修复 {#ex-u-03-10-01-reassigned-value}
 
 设
+
 \[
 q(x)=
 \begin{cases}
@@ -167,15 +185,19 @@ q(x)=
 c,&x=1.
 \end{cases}
 \]
+
 求使 \(q\) 在 \(1\) 连续的 \(c\)。
 
 **解。** 当 \(x\ne1\) 时 \(q(x)=x+1\)，故
+
 \[
 \lim_{x\to1}q(x)=2.
 \]
+
 连续性要求该极限等于 \(q(1)=c\)，所以必须且只需 \(c=2\)。若 \(c=2\)，给定
 \(\varepsilon>0\)，取 \(\delta=\varepsilon\)，则对所有 \(|x-1|<\delta\)：
 当 \(x=1\) 时误差为零；当 \(x\ne1\) 时
+
 \[
 |q(x)-q(1)|=|x+1-2|=|x-1|<\varepsilon.
 \]
@@ -207,6 +229,7 @@ c,&x=1.
 
     若 \(m=0\)，输出差恒为零。若 \(m\ne0\)，给定 \(\varepsilon>0\)，取
     \(\delta=\varepsilon/|m|\)。当 \(|x-a|<\delta\) 时，
+
     \[
     |f(x)-f(a)|=|m|\,|x-a|<|m|\delta=\varepsilon.
     \]
@@ -219,9 +242,11 @@ c,&x=1.
 
     给定 \(\varepsilon>0\)，取 \(\delta=\varepsilon^2\)。若 \(x\in D\) 且
     \(|x|<\delta\)，则
+
     \[
     |\sqrt{x}-\sqrt0|=\sqrt{x}<\sqrt{\delta}=\varepsilon.
     \]
+
     量词只覆盖 \(D\) 中的点，不需要处理负数。
 
 ### 习题 3：序列证伪 {#pr-u-03-10-01-sequence-refutation}
@@ -243,9 +268,11 @@ c,&x=1.
 
     有限集的每个点都是孤立点。固定 \(a\in D\)。若 \(D=\{a\}\)，任取
     \(\delta>0\)；否则取
+
     \[
     \delta=\frac12\min\{|x-a|:x\in D,\ x\ne a\}>0.
     \]
+
     则半径内唯一的定义域点是 \(a\)，故 \(f\) 在 \(a\) 连续。由于 \(a\) 任意，
     \(f\) 在 \(D\) 上连续。
 

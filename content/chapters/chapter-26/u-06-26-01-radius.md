@@ -38,9 +38,11 @@ content_standard: 2
 ### 幂级数 {#def-u-06-26-01-power-series}
 
 以 \(x_0\) 为中心的实幂级数是
+
 \[
 \sum_{n=0}^{\infty}a_n(x-x_0)^n.
 \]
+
 系数 \(a_n\) 与 \(x\) 无关。
 
 ### 半径二分性 {#thm-u-06-26-01-radius-dichotomy}
@@ -48,9 +50,11 @@ content_standard: 2
 若级数在 \(y\ne x_0\) 绝对收敛，则数列
 \(|a_n(y-x_0)^n|\) 有界于 \(M\)。当 \(|x-x_0|<|y-x_0|\) 时，令
 \(q=|x-x_0|/|y-x_0|<1\)，则
+
 \[
 |a_n(x-x_0)^n|\le Mq^n,
 \]
+
 故在 \(x\) 绝对收敛。逆否地，若在一点发散，则所有离中心更远处均发散。
 
 因此存在 \(R\in[0,\infty]\)，使 \(|x-x_0|<R\) 时绝对收敛，
@@ -59,13 +63,17 @@ content_standard: 2
 ### Cauchy–Hadamard 公式 {#thm-u-06-26-01-cauchy-hadamard}
 
 令
+
 \[
 L=\limsup_{n\to\infty}\sqrt[n]{|a_n|}.
 \]
+
 对通项绝对值应用根值判别，所得上极限为 \(L|x-x_0|\)。因此
+
 \[
 R=\frac1L,
 \]
+
 约定 \(1/0=\infty,\ 1/\infty=0\)。这就是 Cauchy–Hadamard 公式。
 若 \(0<R<\infty\)，两个端点 \(x_0-R,x_0+R\) 必须单独代回原级数判断。
 

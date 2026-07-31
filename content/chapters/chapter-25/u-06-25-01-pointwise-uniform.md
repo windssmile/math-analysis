@@ -38,20 +38,24 @@ content_standard: 2
 ### 逐点收敛 {#def-u-06-25-01-pointwise}
 
 \((f_n)\) 在 \(E\) 上逐点收敛到 \(f\)，是指
+
 \[
 \forall x\in E,\ \forall\varepsilon>0,\ \exists N=N(x,\varepsilon),\
 \forall n\ge N:\ |f_n(x)-f(x)|<\varepsilon.
 \]
+
 截断位置可以依赖于 \(x\)。若函数项级数 \(\sum u_n(x)\) 的部分和函数
 \(S_N(x)=\sum_{n=1}^Nu_n(x)\) 逐点收敛到 \(S(x)\)，就称它逐点收敛。
 
 ### 一致收敛 {#def-u-06-25-01-uniform}
 
 \((f_n)\) 在 \(E\) 上一致收敛到 \(f\)，是指
+
 \[
 \forall\varepsilon>0,\ \exists N=N(\varepsilon),\ \forall n\ge N,\
 \forall x\in E:\ |f_n(x)-f(x)|<\varepsilon.
 \]
+
 这里 \(N\) 与 x 无关。显然一致收敛推出逐点收敛，反向一般不成立。
 
 ### 量词对照 {#tbl-u-06-25-01-quantifiers}
@@ -70,17 +74,21 @@ content_standard: 2
 
 在 \([0,1]\) 上令 \(f_n(x)=x^n\)。固定 \(x<1\) 时 \(x^n\to0\)，而 \(f_n(1)=1\)，
 故逐点极限为
+
 \[
 f(x)=\begin{cases}0,&0\le x<1,\\1,&x=1.\end{cases}
 \]
+
 但对 \(x<1\)，\(|f_n(x)-f(x)|=x^n\) 的上确界为 \(1\)，所以不一致收敛。
 
 ### 例 2：缩放后的统一误差 {#ex-u-06-25-01-scaled}
 
 在任意 \(E\) 上，若 \(|g(x)|\le M\)，令 \(f_n(x)=g(x)/n\)。则
+
 \[
 \sup_{x\in E}|f_n(x)|\le M/n\to0,
 \]
+
 故 \(f_n\) 一致收敛到零。
 
 ## 即时检验与回望

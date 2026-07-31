@@ -27,9 +27,11 @@ content_standard: 2
 
 设 \(D\) 为**无界区域**，\(f\ge0\)。选择有界常用区域
 \(D_1\subset D_2\subset\cdots\)，且 \(\bigcup D_n=D\)，称为**区域穷竭**。定义
+
 \[
 \iint_D f\,dA=\lim_{n\to\infty}\iint_{D_n}f\,dA,
 \]
+
 若极限有限则收敛，否则发散到 \(+\infty\)。非负性使截断值单调增加；在本章常用
 连续情形，可用区域包含与尾部比较证明标准矩形或圆盘穷竭给出同一值。
 
@@ -40,6 +42,7 @@ content_standard: 2
 
 ### 例 1：平面 Gaussian {#ex-u-08-36-01-gaussian}
 用圆盘穷竭和极坐标，
+
 \[
 \iint_{\mathbb R^2}e^{-(x^2+y^2)}dA
 =2\pi\lim_{R\to\infty}\int_0^Re^{-r^2}r\,dr=\pi.

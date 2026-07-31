@@ -40,18 +40,22 @@ content_standard: 2
 ### 一致误差 {#def-u-06-27-01-uniform-error}
 
 对 \(f,p\in C([a,b])\)，定义
+
 \[
 \|f-p\|_{\infty,[a,b]}=\max_{x\in[a,b]}|f(x)-p(x)|.
 \]
+
 最大值存在来自闭区间连续函数的最值定理。若一列多项式 \(p_n\) 的该误差趋零，就称
 \(p_n\) 一致逼近 \(f\)。
 
 ### 最佳误差下确界 {#def-u-06-27-01-best-error}
 
 对候选族 \(\mathcal P\)，定义
+
 \[
 E(f;\mathcal P)=\inf_{p\in\mathcal P}\|f-p\|_\infty.
 \]
+
 这是最佳误差下确界；定义本身不保证取得最小值，也不保证存在某个“最佳元”。
 
 ### 四类任务
@@ -70,9 +74,11 @@ E(f;\mathcal P)=\inf_{p\in\mathcal P}\|f-p\|_\infty.
 “插值节点更多”不自动推出一致逼近改善。
 
 一般区间通过
+
 \[
 t=\frac{x-a}{b-a},\qquad x=a+(b-a)t
 \]
+
 仿射变换到 \([0,1]\)。误差值不变，但 Lipschitz 常数等正则性参数要按尺度换算。
 
 ## 例题与迁移

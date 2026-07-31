@@ -26,18 +26,24 @@ content_standard: 2
 ## 概念与理论
 
 若
+
 \[
 D=\{(x,y):a\le x\le b,\ \phi(x)\le y\le\psi(x)\},
 \]
+
 称为 **x-型区域**，积分为
+
 \[
 \iint_Df\,dA=\int_a^b\int_{\phi(x)}^{\psi(x)}f(x,y)\,dy\,dx.
 \]
+
 外层 \([a,b]\) 是 \(x\)-轴**投影**，内层上下界必须满足
 \(\phi\le\psi\)。类似地，
+
 \[
 D=\{(x,y):c\le y\le d,\ \alpha(y)\le x\le\beta(y)\}
 \]
+
 是 **y-型区域**。积分限是区域描述，不是从被积函数猜出的。
 
 证明把区域嵌入矩形并对零延拓使用累次积分；边界属于正文允许的分片光滑类型。

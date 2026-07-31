@@ -31,26 +31,32 @@ content_standard: 2
 ### 二阶 Fréchet 导数 {#def-u-07-30-01-second}
 设 \(U\subset\mathbb R^n\) 开，\(f:U\to\mathbb R^m\)，且 \(Df\) 在 \(a\) 可微。
 定义
+
 \[
 D^2f(a)=D(Df)(a)\in\mathcal L(\mathbb R^n,\mathcal L(\mathbb R^n,\mathbb R^m)).
 \]
+
 通过 \(D^2f(a)[u,v]=(D(Df)(a)u)v\)，它等价于从
 \(\mathbb R^n\times\mathbb R^n\) 到 \(\mathbb R^m\) 的连续双线性映射。
 双线性不是记号游戏：固定任一变量，关于另一变量都线性。
 
 ### Hessian 矩阵 {#def-u-07-30-01-hessian}
 实值函数 \(f\) 的二阶导数在标准基下由 Hessian 表示：
+
 \[
 H_f(a)=\bigl(\partial_{ij}f(a)\bigr)_{i,j=1}^n,\qquad
 D^2f(a)[u,v]=u^\mathsf T H_f(a)v.
 \]
+
 向量值函数则每个分量有一个 Hessian；不能把它误压成单个 \(n\times n\) 矩阵。
 
 ### 混合偏导的对称性 {#thm-u-07-30-01-schwarz}
 若 \(\partial_{ij}f,\partial_{ji}f\) 在 \(a\) 的某邻域存在且连续，则
+
 \[
 \partial_{ij}f(a)=\partial_{ji}f(a).
 \]
+
 证明取只改变第 \(i,j\) 坐标的矩形增量，二次使用一元中值定理，再令矩形边长趋零。
 连续性把两个中间点上的混合偏导送到同一点 \(a\)。因此 \(H_f(a)\) 对称，
 \(D^2f(a)[u,v]=D^2f(a)[v,u]\)。
@@ -60,6 +66,7 @@ D^2f(a)[u,v]=u^\mathsf T H_f(a)v.
 ## 例题与迁移
 ### 例 1：一个二次函数 {#ex-u-07-30-01-quadratic}
 \(f(x,y)=x^2+3xy+2y^2\) 有
+
 \[
 H_f=\begin{pmatrix}2&3\\3&4\end{pmatrix},\quad
 D^2f[(u_1,u_2),(v_1,v_2)]

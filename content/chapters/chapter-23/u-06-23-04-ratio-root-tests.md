@@ -47,6 +47,7 @@ content_standard: 2
 ### 比值判别 {#thm-u-06-23-04-ratio-test}
 
 设 \(a_n>0\)，且
+
 \[
 \lim_{n\to\infty}\frac{a_{n+1}}{a_n}=L.
 \]
@@ -57,9 +58,11 @@ content_standard: 2
 
 **收敛证明。** 选 \(L<q<1\)。存在 \(N\) 使 \(n\ge N\) 时
 \(a_{n+1}\le q a_n\)。归纳得
+
 \[
 a_{N+j}\le a_Nq^j.
 \]
+
 右侧形成收敛几何级数，直接比较得到 \(\sum a_n\) 收敛。
 
 发散情形中，若最终 \(a_{n+1}\ge q a_n\) 且 \(q>1\)，则通项不趋于零。
@@ -67,6 +70,7 @@ a_{N+j}\le a_Nq^j.
 ### 根值判别 {#thm-u-06-23-04-root-test}
 
 设 \(a_n\ge0\)，且
+
 \[
 \lim_{n\to\infty}\sqrt[n]{a_n}=L.
 \]
@@ -82,6 +86,7 @@ a_{N+j}\le a_Nq^j.
 ### 上极限形式 {#thm-u-06-23-04-limsup-forms}
 
 普通极限可能不存在。更稳健地，令
+
 \[
 \rho=\limsup_{n\to\infty}\sqrt[n]{a_n}.
 \]
@@ -91,9 +96,11 @@ a_{N+j}\le a_Nq^j.
 \(\sqrt[n]{a_n}>q>1\)，于是 \(a_n\not\to0\)，级数发散。
 
 比值也可用
+
 \[
 \limsup\frac{a_{n+1}}{a_n}<1
 \]
+
 给出收敛。这里必须写“上极限严格小于 \(1\)”；仅仅每个比值都小于 \(1\) 而越来越
 接近 \(1\)，未必有统一几何控制。
 
@@ -102,29 +109,35 @@ a_{N+j}\le a_Nq^j.
 ### 例 1：阶乘压过固定指数 {#ex-u-06-23-04-factorial}
 
 对 \(a_n=c^n/n!\)，
+
 \[
 \frac{a_{n+1}}{a_n}=\frac c{n+1}\to0,
 \]
+
 所以对任意固定 \(c>0\)，\(\sum c^n/n!\) 收敛。
 
 ### 例 2：临界值 1 为什么没有结论 {#ex-u-06-23-04-critical-one}
 
 对 \(a_n=1/n\) 和 \(b_n=1/n^2\)，都有
+
 \[
 \frac{a_{n+1}}{a_n}\to1,\qquad
 \frac{b_{n+1}}{b_n}\to1,
 \]
+
 也都有 \(n\) 次根趋于 \(1\)。前者发散，后者收敛。因此临界值 1 同时容纳两种行为。
 
 ### 例 3：比值极限不存在但根值成功 {#ex-u-06-23-04-oscillating-ratio}
 
 令
+
 \[
 a_n=2^{-n}\begin{cases}
 1,&n\text{ 为偶数},\\
 2,&n\text{ 为奇数}.
 \end{cases}
 \]
+
 相邻比值在两种值间振荡，比值极限不存在；但
 \(\sqrt[n]{a_n}\to1/2\)，根值判别给出收敛。
 

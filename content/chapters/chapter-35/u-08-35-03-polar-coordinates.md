@@ -26,26 +26,33 @@ content_standard: 2
 ## 概念与理论
 
 极坐标映射
+
 \[
 T(r,\theta)=(r\cos\theta,r\sin\theta)
 \]
+
 的 Jacobian 为
+
 \[
 DT=\begin{pmatrix}\cos\theta&-r\sin\theta\\
 \sin\theta&r\cos\theta\end{pmatrix},\qquad
 \det DT=r(\cos^2\theta+\sin^2\theta)=r.
 \]
+
 因此在 \(r\ge0\) 且角度不重复覆盖的参数域上，
+
 \[
 \iint_Df(x,y)\,dA
 =\iint_Gf(r\cos\theta,r\sin\theta)\,r\,dr\,d\theta.
 \]
+
 原点处 Jacobian 为零，但它位于参数域边界的退化集合；不能因此忽略其他内部点的
 非退化检查。完整圆通常取任意长度 \(2\pi\) 的半开角度范围。
 
 ## 例题与迁移
 
 ### 例 1：圆盘面积 {#ex-u-08-35-03-disk}
+
 \[
 \int_0^{2\pi}\int_0^R r\,dr\,d\theta=\pi R^2.
 \]

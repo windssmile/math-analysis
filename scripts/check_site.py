@@ -623,14 +623,20 @@ def validate_site(
         return ["site is missing index.html"]
 
     for html_file in sorted(site.rglob("*.html")):
+        rendered = html_file.read_text(encoding="utf-8")
         parser = PageParser()
-        parser.feed(html_file.read_text(encoding="utf-8"))
+        parser.feed(rendered)
         for href in parser.links:
             target = _target_for_link(site, html_file, href)
             if target is not None and not target.is_file():
                 errors.append(
                     f"{html_file.relative_to(site).as_posix()} links to missing {urlsplit(href).path}"
                 )
+        prose_html = re.sub(r"<(?:pre|code)\b[^>]*>[\s\S]*?</(?:pre|code)>", "", rendered)
+        if re.search(r"(?m)^\[$|^\]$", prose_html):
+            errors.append(
+                f"{html_file.relative_to(site).as_posix()} contains unwrapped display-math delimiters"
+            )
 
     for expected_page in expected_pages or []:
         if not (site / expected_page).is_file():

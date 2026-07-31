@@ -29,9 +29,11 @@ content_standard: 2
 ### 极值存在定理 {#thm-u-07-32-01-weierstrass}
 若 \(K\subset\mathbb R^n\) 非空且紧致，\(f:K\to\mathbb R\) 连续，则存在
 \(x_{\min},x_{\max}\in K\)，使
+
 \[
 f(x_{\min})\le f(x)\le f(x_{\max})\quad(x\in K).
 \]
+
 证明由连续像 \(f(K)\) 紧致，实数中的非空紧集包含其确界与确界点。
 
 ### 定义域审查 {#def-u-07-32-01-domain}

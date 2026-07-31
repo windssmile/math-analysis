@@ -23,13 +23,17 @@ content_standard: 2
 
 ## 探索与猜想
 对 \(F(x)=0\)，在 \(x_k\) 处线性化：
+
 \[
 F(x_k+s)\approx F(x_k)+J_F(x_k)s.
 \]
+
 令线性模型为零，解
+
 \[
 J_F(x_k)s_k=-F(x_k),\qquad x_{k+1}=x_k+s_k.
 \]
+
 实现应解线性系统，不显式构造逆矩阵。
 
 ## 概念与理论
@@ -75,10 +79,12 @@ J_F(x_k)s_k=-F(x_k),\qquad x_{k+1}=x_k+s_k.
 
 ## 例题与迁移
 ### 例 1：圆与直线 {#ex-u-07-31-04-circle}
+
 \[
 F(x,y)=(x^2+y^2-1,x-y),\quad
 J_F(x,y)=\begin{pmatrix}2x&2y\\1&-1\end{pmatrix}.
 \]
+
 从 \((0.8,0.6)\) 出发，迭代趋近 \((2^{-1/2},2^{-1/2})\)。
 
 ```python

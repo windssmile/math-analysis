@@ -39,17 +39,21 @@ content_standard: 2
 ### Weierstrass M 判别 {#thm-u-06-25-03-m-test}
 
 **定理。** 若存在非负数 \(M_n\) 使
+
 \[
 |u_n(x)|\le M_n\quad(\forall x\in E),
 \qquad \sum M_n<\infty,
 \]
+
 则 \(\sum u_n(x)\) 在 \(E\) 上一致且一致绝对收敛。
 
 **证明。** 对任意有限尾段，
+
 \[
 \sup_{x\in E}\left|\sum_{k=m+1}^nu_k(x)\right|
 \le\sum_{k=m+1}^nM_k.
 \]
+
 右端由数项级数 Cauchy 判据趋零，故原级数一致收敛。对 \(|u_n(x)|\) 作同样估计，
 得到一致绝对收敛。证毕。
 

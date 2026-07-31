@@ -28,18 +28,22 @@ content_standard: 2
 
 ### 通量积分 {#def-u-09-38-04-flux-integral}
 设定向曲面 \(S\) 的单位法向为 \(n\)，向量场 \(F\) 连续。定义
+
 \[
 \iint_S F\cdot n\,dS
 =\iint_D F(r(u,v))\cdot(r_u\times r_v)\,du\,dv,
 \]
+
 其中参数化必须诱导所选取向；向量 \(n\,dS\) 称为**有向面积元**。
 
 ### 参数化与取向定理
 对合法参数变换 \(\phi:E\to D\)，
+
 \[
 (r\circ\phi)_s\times(r\circ\phi)_t
 =((r_u\times r_v)\circ\phi)\det D\phi.
 \]
+
 参数域换元提供 **Jacobian 的绝对值**。若 \(\det D\phi>0\)，其取向符号为正，是保向
 参数化，通量不变；若 \(\det D\phi<0\)，新叉积反向。若仍要表示原取向就须额外取负，
 若接受新取向则通量变号。特别地，法向取向反转必使通量变号。

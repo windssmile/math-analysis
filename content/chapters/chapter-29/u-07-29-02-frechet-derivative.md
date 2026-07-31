@@ -22,6 +22,7 @@ content_standard: 2
 
 ## 探索与猜想
 寻找线性映射 \(A:\mathbb R^n\to\mathbb R^m\)，使
+
 \[
 f(a+h)=f(a)+Ah+r(h),\qquad \frac{\|r(h)\|}{\|h\|}\to0.
 \]
@@ -33,15 +34,19 @@ f(a+h)=f(a)+Ah+r(h),\qquad \frac{\|r(h)\|}{\|h\|}\to0.
 
 ### 导数唯一 {#thm-u-07-29-02-uniqueness}
 若 \(A,B\) 都满足定义，固定任意 \(v\)，令 \(h=tv\)，则
+
 \[
 \|(A-B)v\|\le\frac{\|r_A(tv)\|+\|r_B(tv)\|}{|t|}\to0.
 \]
+
 故 \((A-B)v=0\) 对所有 \(v\) 成立，\(A=B\)。
 
 由定义，
+
 \[
 \|f(a+h)-f(a)\|\le\|A\|\|h\|+\|r(h)\|\to0,
 \]
+
 所以可微必连续。令 \(h=tv\) 又得 \(D_vf(a)=Df(a)v\)，方向导数对 \(v\) 线性。
 
 ### 最佳线性近似 {#def-u-07-29-02-frechet}
@@ -55,9 +60,11 @@ f(a+h)=f(a)+Ah+r(h),\qquad \frac{\|r(h)\|}{\|h\|}\to0.
 
 ### 例 2：平方范数 {#ex-u-07-29-02-square-norm}
 \(f(x)=\|x\|_2^2\) 满足
+
 \[
 f(a+h)-f(a)=2a^\mathsf Th+\|h\|^2,
 \]
+
 故 \(Df(a)h=2a^\mathsf Th\)。
 
 ## 即时检验与回望

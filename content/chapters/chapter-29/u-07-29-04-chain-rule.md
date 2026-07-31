@@ -27,27 +27,33 @@ content_standard: 2
 ## 概念与理论
 
 和、标量倍及双线性乘积规则都从余项展开得到。例如实值乘积
+
 \[
 D(fg)(a)h=f(a)Dg(a)h+g(a)Df(a)h.
 \]
 
 ### 链式法则 {#thm-u-07-29-04-chain}
 若 \(f\) 在 \(a\) 可微，\(g\) 在 \(f(a)\) 可微，则
+
 \[
 D(g\circ f)(a)=Dg(f(a))\circ Df(a).
 \]
 
 **证明。** 写 \(f(a+h)=f(a)+Ah+r(h)\)，再写
+
 \[
 g(f(a)+k)=g(f(a))+Bk+s(k).
 \]
+
 代入 \(k=Ah+r(h)\)。线性项为 \(BAh\)；\(Br(h)=o(\|h\|)\)。又因
 \(k=O(\|h\|)\)，有 \(s(k)=o(\|k\|)=o(\|h\|)\)。
 
 坐标中，若 \(J_f(a)\) 为 \(m\times n\)，\(J_g(f(a))\) 为 \(p\times m\)，则
+
 \[
 J_{g\circ f}(a)=J_g(f(a))J_f(a),
 \]
+
 结果为 \(p\times n\)。定义域和值域强制了矩阵乘法顺序。
 
 ## 例题与迁移

@@ -34,6 +34,7 @@ content_standard: 2
 
 ### 算法思想
 **张量积中点法**为
+
 \[
 M_{n_x,n_y}=\Delta x\Delta y\sum_{i=1}^{n_x}\sum_{j=1}^{n_y}
 f(x_i^\ast,y_j^\ast).

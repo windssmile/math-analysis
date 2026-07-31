@@ -245,9 +245,11 @@ I_k=\left[k\pi+\frac{\pi}{6},\,k\pi+\frac{5\pi}{6}\right]
 ??? note "答案"
 
     不需要。正常积分估计
+
     \[
     \left|\int_A^Bf\right|\le\int_A^B|f|
     \]
+
     对换号函数同样成立；右侧的 Cauchy 尾部控制已经足够。
 
 ### 即时检验 2
@@ -257,9 +259,11 @@ I_k=\left[k\pi+\frac{\pi}{6},\,k\pi+\frac{5\pi}{6}\right]
 ??? note "答案"
 
     不能直接删去。证明需要
+
     \[
     \int_A^B|g'|=g(A)-g(B)
     \]
+
     来控制总变化；没有单调性时，这个等式失效，现有证明不能闭合。
 
 回望：绝对收敛控制总振幅；Dirichlet 控制有界累计量乘衰减振幅；主值只控制一条指定
@@ -276,6 +280,7 @@ I_k=\left[k\pi+\frac{\pi}{6},\,k\pi+\frac{5\pi}{6}\right]
     \[
     \left|\frac{\sin(x^2)}{x^2}\right|\le\frac1{x^2}.
     \]
+
     上方 \(p\)-积分收敛，故绝对值积分收敛，进而原积分收敛。
 
 ### 练习 2：Dirichlet 条件 {#pr-u-05-22-03-02}
@@ -304,9 +309,11 @@ I_k=\left[k\pi+\frac{\pi}{6},\,k\pi+\frac{5\pi}{6}\right]
 ??? note "答案"
 
     \(g(x)=1+x^{-1}\) 有界且单调递减到 \(1\)，满足 Abel 判别。也可拆成
+
     \[
     \int_1^\infty f+\int_1^\infty\frac{f(x)}x\,dx;
     \]
+
     第一项按假设收敛，第二项由 Dirichlet 判别收敛。
 
 ### 练习 5：缺少趋零条件 {#pr-u-05-22-03-05}
@@ -327,6 +334,7 @@ I_k=\left[k\pi+\frac{\pi}{6},\,k\pi+\frac{5\pi}{6}\right]
 ??? note "答案"
 
     证明中的 \(M=3\)。于是 \(|H_A|\le2M=6\)，分部积分估计直接给出
+
     \[
     \left|\int_A^Bfg\right|\le2Mg(A)=6g(A).
     \]

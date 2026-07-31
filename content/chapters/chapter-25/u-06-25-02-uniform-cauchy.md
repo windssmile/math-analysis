@@ -38,15 +38,18 @@ content_standard: 2
 ### 上确界误差记号 {#def-u-06-25-02-sup-error}
 
 定义
+
 \[
 \|g\|_{\infty,E}=\sup_{x\in E}|g(x)|.
 \]
+
 若右端有限，它度量 \(g\) 在整个 \(E\) 上的最大可能大小；若函数无界，上确界为无穷，
 这个记号不能伪装成有限误差，也不能参与普通实数误差预算。
 
 ### 一致 Cauchy 判据 {#thm-u-06-25-02-uniform-cauchy}
 
 **定理。** 函数列 \((f_n)\) 在 \(E\) 上一致收敛，当且仅当
+
 \[
 \forall\varepsilon>0,\ \exists N,\ \forall m,n\ge N,\ \forall x\in E:
 |f_n(x)-f_m(x)|<\varepsilon.
@@ -66,9 +69,11 @@ content_standard: 2
 令 \(S_n(x)=\sum_{k=1}^n u_k(x)\)。由定理，\(\sum u_k(x)\) 一致收敛当且仅当：
 对每个 \(\varepsilon>0\)，存在与 \(x\) 无关的 \(N\)，使所有 \(n>m\ge N\) 和
 所有 \(x\in E\) 都满足
+
 \[
 \left|\sum_{k=m+1}^{n}u_k(x)\right|<\varepsilon.
 \]
+
 控制对象是任意有限尾段，不只是相邻两项或某条选定子序列。
 
 ## 例题与迁移

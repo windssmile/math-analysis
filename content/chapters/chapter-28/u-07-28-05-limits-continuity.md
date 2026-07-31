@@ -36,9 +36,11 @@ content_standard: 2
 ### 多元极限 {#def-u-07-28-05-multivariable-limit}
 
 设 \(f:E\subset\mathbb R^n\to\mathbb R^m\)，\(a\) 是 \(E\) 的聚点。称
+
 \[
 \lim_{x\to a,\ x\in E}f(x)=L,
 \]
+
 若对任意 \(\varepsilon>0\)，存在 \(\delta>0\)，使所有满足
 \(x\in E\) 且 \(0<\|x-a\|_2<\delta\) 的点都有
 \(\|f(x)-L\|_2<\varepsilon\)。
@@ -48,9 +50,11 @@ content_standard: 2
 \(f(x_k)\to L\)。
 
 不同路径得到不同极限可以否定极限存在。例如
+
 \[
 f(x,y)=\frac{x^2-y^2}{x^2+y^2}
 \]
+
 沿 \(y=0\) 为 \(1\)，沿 \(x=0\) 为 \(-1\)。反过来，即使若干直线路径给出相同值，
 也没有控制全部序列，因此**有限条路径不能证明极限存在**。
 
@@ -76,6 +80,7 @@ f(x,y)=\frac{x^2-y^2}{x^2+y^2}
 \left|\frac{x^2y}{x^2+y^2}\right|
 \le |y|\le\sqrt{x^2+y^2},
 \]
+
 故 \((x,y)\to(0,0)\) 时极限为 \(0\)。这里控制了整个小球，而非有限路径。
 
 ### 例 2：路径都好看仍可能失败 {#ex-u-07-28-05-curved-path}

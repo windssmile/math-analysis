@@ -38,24 +38,30 @@ content_standard: 2
 ### Bernstein 多项式 {#def-u-06-27-02-bernstein}
 
 对 \(f\in C([0,1])\)，定义
+
 \[
 B_n(f;x)=\sum_{k=0}^{n}f(k/n)p_{n,k}(x),\qquad
 p_{n,k}(x)=\binom nkx^k(1-x)^{n-k}.
 \]
+
 当 \(x\in[0,1]\) 时权重非负；由二项式定理，权重和为 1。因此 \(B_n(f;x)\)
 是样本值的凸组合。
 
 ### 有限矩恒等式 {#lem-u-06-27-02-moments}
 
 对 \((x+(1-x))^n\) 作有限求导或使用组合恒等式可得
+
 \[
 \sum_k\frac{k}{n}p_{n,k}(x)=x,
 \]
+
 故构造保持常数、保持线性函数。进一步
+
 \[
 \sum_k\left(\frac{k}{n}-x\right)^2p_{n,k}(x)
 =\frac{x(1-x)}n\le\frac1{4n}.
 \]
+
 这就是二阶中心矩；推导只涉及有限和。
 
 ### Bernstein–Weierstrass 定理 {#thm-u-06-27-02-weierstrass}
@@ -66,17 +72,21 @@ p_{n,k}(x)=\binom nkx^k(1-x)^{n-k}.
 **证明。** 令 \(M=\|f\|_\infty\)。给定 \(\varepsilon>0\)，由一致连续性取
 \(\delta>0\)，使 \(|u-v|<\delta\) 时函数值差小于 \(\varepsilon/2\)。
 写
+
 \[
 |B_n(f;x)-f(x)|
 \le\sum_k|f(k/n)-f(x)|p_{n,k}(x).
 \]
+
 近点 \(|k/n-x|<\delta\) 的总贡献小于 \(\varepsilon/2\)。远点贡献至多
+
 \[
 2M\sum_{|k/n-x|\ge\delta}p_{n,k}(x)
 \le\frac{2M}{\delta^2}
 \sum_k(k/n-x)^2p_{n,k}(x)
 \le\frac{M}{2n\delta^2}.
 \]
+
 选统一的足够大 \(n\)，使它小于 \(\varepsilon/2\)。所得界与 \(x\) 无关，故一致
 收敛。一般 \([a,b]\) 由仿射变换得到。证毕。
 
@@ -92,9 +102,11 @@ p_{n,k}(x)=\binom nkx^k(1-x)^{n-k}.
 ### 例 2：二次函数 {#ex-u-06-27-02-quadratic}
 
 由二阶矩，
+
 \[
 B_n(t^2;x)=x^2+\frac{x(1-x)}n,
 \]
+
 故一致误差不超过 \(1/(4n)\)。
 
 ## 即时检验与回望
