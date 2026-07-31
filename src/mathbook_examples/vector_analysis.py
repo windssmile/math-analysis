@@ -69,6 +69,28 @@ def _finite_fsum(values: Iterable[float], message: str) -> float:
     return total
 
 
+def _finite_product(factors: Iterable[float], message: str) -> float:
+    factors = tuple(factors)
+    if not all(math.isfinite(factor) for factor in factors):
+        raise ValueError(message)
+    if any(factor == 0.0 for factor in factors):
+        negative = sum(math.copysign(1.0, factor) < 0.0 for factor in factors) % 2
+        return -0.0 if negative else 0.0
+    mantissa = 1.0
+    exponent = 0
+    for factor in factors:
+        factor_mantissa, factor_exponent = math.frexp(factor)
+        mantissa, adjustment = math.frexp(mantissa * factor_mantissa)
+        exponent += factor_exponent + adjustment
+    try:
+        product = math.ldexp(mantissa, exponent)
+    except OverflowError as error:
+        raise ValueError(message) from error
+    if not math.isfinite(product):
+        raise ValueError(message)
+    return product
+
+
 def composite_midpoint_line_integral(
     field: Callable[[Vector], object],
     *,
@@ -97,9 +119,10 @@ def composite_midpoint_line_integral(
             "line dot product must be finite",
         )
         terms.append(term)
-    value = step * _finite_fsum(terms, "integral accumulation must be finite")
-    if not math.isfinite(value):
-        raise ValueError("integral accumulation must be finite")
+    value = _finite_product(
+        (step, _finite_fsum(terms, "integral accumulation must be finite")),
+        "integral accumulation must be finite",
+    )
     return LineIntegralResult(value, (lower, upper), n, n)
 
 
@@ -144,7 +167,8 @@ def composite_midpoint_flux_integral(
                 "flux dot product must be finite",
             )
             terms.append(term)
-    value = du * dv * _finite_fsum(terms, "integral accumulation must be finite")
-    if not math.isfinite(value):
-        raise ValueError("integral accumulation must be finite")
+    value = _finite_product(
+        (du, dv, _finite_fsum(terms, "integral accumulation must be finite")),
+        "integral accumulation must be finite",
+    )
     return FluxIntegralResult(value, (u0, u1), (v0, v1), nu, nv, nu * nv)

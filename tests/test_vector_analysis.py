@@ -157,6 +157,24 @@ class FluxIntegralTests(unittest.TestCase):
                 lambda p: (0.0, 0.0, 1e308), nu=2, **common,
             )
 
+    def test_scales_large_area_without_spurious_intermediate_overflow(self) -> None:
+        for flux, nu, nv, expected in (
+            (1e-300, 1, 1, 1e100),
+            (-1e-300, 1, 1, -1e100),
+            (1e-300, 2, 5, 1e100),
+            (0.0, 2, 5, 0.0),
+        ):
+            with self.subTest(flux=flux, nu=nu, nv=nv):
+                result = composite_midpoint_flux_integral(
+                    lambda p, flux=flux: (0.0, 0.0, flux),
+                    surface=lambda u, v: (u, v, 0.0),
+                    surface_u=lambda u, v: (1.0, 0.0, 0.0),
+                    surface_v=lambda u, v: (0.0, 1.0, 0.0),
+                    u_bounds=(0.0, 1e200), v_bounds=(0.0, 1e200),
+                    nu=nu, nv=nv,
+                )
+                self.assertAlmostEqual(expected, result.value, delta=abs(expected) * 1e-14)
+
 
 if __name__ == "__main__":
     unittest.main()
