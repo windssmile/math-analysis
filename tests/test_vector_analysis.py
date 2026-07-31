@@ -70,12 +70,19 @@ class LineIntegralTests(unittest.TestCase):
                 curve_derivative=lambda t: (1.0, 1.0), bounds=(0.0, 1.0), n=1,
             )
 
-    def test_converts_accumulation_fsum_overflow_to_value_error(self) -> None:
-        with self.assertRaisesRegex(ValueError, "integral accumulation must be finite"):
-            composite_midpoint_line_integral(
-                lambda p: (1e308, 0.0), curve=lambda t: (t, 0.0),
-                curve_derivative=lambda t: (1.0, 0.0), bounds=(0.0, 1.0), n=2,
-            )
+    def test_averages_before_scaling_large_line_terms(self) -> None:
+        for field, expected in (
+            (lambda p: (1e308, 0.0), 1e308),
+            (lambda p: (-1e308, 0.0), -1e308),
+            (lambda p: (1e308 if p[0] < 0.5 else -1e308, 0.0), 0.0),
+            (lambda p: (0.0, 0.0), 0.0),
+        ):
+            with self.subTest(expected=expected):
+                result = composite_midpoint_line_integral(
+                    field, curve=lambda t: (t, 0.0),
+                    curve_derivative=lambda t: (1.0, 0.0), bounds=(0.0, 1.0), n=2,
+                )
+                self.assertEqual(expected, result.value)
 
 
 class FluxIntegralTests(unittest.TestCase):
@@ -145,17 +152,22 @@ class FluxIntegralTests(unittest.TestCase):
                 **{key: value for key, value in common.items() if key not in ("surface_u", "surface_v")},
             )
 
-    def test_converts_accumulation_fsum_overflow_to_value_error(self) -> None:
+    def test_averages_before_scaling_large_flux_terms(self) -> None:
         common = dict(
             surface=lambda u, v: (u, v, 0.0),
             surface_u=lambda u, v: (1.0, 0.0, 0.0),
             surface_v=lambda u, v: (0.0, 1.0, 0.0),
             u_bounds=(0.0, 1.0), v_bounds=(0.0, 1.0), nv=1,
         )
-        with self.assertRaisesRegex(ValueError, "integral accumulation must be finite"):
-            composite_midpoint_flux_integral(
-                lambda p: (0.0, 0.0, 1e308), nu=2, **common,
-            )
+        for field, expected in (
+            (lambda p: (0.0, 0.0, 1e308), 1e308),
+            (lambda p: (0.0, 0.0, -1e308), -1e308),
+            (lambda p: (0.0, 0.0, 1e308 if p[0] < 0.5 else -1e308), 0.0),
+            (lambda p: (0.0, 0.0, 0.0), 0.0),
+        ):
+            with self.subTest(expected=expected):
+                result = composite_midpoint_flux_integral(field, nu=2, **common)
+                self.assertEqual(expected, result.value)
 
     def test_scales_large_area_without_spurious_intermediate_overflow(self) -> None:
         for flux, nu, nv, expected in (

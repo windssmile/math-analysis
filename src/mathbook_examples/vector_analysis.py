@@ -103,7 +103,8 @@ def composite_midpoint_line_integral(
 
     n = _positive_integer(n, "n")
     lower, upper = _increasing_bounds(bounds, "bounds")
-    step = (upper - lower) / n
+    interval_length = upper - lower
+    step = interval_length / n
     terms: list[float] = []
     for index in range(n):
         t = lower + (index + 0.5) * step
@@ -118,9 +119,16 @@ def composite_midpoint_line_integral(
             (a * b for a, b in zip(vector_field, derivative)),
             "line dot product must be finite",
         )
-        terms.append(term)
+        terms.append(
+            _finite_product(
+                (term, 1.0 / n), "integral accumulation must be finite"
+            )
+        )
     value = _finite_product(
-        (step, _finite_fsum(terms, "integral accumulation must be finite")),
+        (
+            interval_length,
+            _finite_fsum(terms, "integral accumulation must be finite"),
+        ),
         "integral accumulation must be finite",
     )
     return LineIntegralResult(value, (lower, upper), n, n)
@@ -143,7 +151,8 @@ def composite_midpoint_flux_integral(
     nv = _positive_integer(nv, "nv")
     u0, u1 = _increasing_bounds(u_bounds, "u_bounds")
     v0, v1 = _increasing_bounds(v_bounds, "v_bounds")
-    du, dv = (u1 - u0) / nu, (v1 - v0) / nv
+    u_length, v_length = u1 - u0, v1 - v0
+    du, dv = u_length / nu, v_length / nv
     terms: list[float] = []
     for i in range(nu):
         u = u0 + (i + 0.5) * du
@@ -166,9 +175,18 @@ def composite_midpoint_flux_integral(
                 (a * b for a, b in zip(vector_field, normal)),
                 "flux dot product must be finite",
             )
-            terms.append(term)
+            terms.append(
+                _finite_product(
+                    (term, 1.0 / nu, 1.0 / nv),
+                    "integral accumulation must be finite",
+                )
+            )
     value = _finite_product(
-        (du, dv, _finite_fsum(terms, "integral accumulation must be finite")),
+        (
+            u_length,
+            v_length,
+            _finite_fsum(terms, "integral accumulation must be finite"),
+        ),
         "integral accumulation must be finite",
     )
     return FluxIntegralResult(value, (u0, u1), (v0, v1), nu, nv, nu * nv)
