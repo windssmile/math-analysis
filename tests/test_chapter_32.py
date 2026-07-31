@@ -76,10 +76,9 @@ class ChapterThirtyTwoTests(unittest.TestCase):
         for marker in ("gradient", "step", "non_descent_direction", "singular_hessian", "indefinite_hessian", "max_iterations", "不声明候选点最优"):
             self.assertIn(marker, text)
 
-    def test_part_is_fully_published_without_chapter_33(self) -> None:
+    def test_part_remains_fully_published_after_later_parts_advance(self) -> None:
         config = self.required_text(ROOT / "mkdocs.yml")
         self.assertIn("chapters/chapter-32/", config)
-        self.assertNotIn("chapters/chapter-33/", config)
         readme = self.required_text(ROOT / "README.md")
         self.assertIn("第七部已经完整发布", readme)
         self.assertIn("147 个学习单元", readme)

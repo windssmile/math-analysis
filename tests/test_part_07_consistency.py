@@ -52,11 +52,10 @@ class PartSevenConsistencyTests(unittest.TestCase):
             (len(PART_07_UNITS), theory, applied, theory + applied),
         )
 
-    def test_blueprint_stops_before_part_eight(self) -> None:
+    def test_blueprint_records_completed_part_seven(self) -> None:
         text = self.required_text(DEPENDENCIES)
         self.assertIn("当前发布边界：第 32 章", text)
         self.assertIn("25 个核心单元、44 学时", text)
-        self.assertNotIn("chapter-33", NAVIGATION)
 
     def test_dependency_map_covers_every_locked_unit(self) -> None:
         text = self.required_text(DEPENDENCIES)
@@ -79,7 +78,7 @@ class PartSevenConsistencyTests(unittest.TestCase):
         for chapter in range(28, 33):
             with self.subTest(chapter=chapter):
                 self.assertIn(f"第 {chapter} 章", text)
-        self.assertNotIn("chapters/chapter-33/", (ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
+        self.assertIn("chapters/chapter-32/", (ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
 
     def test_final_release_has_exact_units_metadata_and_navigation(self) -> None:
         paths = list((ROOT / "content" / "chapters").glob("chapter-2[89]/u-07-*.md"))
