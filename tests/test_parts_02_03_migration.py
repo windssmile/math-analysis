@@ -72,6 +72,23 @@ REPRESENTATIVE_ANCHORS = {
 
 
 class PartsTwoAndThreeMigrationTests(unittest.TestCase):
+    def test_contraction_page_uses_fixed_point_on_every_public_surface(self) -> None:
+        title = "严格压缩怎样保证迭代找到唯一不动点？"
+        relative = "chapters/chapter-08/u-02-08-04-contraction-mapping.md"
+        page = (ROOT / "content" / relative).read_text(encoding="utf-8")
+        metadata = yaml.safe_load(page.split("---\n", 2)[1])
+        self.assertEqual(title, metadata["title"])
+        self.assertIn(f"# {title} {{#u-02-08-04}}", page)
+        self.assertIn(f"[{title}](u-02-08-04-contraction-mapping.md)", (
+            CONTENT / "chapter-08" / "index.md"
+        ).read_text(encoding="utf-8"))
+        self.assertIn(f"[{title}]({relative})", (
+            ROOT / "content" / "course-map.md"
+        ).read_text(encoding="utf-8"))
+        self.assertIn(f"8.4 {title}: {relative}", (
+            ROOT / "mkdocs.yml"
+        ).read_text(encoding="utf-8"))
+
     def test_all_unit_pages_keep_their_page_local_ids_and_h1_anchors(self) -> None:
         self.assertEqual(41, len(EXPECTED_UNIT_PAGES))
         missing = [path for path in EXPECTED_UNIT_PAGES if not (CONTENT / path).is_file()]

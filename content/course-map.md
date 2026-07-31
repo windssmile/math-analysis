@@ -87,7 +87,7 @@ title: 全书课程地图
 1. [子列揭示了原数列的什么行为？](chapters/chapter-08/u-02-08-01-subsequences.md)
 2. [有界数列为何总能抽出收敛子列？](chapters/chapter-08/u-02-08-02-bolzano-weierstrass.md)
 3. [Cauchy 条件怎样不预知极限而判断收敛？](chapters/chapter-08/u-02-08-03-cauchy-criterion.md)
-4. [严格压缩怎样保证迭代找到唯一根？](chapters/chapter-08/u-02-08-04-contraction-mapping.md)
+4. [严格压缩怎样保证迭代找到唯一不动点？](chapters/chapter-08/u-02-08-04-contraction-mapping.md)
 5. [上/下极限怎样总结所有尾部行为？](chapters/chapter-08/u-02-08-05-limsup-liminf.md)
 6. [不动点计算需要哪些可核验证书？](chapters/chapter-08/u-02-08-06-fixed-point-certificates.md)
 7. [有限迭代轨迹能说明什么、不能说明什么？](chapters/chapter-08/u-02-08-07-iteration-lab.md)

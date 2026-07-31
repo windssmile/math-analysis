@@ -60,7 +60,7 @@ FIELD_CONTRACT = {
     23: ("数项级数", "数列极限", "第 24–26 章", "符号抵消", "部分和"),
     24: ("一般项级数", "Cauchy 尾部", "第 25、26 章", "条件收敛当绝对", "Dirichlet"),
     25: ("一致收敛", "上确界", "第 26、27 章", "不反向依赖", "M 判别"),
-    26: ("收敛半径", "根值判别", "第 27 章", "端点须另判", "Cauchy–Hadamard"),
+    26: ("收敛半径", "根值判别", "可选解析对照", "端点须另判", "Cauchy–Hadamard"),
     27: ("多项式逼近", "一致连续", "后续数值分析", "网格最大误差", "Bernstein"),
     28: ("Euclid", "邻域", "第 29、32–35 章", "一般拓扑", "Heine–Borel"),
     29: ("Fréchet", "多元极限与连续", "第 31、35、38 章", "偏导存在不推出可微", "Jacobian"),
@@ -134,6 +134,12 @@ def chapter_slice(course_map: str, chapter: int) -> str:
 
 
 class Parts0109CrossConsistencyTests(unittest.TestCase):
+    def test_chapter_26_output_is_optional_context_for_chapter_27(self):
+        rows = {int(row[0]): row for row in matrix_rows()}
+        self.assertIn("可选解析对照", rows[26][5])
+        self.assertNotIn("→ 第 27 章", rows[26][5])
+        self.assertEqual({10, 11, 25}, DIRECT_PREREQUISITES[27])
+
     def test_matrix_covers_each_real_chapter_once_with_complete_contract_fields(self):
         guides = sorted(CHAPTERS.glob("chapter-*/index.md"))
         self.assertEqual(41, len(guides))

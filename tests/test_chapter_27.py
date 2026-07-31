@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 import unittest
 import yaml
 
@@ -58,6 +59,22 @@ class ChapterTwentySevenTests(unittest.TestCase):
         for unit in EXPECTED_UNITS:
             self.assertEqual(1, guide.count(f"[{unit[1]}]({unit[0]}-{unit[4]}.md)"))
 
+    def test_chapter_26_is_optional_context_not_a_direct_prerequisite(self):
+        guide = self.required_text(CHAPTER / "index.md")
+        error_unit = self.required_text(unit_path(EXPECTED_UNITS[0]))
+        dependencies = self.required_text(DEPENDENCIES)
+        normalized_dependencies = re.sub(r"\s+", " ", dependencies)
+        self.assertIn("第 26 章提供解析函数的可选对照", guide)
+        self.assertIn("本章的直接输入来自第 10、11、25 章", guide)
+        self.assertNotIn("输入是第 26 章", guide)
+        self.assertIn("第 25 章的一致收敛与上确界误差语言", error_unit)
+        self.assertNotIn("上一章的一致误差记号", error_unit)
+        self.assertIn(
+            "第 26 章只为第 27 章提供可选解析对照，不是直接前置",
+            normalized_dependencies,
+        )
+        self.assertIn("第 27 章的直接输入是第 10、11、25 章", normalized_dependencies)
+
     def test_error_unit_keeps_method_boundaries(self):
         text = self.required_text(unit_path(EXPECTED_UNITS[0]))
         for marker in ("最佳误差下确界", "不保证取得", "插值", "最小二乘", "逐点逼近", "一致逼近", "Runge", "仿射变换"):
@@ -88,4 +105,3 @@ class ChapterTwentySevenTests(unittest.TestCase):
         self.assertIn("24 个核心单元、42 学时", dependencies)
         self.assertIn("第六部第 27 章，共 125 个学习单元", self.required_text(ROOT / "README.md"))
         self.assertIn("第 27 章：多项式逼近与误差控制", self.required_text(ROOT / "mkdocs.yml"))
-
