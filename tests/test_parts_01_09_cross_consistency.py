@@ -78,6 +78,39 @@ FIELD_CONTRACT = {
     41: ("Stokes", "u-09-37-03", "后续物理/几何", "微分形式", "右手规则"),
 }
 
+DIRECT_PREREQUISITES = {
+    1: set(), 2: {1}, 3: {2}, 4: {3}, 5: {3, 4}, 6: {5},
+    7: {3, 5}, 8: {3, 5, 6, 7}, 9: {1, 3, 5, 6}, 10: {9},
+    11: {8, 10}, 12: {7, 8, 10}, 13: {9, 10}, 14: {10, 13},
+    15: {11, 13, 14}, 16: {13, 14, 15}, 17: {12, 14, 15, 16},
+    18: {14, 15, 17}, 19: {3, 5, 6, 10, 11}, 20: {10, 13, 18, 19},
+    21: {14, 19, 20}, 22: {5, 6, 15, 16, 19, 20},
+    23: {5, 6, 8, 19}, 24: {23}, 25: {3, 5, 10, 11, 19, 20, 24},
+    26: {8, 16, 24, 25}, 27: {10, 11, 25},
+    28: {3, 5, 8, 9, 10, 11}, 29: {13, 14, 28},
+    30: {14, 16, 29}, 31: {8, 12, 14, 17, 29, 30},
+    32: {11, 15, 17, 28, 29, 30, 31},
+    33: {3, 5, 10, 11, 19, 28}, 34: {19, 20, 33},
+    35: {29, 31, 33, 34}, 36: {21, 22, 33, 34, 35},
+    37: {19, 29}, 38: {29, 31, 33, 34, 35},
+    39: {20, 29, 34, 37}, 40: {20, 34, 36, 38, 39},
+    41: {29, 37, 38, 39, 40},
+}
+
+BACKGROUND_INTERFACES = {
+    n: ({"bg-algebra", "bg-geometry", "bg-python"}
+        - ({"bg-python"} if n in {1, 2, 3, 9, 10, 11, 28, 30, 33, 35, 37, 38, 39, 40} else set())
+        - ({"bg-geometry"} if n in {2, 3, 4, 5, 6} else set())
+        - ({"bg-algebra"} if n in {33, 34, 36} else set()))
+    for n in range(1, 42)
+}
+
+PREREQUISITE_NAME_MAP = {
+    "数列极限": 5, "上确界": 3, "一致连续": 11, "Riemann 积分": 19,
+    "微积分基本定理": 20, "Fréchet 微分": 29, "Jacobian": 29,
+    "反函数定理": 31, "隐函数定理": 31, "累次积分": 34,
+}
+
 
 def metadata(path: Path) -> dict:
     return yaml.safe_load(path.read_text(encoding="utf-8").split("---\n", 2)[1])
@@ -92,22 +125,30 @@ def matrix_rows() -> list[list[str]]:
     return rows
 
 
+def chapter_slice(course_map: str, chapter: int) -> str:
+    start = course_map.index(f"{{#chapter-{chapter:02d}}}")
+    if chapter == 41:
+        return course_map[start:]
+    end = course_map.index(f"{{#chapter-{chapter + 1:02d}}}", start)
+    return course_map[start:end]
+
+
 class Parts0109CrossConsistencyTests(unittest.TestCase):
     def test_matrix_covers_each_real_chapter_once_with_complete_contract_fields(self):
         guides = sorted(CHAPTERS.glob("chapter-*/index.md"))
         self.assertEqual(41, len(guides))
         rows = matrix_rows()
         self.assertEqual(list(range(1, 42)), [int(row[0]) for row in rows])
-        self.assertTrue(all(len(row) == 8 for row in rows))
+        self.assertTrue(all(len(row) == 9 for row in rows))
         for row in rows:
             self.assertTrue(all(row[i] and row[i] != "—" for i in range(2, 7)), row)
 
     def test_every_matrix_row_satisfies_its_semantic_contract_and_cites_evidence(self):
         rows = {int(row[0]): row for row in matrix_rows()}
         for chapter, tokens in FIELD_CONTRACT.items():
-            for column, token in zip(range(2, 7), tokens):
+            for column, token in zip((2, 5, 6, 7), (tokens[0], tokens[2], tokens[3], tokens[4])):
                 self.assertIn(token, rows[chapter][column], f"chapter {chapter}, column {column}")
-            evidence = rows[chapter][7]
+            evidence = rows[chapter][8]
             self.assertIn(f"chapter-{chapter:02d}/index.md", evidence)
             self.assertRegex(evidence, r"docs/(curriculum|superpowers/specs)/")
 
@@ -153,12 +194,20 @@ class Parts0109CrossConsistencyTests(unittest.TestCase):
             self.assertEqual(set(physical), set(guide_routes), f"chapter {chapter} guide inventory")
             self.assertEqual(guide_routes, map_routes, f"chapter {chapter} course map order")
             self.assertEqual(guide_routes, nav_routes, f"chapter {chapter} nav order")
+            section = chapter_slice(course_map, chapter)
             for route in guide_routes:
                 unit = metadata(directory / route)
                 expected = f"[{unit['title']}](chapters/chapter-{chapter:02d}/{route})"
-                self.assertIn(expected, course_map)
+                self.assertIn(expected, section)
             chapter_hours = sum(sum(metadata(directory / route)["hours"].values()) for route in guide_routes)
-            self.assertRegex(course_map, rf"本章学时：{chapter_hours:g} 小时")
+            self.assertRegex(section, rf"本章学时：{chapter_hours:g} 小时")
+
+    def test_chapter_hour_check_is_scoped_and_rejects_neighbor_substitution(self):
+        course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
+        chapter_19 = chapter_slice(course_map, 19)
+        self.assertIn("本章学时：7.5 小时", chapter_19)
+        mutated = course_map.replace(chapter_19, chapter_19.replace("本章学时：7.5 小时", "本章学时：8 小时"))
+        self.assertNotIn("本章学时：7.5 小时", chapter_slice(mutated, 19))
 
     def test_current_publication_surfaces_use_authoritative_189_total(self):
         surfaces = (
@@ -171,6 +220,9 @@ class Parts0109CrossConsistencyTests(unittest.TestCase):
         for surface in surfaces:
             text = surface.read_text(encoding="utf-8")
             self.assertIn("189", text, surface)
+        course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
+        self.assertIn("当前已完整发布第一至第九部", course_map)
+        self.assertNotIn("当前已完整发布第一至第八部", course_map)
 
     def test_historical_release_snapshots_match_physical_chapter_totals(self):
         through_27 = list(CHAPTERS.glob("chapter-[01][0-9]/u-*.md"))
@@ -209,26 +261,40 @@ class Parts0109CrossConsistencyTests(unittest.TestCase):
                 declared.extend(str(x) for x in metadata(page)["prerequisites"]["book"])
             if not witnesses:
                 self.assertFalse(declared, f"chapter {chapter} unexpectedly declares book prerequisites")
-                self.assertIn("无", rows[chapter][3])
             for witness in witnesses:
                 self.assertIn(witness, declared, f"chapter {chapter}: registry drift")
-                self.assertIn(witness, rows[chapter][3], f"chapter {chapter}: matrix misses witness")
+
+    def test_direct_prerequisites_and_background_interfaces_are_exact(self):
+        rows = {int(row[0]): row for row in matrix_rows()}
+        for chapter in range(1, 42):
+            direct = {int(n) for n in re.findall(r"`ch-(\d{2})`", rows[chapter][3])}
+            background = set(re.findall(r"`(bg-[a-z]+)`", rows[chapter][4]))
+            self.assertEqual(DIRECT_PREREQUISITES[chapter], direct, f"chapter {chapter} direct")
+            self.assertEqual(BACKGROUND_INTERFACES[chapter], background, f"chapter {chapter} background")
+            declared_background = set()
+            for page in (CHAPTERS / f"chapter-{chapter:02d}").glob("u-*.md"):
+                prerequisites = metadata(page)["prerequisites"]
+                for key, tag in (("higher_algebra", "bg-algebra"),
+                                 ("analytic_geometry", "bg-geometry"), ("python", "bg-python")):
+                    if prerequisites[key]:
+                        declared_background.add(tag)
+            self.assertEqual(BACKGROUND_INTERFACES[chapter], declared_background)
+        self.assertEqual(19, PREREQUISITE_NAME_MAP["Riemann 积分"])
+        self.assertEqual(29, PREREQUISITE_NAME_MAP["Jacobian"])
 
     def test_locked_cross_part_interfaces_and_boundaries(self):
         rows = {int(row[0]): row for row in matrix_rows()}
-        def joined(chapter):
-            return " ".join(rows[chapter][2:])
-
-        for consumer in (5, 7): self.assertIn("第 3 章", joined(consumer))
-        for consumer in (12, 15, 19, 28): self.assertIn("第 11 章", joined(consumer))
-        for consumer in (20, 22, 33): self.assertIn("第 19 章", joined(consumer))
-        for consumer in (26, 27): self.assertIn("第 25 章", joined(consumer))
-        self.assertNotIn("第 26", rows[25][3]); self.assertNotIn("第 27", rows[25][3])
-        for consumer in (31, 35, 38): self.assertIn("第 29 章", joined(consumer))
-        for chapter in range(37, 42): self.assertIn("第 33–35 章", joined(chapter))
-        for consumer in (39, 40, 41): self.assertRegex(joined(consumer), r"第 (37|38) 章")
-        self.assertIn("第 39 章", joined(41))
-        self.assertNotIn("第 41", rows[40][3])
+        self.assertIn("第 5、7、19、25、28 章", rows[3][5])
+        self.assertIn("第 12、15、19、28 章", rows[11][5])
+        self.assertIn("第 20、22、33、34、37 章", rows[19][5])
+        self.assertIn("第 26、27 章", rows[25][5])
+        self.assertTrue({26, 27}.isdisjoint(DIRECT_PREREQUISITES[25]))
+        self.assertIn("第 31、35、38 章", rows[29][5])
+        self.assertEqual({19, 29}, DIRECT_PREREQUISITES[37])
+        self.assertNotIn(38, DIRECT_PREREQUISITES[39])
+        self.assertTrue({20, 29, 34, 37}.issubset(DIRECT_PREREQUISITES[39]))
+        self.assertIn(39, DIRECT_PREREQUISITES[41])
+        self.assertNotIn(41, DIRECT_PREREQUISITES[40])
 
         text = MATRIX.read_text(encoding="utf-8")
         self.assertIn("附录不作为任何核心章节或单元的前置", text)
