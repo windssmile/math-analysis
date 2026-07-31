@@ -43,10 +43,11 @@ class PartEightConsistencyTests(unittest.TestCase):
 
     def test_blueprint_tracks_current_release_boundary(self) -> None:
         text = self.required_text(DEPENDENCIES)
-        self.assertIn("当前发布边界：第 33 章", text)
+        self.assertIn("当前发布边界：第 34 章", text)
         self.assertIn("18 个核心单元、32 学时", text)
         self.assertIn("chapters/chapter-33/", NAVIGATION)
-        self.assertNotIn("chapters/chapter-34/", NAVIGATION)
+        self.assertIn("chapters/chapter-34/", NAVIGATION)
+        self.assertNotIn("chapters/chapter-35/", NAVIGATION)
 
     def test_dependency_map_covers_every_locked_unit(self) -> None:
         text = self.required_text(DEPENDENCIES)

@@ -258,6 +258,13 @@ nav:
           - 33.2 连续函数为什么在闭矩形上可积？: chapters/chapter-33/u-08-33-02-continuous-integrability.md
           - 33.3 线性、序关系与区域可加性怎样成立？: chapters/chapter-33/u-08-33-03-integral-properties.md
           - 33.4 怎样在常用有界区域上定义重积分？: chapters/chapter-33/u-08-33-04-bounded-regions.md
+      - 第 34 章：累次积分与计算:
+          - 本章导学: chapters/chapter-34/index.md
+          - 34.1 矩形上的二重积分为什么可以逐次计算？: chapters/chapter-34/u-08-34-01-iterated-integral-theorem.md
+          - 34.2 x-型与 y-型区域怎样写出积分限？: chapters/chapter-34/u-08-34-02-type-i-ii-regions.md
+          - 34.3 改变积分次序怎样化简区域与被积函数？: chapters/chapter-34/u-08-34-03-change-order.md
+          - 34.4 三重积分怎样按截面或投影逐层计算？: chapters/chapter-34/u-08-34-04-triple-integrals.md
+          - 34.5 二维张量积中点法能保证什么、不能保证什么？: chapters/chapter-34/u-08-34-05-tensor-midpoint.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
