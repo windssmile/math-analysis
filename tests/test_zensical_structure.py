@@ -29,7 +29,7 @@ class ZensicalStructureTests(unittest.TestCase):
     def test_readme_uses_zensical_commands_and_current_release_scope(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("第六部第 27 章，共 122 个学习单元", readme)
-        self.assertIn("第九部第 41 章，共 186 个学习单元、337 学时", readme)
+        self.assertIn("第九部第 41 章，共 189 个学习单元、337 学时", readme)
         self.assertIn("zensical serve", readme)
         self.assertIn("zensical build --strict", readme)
         self.assertNotIn("mkdocs serve", readme)

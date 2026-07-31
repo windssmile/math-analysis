@@ -5,7 +5,7 @@ title: 全书课程地图
 # 全书课程地图 {#sec-curriculum-map}
 
 教材以“定义—证明—算法证书”两条线并行组织。当前已完整发布第一至第八部，
-截至第 41 章共 186 个学习单元、337 学时。历史发布里程碑包括第 27 章，共 122 个学习单元，
+截至第 41 章共 189 个学习单元、337 学时。历史发布里程碑包括第 27 章，共 122 个学习单元，
 以及第 32 章，共 147 个学习单元。
 
 ## 第一部：实数、函数与分析语言
@@ -14,11 +14,37 @@ title: 全书课程地图
 
 ### [第 1 章：函数、集合与数学陈述](chapters/chapter-01/index.md) {#chapter-01}
 
+本章学时：6 小时（理论 5，应用 1）。
+
+1. [集合怎样组织数学对象？](chapters/chapter-01/u-01-01-01-sets.md)
+2. [量词怎样改变一句话？](chapters/chapter-01/u-01-01-02-quantifiers.md)
+3. [什么算作一个有效证明？](chapters/chapter-01/u-01-01-03-proofs.md)
+4. [函数为何不只是“公式”？](chapters/chapter-01/u-01-01-04-functions.md)
+
 ### [第 2 章：实数系与完备性公理](chapters/chapter-02/index.md) {#chapter-02}
+
+本章学时：5.5 小时（理论 5，应用 0.5）。
+
+1. [有理数为什么仍然不够？](chapters/chapter-02/u-01-02-01-rational-gaps.md)
+2. [怎样用切割构造一个实数？](chapters/chapter-02/u-01-02-02-dedekind-cuts.md)
+3. [构造后怎样计算与比较？](chapters/chapter-02/u-01-02-03-cut-order-operations.md)
 
 ### [第 3 章：上界、下界与确界原理](chapters/chapter-03/index.md) {#chapter-03}
 
+本章学时：5 小时（理论 5，应用 0）。
+
+1. [有上界为什么还不够？](chapters/chapter-03/u-01-03-01-bounds.md)
+2. [最小上界怎样保证存在？](chapters/chapter-03/u-01-03-02-supremum-principle.md)
+3. [确界原理能推出什么？](chapters/chapter-03/u-01-03-03-completeness-consequences.md)
+
 ### [第 4 章：递推过程与无限逼近](chapters/chapter-04/index.md) {#chapter-04}
+
+本章学时：7.5 小时（理论 5，应用 2.5）。
+
+1. [递推会不会真的“靠近”目标？](chapters/chapter-04/u-01-04-01-recurrence.md)
+2. [区间怎样把目标逐步夹住？](chapters/chapter-04/u-01-04-02-interval-bisection.md)
+3. [“越来越近”怎样说得严格？](chapters/chapter-04/u-01-04-03-approximation-error.md)
+4. [无限逼近何时会失败？](chapters/chapter-04/u-01-04-04-failure-of-infinite-approximation.md)
 
 ## 第二部：数列极限与无限过程
 
@@ -28,11 +54,44 @@ title: 全书课程地图
 
 ### [第 5 章：数列极限与量词结构](chapters/chapter-05/index.md) {#chapter-05}
 
+本章学时：10 小时（理论 8，应用 2）。
+
+1. [数列怎样记录无限过程？](chapters/chapter-05/u-02-05-01-sequences.md)
+2. [“最终任意接近”怎样写成定义？](chapters/chapter-05/u-02-05-02-epsilon-n.md)
+3. [不收敛与趋于无穷怎样区分？](chapters/chapter-05/u-02-05-03-divergence-infinity.md)
+4. [迭代数据何时值得相信？](chapters/chapter-05/u-02-05-04-iteration-evidence.md)
+5. [极限证明怎样从目标误差反推起点？](chapters/chapter-05/u-02-05-05-limit-consequences.md)
+
 ### [第 6 章：极限运算与序关系](chapters/chapter-06/index.md) {#chapter-06}
+
+本章学时：8 小时（理论 6.5，应用 1.5）。
+
+1. [极限怎样通过代数运算传递？](chapters/chapter-06/u-02-06-01-limit-laws.md)
+2. [序关系怎样给出极限估计？](chapters/chapter-06/u-02-06-02-order-squeeze.md)
+3. [误差如何穿过一次迭代？](chapters/chapter-06/u-02-06-03-error-propagation.md)
+4. [倒数与商法则为何必须远离零？](chapters/chapter-06/u-02-06-04-reciprocal-quotient.md)
 
 ### [第 7 章：单调性、完备性与收敛准则](chapters/chapter-07/index.md) {#chapter-07}
 
+本章学时：8 小时（理论 7，应用 1）。
+
+1. [单调数列为什么会有极限？](chapters/chapter-07/u-02-07-01-monotone-sequences.md)
+2. [递推的界与单调性怎样建立？](chapters/chapter-07/u-02-07-02-recursive-invariants.md)
+3. [区间套怎样保证唯一目标？](chapters/chapter-07/u-02-07-03-nested-intervals.md)
+4. [完备性怎样成为收敛准则？](chapters/chapter-07/u-02-07-04-completeness-criteria.md)
+
 ### [第 8 章：子列、Cauchy 准则与上/下极限](chapters/chapter-08/index.md) {#chapter-08}
+
+本章学时：16 小时（理论 12.5，应用 3.5）。
+
+1. [子列揭示了原数列的什么行为？](chapters/chapter-08/u-02-08-01-subsequences.md)
+2. [有界数列为何总能抽出收敛子列？](chapters/chapter-08/u-02-08-02-bolzano-weierstrass.md)
+3. [Cauchy 条件怎样不预知极限而判断收敛？](chapters/chapter-08/u-02-08-03-cauchy-criterion.md)
+4. [严格压缩怎样保证迭代找到唯一根？](chapters/chapter-08/u-02-08-04-contraction-mapping.md)
+5. [上/下极限怎样总结所有尾部行为？](chapters/chapter-08/u-02-08-05-limsup-liminf.md)
+6. [不动点计算需要哪些可核验证书？](chapters/chapter-08/u-02-08-06-fixed-point-certificates.md)
+7. [有限迭代轨迹能说明什么、不能说明什么？](chapters/chapter-08/u-02-08-07-iteration-lab.md)
+8. [上/下极限怎样由子列真正实现？](chapters/chapter-08/u-02-08-08-limsup-subsequences.md)
 
 ## 第三部：函数极限、连续性与方程
 
@@ -41,6 +100,17 @@ title: 全书课程地图
 总学时：40 小时（理论 32，应用 8）。
 
 ### [第 9 章：函数极限与局部行为](chapters/chapter-09/index.md) {#chapter-09}
+
+本章学时：16 小时（理论 13，应用 3）。
+
+1. [函数在一点附近意味着什么？](chapters/chapter-09/u-03-09-01-local-neighborhoods.md)
+2. [“任意接近”怎样定义函数极限？](chapters/chapter-09/u-03-09-02-epsilon-delta-limit.md)
+3. [局部估计怎样传递极限？](chapters/chapter-09/u-03-09-03-function-limit-laws.md)
+4. [用点列靠近能否判别函数极限？](chapters/chapter-09/u-03-09-04-sequential-function-limits.md)
+5. [极限证明怎样从目标误差反推局部范围？](chapters/chapter-09/u-03-09-05-epsilon-delta-workshop.md)
+6. [左右极限怎样共同决定双侧极限？](chapters/chapter-09/u-03-09-06-one-sided-limits.md)
+7. [函数怎样在有限点附近趋于无穷？](chapters/chapter-09/u-03-09-07-infinite-limits-at-point.md)
+8. [自变量趋于无穷时怎样定义函数极限？](chapters/chapter-09/u-03-09-08-limits-at-infinity.md)
 
 ### [第 10 章：连续函数与连续运算](chapters/chapter-10/index.md) {#chapter-10}
 
@@ -196,6 +266,45 @@ title: 全书课程地图
 
 本章从部分和与 Cauchy 尾部出发，建立正项比较、比值、根值、积分与凝聚判别，并在
 保留解析不等式时给出可核查的余项证书。
+
+### [第 24 章：一般项级数、重排与乘积](chapters/chapter-24/index.md) {#chapter-24}
+
+本章学时：9.5 小时（理论 7.5，应用 2）。
+
+1. [绝对收敛为什么能够控制符号变化？](chapters/chapter-24/u-06-24-01-absolute-conditional.md)
+2. [交错与振荡级数怎样利用抵消？](chapters/chapter-24/u-06-24-02-leibniz-dirichlet-abel.md)
+3. [改变求和次序为什么可能改变结果？](chapters/chapter-24/u-06-24-03-rearrangements.md)
+4. [两个无穷和什么时候可以相乘？](chapters/chapter-24/u-06-24-04-cauchy-products.md)
+5. [怎样选择判别法并给出收敛证书？](chapters/chapter-24/u-06-24-05-series-diagnosis.md)
+
+### [第 25 章：函数列、函数项级数与一致收敛](chapters/chapter-25/index.md) {#chapter-25}
+
+本章学时：9 小时（理论 7，应用 2）。
+
+1. [逐点收敛为什么不足以控制整体行为？](chapters/chapter-25/u-06-25-01-pointwise-uniform.md)
+2. [怎样用统一尾部控制刻画一致收敛？](chapters/chapter-25/u-06-25-02-uniform-cauchy.md)
+3. [函数项级数怎样获得一致收敛判别？](chapters/chapter-25/u-06-25-03-uniform-series-tests.md)
+4. [极限什么时候可以穿过连续与积分？](chapters/chapter-25/u-06-25-04-continuity-integration.md)
+5. [微分为什么需要比积分更强的条件？](chapters/chapter-25/u-06-25-05-differentiation.md)
+
+### [第 26 章：幂级数与解析表示](chapters/chapter-26/index.md) {#chapter-26}
+
+本章学时：8 小时（理论 6，应用 2）。
+
+1. [系数怎样决定收敛半径？](chapters/chapter-26/u-06-26-01-radius.md)
+2. [幂级数为什么在收敛区间内部表现稳定？](chapters/chapter-26/u-06-26-02-interior-uniformity.md)
+3. [为什么幂级数可以逐项积分与微分？](chapters/chapter-26/u-06-26-03-termwise-operations.md)
+4. [Taylor 级数什么时候真的等于原函数？](chapters/chapter-26/u-06-26-04-taylor-analytic.md)
+5. [常用展开怎样形成可靠计算工具？](chapters/chapter-26/u-06-26-05-standard-expansions.md)
+
+### [第 27 章：多项式逼近与误差控制](chapters/chapter-27/index.md) {#chapter-27}
+
+本章学时：7 小时（理论 3.5，应用 3.5）。
+
+1. [函数逼近问题应怎样衡量误差？](chapters/chapter-27/u-06-27-01-approximation-error.md)
+2. [Bernstein 多项式怎样逼近连续函数？](chapters/chapter-27/u-06-27-02-bernstein-weierstrass.md)
+3. [连续性模怎样给出显式误差界？](chapters/chapter-27/u-06-27-03-modulus-error.md)
+4. [怎样可靠构造并评价逼近多项式？](chapters/chapter-27/u-06-27-04-reliable-bernstein.md)
 
 ## 第七部：Euclid 空间、多元微分与优化
 

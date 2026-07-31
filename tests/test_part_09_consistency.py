@@ -241,7 +241,7 @@ class PartNineConsistencyTests(unittest.TestCase):
     def test_historical_chapter_tests_do_not_lock_future_global_release_state(self) -> None:
         for chapter in range(37, 41):
             source = self.required_text(ROOT / "tests" / f"test_chapter_{chapter}.py")
-            for global_fact in ("186 个学习单元", "337 学时", "当前发布边界：第 41 章"):
+            for global_fact in ("189 个学习单元", "337 学时", "当前发布边界：第 41 章"):
                 self.assertNotIn(global_fact, source, f"chapter {chapter} owns a global fact")
             self.assertIn(f"chapter-{chapter}", source)
 
@@ -250,7 +250,7 @@ class PartNineConsistencyTests(unittest.TestCase):
         course_map = self.required_text(COURSE_MAP)
         dependencies = self.required_text(DEPENDENCIES)
         for text in (readme, course_map):
-            self.assertIn("186 个学习单元", text)
+            self.assertIn("189 个学习单元", text)
             self.assertIn("337 学时", text)
         self.assertIn("第八部 18 个核心单元、32 学时已经历史闭合", readme)
         self.assertIn("第九部 21 个核心单元、32 学时已经完整发布", readme)

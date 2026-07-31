@@ -32,6 +32,52 @@ CHAPTER_CONTRACT = {
     40: ("u-09-38-04", "u-09-39-01"), 41: ("u-09-37-03", "u-09-38-01"),
 }
 
+# One semantic token per required interface field, for every chapter.  This
+# makes the matrix an executable chapter contract rather than a row-count test.
+FIELD_CONTRACT = {
+    1: ("集合", "无", "第 2–41 章", "公理集合论", "\\forall"),
+    2: ("Dedekind", "无", "第 3、5、7 章", "Cauchy 列", "\\mathbb R"),
+    3: ("确界原理", "chapter-02", "第 5、7、19、25、28 章", "数列极限", "\\sup"),
+    4: ("区间套", "chapter-03", "第 5、7、12 章", "介值定理", "误差预算"),
+    5: ("epsilon-N", "chapter-04", "第 6–9、23、25 章", "数值稳定", "\\varepsilon"),
+    6: ("极限代数", "chapter-05", "第 8、9、19、23 章", "无条件交换", "夹逼"),
+    7: ("单调收敛", "chapter-03", "第 8、11、12 章", "介值定理", "单调有界"),
+    8: ("Cauchy", "chapter-05", "第 11、12、26、28、31 章", "函数连续性", "\\limsup"),
+    9: ("函数极限", "chapter-05", "第 10、13 章", "导数", "\\delta"),
+    10: ("连续性", "chapter-09", "第 11、12、15、19、25、28 章", "闭区间整体定理", "间断"),
+    11: ("闭区间", "u-02-08-02", "第 12、15、19、28 章", "开覆盖紧致性", "Heine–Cantor"),
+    12: ("三类求根证书", "u-02-07-03", "第 17、31 章", "Newton", "IVT"),
+    13: ("局部线性化", "u-03-09-02", "第 14–18、29 章", "导数法则反证", "o(h)"),
+    14: ("求导", "u-04-13-03", "第 15–18、29–31 章", "隐函数定理", "链式法则"),
+    15: ("中值定理", "u-03-11-02", "第 16–19、30 章", "数值图像", "Rolle"),
+    16: ("Taylor", "u-04-14-04", "第 17、22、26、30 章", "无穷级数", "余项"),
+    17: ("凸性", "u-04-15-02", "第 18、31、32 章", "KKT", "Newton"),
+    18: ("原函数", "u-04-14-05", "第 20–22 章", "Riemann 积分", "分部积分"),
+    19: ("Darboux", "u-01-03-02", "第 20、22、33、34、37 章", "基本定理定义积分", "Riemann 和"),
+    20: ("微积分基本定理", "u-05-19-04", "第 21、22、34、39、40 章", "数值求积", "Newton–Leibniz"),
+    21: ("面积", "u-05-19-04", "第 33、36–38 章", "重积分", "弧长"),
+    22: ("反常积分", "u-05-19-04", "第 23、26、36 章", "网格误差", "Simpson"),
+    23: ("数项级数", "数列极限", "第 24–26 章", "符号抵消", "部分和"),
+    24: ("一般项级数", "Cauchy 尾部", "第 25、26 章", "条件收敛当绝对", "Dirichlet"),
+    25: ("一致收敛", "上确界", "第 26、27 章", "不反向依赖", "M 判别"),
+    26: ("收敛半径", "根值判别", "第 27 章", "端点须另判", "Cauchy–Hadamard"),
+    27: ("多项式逼近", "一致连续", "后续数值分析", "网格最大误差", "Bernstein"),
+    28: ("Euclid", "邻域", "第 29、32–35 章", "一般拓扑", "Heine–Borel"),
+    29: ("Fréchet", "多元极限与连续", "第 31、35、38 章", "偏导存在不推出可微", "Jacobian"),
+    30: ("高阶 Fréchet", "链式法则", "第 31、32 章", "全局误差", "Hessian"),
+    31: ("反函数", "Jacobian", "第 32、35、38 章", "局部而非全局", "IFT"),
+    32: ("Lagrange", "紧致性", "后续应用", "KKT", "约束资格"),
+    33: ("Riemann 重积分", "Riemann 积分", "第 34–41 章", "Lebesgue", "矩形分割"),
+    34: ("累次积分", "一元 Riemann 积分", "第 35–41 章", "换序前先合法化", "换序"),
+    35: ("变量代换", "Fréchet 微分", "第 36–41 章", "非退化", "Jacobian 行列式"),
+    36: ("反常重积分", "反常积分", "第 40 章", "截断数值", "概率密度"),
+    37: ("参数曲线", "Riemann 积分", "第 39–41 章", "先定义再应用", "ds"),
+    38: ("参数曲面", "局部参数化", "第 39–41 章", "测度论", "dS"),
+    39: ("Green", "u-09-37-03", "第 41 章", "先简单区域", "正向边界"),
+    40: ("Gauss", "u-09-38-04", "第 41 章", "不依赖第 41 章", "外法向"),
+    41: ("Stokes", "u-09-37-03", "后续物理/几何", "微分形式", "右手规则"),
+}
+
 
 def metadata(path: Path) -> dict:
     return yaml.safe_load(path.read_text(encoding="utf-8").split("---\n", 2)[1])
@@ -52,9 +98,18 @@ class Parts0109CrossConsistencyTests(unittest.TestCase):
         self.assertEqual(41, len(guides))
         rows = matrix_rows()
         self.assertEqual(list(range(1, 42)), [int(row[0]) for row in rows])
-        self.assertTrue(all(len(row) == 7 for row in rows))
+        self.assertTrue(all(len(row) == 8 for row in rows))
         for row in rows:
             self.assertTrue(all(row[i] and row[i] != "—" for i in range(2, 7)), row)
+
+    def test_every_matrix_row_satisfies_its_semantic_contract_and_cites_evidence(self):
+        rows = {int(row[0]): row for row in matrix_rows()}
+        for chapter, tokens in FIELD_CONTRACT.items():
+            for column, token in zip(range(2, 7), tokens):
+                self.assertIn(token, rows[chapter][column], f"chapter {chapter}, column {column}")
+            evidence = rows[chapter][7]
+            self.assertIn(f"chapter-{chapter:02d}/index.md", evidence)
+            self.assertRegex(evidence, r"docs/(curriculum|superpowers/specs)/")
 
     def test_real_core_pages_ids_counts_and_publication_order_match_matrix(self):
         pages = sorted(CHAPTERS.glob("chapter-*/u-*.md"))
@@ -64,17 +119,60 @@ class Parts0109CrossConsistencyTests(unittest.TestCase):
         # discrepancy for human review instead of silently redefining core scope.
         self.assertEqual(189, len(pages))
         self.assertEqual(189, len(set(ids)))
-        self.assertIn("186 个学习单元、337 学时", (ROOT / "README.md").read_text(encoding="utf-8"))
+        total_hours = sum(sum(metadata(page)["hours"].values()) for page in pages)
+        self.assertEqual(337, total_hours)
+        part_ranges = ((1, 4), (5, 8), (9, 12), (13, 17), (18, 22),
+                       (23, 27), (28, 32), (33, 36), (37, 41))
+        self.assertEqual([14, 21, 20, 21, 25, 24, 25, 18, 21], [
+            sum(len(list((CHAPTERS / f"chapter-{n:02d}").glob("u-*.md"))) for n in range(a, b + 1))
+            for a, b in part_ranges
+        ])
+        self.assertIn("189 个学习单元、337 学时", (ROOT / "README.md").read_text(encoding="utf-8"))
 
         matrix_order = [int(row[0]) for row in matrix_rows()]
         course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
         map_order = [int(n) for n in re.findall(r"\{#chapter-(\d{2})\}", course_map)]
         nav = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
         nav_order = [int(n) for n in re.findall(r"chapters/chapter-(\d{2})/index\.md", nav)]
-        # Every published course-map chapter stays in matrix order.  Missing
-        # headings are separately surfaced in the matrix's human-review notes.
-        self.assertEqual(map_order, [n for n in matrix_order if n in set(map_order)])
+        self.assertEqual(matrix_order, map_order)
         self.assertEqual(matrix_order, nav_order)
+
+    def test_guides_physical_pages_course_map_and_nav_have_identical_unit_routes(self):
+        course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
+        nav = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
+        for chapter in range(1, 42):
+            directory = CHAPTERS / f"chapter-{chapter:02d}"
+            guide = (directory / "index.md").read_text(encoding="utf-8")
+            guide_routes = re.findall(r"\]\((u-[^)]+\.md)\)", guide)
+            physical = [page.name for page in sorted(directory.glob("u-*.md"))]
+            map_routes = [Path(route).name for route in re.findall(
+                rf"\]\(chapters/chapter-{chapter:02d}/(u-[^)]+\.md)\)", course_map
+            )]
+            nav_routes = [Path(route).name for route in re.findall(
+                rf"chapters/chapter-{chapter:02d}/(u-[^\s]+\.md)", nav
+            )]
+            self.assertEqual(set(physical), set(guide_routes), f"chapter {chapter} guide inventory")
+            self.assertEqual(guide_routes, map_routes, f"chapter {chapter} course map order")
+            self.assertEqual(guide_routes, nav_routes, f"chapter {chapter} nav order")
+            for route in guide_routes:
+                unit = metadata(directory / route)
+                expected = f"[{unit['title']}](chapters/chapter-{chapter:02d}/{route})"
+                self.assertIn(expected, course_map)
+            chapter_hours = sum(sum(metadata(directory / route)["hours"].values()) for route in guide_routes)
+            self.assertRegex(course_map, rf"本章学时：{chapter_hours:g} 小时")
+
+    def test_current_publication_surfaces_use_189_not_superseded_186(self):
+        surfaces = (
+            ROOT / "README.md",
+            ROOT / "content" / "course-map.md",
+            ROOT / "docs" / "curriculum" / "part-09-dependencies.md",
+            ROOT / "docs" / "reviews" / "2026-07-31-part-09-consistency-review.md",
+            MATRIX,
+        )
+        for surface in surfaces:
+            text = surface.read_text(encoding="utf-8")
+            self.assertIn("189", text, surface)
+            self.assertNotRegex(text, r"186\s*(?:个|单元)", surface)
 
     def test_chapter_contract_witnesses_are_declared_and_recorded(self):
         rows = {int(row[0]): row for row in matrix_rows()}

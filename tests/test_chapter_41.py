@@ -196,7 +196,7 @@ class ChapterFortyOneTests(unittest.TestCase):
             self.assertEqual(1, nav.count(f"chapters/chapter-41/{row[0]}-{row[4]}.md"))
         self.assertFalse((ROOT / "content" / "chapters" / "chapter-42").exists())
         self.assertNotIn("chapters/chapter-42/", nav)
-        self.assertIn("第九部第 41 章，共 186 个学习单元、337 学时", self.text(ROOT / "README.md"))
+        self.assertIn("第九部第 41 章，共 189 个学习单元、337 学时", self.text(ROOT / "README.md"))
         course_map = self.text(ROOT / "content" / "course-map.md")
         self.assertIn("第 41 章：Stokes 公式与三大公式的统一](chapters/chapter-41/index.md)", course_map)
         self.assertIn("当前发布第 37–41 章；第九部核心正文已全部发布", course_map)
