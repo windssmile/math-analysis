@@ -1,9 +1,13 @@
 from pathlib import Path
 import unittest
 
+import yaml
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DEPENDENCIES = ROOT / "docs" / "curriculum" / "part-07-dependencies.md"
+README = (ROOT / "README.md").read_text(encoding="utf-8")
+NAVIGATION = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
 
 PART_07_UNITS = [
     ("u-07-28-01", 1.25, 0.50),
@@ -50,12 +54,9 @@ class PartSevenConsistencyTests(unittest.TestCase):
 
     def test_blueprint_stops_before_part_eight(self) -> None:
         text = self.required_text(DEPENDENCIES)
-        self.assertIn("当前发布边界：第 ", text)
+        self.assertIn("当前发布边界：第 32 章", text)
         self.assertIn("25 个核心单元、44 学时", text)
-        self.assertNotIn(
-            "chapter-33",
-            (ROOT / "mkdocs.yml").read_text(encoding="utf-8"),
-        )
+        self.assertNotIn("chapter-33", NAVIGATION)
 
     def test_dependency_map_covers_every_locked_unit(self) -> None:
         text = self.required_text(DEPENDENCIES)
@@ -79,6 +80,50 @@ class PartSevenConsistencyTests(unittest.TestCase):
             with self.subTest(chapter=chapter):
                 self.assertIn(f"第 {chapter} 章", text)
         self.assertNotIn("chapters/chapter-33/", (ROOT / "mkdocs.yml").read_text(encoding="utf-8"))
+
+    def test_final_release_has_exact_units_metadata_and_navigation(self) -> None:
+        paths = list((ROOT / "content" / "chapters").glob("chapter-2[89]/u-07-*.md"))
+        paths += list((ROOT / "content" / "chapters").glob("chapter-3[0-2]/u-07-*.md"))
+        self.assertEqual(25, len(paths))
+        self.assertIn("第七部（第 28–32 章）已经完整发布", README)
+        self.assertIn("147 个学习单元", README)
+        theory = applied = 0.0
+        by_id = {}
+        for path in paths:
+            text = path.read_text(encoding="utf-8")
+            metadata = yaml.safe_load(text.split("---\n", 2)[1])
+            by_id[metadata["unit_id"]] = path
+            theory += float(metadata["hours"]["theory"])
+            applied += float(metadata["hours"]["applied"])
+            self.assertEqual(1, NAVIGATION.count(f"chapters/{path.parent.name}/{path.name}"))
+        self.assertEqual((33.75, 10.25, 44.0), (theory, applied, theory + applied))
+        self.assertEqual({unit[0] for unit in PART_07_UNITS}, set(by_id))
+
+    def test_algorithm_pages_reuse_one_unique_source_each(self) -> None:
+        contracts = [
+            ("chapter-29/u-07-29-06-linearization-check.md", "mathbook_examples.multivariate", "def check_jacobian("),
+            ("chapter-31/u-07-31-04-newton-systems.md", "mathbook_examples.nonlinear", "def newton_system("),
+            ("chapter-32/u-07-32-06-optimization-check.md", "mathbook_examples.optimization", "def gradient_descent("),
+        ]
+        for relative, module, copied_definition in contracts:
+            text = self.required_text(ROOT / "content" / "chapters" / relative)
+            with self.subTest(page=relative):
+                self.assertIn(module, text)
+                self.assertNotIn(copied_definition, text)
+
+    def test_scope_boundaries_and_final_review_are_recorded(self) -> None:
+        units = "\n".join(
+            path.read_text(encoding="utf-8")
+            for path in (ROOT / "content" / "chapters").glob("chapter-3[0-2]/u-07-*.md")
+        )
+        self.assertIn("不覆盖不等式约束", units)
+        self.assertIn("不建立一般 KKT 理论", units)
+        self.assertNotIn("KKT 条件给出", units)
+        report = self.required_text(
+            ROOT / "docs" / "reviews" / "2026-07-31-part-07-consistency-review.md"
+        )
+        for marker in ("25 个核心单元", "44 学时", "239", "293", "chapter-32", "29.6", "31.4", "32.6"):
+            self.assertIn(marker, report)
 
 
 if __name__ == "__main__":
