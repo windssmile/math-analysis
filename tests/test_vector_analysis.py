@@ -134,6 +134,20 @@ class LineIntegralTests(unittest.TestCase):
                 curve_derivative=lambda t: (1.0, 0.0), bounds=(0.0, 2.0), n=1,
             )
 
+    def test_rejects_finite_line_bounds_with_overflowing_span_before_summing(self) -> None:
+        for field, n in (
+            (lambda p: (1.0, 0.0), 1),
+            (lambda p: (1e308, 0.0), 2),
+        ):
+            with self.subTest(n=n), self.assertRaisesRegex(
+                ValueError, "bounds must have finite span"
+            ):
+                composite_midpoint_line_integral(
+                    field, curve=lambda t: (0.0, 0.0),
+                    curve_derivative=lambda t: (1.0, 0.0),
+                    bounds=(-1e308, 1e308), n=n,
+                )
+
 
 class FluxIntegralTests(unittest.TestCase):
     def test_constant_vertical_field_through_unit_square(self) -> None:
@@ -277,6 +291,27 @@ class FluxIntegralTests(unittest.TestCase):
                 surface_v=lambda u, v: (0.0, 1.0, 0.0),
                 u_bounds=(0.0, 2.0), v_bounds=(0.0, 1.0), nu=1, nv=1,
             )
+
+    def test_rejects_finite_flux_bounds_with_overflowing_span_before_summing(self) -> None:
+        common = dict(
+            surface=lambda u, v: (0.0, 0.0, 0.0),
+            surface_u=lambda u, v: (1.0, 0.0, 0.0),
+            surface_v=lambda u, v: (0.0, 1.0, 0.0), nu=2, nv=2,
+        )
+        for changed, message in (
+            (
+                dict(field=lambda p: (0.0, 0.0, 1.0),
+                     u_bounds=(-1e308, 1e308), v_bounds=(0.0, 1.0)),
+                "u_bounds must have finite span",
+            ),
+            (
+                dict(field=lambda p: (0.0, 0.0, 1e308),
+                     u_bounds=(0.0, 1.0), v_bounds=(-1e308, 1e308)),
+                "v_bounds must have finite span",
+            ),
+        ):
+            with self.subTest(message=message), self.assertRaisesRegex(ValueError, message):
+                composite_midpoint_flux_integral(**common, **changed)
 
     def test_scales_large_area_without_spurious_intermediate_overflow(self) -> None:
         for flux, nu, nv, expected in (

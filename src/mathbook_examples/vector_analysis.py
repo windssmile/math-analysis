@@ -47,6 +47,8 @@ def _increasing_bounds(bounds: object, name: str) -> tuple[float, float]:
         raise ValueError(f"{name} must contain two finite numbers")
     if not lower < upper:
         raise ValueError(f"{name} must be strictly increasing")
+    if not math.isfinite(upper - lower):
+        raise ValueError(f"{name} must have finite span")
     return lower, upper
 
 
