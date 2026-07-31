@@ -363,6 +363,13 @@ nav:
           - 48.3 非负可测函数怎样由递增简单函数逼近？: chapters/chapter-48/u-11-48-03-simple-function-approximation.md
           - 48.4 逐点、一致与几乎处处收敛怎样区分？: chapters/chapter-48/u-11-48-04-pointwise-uniform-ae.md
           - 48.5 依测度收敛与其他收敛方式有什么关系？: chapters/chapter-48/u-11-48-05-convergence-in-measure.md
+      - 第 49 章：Lebesgue 积分:
+          - 本章导学: chapters/chapter-49/index.md
+          - 49.1 简单函数的积分怎样由水平集测度定义？: chapters/chapter-49/u-11-49-01-simple-function-integral.md
+          - 49.2 非负可测函数的积分怎样由下逼近定义？: chapters/chapter-49/u-11-49-02-nonnegative-integral.md
+          - 49.3 积分的单调性、齐次性与可加性怎样证明？: chapters/chapter-49/u-11-49-03-integral-properties.md
+          - 49.4 正部、负部怎样定义一般函数的积分？: chapters/chapter-49/u-11-49-04-signed-integral.md
+          - 49.5 绝对可积、零测集修改与积分估计怎样统一？: chapters/chapter-49/u-11-49-05-absolute-integrability.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

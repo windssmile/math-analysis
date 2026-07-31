@@ -547,13 +547,13 @@ title: 全书课程地图
 4. [逐点、一致与几乎处处收敛怎样区分？](chapters/chapter-48/u-11-48-04-pointwise-uniform-ae.md)
 5. [依测度收敛与其他收敛方式有什么关系？](chapters/chapter-48/u-11-48-05-convergence-in-measure.md)
 
-### 第 49 章：Lebesgue 积分（规划中）
+### [第 49 章：Lebesgue 积分](chapters/chapter-49/index.md) {#chapter-49}
 
-1. 简单函数的积分怎样由水平集测度定义？
-2. 非负可测函数的积分怎样由下逼近定义？
-3. 积分的单调性、齐次性与可加性怎样证明？
-4. 正部、负部怎样定义一般函数的积分？
-5. 绝对可积、零测集修改与积分估计怎样统一？
+1. [简单函数的积分怎样由水平集测度定义？](chapters/chapter-49/u-11-49-01-simple-function-integral.md)
+2. [非负可测函数的积分怎样由下逼近定义？](chapters/chapter-49/u-11-49-02-nonnegative-integral.md)
+3. [积分的单调性、齐次性与可加性怎样证明？](chapters/chapter-49/u-11-49-03-integral-properties.md)
+4. [正部、负部怎样定义一般函数的积分？](chapters/chapter-49/u-11-49-04-signed-integral.md)
+5. [绝对可积、零测集修改与积分估计怎样统一？](chapters/chapter-49/u-11-49-05-absolute-integrability.md)
 
 ### 第 50 章：三大收敛定理与 Riemann 理论比较（规划中）
 
@@ -566,5 +566,5 @@ title: 全书课程地图
 ## 后续路线
 
 第七部与第八部已完成核心内容、算法与出版质量闭合；第九部已完成核心内容与选读附录的出版闭合。
-第十至十二部继续覆盖的路线中，第十部含参积分已经闭合；第十一部已发布第 46–48 章；
+第十至十二部继续覆盖的路线中，第十部含参积分已经闭合；第十一部已发布第 46–49 章；
 第十二部 Fourier 级数仍待规划。对应内容完成前不创建空白单元页。
