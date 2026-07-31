@@ -278,6 +278,7 @@ nav:
           - 36.3 密度怎样产生质量、质心与转动惯量？: chapters/chapter-36/u-08-36-03-mass-centroid-inertia.md
           - 36.4 联合密度怎样产生边缘密度、期望与协方差？: chapters/chapter-36/u-08-36-04-joint-density.md
           - 36.5 怎样为空间累积模型选择区域、坐标与核验方法？: chapters/chapter-36/u-08-36-05-spatial-modeling.md
+      - 选读附录：从 Jordan 区域到测度观点: appendices/part-08-jordan-content.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

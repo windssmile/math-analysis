@@ -4,6 +4,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 DEPENDENCIES = ROOT / "docs" / "curriculum" / "part-08-dependencies.md"
+APPENDIX = ROOT / "content" / "appendices" / "part-08-jordan-content.md"
 NAVIGATION = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
 
 PART_08_UNITS = [
@@ -68,6 +69,22 @@ class PartEightConsistencyTests(unittest.TestCase):
         for line in text.splitlines():
             if line.startswith("| `u-08-"):
                 self.assertNotIn("Jordan", line)
+
+    def test_optional_jordan_appendix_contract(self) -> None:
+        text = self.required_text(APPENDIX)
+        self.assertIn("选读，不计入第八部核心学时", text)
+        for marker in (
+            "有限个矩形的并",
+            "Jordan 内含量",
+            "Jordan 外含量",
+            "Jordan 可测",
+            "边界",
+            "Lebesgue 测度",
+        ):
+            self.assertIn(marker, text)
+        self.assertNotIn("unit_id: u-08-", text)
+        self.assertNotIn("hours:", text)
+        self.assertEqual(1, NAVIGATION.count("appendices/part-08-jordan-content.md"))
 
     def test_course_map_records_planned_part(self) -> None:
         text = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
