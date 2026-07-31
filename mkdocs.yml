@@ -265,6 +265,12 @@ nav:
           - 34.3 改变积分次序怎样化简区域与被积函数？: chapters/chapter-34/u-08-34-03-change-order.md
           - 34.4 三重积分怎样按截面或投影逐层计算？: chapters/chapter-34/u-08-34-04-triple-integrals.md
           - 34.5 二维张量积中点法能保证什么、不能保证什么？: chapters/chapter-34/u-08-34-05-tensor-midpoint.md
+      - 第 35 章：重积分的变量代换:
+          - 本章导学: chapters/chapter-35/index.md
+          - 35.1 Jacobian 行列式为什么描述局部面积与体积伸缩？: chapters/chapter-35/u-08-35-01-jacobian-scaling.md
+          - 35.2 重积分换元公式需要哪些条件？: chapters/chapter-35/u-08-35-02-change-of-variables.md
+          - 35.3 极坐标怎样处理圆形与径向对称区域？: chapters/chapter-35/u-08-35-03-polar-coordinates.md
+          - 35.4 柱面、球面坐标怎样处理三维区域？: chapters/chapter-35/u-08-35-04-cylindrical-spherical.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

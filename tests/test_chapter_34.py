@@ -57,7 +57,6 @@ class ChapterThirtyFourTests(unittest.TestCase):
             self.assertIn(heading, algorithm)
         nav = self.required_text(ROOT / "mkdocs.yml")
         self.assertIn("chapters/chapter-34/", nav)
-        self.assertNotIn("chapters/chapter-35/", nav)
 
 if __name__ == "__main__":
     unittest.main()
