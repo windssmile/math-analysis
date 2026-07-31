@@ -62,7 +62,7 @@ class PartElevenConsistencyTests(unittest.TestCase):
 
     def test_blueprint_starts_after_part_ten(self) -> None:
         text = self.required_text(DEPENDENCIES)
-        self.assertIn("当前发布边界：第 47 章", text)
+        self.assertIn("当前发布边界：第 48 章", text)
         self.assertIn("25 个核心单元、38 学时", text)
         self.assertIn("chapters/chapter-46/", NAVIGATION)
 

@@ -356,6 +356,13 @@ nav:
           - 47.3 可测集合为何构成 σ-代数？: chapters/chapter-47/u-11-47-03-measurable-sigma-algebra.md
           - 47.4 外测度在可测集上为何成为可数可加的测度？: chapters/chapter-47/u-11-47-04-countable-additivity.md
           - 47.5 Borel 集、零测集及其子集怎样进入 Lebesgue 可测世界？: chapters/chapter-47/u-11-47-05-borel-lebesgue-completion.md
+      - 第 48 章：可测函数与收敛方式:
+          - 本章导学: chapters/chapter-48/index.md
+          - 48.1 可测函数为何可由水平集的可测性刻画？: chapters/chapter-48/u-11-48-01-measurable-functions.md
+          - 48.2 运算、上确界与逐点极限怎样保持可测性？: chapters/chapter-48/u-11-48-02-measurable-operations-limits.md
+          - 48.3 非负可测函数怎样由递增简单函数逼近？: chapters/chapter-48/u-11-48-03-simple-function-approximation.md
+          - 48.4 逐点、一致与几乎处处收敛怎样区分？: chapters/chapter-48/u-11-48-04-pointwise-uniform-ae.md
+          - 48.5 依测度收敛与其他收敛方式有什么关系？: chapters/chapter-48/u-11-48-05-convergence-in-measure.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

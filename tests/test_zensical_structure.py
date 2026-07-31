@@ -30,7 +30,7 @@ class ZensicalStructureTests(unittest.TestCase):
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         self.assertIn("第六部第 27 章，共 125 个学习单元", readme)
         self.assertIn("第十部第 45 章，共 209 个学习单元、367 学时", readme)
-        self.assertIn("第十一部第 47 章，共 219 个学习单元、382.5 学时", readme)
+        self.assertIn("第十一部第 48 章，共 224 个学习单元、390 学时", readme)
         self.assertIn("zensical serve", readme)
         self.assertIn("zensical build --strict", readme)
         self.assertNotIn("mkdocs serve", readme)
