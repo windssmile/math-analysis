@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass
 import math
-from typing import Callable
+from typing import Callable, Iterable
 
 
 Vector = tuple[float, ...]
@@ -59,6 +59,16 @@ def _vector(callback: Callable[..., object], arguments: tuple[float, ...], name:
     return vector
 
 
+def _finite_fsum(values: Iterable[float], message: str) -> float:
+    try:
+        total = math.fsum(values)
+    except OverflowError as error:
+        raise ValueError(message) from error
+    if not math.isfinite(total):
+        raise ValueError(message)
+    return total
+
+
 def composite_midpoint_line_integral(
     field: Callable[[Vector], object],
     *,
@@ -67,7 +77,7 @@ def composite_midpoint_line_integral(
     bounds: tuple[float, float],
     n: int,
 ) -> LineIntegralResult:
-    """Approximate ``integral F(r(t)) dot r'(t) dt`` at fixed midpoints."""
+    """Approximate ``integral F(r(t)) dot r'(t) dt`` without certification."""
 
     n = _positive_integer(n, "n")
     lower, upper = _increasing_bounds(bounds, "bounds")
@@ -82,11 +92,12 @@ def composite_midpoint_line_integral(
         vector_field = _vector(field, (point,), "field")
         if len(derivative) != len(point) or len(vector_field) != len(point):
             raise ValueError("field, curve, and curve_derivative must have the same dimension")
-        term = math.fsum(a * b for a, b in zip(vector_field, derivative))
-        if not math.isfinite(term):
-            raise ValueError("line integrand must be finite")
+        term = _finite_fsum(
+            (a * b for a, b in zip(vector_field, derivative)),
+            "line dot product must be finite",
+        )
         terms.append(term)
-    value = step * math.fsum(terms)
+    value = step * _finite_fsum(terms, "integral accumulation must be finite")
     if not math.isfinite(value):
         raise ValueError("integral accumulation must be finite")
     return LineIntegralResult(value, (lower, upper), n, n)
@@ -103,7 +114,7 @@ def composite_midpoint_flux_integral(
     nu: int,
     nv: int,
 ) -> FluxIntegralResult:
-    """Approximate ``integral F(r) dot (r_u cross r_v) du dv`` at midpoints."""
+    """Approximate flux at fixed midpoints without certification."""
 
     nu = _positive_integer(nu, "nu")
     nv = _positive_integer(nv, "nv")
@@ -128,11 +139,12 @@ def composite_midpoint_flux_integral(
                 raise ValueError("surface normal must be finite")
             if normal == (0.0, 0.0, 0.0):
                 raise ValueError("surface_u and surface_v must define a nondegenerate normal")
-            term = math.fsum(a * b for a, b in zip(vector_field, normal))
-            if not math.isfinite(term):
-                raise ValueError("flux integrand must be finite")
+            term = _finite_fsum(
+                (a * b for a, b in zip(vector_field, normal)),
+                "flux dot product must be finite",
+            )
             terms.append(term)
-    value = du * dv * math.fsum(terms)
+    value = du * dv * _finite_fsum(terms, "integral accumulation must be finite")
     if not math.isfinite(value):
         raise ValueError("integral accumulation must be finite")
     return FluxIntegralResult(value, (u0, u1), (v0, v1), nu, nv, nu * nv)

@@ -63,6 +63,20 @@ class LineIntegralTests(unittest.TestCase):
                 curve_derivative=lambda t: (1e308, 0.0), bounds=(0.0, 1.0), n=1,
             )
 
+    def test_converts_dot_fsum_overflow_to_stage_specific_value_error(self) -> None:
+        with self.assertRaisesRegex(ValueError, "line dot product must be finite"):
+            composite_midpoint_line_integral(
+                lambda p: (1e308, 1e308), curve=lambda t: (t, t),
+                curve_derivative=lambda t: (1.0, 1.0), bounds=(0.0, 1.0), n=1,
+            )
+
+    def test_converts_accumulation_fsum_overflow_to_value_error(self) -> None:
+        with self.assertRaisesRegex(ValueError, "integral accumulation must be finite"):
+            composite_midpoint_line_integral(
+                lambda p: (1e308, 0.0), curve=lambda t: (t, 0.0),
+                curve_derivative=lambda t: (1.0, 0.0), bounds=(0.0, 1.0), n=2,
+            )
+
 
 class FluxIntegralTests(unittest.TestCase):
     def test_constant_vertical_field_through_unit_square(self) -> None:
@@ -114,6 +128,33 @@ class FluxIntegralTests(unittest.TestCase):
                 lambda p: (0.0, 0.0, 1e308), surface=lambda u, v: (u, v, 0.0),
                 surface_u=lambda u, v: (1e308, 0.0, 0.0), surface_v=lambda u, v: (0.0, 1e308, 0.0),
                 u_bounds=(0.0, 1.0), v_bounds=(0.0, 1.0), nu=1, nv=1,
+            )
+
+    def test_converts_dot_fsum_overflow_to_stage_specific_value_error(self) -> None:
+        common = dict(
+            surface=lambda u, v: (u, v, 0.0),
+            surface_u=lambda u, v: (1.0, 0.0, 0.0),
+            surface_v=lambda u, v: (0.0, 1.0, 0.0),
+            u_bounds=(0.0, 1.0), v_bounds=(0.0, 1.0), nv=1,
+        )
+        with self.assertRaisesRegex(ValueError, "flux dot product must be finite"):
+            composite_midpoint_flux_integral(
+                lambda p: (1e308, 0.0, 1e308),
+                surface_u=lambda u, v: (1.0, 0.0, -1.0),
+                surface_v=lambda u, v: (0.0, 1.0, 0.0), nu=1,
+                **{key: value for key, value in common.items() if key not in ("surface_u", "surface_v")},
+            )
+
+    def test_converts_accumulation_fsum_overflow_to_value_error(self) -> None:
+        common = dict(
+            surface=lambda u, v: (u, v, 0.0),
+            surface_u=lambda u, v: (1.0, 0.0, 0.0),
+            surface_v=lambda u, v: (0.0, 1.0, 0.0),
+            u_bounds=(0.0, 1.0), v_bounds=(0.0, 1.0), nv=1,
+        )
+        with self.assertRaisesRegex(ValueError, "integral accumulation must be finite"):
+            composite_midpoint_flux_integral(
+                lambda p: (0.0, 0.0, 1e308), nu=2, **common,
             )
 
 
