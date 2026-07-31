@@ -279,6 +279,13 @@ nav:
           - 36.4 联合密度怎样产生边缘密度、期望与协方差？: chapters/chapter-36/u-08-36-04-joint-density.md
           - 36.5 怎样为空间累积模型选择区域、坐标与核验方法？: chapters/chapter-36/u-08-36-05-spatial-modeling.md
       - 选读附录：从 Jordan 区域到测度观点: appendices/part-08-jordan-content.md
+  - 第九部：曲线、曲面与向量分析:
+      - 第 37 章：参数曲线与曲线积分:
+          - 本章导学: chapters/chapter-37/index.md
+          - 37.1 正则参数曲线怎样描述运动、方向与切向量？: chapters/chapter-37/u-09-37-01-regular-parametric-curves.md
+          - 37.2 弧长与第一类曲线积分怎样由参数化定义？: chapters/chapter-37/u-09-37-02-arc-length-scalar-line-integral.md
+          - 37.3 第二类曲线积分怎样表示功与环流？: chapters/chapter-37/u-09-37-03-work-circulation.md
+          - 37.4 重新参数化、反向与保守场怎样改变积分？: chapters/chapter-37/u-09-37-04-reparameterization-conservative-fields.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

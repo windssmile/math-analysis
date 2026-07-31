@@ -55,7 +55,6 @@ class ChapterThirtySixTests(unittest.TestCase):
             self.assertEqual(1, guide.count(f"[{row[1]}]({row[0]}-{row[4]}.md)"))
         nav = self.text(ROOT / "mkdocs.yml")
         self.assertIn("chapters/chapter-36/", nav)
-        self.assertNotIn("chapters/chapter-37/", nav)
 
 if __name__ == "__main__":
     unittest.main()

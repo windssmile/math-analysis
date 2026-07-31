@@ -33,7 +33,6 @@ PART_09_UNITS = [
 ]
 
 CHAPTER_TITLES = [
-    "第 37 章：参数曲线与曲线积分（规划中）",
     "第 38 章：参数曲面与曲面积分（规划中）",
     "第 39 章：Green 公式与平面场（规划中）",
     "第 40 章：Gauss 公式与通量（规划中）",
@@ -69,15 +68,17 @@ class PartNineConsistencyTests(unittest.TestCase):
 
     def test_blueprint_tracks_current_release_boundary(self) -> None:
         text = self.required_text(DEPENDENCIES)
-        self.assertIn("当前发布边界：第 36 章", text)
+        self.assertIn("当前发布边界：第 37 章", text)
         self.assertIn("21 个核心单元、32 学时", text)
         chapters = ROOT / "content" / "chapters"
-        for chapter in range(37, 42):
+        self.assertIn("chapters/chapter-37/", NAVIGATION)
+        self.assertEqual(4, len(list((chapters / "chapter-37").glob("u-09-*.md"))))
+        for chapter in range(38, 42):
             with self.subTest(chapter=chapter):
                 self.assertNotIn(f"chapters/chapter-{chapter:02d}/", NAVIGATION)
                 chapter_dir = chapters / f"chapter-{chapter:02d}"
                 self.assertEqual([], list(chapter_dir.rglob("*.md")))
-        self.assertEqual([], list(chapters.rglob("u-09-*.md")))
+        self.assertEqual(4, len(list(chapters.rglob("u-09-*.md"))))
 
     def test_optional_appendix_is_not_core(self) -> None:
         text = self.required_text(DEPENDENCIES)
@@ -85,9 +86,10 @@ class PartNineConsistencyTests(unittest.TestCase):
 
     def test_course_map_locks_every_planned_unit(self) -> None:
         text = self.required_text(COURSE_MAP)
+        self.assertEqual(1, text.count("[第 37 章：参数曲线与曲线积分](chapters/chapter-37/index.md)"))
         for heading in CHAPTER_TITLES:
             self.assertEqual(1, text.count(heading), heading)
-        for unit_id, title, theory, applied in PART_09_UNITS:
+        for unit_id, title, theory, applied in PART_09_UNITS[4:]:
             pattern = (
                 rf"^\d+\. `{re.escape(unit_id)}` {re.escape(title)}"
                 rf"（理论 {theory:.2f}，应用 {applied:.2f}）$"

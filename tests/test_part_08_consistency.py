@@ -51,7 +51,6 @@ class PartEightConsistencyTests(unittest.TestCase):
         self.assertIn("chapters/chapter-34/", NAVIGATION)
         self.assertIn("chapters/chapter-35/", NAVIGATION)
         self.assertIn("chapters/chapter-36/", NAVIGATION)
-        self.assertNotIn("chapters/chapter-37/", NAVIGATION)
 
     def test_dependency_map_covers_every_locked_unit(self) -> None:
         text = self.required_text(DEPENDENCIES)
@@ -125,7 +124,6 @@ class PartEightConsistencyTests(unittest.TestCase):
         self.assertIn("第八部已发布\n第 33–36 章", readme)
         self.assertIn("18 个核心单元、32 学时", readme)
         self.assertIn("当前发布边界：第 36 章", dependencies)
-        self.assertNotIn("chapters/chapter-37/", NAVIGATION)
 
         mentions = []
         copied_definitions = []
