@@ -79,13 +79,13 @@ class ChapterThirtySevenTests(unittest.TestCase):
             self.assertEqual(1, guide.count(f"[{row[1]}]({row[0]}-{row[4]}.md)"))
         nav = self.text(ROOT / "mkdocs.yml")
         self.assertIn("chapters/chapter-37/", nav)
-        for chapter in range(38, 42):
+        for chapter in range(39, 42):
             self.assertNotIn(f"chapters/chapter-{chapter}/", nav)
         readme = self.text(ROOT / "README.md")
-        self.assertIn("第九部第 37 章，共 169 个学习单元、311 学时", readme)
+        self.assertIn("第九部第 38 章，共 173 个学习单元、317 学时", readme)
         course_map = self.text(ROOT / "content" / "course-map.md")
         self.assertIn("第 37 章：参数曲线与曲线积分](chapters/chapter-37/index.md)", course_map)
-        self.assertIn("第 38 章：参数曲面与曲面积分（规划中）", course_map)
+        self.assertIn("第 38 章：参数曲面与曲面积分](chapters/chapter-38/index.md)", course_map)
 
     def test_consistency_review_records_evidence(self):
         review = self.text(ROOT / "docs" / "reviews" / "2026-07-31-chapter-37-consistency-review.md")

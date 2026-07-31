@@ -286,6 +286,12 @@ nav:
           - 37.2 弧长与第一类曲线积分怎样由参数化定义？: chapters/chapter-37/u-09-37-02-arc-length-scalar-line-integral.md
           - 37.3 第二类曲线积分怎样表示功与环流？: chapters/chapter-37/u-09-37-03-work-circulation.md
           - 37.4 重新参数化、反向与保守场怎样改变积分？: chapters/chapter-37/u-09-37-04-reparameterization-conservative-fields.md
+      - 第 38 章：参数曲面与曲面积分:
+          - 本章导学: chapters/chapter-38/index.md
+          - 38.1 正则参数曲面怎样产生切平面、法向量与取向？: chapters/chapter-38/u-09-38-01-regular-parametric-surfaces.md
+          - 38.2 曲面面积元为什么由叉积的模给出？: chapters/chapter-38/u-09-38-02-surface-area-element.md
+          - 38.3 第一类曲面积分怎样累积曲面上的标量分布？: chapters/chapter-38/u-09-38-03-scalar-surface-integral.md
+          - 38.4 通量积分怎样依赖参数化与曲面取向？: chapters/chapter-38/u-09-38-04-flux-integral.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
