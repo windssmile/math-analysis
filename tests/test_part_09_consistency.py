@@ -71,7 +71,13 @@ class PartNineConsistencyTests(unittest.TestCase):
         text = self.required_text(DEPENDENCIES)
         self.assertIn("当前发布边界：第 36 章", text)
         self.assertIn("21 个核心单元、32 学时", text)
-        self.assertNotIn("chapters/chapter-37/", NAVIGATION)
+        chapters = ROOT / "content" / "chapters"
+        for chapter in range(37, 42):
+            with self.subTest(chapter=chapter):
+                self.assertNotIn(f"chapters/chapter-{chapter:02d}/", NAVIGATION)
+                chapter_dir = chapters / f"chapter-{chapter:02d}"
+                self.assertEqual([], list(chapter_dir.rglob("*.md")))
+        self.assertEqual([], list(chapters.rglob("u-09-*.md")))
 
     def test_optional_appendix_is_not_core(self) -> None:
         text = self.required_text(DEPENDENCIES)
