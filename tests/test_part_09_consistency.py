@@ -103,6 +103,31 @@ class PartNineConsistencyTests(unittest.TestCase):
         self.assertIn("上同调", text)
         self.assertIn("完整外代数", text)
 
+    def test_appendix_states_smoothness_contractions_and_euclidean_stokes_scope(self) -> None:
+        text = self.required_text(APPENDIX)
+        for marker in [
+            r"C^k",
+            r"C^2",
+            "混合偏导交换",
+            "有界分片光滑定向区域或曲面",
+            "分片光滑且取向相容",
+            r"(\iota_F\mathrm{vol})(u,v)=\mathrm{vol}(F,u,v)",
+            r"P\,dy\wedge dz+Q\,dz\wedge dx+R\,dx\wedge dy",
+            r"F\cdot(u\times v)",
+            r"d\alpha=(R_y-Q_z)\,dy\wedge dz+(P_z-R_x)\,dz\wedge dx",
+            r"d\beta=(A_x+B_y+C_z)\,dx\wedge dy\wedge dz",
+            "足够光滑的 $\\omega$",
+            "第 39–41 章",
+        ]:
+            with self.subTest(marker=marker):
+                self.assertIn(marker, text)
+
+    def test_course_map_closes_part_nine_before_parts_ten_to_twelve(self) -> None:
+        text = self.required_text(COURSE_MAP)
+        self.assertIn("第九部已完成核心内容与选读附录的出版闭合", text)
+        self.assertIn("第十至十二部继续覆盖", text)
+        self.assertNotIn("第九至十二部继续覆盖", text)
+
     def test_course_map_locks_every_planned_unit(self) -> None:
         text = self.required_text(COURSE_MAP)
         self.assertEqual(1, text.count("[第 37 章：参数曲线与曲线积分](chapters/chapter-37/index.md)"))

@@ -483,6 +483,8 @@ REQUIRED_RENDERED_CONTENT = {
         "min_display_math": 6,
         "required_math": [r"\int_{\partial M}\omega=\int_M d\omega"],
         "forbidden_raw_tex": [r"<p>\int_{\partial M}", r"<p>d\omega="],
+        "forbid_nested_display_delimiters": True,
+        "forbid_mathjax_errors": True,
     },
     "chapters/chapter-39/u-09-39-04-green-applications/index.html": {
         "min_arithmatex": 12,

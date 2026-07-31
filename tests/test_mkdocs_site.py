@@ -715,6 +715,10 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             REQUIRED_RENDERED_CONTENT[page]["required_math"],
         )
         self.assertTrue(REQUIRED_RENDERED_CONTENT[page]["forbidden_raw_tex"])
+        self.assertTrue(
+            REQUIRED_RENDERED_CONTENT[page]["forbid_nested_display_delimiters"]
+        )
+        self.assertTrue(REQUIRED_RENDERED_CONTENT[page]["forbid_mathjax_errors"])
 
 
 if __name__ == "__main__":
