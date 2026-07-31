@@ -58,3 +58,9 @@
    区间四阶导数界时不得返回总误差证书。
 5. 第十一部自行建立测度、可测性与 Lebesgue 积分；本部不使用几乎处处或控制收敛。
 6. Reynolds 输运、形状导数、复参数 Gamma 与解析延拓只作后续方向提示。
+
+## 出版闭合统计
+
+第十部 20 个核心页面共登记 197 道稳定锚点习题和 239 个折叠答案。两个公开数值函数
+`gamma_integral` 与 `beta_integral` 只在 `src/mathbook_examples/parametric_integrals.py`
+定义；教材页面只导入调用。第十一部第 46 章尚未创建。

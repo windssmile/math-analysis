@@ -77,6 +77,36 @@ class PartTenConsistencyTests(unittest.TestCase):
             with self.subTest(marker=marker):
                 self.assertIn(marker, text)
 
+    def test_final_publication_surfaces_and_unique_pages(self) -> None:
+        for relative in ("README.md", "content/course-map.md",
+                         "docs/curriculum/part-10-dependencies.md"):
+            text = self.required_text(ROOT / relative)
+            self.assertIn("209 个学习单元", text)
+            self.assertIn("367 学时", text)
+        self.assertIn("当前发布边界：第 45 章",
+                      self.required_text(DEPENDENCIES))
+        pages = list((ROOT / "content" / "chapters").glob("chapter-4[2-5]/u-10-*.md"))
+        self.assertEqual(20, len(pages))
+        unit_ids = {"-".join(page.name.split("-", 4)[:4]) for page in pages}
+        self.assertEqual(20, len(unit_ids))
+        source = self.required_text(ROOT / "src/mathbook_examples/parametric_integrals.py")
+        self.assertEqual(1, source.count("def gamma_integral("))
+        self.assertEqual(1, source.count("def beta_integral("))
+        core = "\n".join(self.required_text(page).split("## 常见误区与后续", 1)[0]
+                         for page in pages)
+        for forbidden in ("几乎处处", "控制收敛定理"):
+            self.assertNotIn(forbidden, core)
+
+    def test_published_cross_part_handoffs_are_precise(self) -> None:
+        part6 = self.required_text(ROOT / "docs/curriculum/part-06-dependencies.md")
+        part8 = self.required_text(ROOT / "docs/curriculum/part-08-dependencies.md")
+        part9 = self.required_text(ROOT / "docs/curriculum/part-09-dependencies.md")
+        self.assertIn("第十部第 42、44 章直接复用", part6)
+        for unit in ("u-10-43-04", "u-10-43-05", "u-10-45-03"):
+            self.assertIn(unit, part8)
+        self.assertIn("不是第 42–45 章", part9)
+        self.assertIn("微分形式选读附录同样不是前置", part9)
+
     def test_part_eleven_is_not_created(self) -> None:
         self.assertFalse((ROOT / "content" / "chapters" / "chapter-46").exists())
         self.assertNotIn("chapters/chapter-46/", NAVIGATION)
