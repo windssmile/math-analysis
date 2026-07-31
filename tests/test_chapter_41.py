@@ -1,4 +1,7 @@
 from pathlib import Path
+from contextlib import redirect_stdout
+import io
+import math
 import re
 import unittest
 import yaml
@@ -147,6 +150,27 @@ class ChapterFortyOneTests(unittest.TestCase):
                        "参数化无关", "误差证书", "采样", "不能证明 Green", "不能证明 Gauss", "不能证明 Stokes"):
             self.assertIn(marker, text)
 
+    def test_selection_page_python_block_executes_real_algorithms(self):
+        text = self.text(unit_path(EXPECTED[4]))
+        blocks = re.findall(r"```python\n(?P<code>[\s\S]*?)\n```", text)
+        matching = [code for code in blocks
+                    if "from src.mathbook_examples.vector_analysis import" in code]
+        self.assertEqual(1, len(matching))
+        namespace = {"__builtins__": __builtins__}
+        output = io.StringIO()
+        with redirect_stdout(output):
+            exec(compile(matching[0], "<chapter-41.5-example>", "exec"), namespace)
+        line = namespace["line_check"]
+        flux = namespace["flux_check"]
+        self.assertAlmostEqual(math.pi, line.value, places=12)
+        self.assertEqual(((0.0, 2 * math.pi), 64, 64),
+                         (line.bounds, line.n, line.evaluations))
+        self.assertAlmostEqual(1.0, flux.value, places=12)
+        self.assertEqual(
+            ((0.0, 1.0), (0.0, 1.0), 16, 16, 256),
+            (flux.u_bounds, flux.v_bounds, flux.nu, flux.nv, flux.evaluations),
+        )
+
     def test_all_tex_is_explicitly_delimited(self):
         suspicious = re.compile(r"(?<!\\)\((?:[^()\n]*(?:\\[A-Za-z]+|[_^])[^()\n]*)\)")
         for row in EXPECTED:
@@ -169,12 +193,13 @@ class ChapterFortyOneTests(unittest.TestCase):
         self.assertIn("当前发布第 37–41 章；第九部核心正文已全部发布", course_map)
         self.assertIn("选读附录：从向量分析到微分形式（规划中）", course_map)
 
-    def test_dependency_review_and_representative_html(self):
+    def test_dependency_and_manual_review_record(self):
         dependencies = self.text(ROOT / "docs" / "curriculum" / "part-09-dependencies.md")
         for marker in ("当前发布边界：第 41 章", "第 37–41 章已经发布", "第九部核心正文已全部发布"):
             self.assertIn(marker, dependencies)
         review = self.text(ROOT / "docs" / "reviews" / "2026-07-31-chapter-41-consistency-review.md")
-        for marker in ("元数据", "Stokes", "取向", "拉回", "有限分片", "算法唯一调用点", "390", "arithmatex",
+        for marker in ("元数据", "Stokes", "取向", "拉回", "有限分片", "算法唯一调用点",
+                       "人工 390 × 844 浏览器验收", "scrollWidth = clientWidth = 390",
                        "make verify", "check_content.py", "zensical build --strict", "check_site.py", "git diff --check", "通过"):
             self.assertIn(marker, review)
 

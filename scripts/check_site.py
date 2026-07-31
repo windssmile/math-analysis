@@ -216,6 +216,12 @@ REQUIRED_RENDERED_ANCHORS = {
     "chapters/chapter-40/u-09-40-04-gauss-applications-singularities/index.html": [
         "ex-u-09-40-04-punctured-flux",
     ],
+    "chapters/chapter-41/u-09-41-03-stokes-parametric-patch/index.html": [
+        "thm-u-09-41-03-stokes-patch",
+    ],
+    "chapters/chapter-41/u-09-41-05-vector-theorem-selection/index.html": [
+        "workflow-u-09-41-05-selection",
+    ],
     "appendices/part-08-jordan-content/index.html": [
         "appendix-part-08-jordan-content",
     ],
@@ -444,6 +450,16 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第九部：曲线、曲面与向量分析",
         "第 40 章：Gauss 公式与通量",
+    ],
+    "chapters/chapter-41/u-09-41-03-stokes-parametric-patch/index.html": [
+        "md-sidebar",
+        "第九部：曲线、曲面与向量分析",
+        "第 41 章：Stokes 公式与三大公式的统一",
+    ],
+    "chapters/chapter-41/u-09-41-05-vector-theorem-selection/index.html": [
+        "md-sidebar",
+        "第九部：曲线、曲面与向量分析",
+        "第 41 章：Stokes 公式与三大公式的统一",
     ],
     "appendices/part-08-jordan-content/index.html": [
         "md-sidebar",

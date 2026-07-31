@@ -1,5 +1,6 @@
 from pathlib import Path
 from tempfile import TemporaryDirectory
+import re
 import unittest
 
 from scripts.check_site import (
@@ -11,6 +12,34 @@ from scripts.check_site import (
 
 
 class ZensicalSiteValidationTests(unittest.TestCase):
+    def test_checks_chapter_forty_one_stokes_pages(self) -> None:
+        pages = {
+            "chapters/chapter-41/u-09-41-03-stokes-parametric-patch/index.html":
+                "thm-u-09-41-03-stokes-patch",
+            "chapters/chapter-41/u-09-41-05-vector-theorem-selection/index.html":
+                "workflow-u-09-41-05-selection",
+        }
+        root = Path(__file__).resolve().parents[1]
+        display_count = 0
+        for page, anchor in pages.items():
+            self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+            self.assertIn(anchor, REQUIRED_RENDERED_ANCHORS[page])
+            html = (root / "site" / page).read_text(encoding="utf-8")
+            self.assertIn(f'id="{anchor}"', html)
+            self.assertGreaterEqual(html.count('class="arithmatex"'), 12)
+            displays = re.findall(
+                r'<div class="arithmatex">\\\[(?P<body>[\s\S]*?)\\\]</div>',
+                html,
+            )
+            display_count += len(displays)
+            for body in displays:
+                self.assertNotIn(r"\(", body)
+                self.assertNotIn(r"\)", body)
+        self.assertGreater(display_count, 0)
+        patch_html = (root / "site" / next(iter(pages))).read_text(encoding="utf-8")
+        self.assertIn(r"\operatorname{curl}F(r)\cdot(r_u\times r_v)", patch_html)
+        self.assertNotIn(r"<p>B_u-A_v=\operatorname{curl}", patch_html)
+
     def test_checks_chapter_forty_math_page(self) -> None:
         page = "chapters/chapter-40/u-09-40-04-gauss-applications-singularities/index.html"
         self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
