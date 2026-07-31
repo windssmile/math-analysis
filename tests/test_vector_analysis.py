@@ -84,6 +84,20 @@ class LineIntegralTests(unittest.TestCase):
                 )
                 self.assertEqual(expected, result.value)
 
+    def test_preserves_smallest_subnormal_line_terms_until_final_scaling(self) -> None:
+        minimum = math.ulp(0.0)
+        for field, expected in (
+            (lambda p: (minimum, 0.0), minimum),
+            (lambda p: (-minimum, 0.0), -minimum),
+            (lambda p: (minimum if p[0] < 0.5 else -minimum, 0.0), 0.0),
+        ):
+            with self.subTest(expected=expected):
+                result = composite_midpoint_line_integral(
+                    field, curve=lambda t: (t, 0.0),
+                    curve_derivative=lambda t: (1.0, 0.0), bounds=(0.0, 1.0), n=2,
+                )
+                self.assertEqual(expected, result.value)
+
 
 class FluxIntegralTests(unittest.TestCase):
     def test_constant_vertical_field_through_unit_square(self) -> None:
@@ -167,6 +181,23 @@ class FluxIntegralTests(unittest.TestCase):
         ):
             with self.subTest(expected=expected):
                 result = composite_midpoint_flux_integral(field, nu=2, **common)
+                self.assertEqual(expected, result.value)
+
+    def test_preserves_smallest_subnormal_flux_terms_until_final_scaling(self) -> None:
+        minimum = math.ulp(0.0)
+        common = dict(
+            surface=lambda u, v: (u, v, 0.0),
+            surface_u=lambda u, v: (1.0, 0.0, 0.0),
+            surface_v=lambda u, v: (0.0, 1.0, 0.0),
+            u_bounds=(0.0, 1.0), v_bounds=(0.0, 1.0), nu=2, nv=1,
+        )
+        for field, expected in (
+            (lambda p: (0.0, 0.0, minimum), minimum),
+            (lambda p: (0.0, 0.0, -minimum), -minimum),
+            (lambda p: (0.0, 0.0, minimum if p[0] < 0.5 else -minimum), 0.0),
+        ):
+            with self.subTest(expected=expected):
+                result = composite_midpoint_flux_integral(field, **common)
                 self.assertEqual(expected, result.value)
 
     def test_scales_large_area_without_spurious_intermediate_overflow(self) -> None:
