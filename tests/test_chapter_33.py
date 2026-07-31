@@ -69,6 +69,30 @@ class ChapterThirtyThreeTests(unittest.TestCase):
         dependencies = self.required_text(ROOT / "docs" / "curriculum" / "part-08-dependencies.md")
         self.assertIn("| 第 33 章 | 4 | 6.25 | 0.75 | 7.00 | 已发布 |", dependencies)
 
+    def test_bounded_region_unit_proves_thin_cover_and_zero_extension(self) -> None:
+        text = self.required_text(unit_path(EXPECTED_UNITS[3]))
+        ordered_structure = (
+            "{#lem-u-08-33-04-thin-box-cover}",
+            "紧参数域上的 Lipschitz 控制",
+            "曲线片需要",
+            "曲面片需要",
+            "有限片合并",
+            "{#thm-u-08-33-04-zero-extension}",
+            "共同细分",
+            "边界格的振幅贡献",
+        )
+        positions = []
+        for marker in ordered_structure:
+            self.assertIn(marker, text)
+            positions.append(text.index(marker))
+        self.assertEqual(sorted(positions), positions)
+        for estimate in (
+            "\\[\nN_h\\le C h^{-(d-1)}",
+            r"N_h(Ch)^d\le C' h.",
+            "\\[\n2M\\operatorname{vol}(U)<\\varepsilon/2.\n\\]",
+        ):
+            self.assertIn(estimate, text)
+
 
 if __name__ == "__main__":
     unittest.main()

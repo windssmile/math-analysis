@@ -70,6 +70,14 @@ class PartEightConsistencyTests(unittest.TestCase):
             if line.startswith("| `u-08-"):
                 self.assertNotIn("Jordan", line)
 
+    def test_change_of_variables_depends_on_the_core_boundary_lemma(self) -> None:
+        text = self.required_text(DEPENDENCIES)
+        row = next(
+            line for line in text.splitlines() if line.startswith("| `u-08-35-02` |")
+        )
+        self.assertIn("`u-08-33-04`", row)
+        self.assertNotIn("Jordan 附录", row)
+
     def test_optional_jordan_appendix_contract(self) -> None:
         text = self.required_text(APPENDIX)
         self.assertIn("选读，不计入第八部核心学时", text)

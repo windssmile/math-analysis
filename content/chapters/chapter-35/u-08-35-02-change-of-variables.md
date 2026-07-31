@@ -3,9 +3,9 @@ title: 重积分换元公式需要哪些条件？
 unit_id: u-08-35-02
 hours: {theory: 1.5, applied: 0.25}
 difficulty: 4
-prerequisites: {book: [Jacobian 局部伸缩, 反函数定理, Riemann 重积分], higher_algebra: [行列式], analytic_geometry: [区域映射], python: []}
+prerequisites: {book: [Jacobian 局部伸缩, 反函数定理, Riemann 重积分, 区域零延拓], higher_algebra: [行列式], analytic_geometry: [区域映射], python: []}
 capabilities: [change_of_variables_theorem, hypothesis_audit, transformed_region]
-learning_goals: [陈述换元定理, 解释每项假设, 按 Riemann 和证明公式]
+learning_goals: [陈述换元定理, 解释每项假设, 证明一致小盒像体积估计, 按 Riemann 和证明公式]
 content_standard: 2
 ---
 
@@ -27,24 +27,111 @@ content_standard: 2
 ## 概念与理论
 
 ### 经典重积分换元定理 {#thm-u-08-35-02-change-of-variables}
-设 \(G\) 是有限分片光滑边界的有界区域，\(T:G\to D\) 在邻域内
-**连续可微**，在内部一一对应且 \(\det DT\ne0\)。若 \(D=T(G)\) 的边界也可作
-有限**边界分片**，\(f\) 在 \(D\) 上连续，则
+令 \(d=2\) 或 \(3\)。设 \(G\subset\mathbb R^d\) 是有限矩形并或常用 Jordan 型参数域：
+它有界，边界由有限个分片 \(C^1\) 参数片组成。设 \(T\) 在 \(\overline G\) 的一个开邻域
+内为 \(C^1\)，在 \(G\) 内部一一对应，并且 \(\det DT\ne0\)；允许在边界上出现后续
+坐标公式所需的有限退化片。令 \(D=T(G)\)，并设 \(f\) 在 \(\overline D\) 上连续。则
 \[
-\iint_D f(x,y)\,dx\,dy
-=\iint_G f(T(u,v))\,|\det DT(u,v)|\,du\,dv.
+\int_D f(x)\,dx
+=\int_G f(T(u))\,|\det DT(u)|\,du.
 \]
-三维公式相同，面积元换成体积元。
+这里的积分是第 33 章定义的经典 Riemann 区域积分；二维写作二重积分，三维写作三重
+积分。
 
-**证明路线。** 把 \(G\) 分成小矩形。连续可微使导数一致连续，每块上
-\(T(u+h)=T(u)+DT(u)h+o(\|h\|)\) 的误差可统一控制；线性主部把面积乘
-\(|\det DT(u)|\)。反函数定理与 Jacobian 不退化保证小块内部不折叠；全局
-一一对应避免不同小块的像重叠。对边界分片附近的格单独估计并压小总面积。
-于是像区域的 Riemann 和与右侧加权 Riemann 和之差趋零，取极限即得公式。
+| 假设 | 在证明中的用途 |
+|---|---|
+| 有限矩形并或常用 Jordan 型参数域 | 第 33.4 的薄盒引理可压小参数域边界层 |
+| \(T\) 在邻域内 \(C^1\) | 紧内部上导数一致连续，余项控制对所有小盒统一 |
+| 内部 \(\det DT\ne0\) | 紧内部上逆矩阵范数一致有界，局部像有内包而不被压扁 |
+| \(T\) 在内部一一 | 不同参数小盒的像内部不重叠，不会重复累计 |
+| \(f\) 在 \(\overline D\) 连续 | 被积函数有界且一致连续，Riemann 和振幅可统一压小 |
+| 有限边界片 | \(\partial G\) 及其 Lipschitz 像可由任意小总体积的有限薄盒覆盖 |
 
-每项假设都有用途：去掉一一对应会重复覆盖；去掉连续可微会失去统一局部误差；
-Jacobian 为零会压扁；不控制边界则有限分割论证不能闭合。本证明处于经典
-Riemann 层次，不借用测度论。
+### 引理：小盒像体积的一致估计 {#lem-u-08-35-02-uniform-box-volume}
+
+设 \(K\Subset G\) 为紧集。对中心 \(a\in K\)、边长 \(h\) 的闭立方体
+\(Q=a+[-h/2,h/2]^d\subset K\)，当 \(h\to0\) 时一致地有
+\[
+\operatorname{vol}(T(Q))
+=|\det DT(a)|\operatorname{vol}(Q)+o(\operatorname{vol}(Q)).
+\]
+
+**证明：紧内部的一致线性化。** 记 \(A=DT(a)\)、
+\(R_a(z)=T(z)-T(a)-A(z-a)\)。因 \(DT\) 在 \(K\) 的一个紧邻域上一致连续，存在
+\(\omega(t)\downarrow0\) 使同一邻域内
+\[
+\|R_a(z)-R_a(w)\|\le\omega(Ch)\|z-w\|\qquad(z,w\in Q).
+\]
+又因 \(|\det DT|\) 在 \(K\) 上有正下界，\(\|A\|\) 与 \(\|A^{-1}\|\) 分别有统一
+上界 \(L\) 与 \(M\)。这些常数都不依赖 \(a\) 或小盒。
+
+**线性像的体积。** 线性代数中的平行多面体公式给出
+\[
+\operatorname{vol}(A(Q-a))=|\det A|h^d.
+\]
+这一步只处理线性主部，尚不能直接替代 \(T(Q)\)。
+
+**余项的外包与内包。** 令 \(\rho_h=C\omega(Ch)h\)。由余项估计，
+\[
+T(Q)\subset T(a)+A(Q-a)+B(0,\rho_h).
+\]
+反向内包也必须证明。若 \(y\in A(Q-a)\) 且 \(A^{-1}y\) 到立方体边界的距离大于
+\(2M\rho_h\)，考虑
+\[
+\Phi_y(z)=a+A^{-1}\bigl(y-R_a(z)\bigr).
+\]
+充分小的 \(h\) 使 \(M\omega(Ch)<1/2\)；中心点 \(a+A^{-1}y\) 的边界余量保证
+\(\Phi_y\) 把 \(Q\) 送入自身且为压缩映射。第 8 章压缩定理给出唯一不动点 \(z\in Q\)，即
+\(T(z)=T(a)+y\)。故线性平行多面体去掉厚度 \(O(\rho_h)\) 的边界层后包含于
+\(T(Q)-T(a)\)，而 \(T(Q)-T(a)\) 又包含在线性像的 \(O(\rho_h)\) 外层中。
+
+\(\|A\|,\|A^{-1}\|\) 一致有界，所以这两个平行多面体边界层的体积均不超过
+\(C\rho_h h^{d-1}=C\omega(Ch)h^d\)。因此
+\[
+\left|\operatorname{vol}(T(Q))-|\det DT(a)|h^d\right|
+\le C\omega(Ch)h^d=o(h^d),
+\]
+且估计对 \(a\in K\) 一致。\(\square\)
+
+### 换元定理的 Riemann 和证明
+
+**像块不重叠与共同细分。** 给定 \(\eta>0\)，由第 33.4 的薄盒引理取覆盖
+\(\partial G\) 的有限盒并 \(U\)，其总体积小于 \(\eta\)。把覆盖盒坐标端点与边长
+\(h\) 的规则立方网格共同细分，只保留闭包位于 \(G\setminus U\) 的网格立方体 \(Q\)。
+它们构成离边界正距离的有限紧内部。不同 \(Q\) 的内部不交；由 \(T\) 在内部一一，
+不同 \(T(Q)\) 的内部也不交。每个 \(T(Q)\) 的边界是有限个 \(C^1\) 参数片的像，故
+第 33.4 保证这些像块可积；有限块可在共同外包盒中共同细分并使用区域可加性。
+
+**被积函数与 Jacobian 的振幅控制。** 写 \(J=|\det DT|\)，在每个 \(Q\) 取样点
+\(a_Q\)。由 \(DT\) 有界，\(\operatorname{diam}T(Q)\le Ch\)。上一引理与连续性给出
+\[
+\begin{aligned}
+\int_{T(Q)}f
+&=f(T(a_Q))\operatorname{vol}(T(Q))
+  +O\!\left(\omega_f(Ch)\operatorname{vol}(T(Q))\right),\\
+\int_Q(f\circ T)J
+&=f(T(a_Q))J(a_Q)\operatorname{vol}(Q)\\
+&\quad+O\!\left(
+ [\omega_f(Ch)+\|f\|_\infty\omega_J(h)]\operatorname{vol}(Q)
+ \right).
+\end{aligned}
+\]
+再用一致小盒体积误差，逐块之差除以 \(\operatorname{vol}(Q)\) 后由一个与 \(Q\)
+无关且趋于零的量控制。所有内部块总体积有统一上界，求和后
+\[
+\sum_Q\int_{T(Q)}f-\sum_Q\int_Q(f\circ T)J\longrightarrow0.
+\]
+
+**从紧内部回到全域。** \(T\) 在 \(\overline G\) 的紧邻域上 Lipschitz。把覆盖
+\(\partial G\) 的参数薄盒再细分为形状规则的小立方体，其像可由总体积
+\(C\operatorname{vol}(U)\) 的有限盒覆盖；同样，\(T(\partial G)\) 由第 33.4 的参数片
+论证具有任意小薄盒覆盖。因为 \(f\) 与 \((f\circ T)J\) 都有界，参数边界层和像边界层
+的积分绝对值分别小于常数乘 \(\operatorname{vol}(U)\)。先令网格
+\(h\to0\) 完成紧内部等式，再令 \(\eta\to0\)，两侧边界层同时消失，得到全域换元
+公式。\(\square\)
+
+以上证明没有借用 Jordan 测度或 Lebesgue 理论；第 33.4 的核心薄盒引理承担全部边界
+控制。边界上的有限退化片只在最后的薄层中处理，不能当作普通内部点。
 
 ## 例题与迁移
 

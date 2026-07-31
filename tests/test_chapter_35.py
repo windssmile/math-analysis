@@ -50,5 +50,31 @@ class ChapterThirtyFiveTests(unittest.TestCase):
         nav = self.text(ROOT / "mkdocs.yml")
         self.assertIn("chapters/chapter-35/", nav)
 
+    def test_change_of_variables_proof_has_all_classical_riemann_steps(self):
+        text = self.text(path(EXPECTED[1]))
+        ordered_structure = (
+            "有限矩形并或常用 Jordan 型参数域",
+            "假设 | 在证明中的用途",
+            "{#lem-u-08-35-02-uniform-box-volume}",
+            "紧内部的一致线性化",
+            "线性像的体积",
+            "余项的外包与内包",
+            "像块不重叠与共同细分",
+            "被积函数与 Jacobian 的振幅控制",
+            "从紧内部回到全域",
+        )
+        positions = []
+        for marker in ordered_structure:
+            self.assertIn(marker, text)
+            positions.append(text.index(marker))
+        self.assertEqual(sorted(positions), positions)
+        for formula in (
+            r"\operatorname{vol}(T(Q))",
+            r"|\det DT(a)|\operatorname{vol}(Q)",
+            r"o(\operatorname{vol}(Q))",
+            r"\omega_f(Ch)+\|f\|_\infty\omega_J(h)",
+        ):
+            self.assertIn(formula, text)
+
 if __name__ == "__main__":
     unittest.main()
