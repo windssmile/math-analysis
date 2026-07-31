@@ -600,6 +600,30 @@ class ZensicalSiteValidationTests(unittest.TestCase):
             REQUIRED_NAVIGATION_MARKERS[page],
         )
 
+    def test_checks_representative_part_eight_pages(self) -> None:
+        expected = {
+            "chapters/chapter-33/u-08-33-01-riemann-double-integral/index.html":
+                ["def-u-08-33-01-riemann-double-integral"],
+            "chapters/chapter-34/u-08-34-05-tensor-midpoint/index.html":
+                ["u-08-34-05"],
+            "chapters/chapter-35/u-08-35-02-change-of-variables/index.html":
+                ["thm-u-08-35-02-change-of-variables"],
+            "chapters/chapter-35/u-08-35-04-cylindrical-spherical/index.html":
+                ["u-08-35-04"],
+            "chapters/chapter-36/u-08-36-04-joint-density/index.html":
+                ["u-08-36-04"],
+            "appendices/part-08-jordan-content/index.html":
+                ["appendix-part-08-jordan-content"],
+        }
+        for page, anchors in expected.items():
+            with self.subTest(page=page):
+                self.assertEqual(anchors, REQUIRED_RENDERED_ANCHORS[page])
+                self.assertIn("md-sidebar", REQUIRED_NAVIGATION_MARKERS[page])
+                self.assertIn(
+                    "第八部：重积分与空间测量",
+                    REQUIRED_NAVIGATION_MARKERS[page],
+                )
+
 
 if __name__ == "__main__":
     unittest.main()

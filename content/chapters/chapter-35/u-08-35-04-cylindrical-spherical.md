@@ -32,8 +32,11 @@ content_standard: 2
 \]
 的导数矩阵为
 \[
-\begin{pmatrix}\cos\theta&-r\sin\theta&0\\
-\sin\theta&r\cos\theta&0\\0&0&1\end{pmatrix},
+\left(\begin{smallmatrix}
+\cos\theta&-r\sin\theta&0\\
+\sin\theta&r\cos\theta&0\\
+0&0&1
+\end{smallmatrix}\right),
 \quad \det=r,
 \]
 故 \(dV=r\,dr\,d\theta\,dz\)（次序可按区域调整）。

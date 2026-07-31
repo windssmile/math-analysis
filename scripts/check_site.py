@@ -195,6 +195,24 @@ REQUIRED_RENDERED_ANCHORS = {
         "alg-u-06-27-04-stable-evaluation",
         "tbl-u-06-27-04-output-semantics",
     ],
+    "chapters/chapter-33/u-08-33-01-riemann-double-integral/index.html": [
+        "def-u-08-33-01-riemann-double-integral",
+    ],
+    "chapters/chapter-34/u-08-34-05-tensor-midpoint/index.html": [
+        "u-08-34-05",
+    ],
+    "chapters/chapter-35/u-08-35-02-change-of-variables/index.html": [
+        "thm-u-08-35-02-change-of-variables",
+    ],
+    "chapters/chapter-35/u-08-35-04-cylindrical-spherical/index.html": [
+        "u-08-35-04",
+    ],
+    "chapters/chapter-36/u-08-36-04-joint-density/index.html": [
+        "u-08-36-04",
+    ],
+    "appendices/part-08-jordan-content/index.html": [
+        "appendix-part-08-jordan-content",
+    ],
 }
 
 REQUIRED_NAVIGATION_MARKERS = {
@@ -385,6 +403,36 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第六部：无穷级数与函数逼近",
         "第 27 章：多项式逼近与误差控制",
+    ],
+    "chapters/chapter-33/u-08-33-01-riemann-double-integral/index.html": [
+        "md-sidebar",
+        "第八部：重积分与空间测量",
+        "第 33 章：重积分的定义与可积性",
+    ],
+    "chapters/chapter-34/u-08-34-05-tensor-midpoint/index.html": [
+        "md-sidebar",
+        "第八部：重积分与空间测量",
+        "第 34 章：累次积分与计算",
+    ],
+    "chapters/chapter-35/u-08-35-02-change-of-variables/index.html": [
+        "md-sidebar",
+        "第八部：重积分与空间测量",
+        "第 35 章：重积分的变量代换",
+    ],
+    "chapters/chapter-35/u-08-35-04-cylindrical-spherical/index.html": [
+        "md-sidebar",
+        "第八部：重积分与空间测量",
+        "第 35 章：重积分的变量代换",
+    ],
+    "chapters/chapter-36/u-08-36-04-joint-density/index.html": [
+        "md-sidebar",
+        "第八部：重积分与空间测量",
+        "第 36 章：反常重积分与质量、概率模型",
+    ],
+    "appendices/part-08-jordan-content/index.html": [
+        "md-sidebar",
+        "第八部：重积分与空间测量",
+        "选读附录：从 Jordan 区域到测度观点",
     ],
 }
 
