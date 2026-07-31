@@ -4,8 +4,9 @@ title: 全书课程地图
 
 # 全书课程地图 {#sec-curriculum-map}
 
-教材以“定义—证明—算法证书”两条线并行组织。当前已完整发布第一至第九部，
-截至第 41 章共 189 个学习单元、337 学时。历史发布里程碑包括第 27 章，共 125 个学习单元，
+教材以“定义—证明—算法证书”两条线并行组织。当前已发布至第十部第 45 章，
+共 209 个学习单元、367 学时。第九部闭合时为 189 个学习单元、337 学时。
+历史发布里程碑包括第 27 章，共 125 个学习单元，
 以及第 32 章，共 150 个学习单元。
 
 ## 第一部：实数、函数与分析语言
@@ -469,8 +470,54 @@ title: 全书课程地图
 
 附录约 2–3 学时，不计入第九部核心单元、核心学时或核心考核，也不是第十部前置。
 
+## 第十部：含参变量积分
+
+**问题弧：** 什么时候可以把极限、微分或积分移进积分号？
+
+第十部共 20 个核心单元、30 学时（理论 22，应用 8）；第 42–45 章已完整发布。
+
+### [第 42 章：正常含参变量积分](chapters/chapter-42/index.md) {#chapter-42}
+
+本章学时：7 小时（理论 5.50，应用 1.50）。
+
+1. [含参积分怎样定义函数，参数与积分变量怎样分工？](chapters/chapter-42/u-10-42-01-parametric-integral-functions.md)
+2. [被积函数联合连续时，积分为什么连续依赖参数？](chapters/chapter-42/u-10-42-02-continuity-under-integral.md)
+3. [一致收敛为什么允许极限进入积分号？](chapters/chapter-42/u-10-42-03-uniform-limit-interchange.md)
+4. [哪些逐点收敛反例说明一致控制不可省略？](chapters/chapter-42/u-10-42-04-pointwise-failure.md)
+5. [怎样为连续性与极限交换建立条件检查表？](chapters/chapter-42/u-10-42-05-exchange-checklist.md)
+
+### [第 43 章：积分号下运算](chapters/chapter-43/index.md) {#chapter-43}
+
+本章学时：8 小时（理论 6.00，应用 2.00）。
+
+1. [什么条件允许对含参积分求导？](chapters/chapter-43/u-10-43-01-differentiation-under-integral.md)
+2. [差商与偏导的一致控制怎样完成 Leibniz 公式证明？](chapters/chapter-43/u-10-43-02-difference-quotient-control.md)
+3. [积分端点随参数变化时，边界项从哪里产生？](chapters/chapter-43/u-10-43-03-variable-endpoints-leibniz.md)
+4. [对参数再积分时，怎样通过经典 Fubini 交换次序？](chapters/chapter-43/u-10-43-04-parameter-integration-fubini.md)
+5. [可固定化的移动区域怎样化为固定区域问题？](chapters/chapter-43/u-10-43-05-fixed-domain-transform.md)
+
+### [第 44 章：含参反常积分的一致收敛](chapters/chapter-44/index.md) {#chapter-44}
+
+本章学时：8 小时（理论 6.00，应用 2.00）。
+
+1. [含参反常积分的一致收敛应怎样定义？](chapters/chapter-44/u-10-44-01-uniform-improper-definition.md)
+2. [一致 Cauchy 判据怎样把尾部转化为可检查条件？](chapters/chapter-44/u-10-44-02-uniform-cauchy-criterion.md)
+3. [Weierstrass、Dirichlet 与 Abel 型判据怎样控制参数族？](chapters/chapter-44/u-10-44-03-uniform-convergence-tests.md)
+4. [连续性、极限与参数积分何时可同反常积分交换？](chapters/chapter-44/u-10-44-04-improper-exchange.md)
+5. [积分号下求导何时成立，反例揭示哪些条件缺口？](chapters/chapter-44/u-10-44-05-improper-differentiation.md)
+
+### [第 45 章：Gamma、Beta 函数与参数敏感性](chapters/chapter-45/index.md) {#chapter-45}
+
+本章学时：7 小时（理论 4.50，应用 2.50）。
+
+1. [Gamma 积分在哪些参数上收敛，递推公式怎样得到？](chapters/chapter-45/u-10-45-01-gamma-convergence-recurrence.md)
+2. [Beta 积分的端点奇性怎样控制？](chapters/chapter-45/u-10-45-02-beta-endpoint-singularities.md)
+3. [Beta–Gamma 关系怎样由重积分与换元推出？](chapters/chapter-45/u-10-45-03-beta-gamma-relation.md)
+4. [参数求导怎样产生含对数因子的积分与敏感性公式？](chapters/chapter-45/u-10-45-04-logarithmic-parameter-derivatives.md)
+5. [怎样对 Gamma、Beta 积分作带状态的可靠近似？](chapters/chapter-45/u-10-45-05-certified-gamma-beta.md)
+
 ## 后续路线
 
 第七部与第八部已完成核心内容、算法与出版质量闭合；第九部已完成核心内容与选读附录的出版闭合。
-第十至十二部继续覆盖含参积分、Lebesgue 积分和 Fourier 级数；对应内容完成前不创建
-空白单元页。
+第十至十二部继续覆盖的路线中，第十部含参积分已经闭合；第十一至十二部将覆盖
+Lebesgue 积分和 Fourier 级数，对应内容完成前不创建空白单元页。

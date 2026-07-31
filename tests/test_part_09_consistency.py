@@ -108,8 +108,6 @@ class PartNineConsistencyTests(unittest.TestCase):
         self.assertEqual(4, len(list((chapters / "chapter-39").glob("u-09-*.md"))))
         self.assertEqual(4, len(list((chapters / "chapter-40").glob("u-09-*.md"))))
         self.assertEqual(5, len(list((chapters / "chapter-41").glob("u-09-*.md"))))
-        self.assertNotIn("chapters/chapter-42/", NAVIGATION)
-        self.assertFalse((chapters / "chapter-42").exists())
         self.assertEqual(21, len(list(chapters.rglob("u-09-*.md"))))
 
     def test_optional_appendix_is_not_core(self) -> None:

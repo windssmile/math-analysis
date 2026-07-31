@@ -188,15 +188,13 @@ class ChapterFortyOneTests(unittest.TestCase):
             outside_math = re.sub(r"\\\(.*?\\\)", "", outside_math)
             self.assertEqual([], [m.group(0) for m in suspicious.finditer(outside_math)])
 
-    def test_release_surfaces_and_no_chapter_42_body(self):
+    def test_chapter_41_release_surfaces_remain_stable_after_later_parts(self):
         guide = self.text(CHAPTER / "index.md")
         nav = self.text(ROOT / "mkdocs.yml")
         for row in EXPECTED:
             self.assertEqual(1, guide.count(f"[{row[1]}]({row[0]}-{row[4]}.md)"))
             self.assertEqual(1, nav.count(f"chapters/chapter-41/{row[0]}-{row[4]}.md"))
-        self.assertFalse((ROOT / "content" / "chapters" / "chapter-42").exists())
-        self.assertNotIn("chapters/chapter-42/", nav)
-        self.assertIn("第九部第 41 章，共 189 个学习单元、337 学时", self.text(ROOT / "README.md"))
+        self.assertIn("第九部闭合时的历史口径为 189 个学习单元、337 学时", self.text(ROOT / "README.md"))
         course_map = self.text(ROOT / "content" / "course-map.md")
         self.assertIn("第 41 章：Stokes 公式与三大公式的统一](chapters/chapter-41/index.md)", course_map)
         self.assertIn("当前发布第 37–41 章；第九部核心正文已全部发布", course_map)
