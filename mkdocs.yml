@@ -271,6 +271,13 @@ nav:
           - 35.2 重积分换元公式需要哪些条件？: chapters/chapter-35/u-08-35-02-change-of-variables.md
           - 35.3 极坐标怎样处理圆形与径向对称区域？: chapters/chapter-35/u-08-35-03-polar-coordinates.md
           - 35.4 柱面、球面坐标怎样处理三维区域？: chapters/chapter-35/u-08-35-04-cylindrical-spherical.md
+      - 第 36 章：反常重积分与质量、概率模型:
+          - 本章导学: chapters/chapter-36/index.md
+          - 36.1 无界区域上的重积分怎样由极限定义？: chapters/chapter-36/u-08-36-01-unbounded-regions.md
+          - 36.2 被积函数有奇点时怎样判断收敛？: chapters/chapter-36/u-08-36-02-singular-integrands.md
+          - 36.3 密度怎样产生质量、质心与转动惯量？: chapters/chapter-36/u-08-36-03-mass-centroid-inertia.md
+          - 36.4 联合密度怎样产生边缘密度、期望与协方差？: chapters/chapter-36/u-08-36-04-joint-density.md
+          - 36.5 怎样为空间累积模型选择区域、坐标与核验方法？: chapters/chapter-36/u-08-36-05-spatial-modeling.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
