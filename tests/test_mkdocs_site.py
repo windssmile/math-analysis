@@ -11,6 +11,20 @@ from scripts.check_site import (
 
 
 class ZensicalSiteValidationTests(unittest.TestCase):
+    def test_checks_chapter_thirty_nine_math_page(self) -> None:
+        page = "chapters/chapter-39/u-09-39-04-green-applications/index.html"
+        self.assertIn(page, REQUIRED_RENDERED_ANCHORS)
+        self.assertIn("thm-u-09-39-04-path-independence", REQUIRED_RENDERED_ANCHORS[page])
+        html = (Path(__file__).resolve().parents[1] / "site" / page).read_text(encoding="utf-8")
+        self.assertIn("arithmatex", html)
+        self.assertGreaterEqual(html.count('<div class="arithmatex">\\['), 4)
+        self.assertIn(
+            r'<span class="arithmatex">\(D=\mathbb R^2\setminus\{0\}\)</span>',
+            html,
+        )
+        self.assertNotIn(r"<p>在穿孔域 (D=\mathbb R^2\setminus", html)
+        self.assertNotIn("<p>[\n\\", html)
+
     def test_checks_chapter_twenty_seven_core_pages(self) -> None:
         for page, anchors in {
             "chapters/chapter-27/u-06-27-02-bernstein-weierstrass/index.html": (

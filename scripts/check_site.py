@@ -210,6 +210,9 @@ REQUIRED_RENDERED_ANCHORS = {
     "chapters/chapter-36/u-08-36-04-joint-density/index.html": [
         "u-08-36-04",
     ],
+    "chapters/chapter-39/u-09-39-04-green-applications/index.html": [
+        "thm-u-09-39-04-path-independence",
+    ],
     "appendices/part-08-jordan-content/index.html": [
         "appendix-part-08-jordan-content",
     ],
@@ -428,6 +431,11 @@ REQUIRED_NAVIGATION_MARKERS = {
         "md-sidebar",
         "第八部：重积分与空间测量",
         "第 36 章：反常重积分与质量、概率模型",
+    ],
+    "chapters/chapter-39/u-09-39-04-green-applications/index.html": [
+        "md-sidebar",
+        "第九部：曲线、曲面与向量分析",
+        "第 39 章：Green 公式与平面场",
     ],
     "appendices/part-08-jordan-content/index.html": [
         "md-sidebar",

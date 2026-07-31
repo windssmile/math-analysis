@@ -63,6 +63,20 @@ class ChapterThirtyNineTests(unittest.TestCase):
             totals = [totals[0] + theory, totals[1] + applied, totals[2] + exercises, totals[3] + answers]
         self.assertEqual([4.5, 1.5, 39, 47], totals)
 
+    def test_all_tex_is_explicitly_delimited(self):
+        suspicious = re.compile(
+            r"(?<!\\)\((?:[^()\n]*(?:\\[A-Za-z]+|[_^])[^()\n]*)\)"
+        )
+        for row in EXPECTED:
+            text = self.text(unit_path(row))
+            outside_math = re.sub(r"\\\[[\s\S]*?\\\]", "", text)
+            outside_math = re.sub(r"\\\(.*?\\\)", "", outside_math)
+            matches = [m.group(0) for m in suspicious.finditer(outside_math)]
+            self.assertEqual([], matches, f"{row[0]} has naked TeX: {matches[:5]}")
+        applications = self.text(unit_path(EXPECTED[3]))
+        self.assertIn(r"\mathbb R^2\setminus\{0\}", applications)
+        self.assertNotIn(r"\mathbb R^2\setminus{0}", applications)
+
     def test_local_rectangle_derivations_fix_signs(self):
         text = self.text(unit_path(EXPECTED[0]))
         for marker in ("小矩形", "Q_x-P_y", "P_x+Q_y", "逆时针", "净外通量", "除以", "趋于"):
@@ -126,6 +140,12 @@ class ChapterThirtyNineTests(unittest.TestCase):
             self.assertIn(marker, body)
         self.assertNotIn("\ngamma_1*(-gamma_2) 属于", body)
         self.assertNotIn("每条分片光滑闭路都可用有限分片区域", body)
+        for marker in (
+            "路径连通", "每点可选的本章允许类基点路径", "追加坐标短线段",
+            r"\(D\) 是开集", r"\(x+he_i\)", "短线段积分", r"\(P,Q\) 连续",
+            r"\(\partial_1\phi=P\)", r"\(\partial_2\phi=Q\)", r"\(\nabla\phi=F\)",
+        ):
+            self.assertIn(marker, body)
 
         for number in (3, 11):
             answer = re.search(
