@@ -141,7 +141,10 @@ class Parts0109CrossConsistencyTests(unittest.TestCase):
         self.assertEqual({10, 11, 25}, DIRECT_PREREQUISITES[27])
 
     def test_matrix_covers_each_real_chapter_once_with_complete_contract_fields(self):
-        guides = sorted(CHAPTERS.glob("chapter-*/index.md"))
+        guides = sorted(
+            path for path in CHAPTERS.glob("chapter-*/index.md")
+            if int(path.parent.name.split("-")[-1]) <= 41
+        )
         self.assertEqual(41, len(guides))
         rows = matrix_rows()
         self.assertEqual(list(range(1, 42)), [int(row[0]) for row in rows])
@@ -159,7 +162,10 @@ class Parts0109CrossConsistencyTests(unittest.TestCase):
             self.assertRegex(evidence, r"docs/(curriculum|superpowers/specs)/")
 
     def test_real_core_pages_ids_counts_and_publication_order_match_matrix(self):
-        pages = sorted(CHAPTERS.glob("chapter-*/u-*.md"))
+        pages = sorted(
+            path for path in CHAPTERS.glob("chapter-*/u-*.md")
+            if int(path.parent.name.split("-")[-1]) <= 41
+        )
         ids = [metadata(page)["unit_id"] for page in pages]
         # Parse every physical core-unit front matter; appendices live outside
         # chapter directories and are deliberately excluded from this inventory.
@@ -177,9 +183,9 @@ class Parts0109CrossConsistencyTests(unittest.TestCase):
 
         matrix_order = [int(row[0]) for row in matrix_rows()]
         course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
-        map_order = [int(n) for n in re.findall(r"\{#chapter-(\d{2})\}", course_map)]
+        map_order = [int(n) for n in re.findall(r"\{#chapter-(\d{2})\}", course_map) if int(n) <= 41]
         nav = (ROOT / "mkdocs.yml").read_text(encoding="utf-8")
-        nav_order = [int(n) for n in re.findall(r"chapters/chapter-(\d{2})/index\.md", nav)]
+        nav_order = [int(n) for n in re.findall(r"chapters/chapter-(\d{2})/index\.md", nav) if int(n) <= 41]
         self.assertEqual(matrix_order, map_order)
         self.assertEqual(matrix_order, nav_order)
 
@@ -215,7 +221,7 @@ class Parts0109CrossConsistencyTests(unittest.TestCase):
         mutated = course_map.replace(chapter_19, chapter_19.replace("本章学时：7.5 小时", "本章学时：8 小时"))
         self.assertNotIn("本章学时：7.5 小时", chapter_slice(mutated, 19))
 
-    def test_current_publication_surfaces_use_authoritative_189_total(self):
+    def test_part_nine_surfaces_keep_authoritative_historical_189_total(self):
         surfaces = (
             ROOT / "README.md",
             ROOT / "content" / "course-map.md",
@@ -227,7 +233,7 @@ class Parts0109CrossConsistencyTests(unittest.TestCase):
             text = surface.read_text(encoding="utf-8")
             self.assertIn("189", text, surface)
         course_map = (ROOT / "content" / "course-map.md").read_text(encoding="utf-8")
-        self.assertIn("当前已完整发布第一至第九部", course_map)
+        self.assertIn("第九部闭合时为 189 个学习单元、337 学时", course_map)
         self.assertNotIn("当前已完整发布第一至第八部", course_map)
 
     def test_historical_release_snapshots_match_physical_chapter_totals(self):
