@@ -251,6 +251,13 @@ nav:
           - 32.4 Lagrange 乘子怎样处理正则等式约束？: chapters/chapter-32/u-07-32-04-lagrange-multipliers.md
           - 32.5 多个约束、几何解释和异常点怎样处理？: chapters/chapter-32/u-07-32-05-multiple-constraints.md
           - 32.6 梯度法、Newton 法和约束候选怎样可靠核验？: chapters/chapter-32/u-07-32-06-optimization-check.md
+  - 第八部：重积分与空间测量:
+      - 第 33 章：重积分的定义与可积性:
+          - 本章导学: chapters/chapter-33/index.md
+          - 33.1 小矩形上的局部贡献怎样累积成二重积分？: chapters/chapter-33/u-08-33-01-riemann-double-integral.md
+          - 33.2 连续函数为什么在闭矩形上可积？: chapters/chapter-33/u-08-33-02-continuous-integrability.md
+          - 33.3 线性、序关系与区域可加性怎样成立？: chapters/chapter-33/u-08-33-03-integral-properties.md
+          - 33.4 怎样在常用有界区域上定义重积分？: chapters/chapter-33/u-08-33-04-bounded-regions.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
