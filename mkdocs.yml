@@ -377,6 +377,14 @@ nav:
           - 50.3 控制收敛定理为何需要可积控制函数？: chapters/chapter-50/u-11-50-03-dominated-convergence.md
           - 50.4 Riemann 可积函数与 Lebesgue 积分怎样兼容？: chapters/chapter-50/u-11-50-04-riemann-lebesgue-comparison.md
           - 50.5 序章失败序列怎样被新理论完整解释？: chapters/chapter-50/u-11-50-05-intro-sequence-closure.md
+  - 第十二部：Fourier 级数初步:
+      - 第 51 章：正交函数系与最佳逼近:
+          - 本章导学: chapters/chapter-51/index.md
+          - 51.1 周期函数与三角函数系怎样构成正交族？: chapters/chapter-51/u-12-51-01-trig-orthogonality.md
+          - 51.2 Fourier 系数为什么来自正交投影？: chapters/chapter-51/u-12-51-02-fourier-projection.md
+          - 51.3 三角多项式怎样给出最佳平方逼近？: chapters/chapter-51/u-12-51-03-best-square-approximation.md
+          - 51.4 复指数形式怎样统一正弦与余弦形式？: chapters/chapter-51/u-12-51-04-complex-form.md
+          - 51.5 有限维投影计算怎样验证最佳逼近？: chapters/chapter-51/u-12-51-05-finite-projection-check.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 

@@ -31,6 +31,7 @@ class ZensicalStructureTests(unittest.TestCase):
         self.assertIn("第六部第 27 章，共 125 个学习单元", readme)
         self.assertIn("第十部第 45 章，共 209 个学习单元、367 学时", readme)
         self.assertIn("第十一部第 50 章，共 234 个学习单元、405 学时", readme)
+        self.assertIn("第十二部第 51 章，共 239 个学习单元、412.5 学时", readme)
         self.assertIn("zensical serve", readme)
         self.assertIn("zensical build --strict", readme)
         self.assertNotIn("mkdocs serve", readme)

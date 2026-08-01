@@ -59,7 +59,7 @@ class PartTwelveConsistencyTests(unittest.TestCase):
 
     def test_blueprint_starts_after_current_release(self) -> None:
         text = self.required_text(DEPENDENCIES)
-        self.assertIn("当前发布边界：第 50 章", text)
+        self.assertIn("当前发布边界：第 51 章", text)
         self.assertIn("21 个核心单元、33 学时", text)
         self.assertIn("255 个学习单元、438 学时", text)
         self.assertIn("不超过 34 学时", text)
@@ -82,8 +82,9 @@ class PartTwelveConsistencyTests(unittest.TestCase):
             with self.subTest(marker=marker):
                 self.assertIn(marker, text)
 
-    def test_planning_does_not_publish_navigation_or_extend_scope(self) -> None:
-        self.assertNotIn("chapters/chapter-51/", NAVIGATION)
+    def test_current_publication_does_not_extend_scope(self) -> None:
+        self.assertIn("chapters/chapter-51/", NAVIGATION)
+        self.assertNotIn("chapters/chapter-52/", NAVIGATION)
         self.assertFalse((ROOT / "content" / "chapters" / "chapter-55").exists())
         self.assertNotIn("第 55 章", self.required_text(COURSE_MAP))
 

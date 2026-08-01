@@ -568,15 +568,15 @@ title: 全书课程地图
 **问题弧：** 复杂的周期现象能否分解为简单振动？
 
 第 51–54 章规划已锁定：21 个核心单元、33 学时（理论 24，应用 9），不超过
-34 学时硬上限。当前只发布规划，不创建正文页或导航项。
+34 学时硬上限。第 51 章已发布，第 52–54 章仍为规划。
 
-### 第 51 章：正交函数系与最佳逼近（规划）
+### [第 51 章：正交函数系与最佳逼近](chapters/chapter-51/index.md) {#chapter-51}
 
-1. 周期函数与三角函数系怎样构成正交族？
-2. Fourier 系数为什么来自正交投影？
-3. 三角多项式怎样给出最佳平方逼近？
-4. 复指数形式怎样统一正弦与余弦形式？
-5. 有限维投影计算怎样验证最佳逼近？
+1. [周期函数与三角函数系怎样构成正交族？](chapters/chapter-51/u-12-51-01-trig-orthogonality.md)
+2. [Fourier 系数为什么来自正交投影？](chapters/chapter-51/u-12-51-02-fourier-projection.md)
+3. [三角多项式怎样给出最佳平方逼近？](chapters/chapter-51/u-12-51-03-best-square-approximation.md)
+4. [复指数形式怎样统一正弦与余弦形式？](chapters/chapter-51/u-12-51-04-complex-form.md)
+5. [有限维投影计算怎样验证最佳逼近？](chapters/chapter-51/u-12-51-05-finite-projection-check.md)
 
 ### 第 52 章：Fourier 系数与逐点收敛（规划）
 
