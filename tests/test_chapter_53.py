@@ -60,6 +60,6 @@ class ChapterFiftyThreeTests(unittest.TestCase):
         for row in EXPECTED:
             self.assertIn(f"{row[0]}-{row[4]}.md", guide)
             self.assertEqual(1, NAVIGATION.count(f"chapters/chapter-53/{row[0]}-{row[4]}.md"))
-        self.assertNotIn("chapters/chapter-54/", NAVIGATION)
+        self.assertLess(NAVIGATION.index("chapters/chapter-53/"), NAVIGATION.index("chapters/chapter-54/"))
 
 if __name__ == "__main__": unittest.main()

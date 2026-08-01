@@ -595,16 +595,16 @@ title: 全书课程地图
 4. [Parseval 等式怎样用于经典数项级数求和？](chapters/chapter-53/u-12-53-04-parseval-series-sums.md)
 5. [均方收敛与逐点、一致收敛有什么区别？](chapters/chapter-53/u-12-53-05-convergence-comparison.md)
 
-### 第 54 章：周期模型、逼近误差与 Gibbs 现象（规划）
+### [第 54 章：周期模型、逼近误差与 Gibbs 现象](chapters/chapter-54/index.md) {#chapter-54}
 
-1. 有限 Fourier 部分和怎样重建周期信号？
-2. Gibbs 现象为何不会因增加项数而消失？
-3. Fejér 平均为何比普通部分和更稳定？
-4. 截断阶数、误差指标与采样分辨率怎样选择？
-5. 一个周期模型怎样完成“建模—展开—误差—解释”闭环？
+1. [有限 Fourier 部分和怎样重建周期信号？](chapters/chapter-54/u-12-54-01-periodic-reconstruction.md)
+2. [Gibbs 现象为何不会因增加项数而消失？](chapters/chapter-54/u-12-54-02-gibbs-phenomenon.md)
+3. [Fejér 平均为何比普通部分和更稳定？](chapters/chapter-54/u-12-54-03-fejer-means.md)
+4. [截断阶数、误差指标与采样分辨率怎样选择？](chapters/chapter-54/u-12-54-04-truncation-error.md)
+5. [一个周期模型怎样完成“建模—展开—误差—解释”闭环？](chapters/chapter-54/u-12-54-05-periodic-model-closure.md)
 
 ## 后续路线
 
 第七部与第八部已完成核心内容、算法与出版质量闭合；第九部已完成核心内容与选读附录的出版闭合。
 第十至十二部继续覆盖的路线中，第十部含参积分已经闭合；第十一部第 46–50 章已经闭合；
-第十二部 Fourier 级数规划已经锁定。对应内容完成前不创建空白单元页。
+第十二部 Fourier 级数已经完整发布；全书不再规划后续部或后续章节。

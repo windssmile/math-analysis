@@ -400,6 +400,13 @@ nav:
           - 53.3 Parseval 等式在什么条件下成立？: chapters/chapter-53/u-12-53-03-parseval-identity.md
           - 53.4 Parseval 等式怎样用于经典数项级数求和？: chapters/chapter-53/u-12-53-04-parseval-series-sums.md
           - 53.5 均方收敛与逐点、一致收敛有什么区别？: chapters/chapter-53/u-12-53-05-convergence-comparison.md
+      - 第 54 章：周期模型、逼近误差与 Gibbs 现象:
+          - 本章导学: chapters/chapter-54/index.md
+          - 54.1 有限 Fourier 部分和怎样重建周期信号？: chapters/chapter-54/u-12-54-01-periodic-reconstruction.md
+          - 54.2 Gibbs 现象为何不会因增加项数而消失？: chapters/chapter-54/u-12-54-02-gibbs-phenomenon.md
+          - 54.3 Fejér 平均为何比普通部分和更稳定？: chapters/chapter-54/u-12-54-03-fejer-means.md
+          - 54.4 截断阶数、误差指标与采样分辨率怎样选择？: chapters/chapter-54/u-12-54-04-truncation-error.md
+          - 54.5 一个周期模型怎样完成“建模—展开—误差—解释”闭环？: chapters/chapter-54/u-12-54-05-periodic-model-closure.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
