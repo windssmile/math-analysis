@@ -774,6 +774,18 @@ class ZensicalSiteValidationTests(unittest.TestCase):
         self.assertIn(r"B(p,q)=\frac{\Gamma(p)\Gamma(q)}{\Gamma(p+q)}",
                       REQUIRED_RENDERED_CONTENT[relation]["required_math"])
 
+    def test_checks_representative_part_twelve_pages(self) -> None:
+        expected = {
+            "chapters/chapter-51/u-12-51-03-best-square-approximation/index.html": "u-12-51-03",
+            "chapters/chapter-52/u-12-52-05-dirichlet-convergence/index.html": "u-12-52-05",
+            "chapters/chapter-53/u-12-53-03-parseval-identity/index.html": "u-12-53-03",
+            "chapters/chapter-54/u-12-54-05-periodic-model-closure/index.html": "u-12-54-05",
+        }
+        for page, anchor in expected.items():
+            with self.subTest(page=page):
+                self.assertIn(anchor, REQUIRED_RENDERED_ANCHORS[page])
+                self.assertTrue(REQUIRED_RENDERED_CONTENT[page]["forbid_mathjax_errors"])
+
 
 if __name__ == "__main__":
     unittest.main()

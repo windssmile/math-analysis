@@ -64,10 +64,10 @@ class PartTwelveConsistencyTests(unittest.TestCase):
         self.assertIn("255 个学习单元、438 学时", text)
         self.assertIn("不超过 34 学时", text)
 
-    def test_course_map_records_planned_part(self) -> None:
+    def test_course_map_records_published_part(self) -> None:
         text = self.required_text(COURSE_MAP)
         self.assertIn("## 第十二部：Fourier 级数", text)
-        self.assertIn("第 51–54 章规划已锁定", text)
+        self.assertIn("第 51–54 章已完整发布", text)
         for unit_id, title, _, _, _ in PART_12_UNITS:
             with self.subTest(unit_id=unit_id):
                 self.assertIn(title, text)

@@ -16,6 +16,10 @@ CONTENT = ROOT / "content"
 SITE = ROOT / "site"
 
 REQUIRED_RENDERED_ANCHORS = {
+    "chapters/chapter-51/u-12-51-03-best-square-approximation/index.html": ["u-12-51-03"],
+    "chapters/chapter-52/u-12-52-05-dirichlet-convergence/index.html": ["u-12-52-05"],
+    "chapters/chapter-53/u-12-53-03-parseval-identity/index.html": ["u-12-53-03"],
+    "chapters/chapter-54/u-12-54-05-periodic-model-closure/index.html": ["u-12-54-05"],
     "chapters/chapter-01/u-01-01-01-sets/index.html": ["u-01-01-01"],
     "chapters/chapter-02/u-01-02-02-dedekind-cuts/index.html": [
         "def-u-01-02-02-dedekind-cut",
@@ -541,6 +545,10 @@ REQUIRED_NAVIGATION_MARKERS = {
 }
 
 REQUIRED_RENDERED_CONTENT = {
+    "chapters/chapter-51/u-12-51-03-best-square-approximation/index.html": {"min_arithmatex": 1, "forbid_mathjax_errors": True},
+    "chapters/chapter-52/u-12-52-05-dirichlet-convergence/index.html": {"min_arithmatex": 1, "forbid_mathjax_errors": True},
+    "chapters/chapter-53/u-12-53-03-parseval-identity/index.html": {"min_arithmatex": 1, "forbid_mathjax_errors": True},
+    "chapters/chapter-54/u-12-54-05-periodic-model-closure/index.html": {"min_arithmatex": 1, "forbid_mathjax_errors": True},
     "chapters/chapter-37/u-09-37-04-reparameterization-conservative-fields/index.html": {
         "min_arithmatex": 8, "forbid_mathjax_errors": True,
     },
