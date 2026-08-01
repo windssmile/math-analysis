@@ -587,13 +587,13 @@ title: 全书课程地图
 5. [Dirichlet 判别条件怎样保证逐点收敛？](chapters/chapter-52/u-12-52-05-dirichlet-convergence.md)
 6. [连续点与跳跃点的展开值应怎样判断？](chapters/chapter-52/u-12-52-06-pointwise-values.md)
 
-### 第 53 章：Bessel、Parseval 与均方收敛（规划）
+### [第 53 章：能量、Parseval 与均方收敛](chapters/chapter-53/index.md) {#chapter-53}
 
-1. Bessel 不等式怎样限制 Fourier 系数的能量？
-2. 均方误差为何等于总能量减去投影能量？
-3. Parseval 等式在什么条件下成立？
-4. Parseval 等式怎样用于经典数项级数求和？
-5. 均方收敛与逐点、一致收敛有什么区别？
+1. [Bessel 不等式怎样限制 Fourier 系数的能量？](chapters/chapter-53/u-12-53-01-bessel-inequality.md)
+2. [均方误差为何等于总能量减去投影能量？](chapters/chapter-53/u-12-53-02-mean-square-error.md)
+3. [Parseval 等式在什么条件下成立？](chapters/chapter-53/u-12-53-03-parseval-identity.md)
+4. [Parseval 等式怎样用于经典数项级数求和？](chapters/chapter-53/u-12-53-04-parseval-series-sums.md)
+5. [均方收敛与逐点、一致收敛有什么区别？](chapters/chapter-53/u-12-53-05-convergence-comparison.md)
 
 ### 第 54 章：周期模型、逼近误差与 Gibbs 现象（规划）
 
