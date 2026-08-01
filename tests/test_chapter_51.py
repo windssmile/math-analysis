@@ -58,7 +58,9 @@ class ChapterFiftyOneTests(unittest.TestCase):
         for row in EXPECTED:
             self.assertIn(f"{row[0]}-{row[4]}.md", guide)
             self.assertEqual(1, NAVIGATION.count(f"chapters/chapter-51/{row[0]}-{row[4]}.md"))
-        self.assertNotIn("chapters/chapter-52/", NAVIGATION)
+        if "chapters/chapter-52/" in NAVIGATION:
+            self.assertLess(NAVIGATION.index("chapters/chapter-51/"),
+                            NAVIGATION.index("chapters/chapter-52/"))
 
     def test_proof_core_avoids_later_theorems(self):
         first_four = "\n".join(self.text(path(row)).split("## 常见误区与后续", 1)[0] for row in EXPECTED[:4])

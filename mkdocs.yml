@@ -385,6 +385,14 @@ nav:
           - 51.3 三角多项式怎样给出最佳平方逼近？: chapters/chapter-51/u-12-51-03-best-square-approximation.md
           - 51.4 复指数形式怎样统一正弦与余弦形式？: chapters/chapter-51/u-12-51-04-complex-form.md
           - 51.5 有限维投影计算怎样验证最佳逼近？: chapters/chapter-51/u-12-51-05-finite-projection-check.md
+      - 第 52 章：Fourier 系数与逐点收敛:
+          - 本章导学: chapters/chapter-52/index.md
+          - 52.1 Fourier 系数有哪些平移、伸缩与对称性质？: chapters/chapter-52/u-12-52-01-symmetry-transformations.md
+          - 52.2 奇偶性和分段积分怎样简化系数计算？: chapters/chapter-52/u-12-52-02-coefficient-calculation.md
+          - 52.3 半区间正弦展开与余弦展开怎样选择？: chapters/chapter-52/u-12-52-03-half-range-expansions.md
+          - 52.4 Fourier 部分和怎样写成 Dirichlet 核卷积？: chapters/chapter-52/u-12-52-04-dirichlet-kernel.md
+          - 52.5 Dirichlet 判别条件怎样保证逐点收敛？: chapters/chapter-52/u-12-52-05-dirichlet-convergence.md
+          - 52.6 连续点与跳跃点的展开值应怎样判断？: chapters/chapter-52/u-12-52-06-pointwise-values.md
   - 附录:
       - Python 知识桥：函数、循环与异常: bridges/python-functions-loops.md
 
