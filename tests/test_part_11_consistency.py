@@ -84,9 +84,14 @@ class PartElevenConsistencyTests(unittest.TestCase):
             with self.subTest(marker=marker):
                 self.assertIn(marker, text)
 
-    def test_part_twelve_is_not_created(self) -> None:
-        self.assertFalse((ROOT / "content" / "chapters" / "chapter-51").exists())
-        self.assertNotIn("chapters/chapter-51/", NAVIGATION)
+    def test_part_eleven_snapshot_precedes_part_twelve(self) -> None:
+        pages = []
+        for chapter in range(46, 51):
+            pages.extend((ROOT / "content" / "chapters" / f"chapter-{chapter}").glob("u-11-*.md"))
+        self.assertEqual(25, len(pages))
+        if "chapters/chapter-51/" in NAVIGATION:
+            self.assertLess(NAVIGATION.index("chapters/chapter-50/"),
+                            NAVIGATION.index("chapters/chapter-51/"))
 
     def test_final_release_has_exact_pages_hours_navigation_and_reviews(self) -> None:
         pages = sorted((ROOT / "content" / "chapters").glob("chapter-4[6-9]/u-11-*.md"))
